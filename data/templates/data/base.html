@@ -140,17 +140,13 @@
           >
             <h1 class="h2">Dashboard</h1>
           </div>
-          {% block charts %}
+          <canvas class="my-4 w-100" id="myChart" width="900" height="380">
+            {% block charts %}
 
-          <!-- Charts -->
+            <!-- Charts -->
 
-          {% endblock %}
-          <canvas
-            class="my-4 w-100"
-            id="myChart"
-            width="900"
-            height="380"
-          ></canvas>
+            {% endblock %}
+          </canvas>
           <!--Table-->
           <h2>Data</h2>
           <div class="table-responsive">
