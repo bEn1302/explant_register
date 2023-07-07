@@ -64,17 +64,17 @@ class Explantat(models.Model):
     nutzungsdauer = models.IntegerField('Nutzungsdauer')        # in Jahre
     reinigung = models.BooleanField('Reinigung')
     bild = models.FileField('Bild', blank=True, null=True)
-    lagerort = models.ForeignKey(Lagerort, blank=True, null=True)         
-    patient = models.ForeignKey(Patient, blank=True, null=True)           
+    lagerort = models.ForeignKey(Lagerort, blank=True, null=True, on_delete=models.CASCADE)         
+    patient = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE)           
     reoperation = models.ManyToManyField(Reoperation, blank=True, null=True)   # 1:n
-    inlay = models.ForeignKey(Inlay)
+    inlay = models.ForeignKey(Inlay, on_delete=models.CASCADE)
     
     # Hüftexplantate
-    kopf = models.ForeignKey(Kopf, blank=True, null=True)
-    schaft = models.ForeignKey(Schaft, blank=True, null=True)
-    pfanne = models.ForeignKey(Pfanne, blank=True, null=True)
+    kopf = models.ForeignKey(Kopf, blank=True, null=True, on_delete=models.CASCADE)
+    schaft = models.ForeignKey(Schaft, blank=True, null=True, on_delete=models.CASCADE)
+    pfanne = models.ForeignKey(Pfanne, blank=True, null=True, on_delete=models.CASCADE)
 
     # Knieexplantate
-    femurkomponente = models.ForeignKey(Femurkomponente, blank=True, null=True)
-    tibiaplateau = models.ForeignKey(Tibiaplateau, blank=True, null=True)
-    patellaersatz = models.ForeignKey(Patellaersatz, blank=True, null=True)
+    femurkomponente = models.ForeignKey(Femurkomponente, blank=True, null=True, on_delete=models.CASCADE)
+    tibiaplateau = models.ForeignKey(Tibiaplateau, blank=True, null=True, on_delete=models.CASCADE)
+    patellaersatz = models.ForeignKey(Patellaersatz, blank=True, null=True, on_delete=models.CASCADE)
