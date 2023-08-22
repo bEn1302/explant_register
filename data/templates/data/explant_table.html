@@ -168,7 +168,8 @@
 <!-- Knieexplantat-Table -->
 <br />
 <h2>Knieexplantate</h2>
-{% for explant in explant_table %}
+
+{% if femurcomponent_data %}
 <table class="table">
   <thead>
     <tr>
@@ -186,6 +187,7 @@
     </tr>
   </thead>
   <tbody>
+    {% for explant in explant_table %}
     <tr class="table-row">
       <td>{{ explant.id }}</td>
       <td>{{ explant.ursache }}</td>
@@ -327,8 +329,12 @@
       </td>
     </tr>
   </tbody>
+  {% endfor %}
 </table>
-{% endfor %}
+{% else %}
+<p>Keine Datensätze vorhanden.</p>
+{% endif %}
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const triggerCells = document.querySelectorAll(".trigger-cell");
