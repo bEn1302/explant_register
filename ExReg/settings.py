@@ -139,9 +139,6 @@ STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 #       '/Users/benwiessner/Documents/Programmieren/WebDev/Django/explant_register/static/',  
 # )
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATIC_ROOT = "static/"
-
 
 
 # Default primary key field type
