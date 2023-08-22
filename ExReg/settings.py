@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://exreg.up.railway.app",
+    "https://explantregister-production.up.railway.app",
     # ... Weitere vertrauenswürdige Ursprungs-URLs
 ]
 
@@ -131,9 +131,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, '/static')]
+# STATICFILES_DIRS = ( 
+#       '/Users/benwiessner/Documents/Programmieren/WebDev/Django/explant_register/static/',  
+# )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = "static/"
 
 
 
