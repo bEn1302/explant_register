@@ -1,0 +1,1 @@
+web: gunicorn ExReg.wsgi --log-file -
