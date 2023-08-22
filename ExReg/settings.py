@@ -56,9 +56,11 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://explantregister-production.up.railway.app",
+    "https://explantregister-production.up.railway.app/",
     # ... Weitere vertrauenswürdige Ursprungs-URLs
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://explantregister-production.up.railway.app/']
 
 ROOT_URLCONF = 'ExReg.urls'
 
