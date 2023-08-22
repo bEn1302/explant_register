@@ -59,7 +59,7 @@ class Pfanne(models.Model):
 
 class Reoperation(models.Model):
     reoperation = models.BooleanField('Reoperation')
-    reoperation_datum = models.DateTimeField('Reoperationsdatum')
+    reoperation_datum = models.DateField('Reoperationsdatum')
 
     class Meta:
         verbose_name_plural = "Reperationen"
@@ -82,8 +82,8 @@ class Explantat(models.Model):
     ursache = models.TextField('Ursache')
     verfuegbarkeit = models.BooleanField('Verfügbarkeit')
     herkunftsort = models.CharField('Herkunftsort')
-    entnahme_datum = models.DateTimeField('Entnahmedatum')
-    eingang_datum = models.DateTimeField('Eingangsdatum')
+    entnahme_datum = models.DateField('Entnahmedatum')
+    eingang_datum = models.DateField('Eingangsdatum')
     bruchgeschehen = models.TextField('Bruchgeschehen')
     nutzungsdauer = models.IntegerField('Nutzungsdauer')        # in Jahre
     reinigung = models.BooleanField('Reinigung')

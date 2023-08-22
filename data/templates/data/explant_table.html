@@ -5,7 +5,7 @@
   <h1 class="h2">Hüftexplantate</h1>
 </div>
 
-{% for explant in explant_table %}
+{% for explant in huefte_explant_table %}
 <table class="table">
   <thead>
     <tr>
@@ -18,7 +18,6 @@
       <th scope="col">Bruchgeschehen</th>
       <th scope="col">Nutzungsdauer</th>
       <th scope="col">Reinigung</th>
-      <th scope="col">Details</th>
       <th scope="col">Aktion</th>
     </tr>
   </thead>
@@ -33,7 +32,7 @@
       <td>{{ explant.bruchgeschehen }}</td>
       <td>{{ explant.nutzungsdauer }}</td>
       <td>{{ explant.reinigung }}</td>
-      <td class="trigger-cell">Details</td>
+      <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
     </tr>
     <tr class="extended-row d-none">
       <td colspan="11">
@@ -169,7 +168,6 @@
 <br />
 <h2>Knieexplantate</h2>
 
-{% if femurcomponent_data %}
 <table class="table">
   <thead>
     <tr>
@@ -187,7 +185,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for explant in explant_table %}
+    {% for explant in knie_explant_table %}
     <tr class="table-row">
       <td>{{ explant.id }}</td>
       <td>{{ explant.ursache }}</td>
@@ -198,7 +196,7 @@
       <td>{{ explant.bruchgeschehen }}</td>
       <td>{{ explant.nutzungsdauer }}</td>
       <td>{{ explant.reinigung }}</td>
-      <td class="trigger-cell">Details</td>
+      <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
     </tr>
     <tr class="extended-row d-none">
       <td colspan="11">
@@ -331,9 +329,6 @@
   </tbody>
   {% endfor %}
 </table>
-{% else %}
-<p>Keine Datensätze vorhanden.</p>
-{% endif %}
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {

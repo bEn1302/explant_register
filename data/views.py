@@ -2,21 +2,27 @@ from django.shortcuts import render
 
 # Pull Data from Datatable:
 from .models import Explantat
-from .models import Femurkomponente
 
 # Create your views here.
 
-def kopf_view(request):
-    femurcomponent_data = Femurkomponente.objects.all()
-    context = {'femurcomponent_data': femurcomponent_data}
+def explants_table_view(request):
+    huefte_explant_table = Explantat.objects.filter(kopf__isnull=False, pfanne__isnull=False, schaft__isnull=False)
+    knie_explant_table = Explantat.objects.filter(femurkomponente__isnull=False, tibiaplateau__isnull=False, patellaersatz__isnull=False)
+
+    context = {
+        'huefte_explant_table': huefte_explant_table,
+        'knie_explant_table': knie_explant_table,
+    }
+
     return render(request, 'data/explant_table.html', context)
+
 
 def all_analytics(request):
     return render(request, 'data/explant_analytic.html')
-
-def all_explants(request):
-    explant_table = Explantat.objects.all()
-    return render(request, 'data/explant_table.html',{'explant_table': explant_table})
+#
+#def all_explants(request):
+#    explant_table = Explantat.objects.all()
+#    return render(request, 'data/explant_table.html',{'explant_table': explant_table})
 
 def home(request):
     return render(request, 'data/home.html')
