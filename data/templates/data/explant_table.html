@@ -5,7 +5,6 @@
   <h1 class="h2">Hüftexplantate</h1>
 </div>
 
-{% for explant in huefte_explant_table %}
 <table class="table">
   <thead>
     <tr>
@@ -22,6 +21,7 @@
     </tr>
   </thead>
   <tbody>
+    {% for explant in huefte_explant_table %}
     <tr class="table-row">
       <td>{{ explant.id }}</td>
       <td>{{ explant.ursache }}</td>
@@ -161,8 +161,9 @@
       </td>
     </tr>
   </tbody>
+  {% endfor %}
 </table>
-{% endfor %}
+
 <!----------------------
    Knieexplantat-Table 
   ----------------------->

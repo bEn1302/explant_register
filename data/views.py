@@ -4,7 +4,6 @@ from django.shortcuts import render
 from .models import Explantat
 
 # Create your views here.
-
 def explants_table_view(request):
     huefte_explant_table = Explantat.objects.filter(kopf__isnull=False, pfanne__isnull=False, schaft__isnull=False)
     knie_explant_table = Explantat.objects.filter(femurkomponente__isnull=False, tibiaplateau__isnull=False, patellaersatz__isnull=False)
@@ -19,10 +18,6 @@ def explants_table_view(request):
 
 def all_analytics(request):
     return render(request, 'data/explant_analytic.html')
-#
-#def all_explants(request):
-#    explant_table = Explantat.objects.all()
-#    return render(request, 'data/explant_table.html',{'explant_table': explant_table})
 
 def home(request):
     return render(request, 'data/home.html')
