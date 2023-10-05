@@ -1,5 +1,6 @@
 {% extends 'data/base.html' %} {% block dashboard %}
 
+{% if user.is_authenticated %}
 <div
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 >
@@ -20,5 +21,13 @@
     {% endblock %}
   </table>
 </div>
+
+{% else %}
+    {% url 'start' as start %}
+    <script>
+        window.location.href = "{{ start }}";
+    </script>
+
+{% endif %}
 
 {% endblock %}

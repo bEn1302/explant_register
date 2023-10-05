@@ -24,5 +24,8 @@ def all_analytics(request):
 #    explant_table = Explantat.objects.all()
 #    return render(request, 'data/explant_table.html',{'explant_table': explant_table})
 
+def start(request):
+    return render(request, 'startpage/index.html')
+
 def home(request):
-    return render(request, 'data/home.html')
+    return render(request, 'data/dashboard.html')

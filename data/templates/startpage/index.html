@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExpReg</title>
+    <link
+      rel="shortcut icon"
+      href="{% static '/img/favicon.svg' %}"
+      type="image/x-icon"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  </head>
+  <body>
+    <!-- Navbar section -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <!-- Brand -->
+          <img
+            src="{% static '/img/logo.svg' %}"
+            alt="brand"
+            width="100"
+            height="30"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link me-5" href="https://github.com/bEn1302/ExReg"
+              >Project</a
+            >
+          </div>
+          <a
+            href="{% url 'sign_in' %}"
+            class="btn btn-outline-primary shadow-sm d-sm d-block"
+            >Sign in</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- Home section -->
+    <section id="home" class="home">
+      <div class="container">
+        <div class="row">
+          <!-- Text -->
+          <div class="col-md-6">
+            <div class="text">
+              Analyze explants with ExReg More Efficient and More Better
+            </div>
+            <div class="buttons">
+              <a href="sign_up.html" class="btn btn-primary">Get started</a>
+              <a href="#informations" class="btn btn-outline-secondary ms-3"
+                >More</a
+              >
+            </div>
+          </div>
+          <!-- Image -->
+          <div class="col-md-6">
+            <img src="{% static '/img/data.svg' %}" alt="data-img" class="w-100" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="text-header text-center">
+          <h3>About Us</h3>
+          <p>
+            This project is a "Jugend-Forscht" project from Mecklenburg
+            Vorpommern. It is dedicated to the conception and programming of a
+            database for medical explants.
+          </p>
+        </div>
+        <div class="items text-center">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="icons">
+                <img src="{% static '/img/team.svg' %}" alt="icons" />
+              </div>
+              <div class="desc">
+                <h5>Our Team</h5>
+                <p>
+                  Our team consists of 2 people so far. In addition, we receive
+                  support from Dr. Daniel Klüß from the University of Rostock,
+                  who is available to answer our questions and is involved in
+                  the project.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="icons">
+                <img src="{% static '/img/coding.svg' %}" alt="icons" />
+              </div>
+              <div class="desc">
+                <h5>Development</h5>
+                <p>
+                  For the development we rely on the frontend framework
+                  Bootstrap in version v5.2 and in the backend the web framework
+                  Django.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="icons">
+                <img
+                  class="img-responsive"
+                  src="{% static '/img/message.svg' %}"
+                  alt="icons"
+                />
+              </div>
+              <div class="desc">
+                <h5>Support</h5>
+                <p>
+                  We would be very pleased about their cooperation in our
+                  project. So if you have any comments or encounter a problem,
+                  feel free to contact us.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Information section -->
+    <section class="information" id="informations">
+      <div class="container">
+        <div class="row info-1">
+          <!-- Text -->
+          <div class="col-md-6">
+            <div class="text-information">
+              <h5>Starting point</h5>
+              <p>
+                In order to better understand implant damage and make possible
+                improvements in manufacturing or implantation, it is important
+                to collect and evaluate data on damage. However, this data is
+                often confusing and difficult to access because it is stored in
+                different medical facilities and in different formats.
+              </p>
+            </div>
+          </div>
+          <!-- Image -->
+          <div class="col-md-6">
+            <img src="{% static '/img/medicine-1.svg' %}" alt="img-1" class="w-100" />
+          </div>
+        </div>
+        <div class="row info-2">
+          <!-- Image -->
+          <div class="col-md-6">
+            <img src="{% static '/img/medicine-2.svg' %}" alt="img-2" class="w-100" />
+          </div>
+          <!-- Text -->
+          <div class="col-md-6">
+            <div class="text-information">
+              <h5>Project</h5>
+              <p>
+                A suitable and modern method of processing data is to enter this
+                data into a database, as this allows access for all parties
+                involved. The goal of the research is to develop a functional
+                database capable of storing and, if necessary, evaluating large
+                amounts of data on explant damage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer section -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row row-cols-1 row-cols-lg-5 g-2 g-lg-3">
+              <div class="col-md-3">
+                <div>
+                  <small>
+                    <a href="#home" class="text-decoration-none">Home</a>
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div>
+                  <small>
+                    <a href="#about" class="text-decoration-none">About</a>
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div>
+                  <small>
+                    <a
+                      href="https://github.com/bEn1302/ExReg"
+                      class="text-decoration-none"
+                      >Project</a
+                    >
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="copy">&copy; 2023 ExReg</div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

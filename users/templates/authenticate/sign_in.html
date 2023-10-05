@@ -49,6 +49,14 @@
         </div>
         <!-- Right Box -->
         <div class="col-md-6 right-box">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ message }}</strong> Please try again...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
           <div class="row align-items-center">
             <div class="header-text mb-4">
               <h2>Hello, Again</h2>
@@ -106,7 +114,7 @@
             </form>
             <div class="row">
               <small
-                >Don't have account? <a href="sign_up.html">Sign up</a></small
+                >Don't have account? <a href="{% url 'sign_up' %}">Sign up</a></small
               >
             </div>
           </div>
