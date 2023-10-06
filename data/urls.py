@@ -9,4 +9,5 @@ urlpatterns = [
     path('analytics', views.all_analytics, name="analytic-explants"),
     path('explants', views.explants_table_view, name="table-explants"),
     path('forms', views.explant_form, name="add-explants"),
+    path('search', views.search, name="search"),
 ]

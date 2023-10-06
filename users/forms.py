@@ -13,12 +13,12 @@ class RegisterUserForm(UserCreationForm):
         fields = ('username', 
                   #'first_name', 'last_name',
                   'email', 'password1', 'password2')
-        help_texts = {
-            'username': None,
-            'email': None,
-            # 'first_name': None,
-            # 'last_name': None
-        }
+        # help_texts = {
+        #     'username': None,
+        #     'email': None,
+        #     # 'first_name': None,
+        #     # 'last_name': None
+        # }
         
     def __init__(self, *args, **kwargs):
         super(RegisterUserForm, self).__init__(*args, **kwargs)
@@ -32,6 +32,5 @@ class RegisterUserForm(UserCreationForm):
         self.fields['password2'].widget = forms.PasswordInput(attrs={'class': 'form-control form-control-lg bg-light fs-6', 'placeholder': 'Confirm Password'})
         self.fields['password2'].label = ""
         
-        for fieldname in [#'password1',
-                           'password2']:
+        for fieldname in ['username','password1','password2']:
             self.fields[fieldname].help_text = None

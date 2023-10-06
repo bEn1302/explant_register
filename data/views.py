@@ -9,6 +9,18 @@ def start(request):
 def home(request):
     return render(request, 'data/dashboard.html')
 
+def search(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        # search results
+        huefte_explants = Explantat.objects.filter(ursache__icontains=searched, kopf__isnull=False, pfanne__isnull=False, schaft__isnull=False)
+        knie_explants = Explantat.objects.filter(ursache__icontains=searched, tibiaplateau__isnull=False, patellaersatz__isnull=False)
+        return render(request, 'data/search.html', {'searched': searched, 'huefte_explants':huefte_explants, 'knie_explants':knie_explants})
+    else:
+        return render(request, 'data/search.html', {})
+
+
+
 def explants_table_view(request):
     huefte_explant_table = Explantat.objects.filter(kopf__isnull=False, pfanne__isnull=False, schaft__isnull=False)
     knie_explant_table = Explantat.objects.filter(femurkomponente__isnull=False, tibiaplateau__isnull=False, patellaersatz__isnull=False)
@@ -20,8 +32,12 @@ def explants_table_view(request):
 
     return render(request, 'data/explant_table.html', context)
 
+
+
 def all_analytics(request):
     return render(request, 'data/explant_analytic.html')
+
+
 
 def explant_form(request):
     submitted = False
@@ -36,7 +52,3 @@ def explant_form(request):
             submitted = True
 
     return render(request, 'data/explant_form.html', {'form':form, 'submitted':submitted})
-
-#def all_explants(request):
-#    explant_table = Explantat.objects.all()
-#    return render(request, 'data/explant_table.html',{'explant_table': explant_table})

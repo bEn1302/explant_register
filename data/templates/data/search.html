@@ -1,0 +1,352 @@
+{% extends 'data/base.html' %} {% block search %}
+
+{% if searched %}
+    
+    {% for explant in huefte_explants %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Ursache</th>
+            <th scope="col">Verfügbarkeit</th>
+            <th scope="col">Herkunftsort</th>
+            <th scope="col">Entnahmedatum</th>
+            <th scope="col">Eingangsdatum</th>
+            <th scope="col">Bruchgeschehen</th>
+            <th scope="col">Nutzungsdauer</th>
+            <th scope="col">Reinigung</th>
+            <th scope="col">Aktion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row">
+            <td>{{ explant.id }}</td>
+            <td>{{ explant.ursache }}</td>
+            <td>{{ explant.verfuegbarkeit }}</td>
+            <td>{{ explant.herkunftsort }}</td>
+            <td>{{ explant.entnahme_datum }}</td>
+            <td>{{ explant.eingang_datum }}</td>
+            <td>{{ explant.bruchgeschehen }}</td>
+            <td>{{ explant.nutzungsdauer }}</td>
+            <td>{{ explant.reinigung }}</td>
+            <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
+          </tr>
+          <tr class="extended-row d-none">
+            <td colspan="11">
+              <div class="extended-content">
+                <div class="row">
+                  <div class="col-md-3">
+                    <!-- Extended content goes here -->
+                    <ul class="list-group">
+                      <li class="list-group-item">Bild: {{ explant.bild }}</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <!-- Extended content goes here -->
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-secondary">
+                        Lagerort
+                      </li>
+                      <li class="list-group-item">
+                        Schrank: {{ explant.lagerort.schrank }}
+                      </li>
+                      <li class="list-group-item">
+                        Kiste: {{ explant.lagerort.kiste }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-secondary">
+                        Patient
+                      </li>
+                      <li class="list-group-item">
+                        Geburtsdatum: {{ explant.patient.geburtsdatum }}
+                      </li>
+                      <li class="list-group-item">
+                        Gewicht: {{ explant.patient.gewicht }} kg
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3">
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-secondary">
+                        Reoperation
+                      </li>
+                      <li class="list-group-item">
+                        Reoperation: {{ explant.reoperation.reoperation }}
+                      </li>
+                      <li class="list-group-item">
+                        Datum: {{ explant.reoperation.reoperation_datum }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 mt-3">
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-secondary">Inlay</li>
+                      <li class="list-group-item">
+                        Hersteller: {{ explant.inlay.hersteller }}
+                      </li>
+                      <li class="list-group-item">
+                        Modell: {{ explant.inlay.modell }}
+                      </li>
+                      <li class="list-group-item">
+                        Material: {{ explant.inlay.material }}
+                      </li>
+                      <li class="list-group-item">
+                        Größe: {{ explant.inlay.groeße }} mm
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 mt-3">
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-secondary">Kopf</li>
+                      <li class="list-group-item">
+                        Hersteller: {{ explant.kopf.hersteller }}
+                      </li>
+                      <li class="list-group-item">
+                        Modell: {{ explant.kopf.modell }}
+                      </li>
+                      <li class="list-group-item">
+                        Material: {{ explant.kopf.material }}
+                      </li>
+                      <li class="list-group-item">
+                        Größe: {{ explant.kopf.groeße }} mm
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 mt-3">
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-secondary">
+                        Schaft
+                      </li>
+                      <li class="list-group-item">
+                        Hersteller: {{ explant.schaft.hersteller }}
+                      </li>
+                      <li class="list-group-item">
+                        Modell: {{ explant.schaft.modell }}
+                      </li>
+                      <li class="list-group-item">
+                        Material: {{ explant.schaft.material }}
+                      </li>
+                      <li class="list-group-item">
+                        Größe: {{ explant.schaft.groeße }} mm
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-3 mt-3">
+                    <ul class="list-group">
+                      <li class="list-group-item list-group-item-secondary">
+                        Pfanne
+                      </li>
+                      <li class="list-group-item">
+                        Hersteller: {{ explant.pfanne.hersteller }}
+                      </li>
+                      <li class="list-group-item">
+                        Modell: {{ explant.pfanne.modell }}
+                      </li>
+                      <li class="list-group-item">
+                        Material: {{ explant.pfanne.material }}
+                      </li>
+                      <li class="list-group-item">
+                        Größe: {{ explant.pfanne.groeße }} mm
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {% endfor %}
+
+      {% for explant in knie_explants %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Ursache</th>
+            <th scope="col">Verfügbarkeit</th>
+            <th scope="col">Herkunftsort</th>
+            <th scope="col">Entnahmedatum</th>
+            <th scope="col">Eingangsdatum</th>
+            <th scope="col">Bruchgeschehen</th>
+            <th scope="col">Nutzungsdauer</th>
+            <th scope="col">Reinigung</th>
+            <th scope="col">Aktion</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="table-row">
+                <td>{{ explant.id }}</td>
+                <td>{{ explant.ursache }}</td>
+                <td>{{ explant.verfuegbarkeit }}</td>
+                <td>{{ explant.herkunftsort }}</td>
+                <td>{{ explant.entnahme_datum }}</td>
+                <td>{{ explant.eingang_datum }}</td>
+                <td>{{ explant.bruchgeschehen }}</td>
+                <td>{{ explant.nutzungsdauer }} Jahre</td>
+                <td>{{ explant.reinigung }}</td>
+                <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
+              </tr>
+              <tr class="extended-row d-none">
+                <td colspan="11">
+                  <div class="extended-content">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <!-- Extended content goes here -->
+                        <ul class="list-group">
+                          <li class="list-group-item">Bild: {{ explant.bild }}</li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3">
+                        <!-- Extended content goes here -->
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-secondary">
+                            Lagerort
+                          </li>
+                          <li class="list-group-item">
+                            Schrank: {{ explant.lagerort.schrank }}
+                          </li>
+                          <li class="list-group-item">
+                            Kiste: {{ explant.lagerort.kiste }}
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3">
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-secondary">
+                            Patient
+                          </li>
+                          <li class="list-group-item">
+                            Geburtsdatum: {{ explant.patient.geburtsdatum }}
+                          </li>
+                          <li class="list-group-item">
+                            Gewicht: {{ explant.patient.gewicht }} kg
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3">
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-secondary">
+                            Reoperation
+                          </li>
+                          <li class="list-group-item">
+                            Reoperation: {{ explant.reoperation.reoperation }}
+                          </li>
+                          <li class="list-group-item">
+                            Datum: {{ explant.reoperation.reoperation_datum }}
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 mt-3">
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-secondary">Inlay</li>
+                          <li class="list-group-item">
+                            Hersteller: {{ explant.inlay.hersteller }}
+                          </li>
+                          <li class="list-group-item">
+                            Modell: {{ explant.inlay.modell }}
+                          </li>
+                          <li class="list-group-item">
+                            Material: {{ explant.inlay.material }}
+                          </li>
+                          <li class="list-group-item">
+                            Größe: {{ explant.inlay.groeße }} mm
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 mt-3">
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-secondary">
+                            Femurkomponente
+                          </li>
+                          <li class="list-group-item">
+                            Hersteller: {{ explant.femurkomponente.hersteller }}
+                          </li>
+                          <li class="list-group-item">
+                            Modell: {{ explant.femurkomponente.modell }}
+                          </li>
+                          <li class="list-group-item">
+                            Material: {{ explant.femurkomponente.material }}
+                          </li>
+                          <li class="list-group-item">
+                            Größe: {{ explant.femurkomponente.groeße }} mm
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 mt-3">
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-secondary">
+                            Tibiaplateau
+                          </li>
+                          <li class="list-group-item">
+                            Hersteller: {{ explant.tibiaplateau.hersteller }}
+                          </li>
+                          <li class="list-group-item">
+                            Modell: {{ explant.tibiaplateau.modell }}
+                          </li>
+                          <li class="list-group-item">
+                            Material: {{ explant.tibiaplateau.material }}
+                          </li>
+                          <li class="list-group-item">
+                            Größe: {{ explant.tibiaplateau.groeße }} mm
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3 mt-3">
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-secondary">
+                            Patellaersatz
+                          </li>
+                          <li class="list-group-item">
+                            Hersteller: {{ explant.patellaersatz.hersteller }}
+                          </li>
+                          <li class="list-group-item">
+                            Modell: {{ explant.patellaersatz.modell }}
+                          </li>
+                          <li class="list-group-item">
+                            Material: {{ explant.patellaersatz.material }}
+                          </li>
+                          <li class="list-group-item">
+                            Größe: {{ explant.patellaersatz.groeße }} mm
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const triggerCells = document.querySelectorAll(".trigger-cell");
+    
+          let plus = true;
+          triggerCells.forEach((cell) => {
+            cell.addEventListener("click", function () {
+              const extendedRow = this.closest(".table-row").nextElementSibling;
+              extendedRow.classList.toggle("d-none");
+              if (plus) {
+                cell.innerHTML = '<i class="bi bi-dash-circle"></i>';
+              } else {
+                cell.innerHTML = '<i class="bi bi-plus-circle"></i>';
+              }
+              plus = !plus;
+            });
+          });
+        });
+      </script>
+      
+{% else %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Please fill out search field!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+{% endblock %}
