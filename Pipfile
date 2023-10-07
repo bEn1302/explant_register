@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 django = "*"
+packaging = "*"
+wheel = "*"
+psycopg2-binary = "*"
+setuptools = "*"
 
 [dev-packages]
 
