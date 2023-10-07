@@ -1,7 +1,14 @@
 {% extends 'data/base.html' %} {% block table %}
 
 {% if user.is_authenticated %}
-
+  <style>
+    .btn-outline-secondary:hover{
+      text-decoration: none;
+      color: #4f575d; 
+      border-color: #4f575d; 
+      background-color: transparent; 
+    }
+  </style>
   <div
     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
   >
@@ -35,7 +42,11 @@
         <td>{{ explant.bruchgeschehen }}</td>
         <td>{{ explant.nutzungsdauer }}</td>
         <td>{{ explant.reinigung }}</td>
-        <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
+        <td>
+          <i class="trigger-cell"></i>
+          <i class="bi bi-pencil-square"></i>
+          <i class="bi bi-trash3"></i>
+        </td>
       </tr>
       <tr class="extended-row d-none">
         <td colspan="11">
@@ -50,8 +61,9 @@
               <div class="col-md-3">
                 <!-- Extended content goes here -->
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
-                    Lagerort
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                      Lagerort
+                      <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Schrank: {{ explant.lagerort.schrank }}
@@ -63,8 +75,9 @@
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patient
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -76,8 +89,9 @@
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Reoperation
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Reoperation: {{ explant.reoperation.reoperation }}
@@ -89,7 +103,10 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">Inlay</li>
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                    Inlay
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                  </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.inlay.hersteller }}
                   </li>
@@ -106,7 +123,10 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">Kopf</li>
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                    Kopf
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                  </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.kopf.hersteller }}
                   </li>
@@ -123,8 +143,9 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Schaft
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.schaft.hersteller }}
@@ -142,8 +163,9 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Pfanne
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.pfanne.hersteller }}
@@ -199,7 +221,11 @@
         <td>{{ explant.bruchgeschehen }}</td>
         <td>{{ explant.nutzungsdauer }} Jahre</td>
         <td>{{ explant.reinigung }}</td>
-        <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
+        <td>
+          <i class="trigger-cell"></i>
+          <i class="bi bi-pencil-square"></i>
+          <i class="bi bi-trash3"></i>
+        </td>
       </tr>
       <tr class="extended-row d-none">
         <td colspan="11">
@@ -212,10 +238,10 @@
                 </ul>
               </div>
               <div class="col-md-3">
-                <!-- Extended content goes here -->
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Lagerort
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Schrank: {{ explant.lagerort.schrank }}
@@ -227,8 +253,9 @@
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patient
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -240,8 +267,9 @@
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Reoperation
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Reoperation: {{ explant.reoperation.reoperation }}
@@ -253,7 +281,10 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">Inlay</li>
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                    Inlay
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                  </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.inlay.hersteller }}
                   </li>
@@ -270,8 +301,9 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Femurkomponente
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.femurkomponente.hersteller }}
@@ -289,8 +321,9 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Tibiaplateau
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.tibiaplateau.hersteller }}
@@ -308,8 +341,9 @@
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-secondary">
+                  <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patellaersatz
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.patellaersatz.hersteller }}
@@ -333,7 +367,7 @@
     {% endfor %}
   </table>
 
-  <script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
       const triggerCells = document.querySelectorAll(".trigger-cell");
 
@@ -351,7 +385,33 @@
         });
       });
     });
+  </script> -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const triggerCells = document.querySelectorAll(".trigger-cell");
+  
+      triggerCells.forEach((cell) => {
+        // Create an icon element and add it to the cell
+        const icon = document.createElement("i");
+        icon.classList.add("bi", "bi-plus-circle");
+        cell.appendChild(icon);
+  
+        cell.addEventListener("click", function () {
+          const extendedRow = this.closest(".table-row").nextElementSibling;
+  
+          // Toggle the visibility of the extended row
+          extendedRow.classList.toggle("d-none");
+  
+          // Toggle the class of the icon to change its appearance
+          icon.classList.toggle("bi-plus-circle");
+          icon.classList.toggle("bi-dash-circle");
+        });
+      });
+    });
   </script>
+  
+  
 
 {% else %}
     {% url 'start' as start %}

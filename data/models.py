@@ -90,7 +90,7 @@ class Explantat(models.Model):
     bild = models.FileField('Bild', blank=True, null=True)
     lagerort = models.ForeignKey(Lagerort, blank=True, null=True, on_delete=models.CASCADE)         
     patient = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE)           
-    reoperation = models.ManyToManyField(Reoperation, blank=True)   # 1:n
+    reoperation = models.ForeignKey(Reoperation, blank=True, null=True, on_delete=models.CASCADE)
     inlay = models.ForeignKey(Inlay, on_delete=models.CASCADE)
     
     # Hüftexplantate
