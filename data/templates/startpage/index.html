@@ -71,7 +71,7 @@
               Analyze explants with ExReg More Efficient and More Better
             </div>
             <div class="buttons">
-              <a href="sign_up.html" class="btn btn-primary">Get started</a>
+              <a href="{% url 'sign_up' %}" class="btn btn-primary">Get started</a>
               <a href="#informations" class="btn btn-outline-secondary ms-3"
                 >More</a
               >
@@ -216,6 +216,13 @@
                       class="text-decoration-none"
                       >Project</a
                     >
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div>
+                  <small>
+                    <a href="{% url 'disclaimer' %}" class="text-decoration-none">Disclaimer</a>
                   </small>
                 </div>
               </div>

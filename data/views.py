@@ -9,6 +9,9 @@ def start(request):
 def home(request):
     return render(request, 'data/dashboard.html')
 
+def disclaimer(request):
+    return render(request, 'startpage/impressum.html')
+
 def search(request):
     if request.method == 'POST':
         searched = request.POST['searched']
