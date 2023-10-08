@@ -61,6 +61,7 @@ def lagerort_update(request, pk):
 
 
 
+
 def all_analytics(request):
     return render(request, 'data/explant_analytic.html')
 

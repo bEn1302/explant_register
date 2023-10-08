@@ -28,6 +28,7 @@ class FemurkomponenteForm(ModelForm):
 #         fields = ('__all__')
 
 
+# Update Forms
 class LagerortUpdateForm(ModelForm):
     class Meta:
         model = Lagerort

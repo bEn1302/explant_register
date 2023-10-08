@@ -85,11 +85,11 @@
                           <div class="modal-body">
                               <div id="alert-container"></div>
                               <div class="form-group">
-                                  <label for="schrank" class="form-floating">Schrank:</label>
+                                  <label for="schrank">Schrank:</label>
                                   <input type="number" class="form-control" id="schrank" name="schrank" value="{{ explant.lagerort.schrank }}">
                               </div>
                               <div class="form-group">
-                                  <label for="kiste" class="form-floating">Kiste:</label>
+                                  <label for="kiste">Kiste:</label>
                                   <input type="number" class="form-control" id="kiste" name="kiste" value="{{ explant.lagerort.kiste }}">
                               </div>
                           </div>
@@ -101,11 +101,16 @@
                   </div>
                 </div>
               </div>
+              <!-- Test Umgebeung Modals ... -->
               <div class="col-md-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patient
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#hueftePatientModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2"
+                            data-bs-toggle="modal" data-bs-target="#{{ explant.modal_id }}"
+                            data-modal-id="{{ explant.modal_id }}"
+                            data-modal-title="{{ explant.modal_title }}"
+                            data-modal-content="{{ explant.modal_content }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -114,24 +119,9 @@
                     Gewicht: {{ explant.patient.gewicht }} kg
                   </li>
                 </ul>
-                  <!-- Modal -->
-                <div class="modal fade" id="hueftePatientModal" tabindex="-1" aria-labelledby="hueftePatientModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <!-- Update Forms ... -->
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary">Save changes</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {% include 'data/modal_template.html' with modal_id=explant.modal_id modal_title=explant.modal_title modal_content=explant.modal_content %}
               </div>
+              
               <div class="col-md-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
@@ -163,6 +153,7 @@
                   </div>
                 </div>
               </div>
+              <!-- ENDE TESTUMGEBUNG -->
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
@@ -318,6 +309,9 @@
     </tbody>
   </table>
   {% endfor %}
+
+  <!-- Include the modal template and pass dynamic data -->
+  {% include 'data/modal_template.html' %}
   <!----------------------
     Knieexplantat-Table 
     ----------------------->
@@ -370,7 +364,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Lagerort
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieLagerortModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieLagerortModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Schrank: {{ explant.lagerort.schrank }}
@@ -380,7 +374,7 @@
                   </li>
                 </ul>
                 <!-- Modal -->
-                <div class="modal fade" id="knieLagerortModal" tabindex="-1" aria-labelledby="knieLagerortModalLabel" aria-hidden="true">
+                <div class="modal fade" id="knieLagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="knieLagerortModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -401,7 +395,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patient
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kniePatientModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kniePatientModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -411,7 +405,7 @@
                   </li>
                 </ul>
                 <!-- Modal -->
-                <div class="modal fade" id="kniePatientModal" tabindex="-1" aria-labelledby="kniePatientModalLabel" aria-hidden="true">
+                <div class="modal fade" id="kniePatientModal{{ explant.id }}" tabindex="-1" aria-labelledby="kniePatientModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -574,7 +568,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patellaersatz
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.patellaersatz.hersteller }}
@@ -590,7 +584,7 @@
                   </li>
                 </ul>
                 <!-- Modal -->
-                <div class="modal fade" id="patellaersatzModal" tabindex="-1" aria-labelledby="patellaersatzModalLabel" aria-hidden="true">
+                <div class="modal fade" id="patellaersatzModal{{ explant.id }}" tabindex="-1" aria-labelledby="patellaersatzModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -615,31 +609,9 @@
     {% endfor %}
   </table>
   <script src="{% static '/js/update_form.js' %}"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const triggerCells = document.querySelectorAll(".trigger-cell");
+  <script src="{% static '/js/expand_table.js' %}"></script>
+  <script src="{% static '/js/table_modal.js' %}"></script>
   
-      triggerCells.forEach((cell) => {
-        // Create an icon element and add it to the cell
-        const icon = document.createElement("i");
-        icon.classList.add("bi", "bi-plus-circle");
-        cell.appendChild(icon);
-  
-        cell.addEventListener("click", function () {
-          const extendedRow = this.closest(".table-row").nextElementSibling;
-  
-          // Toggle the visibility of the extended row
-          extendedRow.classList.toggle("d-none");
-  
-          // Toggle the class of the icon to change its appearance
-          icon.classList.toggle("bi-plus-circle");
-          icon.classList.toggle("bi-dash-circle");
-        });
-      });
-    });
-  </script>
-  
-
 {% else %}
     {% url 'start' as start %}
     <script>
