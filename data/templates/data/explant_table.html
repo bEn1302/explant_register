@@ -61,7 +61,8 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                       Lagerort
-                      <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteLagerortModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Schrank: {{ explant.lagerort.schrank }}
@@ -70,12 +71,29 @@
                     Kiste: {{ explant.lagerort.kiste }}
                   </li>
                 </ul>
+                  <!-- Modal -->
+                <div class="modal fade" id="huefteLagerortModal" tabindex="-1" aria-labelledby="huefteLagerortModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patient
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#hueftePatientModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -84,12 +102,29 @@
                     Gewicht: {{ explant.patient.gewicht }} kg
                   </li>
                 </ul>
+                  <!-- Modal -->
+                <div class="modal fade" id="hueftePatientModal" tabindex="-1" aria-labelledby="hueftePatientModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Reoperation
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteReoperationModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Reoperation: {{ explant.reoperation.reoperation }}
@@ -98,12 +133,29 @@
                     Datum: {{ explant.reoperation.reoperation_datum }}
                   </li>
                 </ul>
+                 <!-- Modal -->
+                 <div class="modal fade" id="huefteReoperationModal" tabindex="-1" aria-labelledby="huefteReoperationModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reoperation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Inlay
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteInlayModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.inlay.hersteller }}
@@ -118,12 +170,29 @@
                     Größe: {{ explant.inlay.groeße }} mm
                   </li>
                 </ul>
+                 <!-- Modal -->
+                 <div class="modal fade" id="huefteInlayModal" tabindex="-1" aria-labelledby="huefteInlayModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Inlay</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Kopf
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.kopf.hersteller }}
@@ -138,12 +207,29 @@
                     Größe: {{ explant.kopf.groeße }} mm
                   </li>
                 </ul>
+                 <!-- Modal -->
+                 <div class="modal fade" id="kopfModal" tabindex="-1" aria-labelledby="kopfModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Kopf</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Schaft
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.schaft.hersteller }}
@@ -158,12 +244,29 @@
                     Größe: {{ explant.schaft.groeße }} mm
                   </li>
                 </ul>
+                 <!-- Modal -->
+                 <div class="modal fade" id="schaftModal" tabindex="-1" aria-labelledby="schaftModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Schaft</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Pfanne
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.pfanne.hersteller }}
@@ -178,6 +281,23 @@
                     Größe: {{ explant.pfanne.groeße }} mm
                   </li>
                 </ul>
+                 <!-- Modal -->
+                 <div class="modal fade" id="pfanneModal" tabindex="-1" aria-labelledby="pfanneModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Pfanne</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -238,7 +358,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Lagerort
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieLagerortModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Schrank: {{ explant.lagerort.schrank }}
@@ -247,12 +367,29 @@
                     Kiste: {{ explant.lagerort.kiste }}
                   </li>
                 </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="knieLagerortModal" tabindex="-1" aria-labelledby="knieLagerortModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patient
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kniePatientModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -261,12 +398,29 @@
                     Gewicht: {{ explant.patient.gewicht }} kg
                   </li>
                 </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="kniePatientModal" tabindex="-1" aria-labelledby="kniePatientModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Reoperation
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieReoperationModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Reoperation: {{ explant.reoperation.reoperation }}
@@ -275,12 +429,29 @@
                     Datum: {{ explant.reoperation.reoperation_datum }}
                   </li>
                 </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="knieReoperationModal" tabindex="-1" aria-labelledby="knieReoperationModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reoperation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Inlay
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieInlayModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.inlay.hersteller }}
@@ -295,12 +466,29 @@
                     Größe: {{ explant.inlay.groeße }} mm
                   </li>
                 </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="knieInlayModal" tabindex="-1" aria-labelledby="knieInlayModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Inlay</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Femurkomponente
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.femurkomponente.hersteller }}
@@ -315,12 +503,29 @@
                     Größe: {{ explant.femurkomponente.groeße }} mm
                   </li>
                 </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="femurkomponenteModal" tabindex="-1" aria-labelledby="femurkomponenteModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Femurkomponente</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Tibiaplateau
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.tibiaplateau.hersteller }}
@@ -335,12 +540,29 @@
                     Größe: {{ explant.tibiaplateau.groeße }} mm
                   </li>
                 </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="tibiaplateauModal" tabindex="-1" aria-labelledby="tibiaplateauModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Tibiaplateau</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-md-3 mt-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patellaersatz
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.patellaersatz.hersteller }}
@@ -355,6 +577,23 @@
                     Größe: {{ explant.patellaersatz.groeße }} mm
                   </li>
                 </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="patellaersatzModal" tabindex="-1" aria-labelledby="patellaersatzModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patellaersatz</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -363,26 +602,6 @@
     </tbody>
     {% endfor %}
   </table>
-
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const triggerCells = document.querySelectorAll(".trigger-cell");
-
-      let plus = true;
-      triggerCells.forEach((cell) => {
-        cell.addEventListener("click", function () {
-          const extendedRow = this.closest(".table-row").nextElementSibling;
-          extendedRow.classList.toggle("d-none");
-          if (plus) {
-            cell.innerHTML = '<i class="bi bi-dash-circle"></i>';
-          } else {
-            cell.innerHTML = '<i class="bi bi-plus-circle"></i>';
-          }
-          plus = !plus;
-        });
-      });
-    });
-  </script> -->
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -407,7 +626,6 @@
       });
     });
   </script>
-  
   
 
 {% else %}
