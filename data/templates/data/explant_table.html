@@ -12,7 +12,6 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Hüftexplantate</h1>
   </div>
-
   {% for explant in huefte_explant_table %}
   <table class="table">
     <thead>
@@ -137,7 +136,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Reoperation
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteReoperationModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteReoperationModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Reoperation: {{ explant.reoperation.reoperation }}
@@ -169,7 +168,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Inlay
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteInlayModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteInlayModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.inlay.hersteller }}
@@ -185,7 +184,7 @@
                   </li>
                 </ul>
                  <!-- Modal -->
-                 <div class="modal fade" id="huefteInlayModal" tabindex="-1" aria-labelledby="huefteInlayModalLabel" aria-hidden="true">
+                 <div class="modal fade" id="huefteInlayModal{{ explant.id }}" tabindex="-1" aria-labelledby="huefteInlayModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -206,7 +205,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Kopf
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.kopf.hersteller }}
@@ -222,7 +221,7 @@
                   </li>
                 </ul>
                  <!-- Modal -->
-                 <div class="modal fade" id="kopfModal" tabindex="-1" aria-labelledby="kopfModalLabel" aria-hidden="true">
+                 <div class="modal fade" id="kopfModal{{ explant.id }}" tabindex="-1" aria-labelledby="kopfModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -243,7 +242,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Schaft
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.schaft.hersteller }}
@@ -259,7 +258,7 @@
                   </li>
                 </ul>
                  <!-- Modal -->
-                 <div class="modal fade" id="schaftModal" tabindex="-1" aria-labelledby="schaftModalLabel" aria-hidden="true">
+                 <div class="modal fade" id="schaftModal{{ explant.id }}" tabindex="-1" aria-labelledby="schaftModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -280,7 +279,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Pfanne
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.pfanne.hersteller }}
@@ -296,7 +295,7 @@
                   </li>
                 </ul>
                  <!-- Modal -->
-                 <div class="modal fade" id="pfanneModal" tabindex="-1" aria-labelledby="pfanneModalLabel" aria-hidden="true">
+                 <div class="modal fade" id="pfanneModal{{ explant.id }}" tabindex="-1" aria-labelledby="pfanneModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -434,7 +433,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Reoperation
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieReoperationModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieReoperationModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Reoperation: {{ explant.reoperation.reoperation }}
@@ -444,7 +443,7 @@
                   </li>
                 </ul>
                 <!-- Modal -->
-                <div class="modal fade" id="knieReoperationModal" tabindex="-1" aria-labelledby="knieReoperationModalLabel" aria-hidden="true">
+                <div class="modal fade" id="knieReoperationModal{{ explant.id }}" tabindex="-1" aria-labelledby="knieReoperationModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -465,7 +464,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Inlay
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieInlayModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#knieInlayModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.inlay.hersteller }}
@@ -481,7 +480,7 @@
                   </li>
                 </ul>
                 <!-- Modal -->
-                <div class="modal fade" id="knieInlayModal" tabindex="-1" aria-labelledby="knieInlayModalLabel" aria-hidden="true">
+                <div class="modal fade" id="knieInlayModal{{ explant.id }}" tabindex="-1" aria-labelledby="knieInlayModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -502,7 +501,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Femurkomponente
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.femurkomponente.hersteller }}
@@ -518,7 +517,7 @@
                   </li>
                 </ul>
                 <!-- Modal -->
-                <div class="modal fade" id="femurkomponenteModal" tabindex="-1" aria-labelledby="femurkomponenteModalLabel" aria-hidden="true">
+                <div class="modal fade" id="femurkomponenteModal{{ explant.id }}" tabindex="-1" aria-labelledby="femurkomponenteModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -539,7 +538,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Tibiaplateau
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Hersteller: {{ explant.tibiaplateau.hersteller }}
@@ -555,7 +554,7 @@
                   </li>
                 </ul>
                 <!-- Modal -->
-                <div class="modal fade" id="tibiaplateauModal" tabindex="-1" aria-labelledby="tibiaplateauModalLabel" aria-hidden="true">
+                <div class="modal fade" id="tibiaplateauModal{{ explant.id }}" tabindex="-1" aria-labelledby="tibiaplateauModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
