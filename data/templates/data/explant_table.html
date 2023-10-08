@@ -62,7 +62,7 @@
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                       Lagerort
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteLagerortModal">Update</button>
+                      <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#huefteLagerortModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Schrank: {{ explant.lagerort.schrank }}
@@ -72,7 +72,7 @@
                   </li>
                 </ul>
                   <!-- Modal -->
-                <div class="modal fade" id="huefteLagerortModal" tabindex="-1" aria-labelledby="huefteLagerortModalLabel" aria-hidden="true">
+                <div class="modal fade" id="huefteLagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="huefteLagerortModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                        <!-- Update Form ... -->
@@ -106,11 +106,7 @@
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                     Patient
-                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2"
-                            data-bs-toggle="modal" data-bs-target="#{{ explant.modal_id }}"
-                            data-modal-id="{{ explant.modal_id }}"
-                            data-modal-title="{{ explant.modal_title }}"
-                            data-modal-content="{{ explant.modal_content }}">Update</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#hueftePatientModal{{ explant.id }}">Update</button>
                   </li>
                   <li class="list-group-item">
                     Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -119,9 +115,24 @@
                     Gewicht: {{ explant.patient.gewicht }} kg
                   </li>
                 </ul>
-                {% include 'data/modal_template.html' with modal_id=explant.modal_id modal_title=explant.modal_title modal_content=explant.modal_content %}
+                <!-- Modal -->
+                <div class="modal fade" id="hueftePatientModal{{ explant.id }}" tabindex="-1" aria-labelledby="hueftePatientModalLabel{{ explant.id }}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Update Forms ... -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
               <div class="col-md-3">
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
@@ -136,7 +147,7 @@
                   </li>
                 </ul>
                  <!-- Modal -->
-                 <div class="modal fade" id="huefteReoperationModal" tabindex="-1" aria-labelledby="huefteReoperationModalLabel" aria-hidden="true">
+                 <div class="modal fade" id="huefteReoperationModal{{ explant.id }}" tabindex="-1" aria-labelledby="huefteReoperationModalLabel{{ explant.id }}" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
