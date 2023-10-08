@@ -38,11 +38,17 @@ class PatientUpdateForm(ModelForm):
     class Meta:
         model = Patient
         fields = ('geburtsdatum', 'gewicht')
+        widgets = { 
+            'geburtsdatum': forms.DateInput(),
+        }
 
 class ReoperationUpdateForm(ModelForm):
     class Meta:
         model = Reoperation
-        fields = ('reoperation', 'reoperation')
+        fields = ('reoperation', 'reoperation_datum')
+        widgets = { 
+            'reoperation_datum': forms.DateInput(),
+        }
 
 class InlayUpdateForm(ModelForm):
     class Meta:
