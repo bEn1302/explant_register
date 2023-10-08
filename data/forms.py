@@ -27,4 +27,10 @@ class FemurkomponenteForm(ModelForm):
 #         model = Explantat
 #         fields = ('__all__')
 
+
+class LagerortUpdateForm(ModelForm):
+    class Meta:
+        model = Lagerort
+        fields = ('schrank', 'kiste')
+
         

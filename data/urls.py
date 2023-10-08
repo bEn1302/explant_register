@@ -10,4 +10,5 @@ urlpatterns = [
     path('explants', views.explants_table_view, name="table-explants"),
     path('forms', views.explant_form, name="add-explants"),
     path('search', views.search, name="search"),
+    path('lagerort/<int:pk>/update/', views.lagerort_update, name='lagerort_update'),
 ]

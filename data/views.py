@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Explantat
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from .forms import *
 
 def start(request):
@@ -23,7 +24,6 @@ def search(request):
         return render(request, 'data/search.html', {})
 
 
-
 def explants_table_view(request):
     huefte_explant_table = Explantat.objects.filter(kopf__isnull=False, pfanne__isnull=False, schaft__isnull=False)
     knie_explant_table = Explantat.objects.filter(femurkomponente__isnull=False, tibiaplateau__isnull=False, patellaersatz__isnull=False)
@@ -35,6 +35,23 @@ def explants_table_view(request):
 
     return render(request, 'data/explant_table.html', context)
 
+
+
+def lagerort_update(request, pk):
+    lagerort = Lagerort.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = LagerortUpdateForm(request.POST, instance=lagerort)
+        if form.is_valid():
+            form.save()  # Daten in der Datenbank speichern
+            response_data = {'success': True}
+        else:
+            response_data = {'success': False, 'errors': form.errors}
+    else:
+        form = LagerortUpdateForm(instance=lagerort)
+        response_data = {'success': False}
+
+    return JsonResponse(response_data)
 
 
 def all_analytics(request):

@@ -1,4 +1,4 @@
-{% extends 'data/base.html' %} {% block table %}
+{% extends 'data/base.html' %} {% load static %} {% block table %}
 
 {% if user.is_authenticated %}
   <style>
@@ -9,6 +9,7 @@
       background-color: transparent; 
     }
   </style>
+  <div id="alert-container"></div>
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Hüftexplantate</h1>
   </div>
@@ -75,16 +76,27 @@
                 <div class="modal fade" id="huefteLagerortModal" tabindex="-1" aria-labelledby="huefteLagerortModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <!-- Update Forms ... -->
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary">Save changes</button>
-                      </div>
+                       <!-- Update Form ... -->
+                        <form id="lagerortUpdateForm" method="post" action="">
+                          {% csrf_token %}
+                          <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <div class="form-group">
+                                  <label for="schrank">Schrank:</label>
+                                  <input type="text" class="form-control" id="schrank" name="schrank" value="{{ explant.lagerort.schrank }}">
+                              </div>
+                              <div class="form-group">
+                                  <label for="kiste">Kiste:</label>
+                                  <input type="text" class="form-control" id="kiste" name="kiste" value="{{ explant.lagerort.kiste }}">
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="submit" class="btn btn-outline-primary">Update</button>
+                          </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -602,7 +614,7 @@
     </tbody>
     {% endfor %}
   </table>
-
+  <script src="{% static '/js/update_forms.js' %}"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const triggerCells = document.querySelectorAll(".trigger-cell");
