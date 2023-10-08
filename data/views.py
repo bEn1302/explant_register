@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Explantat
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
+from django.shortcuts import redirect
 from .forms import *
 
 def start(request):
@@ -39,11 +40,11 @@ def explants_table_view(request):
 
 def lagerort_update(request, pk):
     lagerort = Lagerort.objects.get(pk=pk)
-
+    
     if request.method == 'POST':
         form = LagerortUpdateForm(request.POST, instance=lagerort)
         if form.is_valid():
-            form.save()  # Daten in der Datenbank speichern
+            form.save()
             response_data = {'success': True}
         else:
             response_data = {'success': False, 'errors': form.errors}
@@ -51,7 +52,13 @@ def lagerort_update(request, pk):
         form = LagerortUpdateForm(instance=lagerort)
         response_data = {'success': False}
 
-    return JsonResponse(response_data)
+    # Überprüfen Sie den HTTP_X_REQUESTED_WITH-Header, um festzustellen, ob die Anfrage über AJAX erfolgte
+    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        return JsonResponse(response_data)
+    else:
+        # Wenn die Anfrage nicht über AJAX erfolgte, leiten Sie zur "table-explants"-Seite um
+        return redirect('table-explants')
+
 
 
 def all_analytics(request):
