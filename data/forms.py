@@ -32,5 +32,4 @@ class LagerortUpdateForm(ModelForm):
     class Meta:
         model = Lagerort
         fields = ('schrank', 'kiste')
-
         
