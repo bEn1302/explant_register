@@ -16,9 +16,7 @@
   <h2>Hüfte Explant</h2>
   {% include 'data/table_template.html' with data=huefte_explant_table is_huefte=True %}
 
-  <script src="{% static '/js/update_form.js' %}"></script>
   <script src="{% static '/js/expand_table.js' %}"></script>
-  <script src="{% static '/js/table_modal.js' %}"></script>
   
 {% else %}
     {% url 'start' as start %}
