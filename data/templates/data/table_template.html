@@ -42,6 +42,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-3">
+                                {% url 'lagerort_update' explant.lagerort.pk as update_url %}
                                 <!-- Extended content goes here -->
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
@@ -62,7 +63,7 @@
                                     modal_label_id="lagerortModalLabel{{ explant.id }}" 
                                     modal_title="Update Lagerort"
                                     modal_title_id="exampleModalLabel"
-                                    update_url="{% url 'lagerort_update' explant.lagerort.pk %}"
+                                    update_url=update_url
                                     modal_content="
                                         <div class='form-group'>
                                             <label for='schrank'>Schrank:</label>
