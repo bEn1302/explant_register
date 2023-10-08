@@ -90,8 +90,8 @@
                                 </ul>
                                 <!-- Modal -->
                                 {% include 'data/modal_template.html' with
-                                    modal_id="patientModal" 
-                                    modal_label_id="patientModalLabel" 
+                                    modal_id="patientModal{{ explant.id }}" 
+                                    modal_label_id="patientModalLabel{{ explant.id }}" 
                                     modal_title="Update Patient"
                                     modal_title_id="exampleModalLabel"
                                     update_url="{% url 'patient_update' explant.patient.pk %}"
@@ -122,8 +122,8 @@
                                 </ul>
                                 <!-- Modal -->
                                 {% include 'data/modal_template.html' with
-                                    modal_id="reoperationModal" 
-                                    modal_label_id="reoperationModalLabel" 
+                                    modal_id="reoperationModal{{ explant.id }}" 
+                                    modal_label_id="reoperationModalLabel{{ explant.id }}" 
                                     modal_title="Update Reoperation"
                                     modal_title_id="exampleModalLabel"
                                     update_url="{% url 'reoperation_update' explant.reoperation.pk %}"
@@ -160,8 +160,8 @@
                                 </ul>
                                 <!-- Modal -->
                                 {% include 'data/modal_template.html' with
-                                    modal_id="inlayModal" 
-                                    modal_label_id="inlayModalLabel" 
+                                    modal_id="inlayModal{{ explant.id }}" 
+                                    modal_label_id="inlayModalLabel{{ explant.id }}" 
                                     modal_title="Update Inlay"
                                     modal_title_id="exampleModalLabel"
                                     update_url="{% url 'inlay_update' explant.inlay.pk %}"
@@ -207,8 +207,8 @@
                                     </ul>
                                     <!-- Modal -->
                                     {% include 'data/modal_template.html' with
-                                        modal_id="kopfModal" 
-                                        modal_label_id="kopftModalLabel" 
+                                        modal_id="kopfModal{{ explant.id }}" 
+                                        modal_label_id="kopftModalLabel{{ explant.id }}" 
                                         modal_title="Update Kopf"
                                         modal_title_id="exampleModalLabel"
                                         update_url="{% url 'kopf_update' explant.kopf.pk %}"
@@ -254,8 +254,8 @@
                                     </ul>
                                     <!-- Modal -->
                                     {% include 'data/modal_template.html' with
-                                        modal_id="femurkomponenteModal" 
-                                        modal_label_id="femurkomponenteModalLabel" 
+                                        modal_id="femurkomponenteModal{{ explant.id }}" 
+                                        modal_label_id="femurkomponenteModalLabel{{ explant.id }}" 
                                         modal_title="Update Femurkomponente"
                                         modal_title_id="exampleModalLabel"
                                         update_url="{% url 'femurkomponente_update' explant.femurkomponente.pk %}"
@@ -302,8 +302,8 @@
                                     </ul>
                                     <!-- Modal -->
                                     {% include 'data/modal_template.html' with
-                                        modal_id="schaftModal"
-                                        modal_label_id="schaftModalLabel" 
+                                        modal_id="schaftModal{{ explant.id }}"
+                                        modal_label_id="schaftModalLabel{{ explant.id }}" 
                                         modal_title="Update Schaft"
                                         modal_title_id="exampleModalLabel"
                                         update_url="{% url 'schaft_update' explant.schaft.pk %}"
@@ -349,8 +349,8 @@
                                     </ul>
                                     <!-- Modal -->
                                     {% include 'data/modal_template.html' with
-                                        modal_id="tibiaplateauModal" 
-                                        modal_label_id="tibiaplateauModalLabel"
+                                        modal_id="tibiaplateauModal{{ explant.id }}" 
+                                        modal_label_id="tibiaplateauModalLabel{{ explant.id }}"
                                         modal_title="Update Tibiaplateau"
                                         modal_title_id="exampleModalLabel"
                                         update_url="{% url 'tibiaplateau_update' explant.tibiaplateau.pk %}"
@@ -397,8 +397,8 @@
                                     </ul>
                                     <!-- Modal -->
                                     {% include 'data/modal_template.html' with
-                                        modal_id="pfanneModal" 
-                                        modal_label_id="pfanneModalLabel" 
+                                        modal_id="pfanneModal{{ explant.id }}" 
+                                        modal_label_id="pfanneModalLabel{{ explant.id }}" 
                                         modal_title="Update Pfanne"
                                         modal_title_id="exampleModalLabel"
                                         update_url="{% url 'pfanne_update' explant.pfanne.pk %}"
@@ -444,8 +444,8 @@
                                     </ul>
                                     <!-- Modal -->
                                     {% include 'data/modal_template.html' with
-                                        modal_id="patellaersatzModal" 
-                                        modal_label_id="patellaersatzModalLabel" 
+                                        modal_id="patellaersatzModal{{ explant.id }}" 
+                                        modal_label_id="patellaersatzModalLabel{{ explant.id }}" 
                                         modal_title="Update Patellaersatz"
                                         modal_title_id="exampleModalLabel"
                                         update_url="{% url 'patellaersatz_update' explant.patellaersatz.pk %}"
