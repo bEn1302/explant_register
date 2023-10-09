@@ -39,7 +39,8 @@ class PatientUpdateForm(ModelForm):
         model = Patient
         fields = ('geburtsdatum', 'gewicht')
         widgets = { 
-            'geburtsdatum': forms.DateInput(),
+            'geburtsdatum': forms.DateInput(attrs={'class': 'form-control',}),
+            'gewicht': forms.NumberInput(attrs={'class': 'form-control',}),
         }
 
 class ReoperationUpdateForm(ModelForm):
