@@ -60,33 +60,75 @@ class InlayUpdateForm(ModelForm):
     class Meta:
         model = Inlay
         fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 class KopfUpdateForm(ModelForm):
     class Meta:
         model = Kopf
-        fields = ('hersteller', 'modell', 'material', 'groeße')   
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }   
 
 class FemurkomponenteUpdateForm(ModelForm):
     class Meta:
         model = Femurkomponente
-        fields = ('hersteller', 'modell', 'material', 'groeße')   
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }   
 
 class SchaftUpdateForm(ModelForm):
     class Meta:
         model = Schaft
-        fields = ('hersteller', 'modell', 'material', 'groeße')   
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }   
 
 class TibiaplateauUpdateForm(ModelForm):
     class Meta:
         model = Tibiaplateau
         fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 class PfanneUpdateForm(ModelForm):
     class Meta:
         model = Pfanne
         fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 class PatellaersatzUpdateForm(ModelForm):
     class Meta:
         model = Patellaersatz
-        fields = ('hersteller', 'modell', 'material', 'groeße')             
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }             
