@@ -58,25 +58,38 @@ def lagerort_update(request, pk):
         return redirect('table-explants')
 
 # hier übergebe ich noch form: form...
+# def patient_update(request, pk):
+#     patient = get_object_or_404(Patient, pk=pk)
+    
+#     if request.method == 'POST':
+#         form = PatientUpdateForm(request.POST, instance=patient)
+#         if form.is_valid():
+#             form.save()
+#             response_data = {'success': True}
+#         else:
+#             response_data = {'success': False, 'errors': form.errors}
+#             return HttpResponseBadRequest(JsonResponse(response_data))
+#     else:
+#         form = PatientUpdateForm(instance=patient)
+#         response_data = {'success': False}
+
+#     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+#         return JsonResponse(response_data)
+#     else:
+#         return redirect('table-explants', {'patient_form':form, 'response_data': response_data})
 def patient_update(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
-    
+
     if request.method == 'POST':
         form = PatientUpdateForm(request.POST, instance=patient)
         if form.is_valid():
             form.save()
-            response_data = {'success': True}
+            return JsonResponse({'success': True})
         else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
+            return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = PatientUpdateForm(instance=patient)
-        response_data = {'success': False}
-
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants', {'patient_form':form, 'response_data': response_data})
+        return render(request, 'patient_update.html', {'form': form, 'patient': patient})
 
 
 def reoperation_update(request, pk):
