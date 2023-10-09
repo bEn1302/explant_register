@@ -89,7 +89,7 @@ def patient_update(request, pk):
             return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = PatientUpdateForm(instance=patient)
-        return render(request, 'patient_update.html', {'form': form, 'patient': patient})
+        return render(request, 'data/explant_table.html', {'form': form, 'patient': patient})
 
 
 def reoperation_update(request, pk):

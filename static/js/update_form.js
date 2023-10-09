@@ -34,8 +34,6 @@ $(document).ready(function() {
                     $('#patientModal').modal('show');
                     $('#alert-container').html('<div class="alert alert-success" role="alert">Lagerort erfolgreich aktualisiert.</div>');
 
-                    // Seite neu laden, um die aktualisierten Daten anzuzeigen
-                    window.location.reload();
                 } else {
                     $('#alert-container').html('<div class="alert alert-danger" role="alert">Fehler beim Aktualisieren des Lagerorts.</div>' + response.errors);
                 }
