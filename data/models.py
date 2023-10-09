@@ -92,12 +92,10 @@ class Explantat(models.Model):
     patient = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE)           
     reoperation = models.ForeignKey(Reoperation, blank=True, null=True, on_delete=models.CASCADE)
     inlay = models.ForeignKey(Inlay, on_delete=models.CASCADE)
-    
     # Hüftexplantate
     kopf = models.ForeignKey(Kopf, blank=True, null=True, on_delete=models.CASCADE)
     schaft = models.ForeignKey(Schaft, blank=True, null=True, on_delete=models.CASCADE)
     pfanne = models.ForeignKey(Pfanne, blank=True, null=True, on_delete=models.CASCADE)
-
     # Knieexplantate
     femurkomponente = models.ForeignKey(Femurkomponente, blank=True, null=True, on_delete=models.CASCADE)
     tibiaplateau = models.ForeignKey(Tibiaplateau, blank=True, null=True, on_delete=models.CASCADE)

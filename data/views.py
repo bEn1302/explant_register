@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Explantat
+from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 
 from .forms import *
@@ -243,16 +243,86 @@ def all_analytics(request):
 
 
 # Data Insert
-def explant_form(request):
-    submitted = False
-    if request.method == "POST":
-        form = FemurkomponenteForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/forms?submitted=True')
-    else:
-        form = FemurkomponenteForm()
-        if 'submitted' in request.GET:
-            submitted = True
+# def explant_form(request):
+#     submitted = False
+#     if request.method == "POST":
+#         form = ExplantatForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect('/forms?submitted=True')
+#     else:
+#         form = ExplantatForm()
+#         if 'submitted' in request.GET:
+#             submitted = True
 
-    return render(request, 'data/explant_form.html', {'form':form, 'submitted':submitted})
+#     return render(request, 'data/explant_form.html', {'form':form, 'submitted':submitted})
+
+def explant_form(request):
+    if request.method == 'POST':
+        explantat_form = ExplantatForm(request.POST, request.FILES)
+        lagerort_form = LagerortForm(request.POST)  # Lagerort-Formular
+        patient_form = PatientForm(request.POST)  # Patient-Formular
+        reoperation_form = ReoperationForm(request.POST)  # Reoperation-Formular
+        inlay_form = InlayForm(request.POST)  # Inlay-Formular
+        kopf_form = KopfForm(request.POST)  # Kopf-Formular
+        femurkomponente_form = FemurkomponenteForm(request.POST)  # Femurkomponente-Formular
+        schaft_form = SchaftForm(request.POST)  # Schaft-Formular
+        tibiaplateau_form = TibiaplateauForm(request.POST)  # Tibiaplateau-Formular
+        pfanne_form = PfanneForm(request.POST) # Pfanne-Formular
+        patellaersatz_form = PatellaersatzForm(request.POST) # Patellaersatz-Formular
+
+        if explantat_form.is_valid() and lagerort_form.is_valid() and patient_form.is_valid() and reoperation_form.is_valid() and inlay_form.is_valid() and kopf_form.is_valid() and femurkomponente_form.is_valid() and schaft_form.is_valid() and tibiaplateau_form.is_valid() and pfanne_form.is_valid() and patellaersatz_form.is_valid():
+            explantat = explantat_form.save(commit=False)
+            lagerort = lagerort_form.save()
+            patient = patient_form.save()
+            reoperation = reoperation_form.save()
+            inlay = inlay_form.save()
+            kopf = kopf_form.save()
+            femurkomponente = femurkomponente_form.save()
+            schaft = schaft_form.save()
+            tibiaplateau = tibiaplateau_form.save()
+            pfanne = pfanne_form.save()
+            patellaersatz = patellaersatz_form.save()
+
+            # Setzen Sie die Verknüpfung von Explantat zu Inlay
+            explantat.patellaersatz = patellaersatz
+            explantat.pfanne = pfanne
+            explantat.tibiaplateau = tibiaplateau
+            explantat.schaft = schaft
+            explantat.femurkomponente = femurkomponente
+            explantat.kopf = kopf
+            explantat.inlay = inlay
+            explantat.reoperation = reoperation
+            explantat.patient = patient
+            explantat.lagerort = lagerort
+            explantat.save()
+            
+            # Weiterleitung zur Erfolgsseite oder zur Liste der Explantate
+            return redirect('table-explants')
+
+    else:
+        explantat_form = ExplantatForm()
+        lagerort_form = LagerortForm()
+        patient_form = PatientForm()
+        reoperation_form = ReoperationForm()
+        inlay_form = InlayForm()
+        kopf_form = KopfForm()
+        femurkomponente_form = FemurkomponenteForm()
+        schaft_form = SchaftForm()
+        tibiaplateau_form = TibiaplateauForm()
+        pfanne_form = PfanneForm()
+        patellaersatz_form = PatellaersatzForm()
+
+    return render(request, 'data/explant_form.html', {'explantat_form': explantat_form,
+                                                      'lagerort_form':lagerort_form,
+                                                      'patient_form':patient_form,
+                                                      'reoperation_form':reoperation_form, 
+                                                      'inlay_form': inlay_form,
+                                                      'kopf_form':kopf_form,
+                                                      'femurkomponente_form':femurkomponente_form,
+                                                      'schaft_form':schaft_form,
+                                                      'tibiaplateau_form':tibiaplateau_form,
+                                                      'pfanne_form':pfanne_form,
+                                                      'patellaersatz_form':patellaersatz_form,
+                                                      })
+
