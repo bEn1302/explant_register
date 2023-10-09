@@ -243,20 +243,6 @@ def all_analytics(request):
 
 
 # Data Insert
-# def explant_form(request):
-#     submitted = False
-#     if request.method == "POST":
-#         form = ExplantatForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponseRedirect('/forms?submitted=True')
-#     else:
-#         form = ExplantatForm()
-#         if 'submitted' in request.GET:
-#             submitted = True
-
-#     return render(request, 'data/explant_form.html', {'form':form, 'submitted':submitted})
-
 def explant_form(request):
     if request.method == 'POST':
         explantat_form = ExplantatForm(request.POST, request.FILES)

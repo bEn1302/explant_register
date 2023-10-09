@@ -175,7 +175,6 @@ class ExplantatForm(ModelForm):
     
     class Meta:
         model = Explantat
-        # fields = ('__all__')
         fields = ('ursache', 'verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum', 'bruchgeschehen', 'nutzungsdauer', 'reinigung', 'bild')
         labels = {
             'ursache': '', 
@@ -192,25 +191,13 @@ class ExplantatForm(ModelForm):
             'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ursache'}), 
             'verfuegbarkeit': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Verfügbarkeit'}),
             'herkunftsort': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Herkunftsort'}), 
-            'entnahme_datum': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Entnahmedatum'}),
-            'eingang_datum': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Eingangsdatum'}),
+            'entnahme_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
+            'eingang_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
             'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen'}),
             'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
             'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
             'bild': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Bild'}),
         }
-    def clean(self):
-        cleaned_data = super().clean()
-        pfanne = cleaned_data.get('pfanne')
-        kopf = cleaned_data.get('kopf')
-        schaft = cleaned_data.get('schaft')
-        femurkomponente = cleaned_data.get('femurkomponente')
-        patellaersatz = cleaned_data.get('patellaersatz')
-        tibiaplateau = cleaned_data.get('tibiaplateau')
-
-        # Überprüfen, ob entweder Pfanne, Kopf und Schafft oder Femurkomponente, Patellaersatz und Tibiaplateau ausgefüllt sind
-        if not (pfanne or kopf or schaft) and not (femurkomponente or patellaersatz or tibiaplateau):
-            raise forms.ValidationError("Füllen Sie entweder Pfanne, Kopf und Schafft oder Femurkomponente, Patellaersatz und Tibiaplateau aus.")
 
 # ----------------------- Data Update Forms ----------------------- #
 class LagerortUpdateForm(ModelForm):
