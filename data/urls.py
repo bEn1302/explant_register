@@ -33,9 +33,7 @@ urlpatterns = [
     # path('tibiaplateau/<int:pk>/update/', views.tibiaplateau_update, name='tibiaplateau_update'),
     # path('pfanne/<int:pk>/update/', views.pfanne_update, name='pfanne_update'),
     # path('patellaersatz/<int:pk>/update/', views.patellaersatz_update, name='patellaersatz_update'),
-] 
-
-+ [
+] + [
     path(f'{name}/<int:pk>/update/', getattr(views, name), name=name)
     for name in view_names
 ]
