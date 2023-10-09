@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import *
 
-#create a Femurkomponente form
+# ----------------------- Data Insert Forms ----------------------- #
 class FemurkomponenteForm(ModelForm):
     class Meta:
         model = Femurkomponente
@@ -28,7 +28,7 @@ class FemurkomponenteForm(ModelForm):
 #         fields = ('__all__')
 
 
-# Update Forms
+# ----------------------- Data Update Forms ----------------------- #
 class LagerortUpdateForm(ModelForm):
     class Meta:
         model = Lagerort

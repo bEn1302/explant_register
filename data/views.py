@@ -242,7 +242,7 @@ def all_analytics(request):
     return render(request, 'data/explant_analytic.html')
 
 
-
+# Data Insert
 def explant_form(request):
     submitted = False
     if request.method == "POST":
