@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // AJAX-Anfrage beim Klicken auf den "Speichern"-Button im Modal
-    $('.update-form').submit(function(e) {
+    $('#update-form').submit(function(e) {
         e.preventDefault(); // Verhindert das Standardverhalten des Formulars
 
         var form = $(this);

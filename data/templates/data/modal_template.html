@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <!-- Update Form ... -->
-        <form class="update-form" method="post" action="{{ update_url }}">
+        <form id="update-form" method="post" action="{{ update_url }}">
           {% csrf_token %}
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="{{ modal_title_id }}">{{ modal_title }}</h1>
