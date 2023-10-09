@@ -57,29 +57,9 @@ def lagerort_update(request, pk):
     else:
         return redirect('table-explants')
 
-# def patient_update(request, pk):
-#     patient = get_object_or_404(Patient, pk=pk)
-    
-#     if request.method == 'POST':
-#         form = PatientUpdateForm(request.POST, instance=patient)
-#         if form.is_valid():
-#             form.save()
-#             response_data = {'success': True}
-#         else:
-#             response_data = {'success': False, 'errors': form.errors}
-#             return HttpResponseBadRequest(JsonResponse(response_data))
-#     else:
-#         form = PatientUpdateForm(instance=patient)
-#         response_data = {'success': False}
-
-#     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-#         return JsonResponse(response_data)
-#     else:
-#         return redirect('table-explants')
-
 def patient_update(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
-
+    
     if request.method == 'POST':
         form = PatientUpdateForm(request.POST, instance=patient)
         if form.is_valid():
@@ -95,7 +75,7 @@ def patient_update(request, pk):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         return JsonResponse(response_data)
     else:
-        return JsonResponse(response_data)
+        return redirect('table-explants')
 
 def reoperation_update(request, pk):
     reoperation = get_object_or_404(Reoperation, pk=pk)
