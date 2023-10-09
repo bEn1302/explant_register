@@ -33,6 +33,10 @@ class LagerortUpdateForm(ModelForm):
     class Meta:
         model = Lagerort
         fields = ('schrank', 'kiste')
+        widgets = {
+            'schrank': forms.NumberInput(attrs={'class': 'form-control'}),
+            'kiste': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 class PatientUpdateForm(ModelForm):
     class Meta:

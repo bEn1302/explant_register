@@ -71,14 +71,16 @@
                                               <div class="modal-body">
                                                 <div id="alert-container"></div>
                                                     <!-- Forms -->
-                                                    <div class='form-floating'>
+                                                <form class="form-floating">
+                                                    <div class='form-group'>
                                                         <label for='schrank'>Schrank:</label>
                                                         <input type='number' class='form-control' id='schrank' name='schrank' value='{{ explant.lagerort.schrank }}'>
                                                     </div>
-                                                    <div class='form-floating'>
+                                                    <div class='form-group'>
                                                         <label for='kiste'>Kiste:</label>
                                                         <input type='number' class='form-control' id='kiste' name='kiste' value='{{ explant.lagerort.kiste }}'>
                                                     </div>
+                                                </form>
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="submit" class="btn btn-outline-primary">Update</button>
@@ -106,7 +108,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <!-- Update Form ... -->
-                                                <form id="update-form" class="form-floating" method="post" action="{% url 'patient_update' explant.patient.pk %}">
+                                                <form id="update-form" method="post" action="{% url 'patient_update' explant.patient.pk %}">
                                                     {% csrf_token %}
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
