@@ -47,6 +47,7 @@ class ReoperationUpdateForm(ModelForm):
         model = Reoperation
         fields = ('reoperation', 'reoperation_datum')
         widgets = { 
+            'reoperation': forms.CheckboxInput(attrs={'class': 'form-control',}),
             'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date'}),
         }
 
