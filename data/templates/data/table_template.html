@@ -101,36 +101,34 @@
                                             Gewicht: {{ explant.patient.gewicht }} kg
                                         </li>
                                     </ul>
-                                    <!-- Modal Test v2 -->
-                                    <!-- {% include 'data/modal_template.html' with
-                                        modal_id="patientModal{{ explant.id }}" 
-                                        modal_label_id="patientModalLabel{{ explant.id }}" 
-                                        modal_title="Update Patient"
-                                        modal_title_id="exampleModalLabel"
-                                        update_url="{% url 'patient_update' explant.patient.pk %}"
-                                        modal_content="{{ patient_form.as_p }}"
-                                    %} -->
-
+                                    <!-- Modal -->
                                     <div class="modal fade" id="patientModal{{ explant.id }}" tabindex="-1" aria-labelledby="patientModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <!-- Update Form ... -->
-                                            <form id="update-form" method="post" action="{% url 'patient_update' explant.patient.pk %}">
-                                                {% csrf_token %}
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div id="patientModal" class="modal-body">
-                                                    <div id="alert-container"></div>
-                                                        <!-- Forms -->
-                                                        {{ form.as_p }}
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-outline-primary">Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                            <div class="modal-content">
+                                                <!-- Update Form ... -->
+                                                <form id="update-form" method="post" action="{% url 'patient_update' explant.patient.pk %}">
+                                                    {% csrf_token %}
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div id="patientModal" class="modal-body">
+                                                        <div id="alert-container"></div>
+                                                            <!-- Forms -->
+                                                            <div class='form-group'>
+                                                                <label for='geburtsdatum'>Geburtsdatum:</label>
+                                                                <input type='date' class='form-control' id='geburtsdatum' name='geburtsdatum' value='{{ explant.patient.geburtsdatum }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='gewicht'>Gewicht:</label>
+                                                                <input type='number' step="any" class='form-control' id='gewicht' name='gewicht' value='{{ explant.patient.gewicht }}'>
+                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -148,23 +146,35 @@
                                         </li>
                                     </ul>
                                     <!-- Modal -->
-                                    {% include 'data/modal_template.html' with
-                                        modal_id="reoperationModal{{ explant.id }}" 
-                                        modal_label_id="reoperationModalLabel{{ explant.id }}" 
-                                        modal_title="Update Reoperation"
-                                        modal_title_id="exampleModalLabel"
-                                        update_url="{% url 'reoperation_update' explant.reoperation.pk %}"
-                                        modal_content="
-                                            <div class='form-group'>
-                                                <label for='reoperation'>Reoperation:</label>
-                                                <input type='' class='form-control' id='reoperation' name='reoperation' value='{{ explant.reoperation.reoperation }}'>
+                                    <div class="modal fade" id="reoperationModal{{ explant.id }}" tabindex="-1" aria-labelledby="reoperationModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <!-- Update Form ... -->
+                                                <form id="update-form" method="post" action="{% url 'reoperation_update' explant.reoperation.pk %}">
+                                                    {% csrf_token %}
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reoperation</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div id="patientModal" class="modal-body">
+                                                        <div id="alert-container"></div>
+                                                        <!-- Forms -->
+                                                        <div class='form-group'>
+                                                            <label for='reoperation'>Reoperation:</label>
+                                                            <input type='' class='form-control' id='reoperation' name='reoperation' value='{{ explant.reoperation.reoperation }}'>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='reoperation_datum'>Datum:</label>
+                                                            <input type='date' class='form-control' id='reoperation_datum' name='reoperation_datum' value='{{ explant.reoperation.reoperation_datum }}'>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class='form-group'>
-                                                <label for='reoperation_datum'>Datum:</label>
-                                                <input type='number' class='form-control' id='reoperation_datum' name='reoperation_datum' value='{{ explant.reoperation.reoperation_datum }}'>
-                                            </div>
-                                        "
-                                    %}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-3 mt-3">
                                     <ul class="list-group">
@@ -186,31 +196,43 @@
                                         </li>
                                     </ul>
                                     <!-- Modal -->
-                                    {% include 'data/modal_template.html' with
-                                        modal_id="inlayModal{{ explant.id }}" 
-                                        modal_label_id="inlayModalLabel{{ explant.id }}" 
-                                        modal_title="Update Inlay"
-                                        modal_title_id="exampleModalLabel"
-                                        update_url="{% url 'inlay_update' explant.inlay.pk %}"
-                                        modal_content="
-                                            <div class='form-group'>
-                                                <label for='hersteller'>Hersteller:</label>
-                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.inlay.hersteller }}'>
+                                    <div class="modal fade" id="inlayModal{{ explant.id }}" tabindex="-1" aria-labelledby="inlayModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <!-- Update Form ... -->
+                                                <form id="update-form" method="post" action="{% url 'inlay_update' explant.inlay.pk %}">
+                                                    {% csrf_token %}
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Inlay</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div id="patientModal" class="modal-body">
+                                                        <div id="alert-container"></div>
+                                                        <!-- Forms -->
+                                                        <div class='form-group'>
+                                                            <label for='hersteller'>Hersteller:</label>
+                                                            <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.inlay.hersteller }}'>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='modell'>Modell:</label>
+                                                            <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.inlay.modell }}'>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='material'>Material:</label>
+                                                            <input type='text' class='form-control' id='material' name='material' value='{{ explant.inlay.material }}'>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='groeße'>Größe:</label>
+                                                            <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class='form-group'>
-                                                <label for='modell'>Modell:</label>
-                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.inlay.modell }}'>
-                                            </div>
-                                            <div class='form-group'>
-                                                <label for='material'>Material:</label>
-                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.inlay.material }}'>
-                                            </div>
-                                            <div class='form-group'>
-                                                <label for='groeße'>Größe:</label>
-                                                <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
-                                            </div>
-                                        "
-                                    %}
+                                        </div>
+                                    </div>
                                 </div>
                                 {% if is_huefte %}
                                     <div class="col-md-3 mt-3">
@@ -233,31 +255,43 @@
                                             </li>
                                         </ul>
                                         <!-- Modal -->
-                                        {% include 'data/modal_template.html' with
-                                            modal_id="kopfModal{{ explant.id }}" 
-                                            modal_label_id="kopftModalLabel{{ explant.id }}" 
-                                            modal_title="Update Kopf"
-                                            modal_title_id="exampleModalLabel"
-                                            update_url="{% url 'kopf_update' explant.kopf.pk %}"
-                                            modal_content="
-                                                <div class='form-group'>
-                                                    <label for='hersteller'>Hersteller:</label>
-                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.kopf.hersteller }}'>
+                                        <div class="modal fade" id="kopfModal{{ explant.id }}" tabindex="-1" aria-labelledby="kopftModalLabel{{ explant.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <!-- Update Form ... -->
+                                                    <form id="update-form" method="post" action="{% url 'kopf_update' explant.kopf.pk %}">
+                                                        {% csrf_token %}
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Kopf</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div id="patientModal" class="modal-body">
+                                                            <div id="alert-container"></div>
+                                                            <!-- Forms -->
+                                                            <div class='form-group'>
+                                                                <label for='hersteller'>Hersteller:</label>
+                                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.kopf.hersteller }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='modell'>Modell:</label>
+                                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.kopf.modell }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='material'>Material:</label>
+                                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.kopf.material }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='groeße'>Größe:</label>
+                                                                <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class='form-group'>
-                                                    <label for='modell'>Modell:</label>
-                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.kopf.modell }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='material'>Material:</label>
-                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.kopf.material }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='groeße'>Größe:</label>
-                                                    <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
-                                                </div>
-                                            "
-                                        %}
+                                            </div>
+                                        </div>
                                     </div>
                                 {% else %}
                                     <div class="col-md-3 mt-3">
@@ -280,31 +314,43 @@
                                             </li>
                                         </ul>
                                         <!-- Modal -->
-                                        {% include 'data/modal_template.html' with
-                                            modal_id="femurkomponenteModal{{ explant.id }}" 
-                                            modal_label_id="femurkomponenteModalLabel{{ explant.id }}" 
-                                            modal_title="Update Femurkomponente"
-                                            modal_title_id="exampleModalLabel"
-                                            update_url="{% url 'femurkomponente_update' explant.femurkomponente.pk %}"
-                                            modal_content="
-                                                <div class='form-group'>
-                                                    <label for='hersteller'>Hersteller:</label>
-                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.femurkomponente.hersteller }}'>
+                                        <div class="modal fade" id="femurkomponenteModal{{ explant.id }}" tabindex="-1" aria-labelledby="femurkomponenteModalLabel{{ explant.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <!-- Update Form ... -->
+                                                    <form id="update-form" method="post" action="{% url 'femurkomponente_update' explant.femurkomponente.pk %}">
+                                                        {% csrf_token %}
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Femurkomponente</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div id="patientModal" class="modal-body">
+                                                            <div id="alert-container"></div>
+                                                            <!-- Forms -->
+                                                            <div class='form-group'>
+                                                                <label for='hersteller'>Hersteller:</label>
+                                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.femurkomponente.hersteller }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='modell'>Modell:</label>
+                                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.femurkomponente.modell }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='material'>Material:</label>
+                                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.femurkomponente.material }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='groeße'>Größe:</label>
+                                                                <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class='form-group'>
-                                                    <label for='modell'>Modell:</label>
-                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.femurkomponente.modell }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='material'>Material:</label>
-                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.femurkomponente.material }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='groeße'>Größe:</label>
-                                                    <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
-                                                </div>
-                                            "
-                                        %}
+                                            </div>
+                                        </div>
                                     </div>
                                 {% endif %}
                                 {% if is_huefte %}
@@ -328,31 +374,43 @@
                                             </li>
                                         </ul>
                                         <!-- Modal -->
-                                        {% include 'data/modal_template.html' with
-                                            modal_id="schaftModal{{ explant.id }}"
-                                            modal_label_id="schaftModalLabel{{ explant.id }}" 
-                                            modal_title="Update Schaft"
-                                            modal_title_id="exampleModalLabel"
-                                            update_url="{% url 'schaft_update' explant.schaft.pk %}"
-                                            modal_content="
-                                                <div class='form-group'>
-                                                    <label for='hersteller'>Hersteller:</label>
-                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.schaft.hersteller }}'>
+                                        <div class="modal fade" id="schaftModal{{ explant.id }}" tabindex="-1" aria-labelledby="schaftModalLabel{{ explant.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <!-- Update Form ... -->
+                                                    <form id="update-form" method="post" action="{% url 'schaft_update' explant.schaft.pk %}">
+                                                        {% csrf_token %}
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Schaft</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div id="patientModal" class="modal-body">
+                                                            <div id="alert-container"></div>
+                                                            <!-- Forms -->
+                                                            <div class='form-group'>
+                                                                <label for='hersteller'>Hersteller:</label>
+                                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.schaft.hersteller }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='modell'>Modell:</label>
+                                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.schaft.modell }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='material'>Material:</label>
+                                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.schaft.material }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='groeße'>Größe:</label>
+                                                                <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class='form-group'>
-                                                    <label for='modell'>Modell:</label>
-                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.schaft.modell }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='material'>Material:</label>
-                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.schaft.material }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='groeße'>Größe:</label>
-                                                    <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
-                                                </div>
-                                            "
-                                        %}
+                                            </div>
+                                        </div>
                                     </div>
                                 {% else %}
                                     <div class="col-md-3 mt-3">
@@ -375,31 +433,43 @@
                                             </li>
                                         </ul>
                                         <!-- Modal -->
-                                        {% include 'data/modal_template.html' with
-                                            modal_id="tibiaplateauModal{{ explant.id }}" 
-                                            modal_label_id="tibiaplateauModalLabel{{ explant.id }}"
-                                            modal_title="Update Tibiaplateau"
-                                            modal_title_id="exampleModalLabel"
-                                            update_url="{% url 'tibiaplateau_update' explant.tibiaplateau.pk %}"
-                                            modal_content="
-                                                <div class='form-group'>
-                                                    <label for='hersteller'>Hersteller:</label>
-                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.tibiaplateau.hersteller }}'>
+                                        <div class="modal fade" id="tibiaplateauModal{{ explant.id }}" tabindex="-1" aria-labelledby="tibiaplateauModalLabel{{ explant.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <!-- Update Form ... -->
+                                                    <form id="update-form" method="post" action="{% url 'tibiaplateau_update' explant.tibiaplateau.pk %}">
+                                                        {% csrf_token %}
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Tibiaplateau</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div id="patientModal" class="modal-body">
+                                                            <div id="alert-container"></div>
+                                                            <!-- Forms -->
+                                                            <div class='form-group'>
+                                                                <label for='hersteller'>Hersteller:</label>
+                                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.tibiaplateau.hersteller }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='modell'>Modell:</label>
+                                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.tibiaplateau.modell }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='material'>Material:</label>
+                                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.tibiaplateau.material }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='groeße'>Größe:</label>
+                                                                <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class='form-group'>
-                                                    <label for='modell'>Modell:</label>
-                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.tibiaplateau.modell }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='material'>Material:</label>
-                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.tibiaplateau.material }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='groeße'>Größe:</label>
-                                                    <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
-                                                </div>
-                                            "
-                                        %}
+                                            </div>
+                                        </div>
                                     </div>
                                 {% endif %}
                                 {% if is_huefte %}
@@ -423,31 +493,43 @@
                                             </li>
                                         </ul>
                                         <!-- Modal -->
-                                        {% include 'data/modal_template.html' with
-                                            modal_id="pfanneModal{{ explant.id }}" 
-                                            modal_label_id="pfanneModalLabel{{ explant.id }}" 
-                                            modal_title="Update Pfanne"
-                                            modal_title_id="exampleModalLabel"
-                                            update_url="{% url 'pfanne_update' explant.pfanne.pk %}"
-                                            modal_content="
-                                                <div class='form-group'>
-                                                    <label for='hersteller'>Hersteller:</label>
-                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.pfanne.hersteller }}'>
+                                        <div class="modal fade" id="pfanneModal{{ explant.id }}" tabindex="-1" aria-labelledby="pfanneModalLabel{{ explant.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <!-- Update Form ... -->
+                                                    <form id="update-form" method="post" action="{% url 'pfanne_update' explant.pfanne.pk %}">
+                                                        {% csrf_token %}
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Pfanne</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div id="patientModal" class="modal-body">
+                                                            <div id="alert-container"></div>
+                                                            <!-- Forms -->
+                                                            <div class='form-group'>
+                                                                <label for='hersteller'>Hersteller:</label>
+                                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.pfanne.hersteller }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='modell'>Modell:</label>
+                                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.pfanne.modell }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='material'>Material:</label>
+                                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.pfanne.material }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='groeße'>Größe:</label>
+                                                                <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class='form-group'>
-                                                    <label for='modell'>Modell:</label>
-                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.pfanne.modell }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='material'>Material:</label>
-                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.pfanne.material }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='groeße'>Größe:</label>
-                                                    <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
-                                                </div>
-                                            "
-                                        %}
+                                            </div>
+                                        </div>
                                     </div>
                                 {% else %}
                                     <div class="col-md-3 mt-3">
@@ -470,31 +552,43 @@
                                             </li>
                                         </ul>
                                         <!-- Modal -->
-                                        {% include 'data/modal_template.html' with
-                                            modal_id="patellaersatzModal{{ explant.id }}" 
-                                            modal_label_id="patellaersatzModalLabel{{ explant.id }}" 
-                                            modal_title="Update Patellaersatz"
-                                            modal_title_id="exampleModalLabel"
-                                            update_url="{% url 'patellaersatz_update' explant.patellaersatz.pk %}"
-                                            modal_content="
-                                                <div class='form-group'>
-                                                    <label for='hersteller'>Hersteller:</label>
-                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.patellaersatz.hersteller }}'>
+                                        <div class="modal fade" id="patellaersatzModal{{ explant.id }}" tabindex="-1" aria-labelledby="patellaersatzModalLabel{{ explant.id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <!-- Update Form ... -->
+                                                    <form id="update-form" method="post" action="{% url 'patellaersatz_update' explant.patellaersatz.pk %}">
+                                                        {% csrf_token %}
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patellaersatz</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div id="patientModal" class="modal-body">
+                                                            <div id="alert-container"></div>
+                                                            <!-- Forms -->
+                                                            <div class='form-group'>
+                                                                <label for='hersteller'>Hersteller:</label>
+                                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.patellaersatz.hersteller }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='modell'>Modell:</label>
+                                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.patellaersatz.modell }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='material'>Material:</label>
+                                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.patellaersatz.material }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='groeße'>Größe:</label>
+                                                                <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class='form-group'>
-                                                    <label for='modell'>Modell:</label>
-                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.patellaersatz.modell }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='material'>Material:</label>
-                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.patellaersatz.material }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='groeße'>Größe:</label>
-                                                    <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
-                                                </div>
-                                            "
-                                        %}
+                                            </div>
+                                        </div>
                                     </div>
                                 {% endif %}
                             </div>
