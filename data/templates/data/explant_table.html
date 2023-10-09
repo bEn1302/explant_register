@@ -22,55 +22,6 @@
   <script src="{% static '/js/expand_table.js' %}"></script>
   <script src="{% static '/js/update_form.js' %}"></script>
   
-  <!-- für localserver Test-->
-  <script>
-    $(document).ready(function () {
-        // AJAX-Anfrage beim Absenden des Formulars im Modal
-        $('#update-form').submit(function (e) {
-            e.preventDefault(); // Verhindert das Standardverhalten des Formulars
-
-            var form = $(this);
-
-            $.ajax({
-                type: 'POST',
-                url: form.attr('action'), // Verwenden Sie den action-Wert aus dem Formular
-                data: form.serialize(),
-                success: function (data) {
-                    if (data.success) {
-                        // Erfolgreiche Aktualisierung, zeige Erfolgsmeldung im Modal
-                        $('#alert-container').html('<div class="alert alert-success" role="alert">Lagerort erfolgreich aktualisiert.</div>');
-                    } else {
-                        // Fehler beim Formular, zeige Fehlermeldung im Modal
-                        $('#alert-container').html('<div class="alert alert-danger" role="alert">Fehler beim Aktualisieren des Lagerorts.</div>');
-                    }
-                }
-            });
-        });
-    });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const triggerCells = document.querySelectorAll(".trigger-cell");
-
-    triggerCells.forEach((cell) => {
-      // Create an icon element and add it to the cell
-      const icon = document.createElement("i");
-      icon.classList.add("bi", "bi-plus-circle");
-      cell.appendChild(icon);
-
-      cell.addEventListener("click", function () {
-        const extendedRow = this.closest(".table-row").nextElementSibling;
-
-        // Toggle the visibility of the extended row
-        extendedRow.classList.toggle("d-none");
-
-        // Toggle the class of the icon to change its appearance
-        icon.classList.toggle("bi-plus-circle");
-        icon.classList.toggle("bi-dash-circle");
-      });
-    });
-  });
-  </script>
 
 {% else %}
     {% url 'start' as start %}

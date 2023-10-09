@@ -76,7 +76,7 @@ def patient_update(request, pk):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         return JsonResponse(response_data)
     else:
-        return redirect('table-explants', {'patient_form': form, 'response_data': response_data})
+        return redirect('table-explants', {'patient_form':form, 'response_data': response_data})
 
 
 def reoperation_update(request, pk):
