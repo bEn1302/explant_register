@@ -47,7 +47,7 @@ class ReoperationUpdateForm(ModelForm):
         model = Reoperation
         fields = ('reoperation', 'reoperation_datum')
         widgets = { 
-            'reoperation_datum': forms.DateInput(),
+            'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date'}),
         }
 
 class InlayUpdateForm(ModelForm):

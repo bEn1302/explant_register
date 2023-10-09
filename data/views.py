@@ -57,6 +57,7 @@ def lagerort_update(request, pk):
     else:
         return redirect('table-explants')
 
+# hier übergebe ich noch form: form...
 def patient_update(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
     
@@ -75,8 +76,9 @@ def patient_update(request, pk):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         return JsonResponse(response_data)
     else:
-        return redirect('table-explants')
-    
+        return redirect('table-explants', {'patient_form': form, 'response_data': response_data})
+
+
 def reoperation_update(request, pk):
     reoperation = get_object_or_404(Reoperation, pk=pk)
     

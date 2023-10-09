@@ -121,14 +121,7 @@
                                           <div class="modal-body">
                                             <div id="alert-container"></div>
                                                 <!-- Forms -->
-                                                <div class='form-group'>
-                                                    <label for='geburtsdatum'>Geburtsdatum:</label>
-                                                    <input type='date' class='form-control' id='geburtsdatum' name='geburtsdatum' value='{{ explant.patient.geburtsdatum }}'>
-                                                </div>
-                                                <div class='form-group'>
-                                                    <label for='gewicht'>Gewicht:</label>
-                                                    <input type='number' class='form-control' id='gewicht' name='gewicht' value='{{ explant.patient.gewicht }}'>
-                                                </div>
+                                                {{ patient_form.as_p }}
                                           </div>
                                           <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-primary">Update</button>
