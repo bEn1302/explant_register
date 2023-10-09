@@ -109,10 +109,10 @@
                                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div id="patientModal" class="modal-body">
                                                     <div id="alert-container"></div>
                                                         <!-- Forms -->
-                                                        {{ patient_form.as_p }}
+                                                        {{ form.as_p }}
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-outline-primary">Update</button>

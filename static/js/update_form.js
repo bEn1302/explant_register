@@ -31,6 +31,7 @@ $(document).ready(function() {
             data: $(this).serialize(),
             success: function(response) {
                 if (response.success) {
+                    $('#patientModal').modal('show');
                     $('#alert-container').html('<div class="alert alert-success" role="alert">Lagerort erfolgreich aktualisiert.</div>');
 
                     // Seite neu laden, um die aktualisierten Daten anzuzeigen
