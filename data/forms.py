@@ -92,6 +92,10 @@ class FemurkomponenteForm(ModelForm):
         #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
         #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
         # }
+    hersteller = forms.CharField(required=False)
+    modell = forms.CharField(required=False)
+    material = forms.CharField(required=False)
+    groeße = forms.FloatField(required=False)
 
 class SchaftForm(ModelForm):
     class Meta:
@@ -109,6 +113,10 @@ class SchaftForm(ModelForm):
         #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
         #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
         # }   
+    hersteller = forms.CharField(required=False)
+    modell = forms.CharField(required=False)
+    material = forms.CharField(required=False)
+    groeße = forms.FloatField(required=False)
 
 class TibiaplateauForm(ModelForm):
     class Meta:
@@ -126,6 +134,10 @@ class TibiaplateauForm(ModelForm):
         #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
         #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
         # }
+    hersteller = forms.CharField(required=False)
+    modell = forms.CharField(required=False)
+    material = forms.CharField(required=False)
+    groeße = forms.FloatField(required=False)
 
 class PfanneForm(ModelForm):
     class Meta:
@@ -143,6 +155,10 @@ class PfanneForm(ModelForm):
         #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
         #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
         # }
+    hersteller = forms.CharField(required=False)
+    modell = forms.CharField(required=False)
+    material = forms.CharField(required=False)
+    groeße = forms.FloatField(required=False)
 
 class PatellaersatzForm(ModelForm):
     class Meta:
@@ -159,7 +175,11 @@ class PatellaersatzForm(ModelForm):
         #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
         #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
         #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }       
+        # }
+    hersteller = forms.CharField(required=False)
+    modell = forms.CharField(required=False)
+    material = forms.CharField(required=False)
+    groeße = forms.FloatField(required=False)       
 
 class ExplantatForm(ModelForm):
     lagerort_form = LagerortForm()
