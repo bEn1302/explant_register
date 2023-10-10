@@ -8,191 +8,21 @@
     </div> -->
     <h2>Explant data registration</h2>
         <div class="container">
-            <form action="" method="POST">
+            <!-- <form action="" method="POST" novalidate>
                 {% csrf_token %}
-                <!-- Explantat Form -->
-                <div class="form-group">
-                    {{ explantat_form.ursache }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.verfuegbarkeit }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.herkunftsort }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.entnahme_datum }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.eingang_datum }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.bruchgeschehen }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.nutzungsdauer }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.reinigung }}
-                </div>
-                <div class="form-group">
-                    {{ explantat_form.bild }}
-                </div>
+
+                {{ explantat_form.as_p }}
                 
-                <!-- Lagerort Form -->
-                <h3>Lagerort</h3>
-                <div class="form-group">
-                    
-                    {{ lagerort_form.schrank }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ lagerort_form.kiste }}
-                </div>
-                
-                <!-- Patient Form -->
-                <h3>Patient</h3>
-                <div class="form-group">
-                    
-                    {{ patient_form.geburtsdatum }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ patient_form.gewicht }}
-                </div>
+                {% if kopf_form.errors %}
+                        {% for field in kopf_form %}
+                            {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                            {% endfor %}
+                        {% endfor %}
+                {% endif %}
 
-                <!-- Reoperation Form -->
-                <h3>Reoperation</h3>
-                <div class="form-group">
-                    
-                    {{ reoperation_form.reoperation }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ reoperation_form.reoperation_datum }}
-                </div>
-
-                <!-- Inlay Form -->
-                <h3>Inlay</h3>
-                <div class="form-group">
-                    
-                    {{ inlay_form.hersteller }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ inlay_form.modell }}
-                </div><div class="form-group">
-                    
-                    {{ inlay_form.material }}
-                </div><div class="form-group">
-                    
-                    {{ inlay_form.groeße }}
-                </div>
-
-                <!-- Kopf Form -->
-                <h3>Kopf</h3>
-                <div class="form-group">
-                    
-                    {{ kopf_form.hersteller }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ kopf_form.modell }}
-                </div><div class="form-group">
-                    
-                    {{ kopf_form.material }}
-                </div><div class="form-group">
-                    
-                    {{ kopf_form.groeße }}
-                </div>
-
-                <!-- Femurkomponente Form -->
-                <h3>Femurkomponente</h3>
-                <div class="form-group">
-                    
-                    {{ femurkomponente_form.hersteller }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ femurkomponente_form.modell }}
-                </div><div class="form-group">
-                    
-                    {{ femurkomponente_form.material }}
-                </div><div class="form-group">
-                    
-                    {{ femurkomponente_form.groeße }}
-                </div>
-
-                <!-- Schaft Form -->
-                <h3>Schaft</h3>
-                <div class="form-group">
-                    
-                    {{ schaft_form.hersteller }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ schaft_form.modell }}
-                </div><div class="form-group">
-                    
-                    {{ schaft_form.material }}
-                </div><div class="form-group">
-                    
-                    {{ schaft_form.groeße }}
-                </div>
-
-                <!-- Tibiaplateau Form -->
-                <h3>Tibiaplateau</h3>
-                <div class="form-group">
-                    
-                    {{ tibiaplateau_form.hersteller }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ tibiaplateau_form.modell }}
-                </div><div class="form-group">
-                    
-                    {{ tibiaplateau_form.material }}
-                </div><div class="form-group">
-                    
-                    {{ tibiaplateau_form.groeße }}
-                </div>
-
-                <!-- Pfanne Form -->
-                <h3>Pfanne</h3>
-                <div class="form-group">
-                    
-                    {{ pfanne_form.hersteller }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ pfanne_form.modell }}
-                </div><div class="form-group">
-                    
-                    {{ pfanne_form.material }}
-                </div><div class="form-group">
-                    
-                    {{ pfanne_form.groeße }}
-                </div>
-
-                <!-- Patellaersatz Form -->
-                <h3>Patellaersatz</h3>
-                <div class="form-group">
-                    
-                    {{ patellaersatz_form.hersteller }}
-                </div>
-                <div class="form-group">
-                    
-                    {{ patellaersatz_form.modell }}
-                </div><div class="form-group">
-                    
-                    {{ patellaersatz_form.material }}
-                </div><div class="form-group">
-                    
-                    {{ patellaersatz_form.groeße }}
-                </div>
-
-                <!-- {{ explantat_form.as_p }}
-                
                 <h3>Lagerort</h3>
                 {{ lagerort_form.as_p }}
                 <h3>Patient</h3>
@@ -203,6 +33,7 @@
                 {{ inlay_form.as_p }}
                 <h3>Kopf</h3>
                 {{ kopf_form.as_p }}
+                
                 <h3>Femurkomponente</h3>
                 {{ femurkomponente_form.as_p }}
                 <h3>Schaft</h3>
@@ -212,9 +43,16 @@
                 <h3>Pfanne</h3>
                 {{ pfanne_form.as_p }}
                 <h3>Patellaersatz</h3>
-                {{ patellaersatz_form.as_p }} -->
+                {{ patellaersatz_form.as_p }}
     
                 <input type="submit" value="submit" class="btn btn-primary">
+            </form> -->
+            <h1>Explantat hinzufügen</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                
+                <input type="submit" value="Speichern">
             </form>
         </div>
 
