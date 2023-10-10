@@ -6,92 +6,96 @@ from .models import *
 class LagerortForm(ModelForm):
     class Meta:
         model = Lagerort
-        fields = ('__all__')
-        # labels = {
-        #     'schrank': '',
-        #     'kiste': '',
-        # }
-        # widgets = {
-        #     'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Schrank'}),
-        #     'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Kiste'}),
-        # }
+        fields = ('schrank', 'kiste')
+        labels = {
+            'schrank': '',
+            'kiste': '',
+        }
+        widgets = {
+            'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Schrank'}),
+            'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Kiste'}),
+        }
 
 class PatientForm(ModelForm):
     class Meta:
         model = Patient
-        fields = ('__all__')
-        # labels = {
-        #     'geburtsdatum': '',
-        #     'gewicht': '',
-        # }
-        # widgets = { 
-        #     'geburtsdatum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-        #     'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Gewicht'}),
-        # }
+        fields = ('geburtsdatum','gewicht')
+        labels = {
+            'geburtsdatum': '',
+            'gewicht': '',
+        }
+        widgets = { 
+            'geburtsdatum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
+            'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Gewicht'}),
+        }
 
 class ReoperationForm(ModelForm):
     class Meta:
         model = Reoperation
-        fields = ('__all__')
-        # labels = {
-        #     'reoperation': '',
-        #     'reoperation_datum': '',
-        # }
-        # widgets = { 
-        #     'reoperation': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'Reoperation'}),
-        #     'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-        # }
+        fields = ('reoperation', 'reoperation_datum')
+        labels = {
+            'reoperation': '',
+            'reoperation_datum': '',
+        }
+        widgets = { 
+            'reoperation': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'Reoperation'}),
+            'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
+        }
 
 class InlayForm(forms.ModelForm):
     class Meta:
         model = Inlay
-        fields = ('__all__')
-        # labels = {
-        #     'hersteller': '',
-        #     'modell': '',
-        #     'material': '',
-        #     'groeße': '',
-        # }
-        # widgets = {
-        #     'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}), 
-        #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-        #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}), 
-        #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        labels = {
+            'hersteller': '',
+            'modell': '',
+            'material': '',
+            'groeße': '',
+        }
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+        }
 
 class KopfForm(ModelForm):
     class Meta:
         model = Kopf
-        fields = ('__all__')
-        # labels = {
-        #     'hersteller': '',
-        #     'modell': '',
-        #     'material': '',
-        #     'groeße': '',
-        # }
-        # widgets = {
-        #     'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-        #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-        #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-        #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }   
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        labels = {
+            'hersteller': '',
+            'modell': '',
+            'material': '',
+            'groeße': '',
+        }
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+        }   
+    hersteller = forms.CharField(required=False)
+    modell = forms.CharField(required=False)
+    material = forms.CharField(required=False)
+    groeße = forms.FloatField(required=False)
 
 class FemurkomponenteForm(ModelForm):
     class Meta:
         model = Femurkomponente
-        fields = ('__all__')
-        # labels = {
-        #     'hersteller': '',
-        #     'modell': '',
-        #     'material': '',
-        #     'groeße': '',
-        # }
-        # widgets = {
-        #     'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-        #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-        #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-        #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        labels = {
+            'hersteller': '',
+            'modell': '',
+            'material': '',
+            'groeße': '',
+        }
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+        }
     hersteller = forms.CharField(required=False)
     modell = forms.CharField(required=False)
     material = forms.CharField(required=False)
@@ -100,19 +104,19 @@ class FemurkomponenteForm(ModelForm):
 class SchaftForm(ModelForm):
     class Meta:
         model = Schaft
-        fields = ('__all__')
-        # labels = {
-        #     'hersteller': '',
-        #     'modell': '',
-        #     'material': '',
-        #     'groeße': '',
-        # }
-        # widgets = {
-        #     'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-        #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-        #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-        #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }   
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        labels = {
+            'hersteller': '',
+            'modell': '',
+            'material': '',
+            'groeße': '',
+        }
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+        }   
     hersteller = forms.CharField(required=False)
     modell = forms.CharField(required=False)
     material = forms.CharField(required=False)
@@ -121,19 +125,19 @@ class SchaftForm(ModelForm):
 class TibiaplateauForm(ModelForm):
     class Meta:
         model = Tibiaplateau
-        fields = ('__all__')
-        # labels = {
-        #     'hersteller': '',
-        #     'modell': '',
-        #     'material': '',
-        #     'groeße': '',
-        # }
-        # widgets = {
-        #     'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-        #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-        #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-        #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        labels = {
+            'hersteller': '',
+            'modell': '',
+            'material': '',
+            'groeße': '',
+        }
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+        }
     hersteller = forms.CharField(required=False)
     modell = forms.CharField(required=False)
     material = forms.CharField(required=False)
@@ -142,19 +146,19 @@ class TibiaplateauForm(ModelForm):
 class PfanneForm(ModelForm):
     class Meta:
         model = Pfanne
-        fields = ('__all__')
-        # labels = {
-        #     'hersteller': '',
-        #     'modell': '',
-        #     'material': '',
-        #     'groeße': '',
-        # }
-        # widgets = {
-        #     'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-        #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-        #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-        #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        labels = {
+            'hersteller': '',
+            'modell': '',
+            'material': '',
+            'groeße': '',
+        }
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+        }
     hersteller = forms.CharField(required=False)
     modell = forms.CharField(required=False)
     material = forms.CharField(required=False)
@@ -163,19 +167,19 @@ class PfanneForm(ModelForm):
 class PatellaersatzForm(ModelForm):
     class Meta:
         model = Patellaersatz
-        fields = ('__all__')
-        # labels = {
-        #     'hersteller': '',
-        #     'modell': '',
-        #     'material': '',
-        #     'groeße': '',
-        # }
-        # widgets = {
-        #     'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-        #     'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-        #     'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-        #     'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-        # }
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        labels = {
+            'hersteller': '',
+            'modell': '',
+            'material': '',
+            'groeße': '',
+        }
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+        }
     hersteller = forms.CharField(required=False)
     modell = forms.CharField(required=False)
     material = forms.CharField(required=False)
@@ -196,28 +200,28 @@ class ExplantatForm(ModelForm):
     class Meta:
         model = Explantat
         fields = ('ursache', 'verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum', 'bruchgeschehen', 'nutzungsdauer', 'reinigung', 'bild')
-        # labels = {
-        #     'ursache': '', 
-        #     'verfuegbarkeit': 'Verfügbarkeit',
-        #     'herkunftsort': '', 
-        #     'entnahme_datum': '', 
-        #     'eingang_datum': '', 
-        #     'bruchgeschehen': '', 
-        #     'nutzungsdauer': '', 
-        #     'reinigung': 'Reinigung', 
-        #     'bild': '',
-        # }
-        # widgets = {
-        #     'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ursache'}), 
-        #     'verfuegbarkeit': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Verfügbarkeit'}),
-        #     'herkunftsort': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Herkunftsort'}), 
-        #     'entnahme_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-        #     'eingang_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-        #     'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen'}),
-        #     'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
-        #     'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
-        #     'bild': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Bild'}),
-        # }
+        labels = {
+            'ursache': '', 
+            'verfuegbarkeit': 'Verfügbarkeit',
+            'herkunftsort': '', 
+            'entnahme_datum': '', 
+            'eingang_datum': '', 
+            'bruchgeschehen': '', 
+            'nutzungsdauer': '', 
+            'reinigung': 'Reinigung', 
+            'bild': '',
+        }
+        widgets = {
+            'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ursache'}), 
+            'verfuegbarkeit': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Verfügbarkeit'}),
+            'herkunftsort': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Herkunftsort'}), 
+            'entnahme_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
+            'eingang_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
+            'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen'}),
+            'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
+            'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
+            'bild': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Bild'}),
+        }
 
 # ----------------------- Data Update Forms ----------------------- #
 class LagerortUpdateForm(ModelForm):

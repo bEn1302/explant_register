@@ -12,191 +12,182 @@
                 {% csrf_token %}
                 <!-- Explantat Form -->
                 <div class="form-group">
-                    <label for="{{ explantat_form.ursache.id_for_label }}">Ursache:</label>
                     {{ explantat_form.ursache }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.verfuegbarkeit.id_for_label }}">Verfügbarkeit:</label>
                     {{ explantat_form.verfuegbarkeit }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.herkunftsort.id_for_label }}">Herkunftsort:</label>
                     {{ explantat_form.herkunftsort }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.entnahme_datum.id_for_label }}">Entnahmedatum:</label>
                     {{ explantat_form.entnahme_datum }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.eingang_datum.id_for_label }}">Eingangsdatum:</label>
                     {{ explantat_form.eingang_datum }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.bruchgeschehen.id_for_label }}">Bruchgeschehen:</label>
                     {{ explantat_form.bruchgeschehen }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.nutzungsdauer.id_for_label }}">Nutzungsdauer:</label>
                     {{ explantat_form.nutzungsdauer }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.reinigung.id_for_label }}">Reinigung:</label>
                     {{ explantat_form.reinigung }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ explantat_form.bild.id_for_label }}">Bild:</label>
                     {{ explantat_form.bild }}
                 </div>
                 
                 <!-- Lagerort Form -->
                 <h3>Lagerort</h3>
                 <div class="form-group">
-                    <label for="{{ lagerort_form.schrank.id_for_label }}">Schrank:</label>
+                    
                     {{ lagerort_form.schrank }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ lagerort_form.kiste.id_for_label }}">Kiste:</label>
+                    
                     {{ lagerort_form.kiste }}
                 </div>
                 
                 <!-- Patient Form -->
                 <h3>Patient</h3>
                 <div class="form-group">
-                    <label for="{{ patient_form.geburtsdatum.id_for_label }}">Geburtsdatum:</label>
+                    
                     {{ patient_form.geburtsdatum }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ patient_form.gewicht.id_for_label }}">Gewicht:</label>
+                    
                     {{ patient_form.gewicht }}
                 </div>
 
                 <!-- Reoperation Form -->
                 <h3>Reoperation</h3>
                 <div class="form-group">
-                    <label for="{{ reoperation_form.reoperation.id_for_label }}">Reoperation:</label>
+                    
                     {{ reoperation_form.reoperation }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ reoperation_form.reoperation_datum.id_for_label }}">Reoperationsdatum:</label>
+                    
                     {{ reoperation_form.reoperation_datum }}
                 </div>
 
                 <!-- Inlay Form -->
                 <h3>Inlay</h3>
                 <div class="form-group">
-                    <label for="{{ inlay_form.hersteller.id_for_label }}">Hersteller:</label>
+                    
                     {{ inlay_form.hersteller }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ inlay_form.modell.id_for_label }}">Modell:</label>
+                    
                     {{ inlay_form.modell }}
                 </div><div class="form-group">
-                    <label for="{{ inlay_form.material.id_for_label }}">Material:</label>
+                    
                     {{ inlay_form.material }}
                 </div><div class="form-group">
-                    <label for="{{ inlay_form.groeße.id_for_label }}">Größe:</label>
+                    
                     {{ inlay_form.groeße }}
                 </div>
 
                 <!-- Kopf Form -->
                 <h3>Kopf</h3>
                 <div class="form-group">
-                    <label for="{{ kopf_form.hersteller.id_for_label }}">Hersteller:</label>
+                    
                     {{ kopf_form.hersteller }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ kopf_form.modell.id_for_label }}">Modell:</label>
+                    
                     {{ kopf_form.modell }}
                 </div><div class="form-group">
-                    <label for="{{ kopf_form.material.id_for_label }}">Material:</label>
+                    
                     {{ kopf_form.material }}
                 </div><div class="form-group">
-                    <label for="{{ kopf_form.groeße.id_for_label }}">Größe:</label>
+                    
                     {{ kopf_form.groeße }}
                 </div>
 
                 <!-- Femurkomponente Form -->
                 <h3>Femurkomponente</h3>
                 <div class="form-group">
-                    <label for="{{ femurkomponente_form.hersteller.id_for_label }}">Hersteller:</label>
+                    
                     {{ femurkomponente_form.hersteller }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ femurkomponente_form.modell.id_for_label }}">Modell:</label>
+                    
                     {{ femurkomponente_form.modell }}
                 </div><div class="form-group">
-                    <label for="{{ femurkomponente_form.material.id_for_label }}">Material:</label>
+                    
                     {{ femurkomponente_form.material }}
                 </div><div class="form-group">
-                    <label for="{{ femurkomponente_form.groeße.id_for_label }}">Größe:</label>
+                    
                     {{ femurkomponente_form.groeße }}
                 </div>
 
                 <!-- Schaft Form -->
                 <h3>Schaft</h3>
                 <div class="form-group">
-                    <label for="{{ schaft_form.hersteller.id_for_label }}">Hersteller:</label>
+                    
                     {{ schaft_form.hersteller }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ schaft_form.modell.id_for_label }}">Modell:</label>
+                    
                     {{ schaft_form.modell }}
                 </div><div class="form-group">
-                    <label for="{{ schaft_form.material.id_for_label }}">Material:</label>
+                    
                     {{ schaft_form.material }}
                 </div><div class="form-group">
-                    <label for="{{ schaft_form.groeße.id_for_label }}">Größe:</label>
+                    
                     {{ schaft_form.groeße }}
                 </div>
 
                 <!-- Tibiaplateau Form -->
                 <h3>Tibiaplateau</h3>
                 <div class="form-group">
-                    <label for="{{ tibiaplateau_form.hersteller.id_for_label }}">Hersteller:</label>
+                    
                     {{ tibiaplateau_form.hersteller }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ tibiaplateau_form.modell.id_for_label }}">Modell:</label>
+                    
                     {{ tibiaplateau_form.modell }}
                 </div><div class="form-group">
-                    <label for="{{ tibiaplateau_form.material.id_for_label }}">Material:</label>
+                    
                     {{ tibiaplateau_form.material }}
                 </div><div class="form-group">
-                    <label for="{{ tibiaplateau_form.groeße.id_for_label }}">Größe:</label>
+                    
                     {{ tibiaplateau_form.groeße }}
                 </div>
 
                 <!-- Pfanne Form -->
                 <h3>Pfanne</h3>
                 <div class="form-group">
-                    <label for="{{ pfanne_form.hersteller.id_for_label }}">Hersteller:</label>
+                    
                     {{ pfanne_form.hersteller }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ pfanne_form.modell.id_for_label }}">Modell:</label>
+                    
                     {{ pfanne_form.modell }}
                 </div><div class="form-group">
-                    <label for="{{ pfanne_form.material.id_for_label }}">Material:</label>
+                    
                     {{ pfanne_form.material }}
                 </div><div class="form-group">
-                    <label for="{{ pfanne_form.groeße.id_for_label }}">Größe:</label>
+                    
                     {{ pfanne_form.groeße }}
                 </div>
 
                 <!-- Patellaersatz Form -->
                 <h3>Patellaersatz</h3>
                 <div class="form-group">
-                    <label for="{{ patellaersatz_form.hersteller.id_for_label }}">Hersteller:</label>
+                    
                     {{ patellaersatz_form.hersteller }}
                 </div>
                 <div class="form-group">
-                    <label for="{{ patellaersatz_form.modell.id_for_label }}">Modell:</label>
+                    
                     {{ patellaersatz_form.modell }}
                 </div><div class="form-group">
-                    <label for="{{ patellaersatz_form.material.id_for_label }}">Material:</label>
+                    
                     {{ patellaersatz_form.material }}
                 </div><div class="form-group">
-                    <label for="{{ patellaersatz_form.groeße.id_for_label }}">Größe:</label>
+                    
                     {{ patellaersatz_form.groeße }}
                 </div>
 
