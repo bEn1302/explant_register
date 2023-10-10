@@ -1,79 +1,79 @@
 from django.db import models
 
 class Femurkomponente(models.Model):
-    hersteller = models.CharField('Hersteller', blank=True, null=True)
-    modell = models.CharField('Modell', blank=True, null=True)
-    material = models.CharField('Material', blank=True, null=True)
-    groeße = models.FloatField('Größe', blank=True, null=True)         # in cm / mm
+    hersteller = models.CharField('Hersteller')
+    modell = models.CharField('Modell')
+    material = models.CharField('Material')
+    groeße = models.FloatField('Größe')         # in cm / mm
 
     class Meta:
         verbose_name_plural = "Femurkomponenten"
 
 class Tibiaplateau(models.Model):
-    hersteller = models.CharField('Hersteller', blank=True, null=True)
-    modell = models.CharField('Modell', blank=True, null=True)
-    material = models.CharField('Material', blank=True, null=True)
-    groeße = models.FloatField('Größe', blank=True, null=True)         # in cm / mm
+    hersteller = models.CharField('Hersteller')
+    modell = models.CharField('Modell')
+    material = models.CharField('Material')
+    groeße = models.FloatField('Größe')         # in cm / mm
 
 class Patellaersatz(models.Model):
-    hersteller = models.CharField('Hersteller', blank=True, null=True)
-    modell = models.CharField('Modell', blank=True, null=True)
-    material = models.CharField('Material', blank=True, null=True)
-    groeße = models.FloatField('Größe', blank=True, null=True)         # in cm / mm
+    hersteller = models.CharField('Hersteller')
+    modell = models.CharField('Modell')
+    material = models.CharField('Material')
+    groeße = models.FloatField('Größe')         # in cm / mm
 
     class Meta:
         verbose_name_plural = "Patellaersätze"
 
 class Kopf(models.Model):
-    hersteller = models.CharField('Hersteller', blank=True, null=True)
-    modell = models.CharField('Modell', blank=True, null=True)
-    material = models.CharField('Material', blank=True, null=True)
-    groeße = models.FloatField('Größe', blank=True, null=True)         # in cm / mm
+    hersteller = models.CharField('Hersteller')
+    modell = models.CharField('Modell')
+    material = models.CharField('Material')
+    groeße = models.FloatField('Größe')         # in cm / mm
 
     class Meta:
         verbose_name_plural = "Köpfe"
 
 class Inlay(models.Model):
-    hersteller = models.CharField('Hersteller', blank=True, null=True)
-    modell = models.CharField('Modell', blank=True, null=True)
-    material = models.CharField('Material', blank=True, null=True)
-    groeße = models.FloatField('Größe', blank=True, null=True)         # in cm / mm
+    hersteller = models.CharField('Hersteller')
+    modell = models.CharField('Modell')
+    material = models.CharField('Material')
+    groeße = models.FloatField('Größe')         # in cm / mm
 
 class Schaft(models.Model):
-    hersteller = models.CharField('Hersteller', blank=True, null=True)
-    modell = models.CharField('Modell', blank=True, null=True)
-    material = models.CharField('Material', blank=True, null=True)
-    groeße = models.FloatField('Größe', blank=True, null=True)         # in cm / mm
+    hersteller = models.CharField('Hersteller')
+    modell = models.CharField('Modell')
+    material = models.CharField('Material')
+    groeße = models.FloatField('Größe')         # in cm / mm
 
     class Meta:
         verbose_name_plural = "Schafte"
 
 class Pfanne(models.Model):
-    hersteller = models.CharField('Hersteller', blank=True, null=True)
-    modell = models.CharField('Modell', blank=True, null=True)
-    material = models.CharField('Material', blank=True, null=True)
-    groeße = models.FloatField('Größe', blank=True, null=True)         # in cm / mm
+    hersteller = models.CharField('Hersteller')
+    modell = models.CharField('Modell')
+    material = models.CharField('Material')
+    groeße = models.FloatField('Größe')         # in cm / mm
 
     class Meta:
         verbose_name_plural = "Pfannen"
 
 class Reoperation(models.Model):
-    reoperation = models.BooleanField('Reoperation', blank=True, null=True)
-    reoperation_datum = models.DateField('Reoperationsdatum', blank=True, null=True)
+    reoperation = models.BooleanField('Reoperation')
+    reoperation_datum = models.DateField('Reoperationsdatum')
 
     class Meta:
         verbose_name_plural = "Reperationen"
 
 class Patient(models.Model):
-    geburtsdatum = models.DateField('Geburtsdatum', blank=True, null=True)
-    gewicht = models.FloatField('Gewicht', blank=True, null=True)          # in kg
+    geburtsdatum = models.DateField('Geburtsdatum')
+    gewicht = models.FloatField('Gewicht')          # in kg
 
     class Meta:
         verbose_name_plural = "Patienten"
 
 class Lagerort(models.Model):
-    schrank = models.IntegerField('Schrank', blank=True, null=True)
-    kiste = models.IntegerField('Kiste', blank=True, null=True)
+    schrank = models.IntegerField('Schrank')
+    kiste = models.IntegerField('Kiste')
 
     class Meta:
         verbose_name_plural = "Lagerorte"
