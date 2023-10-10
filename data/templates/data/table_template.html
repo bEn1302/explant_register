@@ -58,24 +58,7 @@
                                         </li>
                                     </ul>
                                     <!-- Modal -->
-                                    {% include 'data/modal_template.html' with
-                                        modal_id="lagerortModal{{ explant.id }}"
-                                        modal_label_id="lagerortModalLabel{{ explant.id }}"
-                                        modal_title="Update Lagerort"
-                                        modal_title_id="exampleModalLabel"
-                                        update_url="{% url 'lagerort_update' explant.lagerort.pk %}"
-                                        modal_content="
-                                            <div class='form-group'>
-                                                <label for='schrank'>Schrank:</label>
-                                                <input type='number' class='form-control' id='schrank' name='schrank' value='{{ explant.lagerort.schrank }}'>
-                                            </div>
-                                            <div class='form-group'>
-                                                <label for='kiste'>Kiste:</label>
-                                                <input type='number' class='form-control' id='kiste' name='kiste' value='{{ explant.lagerort.kiste }}'>
-                                            </div>
-                                        "
-                                    %}
-                                    <!-- <div class="modal fade" id="lagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="lagerortModalLabel{{ explant.id }}" aria-hidden="true">
+                                    <div class="modal fade" id="lagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="lagerortModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                           <div class="modal-content">
                                             <form id="update-form" method="post" action="{% url 'lagerort_update' explant.lagerort.pk %}">
@@ -101,7 +84,7 @@
                                             </form>
                                           </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <ul class="list-group">
@@ -611,52 +594,4 @@
             {% endfor %}
         </tbody>
     </table>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const triggerCells = document.querySelectorAll(".trigger-cell");
-
-    triggerCells.forEach((cell) => {
-      // Create an icon element and add it to the cell
-      const icon = document.createElement("i");
-      icon.classList.add("bi", "bi-plus-circle");
-      cell.appendChild(icon);
-
-      cell.addEventListener("click", function () {
-        const extendedRow = this.closest(".table-row").nextElementSibling;
-
-        // Toggle the visibility of the extended row
-        extendedRow.classList.toggle("d-none");
-
-        // Toggle the class of the icon to change its appearance
-        icon.classList.toggle("bi-plus-circle");
-        icon.classList.toggle("bi-dash-circle");
-      });
-    });
-  });
-    </script>
-    <script>
-        $(document).ready(function() {
-    // AJAX-Anfrage beim Klicken auf den "Speichern"-Button im Modal
-    $('#update-form').submit(function(e) {
-        e.preventDefault(); // Verhindert das Standardverhalten des Formulars
-
-        var form = $(this);
-        
-        $.ajax({
-            type: 'POST',
-            url: form.attr('action'), // Verwenden Sie den action-Wert aus dem Formular
-            data: form.serialize(),
-            success: function(data) {
-                if (data.success) {
-                    // Erfolgreiche Aktualisierung, zeige Erfolgsmeldung im Modal
-                    $('#alert-container').html('<div class="alert alert-success" role="alert">Lagerort erfolgreich aktualisiert.</div>');
-                } else {
-                    // Fehler beim Formular, zeige Fehlermeldung im Modal
-                    $('#alert-container').html('<div class="alert alert-danger" role="alert">Fehler beim Aktualisieren des Lagerorts.</div>');
-                }
-            }
-        });
-    });
-});
-    </script>
 {% endblock %}

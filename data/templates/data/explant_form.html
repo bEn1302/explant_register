@@ -8,35 +8,37 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div> -->
     <h2>Explant data registration</h2>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <!-- Felder für Explantat -->
-        {{ explantat_form.as_p }}
-        
-        <!-- Weitere Felder für verknüpfte Objekte -->
-        <h3>Lagerort</h3>
-        {{ lagerort_form.as_p }}
-        <h3>Patient</h3>
-        {{ patient_form.as_p }}
-        <h3>Reoperation</h3>
-        {{ reoperation_form.as_p }}
-        <h3>Inlay</h3>
-        {{ inlay_form.as_p }}
-        <h3>Kopf</h3>
-        {{ kopf_form.as_p }}
-        <h3>Femurkomponente</h3>
-        {{ femurkomponente_form.as_p }}
-        <h3>Schaft</h3>
-        {{ schaft_form.as_p }}
-        <h3>Tibiaplateau</h3>
-        {{ tibiaplateau_form.as_p }}
-        <h3>Pfanne</h3>
-        {{ pfanne_form.as_p }}
-        <h3>Patellaersatz</h3>
-        {{ patellaersatz_form.as_p }}
-
-        <input type="submit" value="submit" class="btn btn-primary">
-    </form>
+        <div class="container">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <!-- Felder für Explantat -->
+                {{ explantat_form.as_p }}
+                
+                <!-- Weitere Felder für verknüpfte Objekte -->
+                <h3>Lagerort</h3>
+                {{ lagerort_form.as_p }}
+                <h3>Patient</h3>
+                {{ patient_form.as_p }}
+                <h3>Reoperation</h3>
+                {{ reoperation_form.as_p }}
+                <h3>Inlay</h3>
+                {{ inlay_form.as_p }}
+                <h3>Kopf</h3>
+                {{ kopf_form.as_p }}
+                <h3>Femurkomponente</h3>
+                {{ femurkomponente_form.as_p }}
+                <h3>Schaft</h3>
+                {{ schaft_form.as_p }}
+                <h3>Tibiaplateau</h3>
+                {{ tibiaplateau_form.as_p }}
+                <h3>Pfanne</h3>
+                {{ pfanne_form.as_p }}
+                <h3>Patellaersatz</h3>
+                {{ patellaersatz_form.as_p }}
+    
+                <input type="submit" value="submit" class="btn btn-primary">
+            </form>
+        </div>
 
     {% else %}
     {% url 'start' as start %}
