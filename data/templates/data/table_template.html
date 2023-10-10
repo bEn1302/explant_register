@@ -61,7 +61,7 @@
                                     <div class="modal fade" id="lagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="lagerortModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                           <div class="modal-content">
-                                            <form id="update-form" method="post" action="{% url 'lagerort_update' explant.lagerort.pk %}">
+                                            <form id="update-form{{ explant.id }}" method="post" action="{% url 'lagerort_update' explant.lagerort.pk %}">
                                               {% csrf_token %}
                                               <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
