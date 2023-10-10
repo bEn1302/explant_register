@@ -12,8 +12,8 @@ class LagerortForm(ModelForm):
             'kiste': '',
         }
         widgets = {
-            'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Schrank'}),
-            'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Kiste'}),
+            'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Schrank', 'required':False}),
+            'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Kiste', 'required':False}),
         }
 
 class PatientForm(ModelForm):
@@ -25,8 +25,8 @@ class PatientForm(ModelForm):
             'gewicht': '',
         }
         widgets = { 
-            'geburtsdatum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-            'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Gewicht'}),
+            'geburtsdatum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date', 'required':False}),
+            'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Gewicht', 'required':False}),
         }
 
 class ReoperationForm(ModelForm):
@@ -38,8 +38,8 @@ class ReoperationForm(ModelForm):
             'reoperation_datum': '',
         }
         widgets = { 
-            'reoperation': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'Reoperation'}),
-            'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
+            'reoperation': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'Reoperation', 'required':False}),
+            'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date', 'required':False}),
         }
 
 class InlayForm(forms.ModelForm):
@@ -53,10 +53,10 @@ class InlayForm(forms.ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller', 'required':True}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell', 'required':True}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material', 'required':True}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe', 'required':True}),
         }
 
 class KopfForm(ModelForm):
@@ -70,10 +70,10 @@ class KopfForm(ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller', 'required':False}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell', 'required':False}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material', 'required':False}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe', 'required':False}),
         }   
 
 class FemurkomponenteForm(ModelForm):
@@ -87,10 +87,10 @@ class FemurkomponenteForm(ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller', 'required':False}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell', 'required':False}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material', 'required':False}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe', 'required':False}),
         }
 
 class SchaftForm(ModelForm):
@@ -104,10 +104,10 @@ class SchaftForm(ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller', 'required':False}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell', 'required':False}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material', 'required':False}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe', 'required':False}),
         }   
 
 class TibiaplateauForm(ModelForm):
@@ -121,10 +121,10 @@ class TibiaplateauForm(ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller', 'required':False}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell', 'required':False}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material', 'required':False}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe', 'required':False}),
         }
 
 class PfanneForm(ModelForm):
@@ -138,10 +138,10 @@ class PfanneForm(ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller', 'required':False}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell', 'required':False}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material', 'required':False}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe', 'required':False}),
         }
 
 class PatellaersatzForm(ModelForm):
@@ -155,10 +155,10 @@ class PatellaersatzForm(ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller', 'required':False}),
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell', 'required':False}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material', 'required':False}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe', 'required':False}),
         }       
 
 class ExplantatForm(ModelForm):

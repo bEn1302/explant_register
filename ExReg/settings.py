@@ -19,6 +19,7 @@ DEBUG = os.environ.get('DEBUG') == 'True'
 ALLOWED_HOSTS = ['*']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,10 +56,12 @@ CSRF_TRUSTED_ORIGINS = ['https://explantregister-production.up.railway.app']
 
 ROOT_URLCONF = 'ExReg.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['[explant_register]/data/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
