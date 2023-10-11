@@ -40,7 +40,7 @@ def explants_table_view(request):
 # --------------------------- Effizientere Version ? ----------------------------
 # 
 # 
-def update_model(request, model_cls, form_cls, redirect_url):
+def update_model(request, model_cls, form_cls, redirect_url, pk):
     obj = get_object_or_404(model_cls, pk=pk)
     
     if request.method == 'POST':
