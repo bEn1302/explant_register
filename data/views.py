@@ -69,210 +69,26 @@ def patient_update(request, pk):
 def reoperation_update(request, pk):
     return update_model(request, Reoperation, ReoperationUpdateForm, 'table-explants', pk)
 
-# 
-# -------------------------------------------------------------------------------
-
-
-
-# def lagerort_update(request, pk):
-#     lagerort = get_object_or_404(Lagerort, pk=pk)
-    
-#     if request.method == 'POST':
-#         form = LagerortUpdateForm(request.POST, instance=lagerort)
-#         if form.is_valid():
-#             form.save()
-#             response_data = {'success': True}
-#         else:
-#             response_data = {'success': False, 'errors': form.errors}
-#             return HttpResponseBadRequest(JsonResponse(response_data))
-#     else:
-#         form = LagerortUpdateForm(instance=lagerort)
-#         response_data = {'success': False}
-
-#     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-#         return JsonResponse(response_data)
-#     else:
-#         return redirect('table-explants')
-
-# def patient_update(request, pk):
-#     patient = get_object_or_404(Patient, pk=pk)
-    
-#     if request.method == 'POST':
-#         form = PatientUpdateForm(request.POST, instance=patient)
-#         if form.is_valid():
-#             form.save()
-#             response_data = {'success': True}
-#         else:
-#             response_data = {'success': False, 'errors': form.errors}
-#             return HttpResponseBadRequest(JsonResponse(response_data))
-#     else:
-#         form = PatientUpdateForm(instance=patient)
-#         response_data = {'success': False}
-
-#     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-#         return JsonResponse(response_data)
-#     else:
-#         return redirect('table-explants')
-
-# def reoperation_update(request, pk):
-#     reoperation = get_object_or_404(Reoperation, pk=pk)
-    
-#     if request.method == 'POST':
-#         form = ReoperationUpdateForm(request.POST, instance=reoperation)
-#         if form.is_valid():
-#             form.save()
-#             response_data = {'success': True}
-#         else:
-#             response_data = {'success': False, 'errors': form.errors}
-#             return HttpResponseBadRequest(JsonResponse(response_data))
-#     else:
-#         form = ReoperationUpdateForm(instance=reoperation)
-#         response_data = {'success': False}
-
-#     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-#         return JsonResponse(response_data)
-#     else:
-#         return redirect('table-explants')
-
 def inlay_update(request, pk):
-    inlay = get_object_or_404(Inlay, pk=pk)
-    
-    if request.method == 'POST':
-        form = InlayUpdateForm(request.POST, instance=inlay)
-        if form.is_valid():
-            form.save()
-            response_data = {'success': True}
-        else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
-    else:
-        form = InlayUpdateForm(instance=inlay)
-        response_data = {'success': False}
+    return update_model(request, Inlay, InlayUpdateForm, 'table-explants', pk)
 
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants')
-    
 def kopf_update(request, pk):
-    kopf = get_object_or_404(Kopf, pk=pk)
-    
-    if request.method == 'POST':
-        form = KopfUpdateForm(request.POST, instance=kopf)
-        if form.is_valid():
-            form.save()
-            response_data = {'success': True}
-        else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
-    else:
-        form = KopfUpdateForm(instance=kopf)
-        response_data = {'success': False}
-
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants')
+    return update_model(request, Kopf, KopfUpdateForm, 'table-explants', pk)
 
 def femurkomponente_update(request, pk):
-    femurkomponente = get_object_or_404(Femurkomponente, pk=pk)
-    
-    if request.method == 'POST':
-        form = FemurkomponenteUpdateForm(request.POST, instance=femurkomponente)
-        if form.is_valid():
-            form.save()
-            response_data = {'success': True}
-        else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
-    else:
-        form = FemurkomponenteUpdateForm(instance=femurkomponente)
-        response_data = {'success': False}
+    return update_model(request, Femurkomponente, FemurkomponenteUpdateForm, 'table-explants', pk)
 
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants')
-    
 def schaft_update(request, pk):
-    schaft = get_object_or_404(Schaft, pk=pk)
-    
-    if request.method == 'POST':
-        form = SchaftUpdateForm(request.POST, instance=schaft)
-        if form.is_valid():
-            form.save()
-            response_data = {'success': True}
-        else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
-    else:
-        form = SchaftUpdateForm(instance=schaft)
-        response_data = {'success': False}
+    return update_model(request, Schaft, SchaftUpdateForm, 'table-explants', pk)
 
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants')
-    
 def tibiaplateau_update(request, pk):
-    tibiaplateau = get_object_or_404(Tibiaplateau, pk=pk)
-    
-    if request.method == 'POST':
-        form = TibiaplateauUpdateForm(request.POST, instance=tibiaplateau)
-        if form.is_valid():
-            form.save()
-            response_data = {'success': True}
-        else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
-    else:
-        form = TibiaplateauUpdateForm(instance=tibiaplateau)
-        response_data = {'success': False}
-
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants')
+    return update_model(request, Tibiaplateau, TibiaplateauUpdateForm, 'table-explants', pk)
 
 def pfanne_update(request, pk):
-    pfanne = get_object_or_404(Pfanne, pk=pk)
-    
-    if request.method == 'POST':
-        form = PfanneUpdateForm(request.POST, instance=pfanne)
-        if form.is_valid():
-            form.save()
-            response_data = {'success': True}
-        else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
-    else:
-        form = PfanneUpdateForm(instance=pfanne)
-        response_data = {'success': False}
-
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants')
+    return update_model(request, Pfanne, PfanneUpdateForm, 'table-explants', pk)
 
 def patellaersatz_update(request, pk):
-    patellaersatz = get_object_or_404(Patellaersatz, pk=pk)
-    
-    if request.method == 'POST':
-        form = PatellaersatzUpdateForm(request.POST, instance=patellaersatz)
-        if form.is_valid():
-            form.save()
-            response_data = {'success': True}
-        else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
-    else:
-        form = PatellaersatzUpdateForm(instance=patellaersatz)
-        response_data = {'success': False}
-
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
-    else:
-        return redirect('table-explants')
+    return update_model(request, Patellaersatz, PatellaersatzUpdateForm, 'table-explants', pk)
 
 
 def all_analytics(request):
