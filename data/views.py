@@ -61,13 +61,13 @@ def update_model(request, model_cls, form_cls, redirect_url):
         return redirect(redirect_url)
 
 def lagerort_update(request, pk):
-    return update_model(request, Lagerort, LagerortUpdateForm, 'table-explants')
+    return update_model(request, Lagerort, LagerortUpdateForm, 'table-explants', pk)
 
 def patient_update(request, pk):
-    return update_model(request, Patient, PatientUpdateForm, 'table-explants')
+    return update_model(request, Patient, PatientUpdateForm, 'table-explants', pk)
 
 def reoperation_update(request, pk):
-    return update_model(request, Reoperation, ReoperationUpdateForm, 'table-explants')
+    return update_model(request, Reoperation, ReoperationUpdateForm, 'table-explants', pk)
 
 # 
 # -------------------------------------------------------------------------------
