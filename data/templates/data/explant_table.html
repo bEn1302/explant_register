@@ -14,19 +14,19 @@
   </style>
 
   <br>
-  <h2>Knie Explant</h2>
-  <br>
-  <button type="button" class="btn btn-outline-primary btn-sm">Add</button>
-  <button type="button" class="btn btn-outline-secondary btn-sm">Export</button>
-  <button type="button" class="btn btn-outline-secondary btn-sm">Delete</button>
-  {% include 'data/table_template.html' with data=knie_explant_table is_huefte=False %}
-
   <h2>Hüfte Explant</h2>
   <br>
   <button type="button" class="btn btn-outline-primary btn-sm">Add</button>
   <button type="button" class="btn btn-outline-secondary btn-sm">Export</button>
   <button type="button" class="btn btn-outline-secondary btn-sm">Delete</button>
   {% include 'data/table_template.html' with data=huefte_explant_table is_huefte=True %}
+
+  <h2>Knie Explant</h2>
+  <br>
+  <button type="button" class="btn btn-outline-primary btn-sm">Add</button>
+  <button type="button" class="btn btn-outline-secondary btn-sm">Export</button>
+  <button type="button" class="btn btn-outline-secondary btn-sm">Delete</button>
+  {% include 'data/table_template.html' with data=knie_explant_table is_huefte=False %}
 
   <script src="{% static '/js/expand_table.js' %}"></script>
   <script src="{% static '/js/update_form.js' %}"></script>
