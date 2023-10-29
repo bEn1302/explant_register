@@ -204,7 +204,7 @@ class ExplantatForm(ModelForm):
             'entnahme_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
             'eingang_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
             'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen', 'style': 'height: 150px;'}),
-            'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer in Jahren'}), 
+            'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
             'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
             'bild': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Bild'}),
             'lagerort': forms.Select(attrs={'class': 'form-select'}),
