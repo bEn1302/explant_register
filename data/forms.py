@@ -175,7 +175,7 @@ class ExplantatForm(ModelForm):
     
     class Meta:
         model = Explantat
-        fields = ('ursache', 'verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum', 'bruchgeschehen', 'nutzungsdauer', 'reinigung', 'bild')
+        fields = ('ursache', 'verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum', 'bruchgeschehen', 'nutzungsdauer', 'reinigung', 'bild', 'lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz')
         labels = {
             'ursache': '', 
             'verfuegbarkeit': 'Verfügbarkeit',
@@ -186,18 +186,38 @@ class ExplantatForm(ModelForm):
             'nutzungsdauer': '', 
             'reinigung': 'Reinigung', 
             'bild': '',
+            'lagerort': 'Lagerort', 
+            'patient': 'Patient', 
+            'reoperation': 'Reoperation',
+            'inlay': 'Inlay', 
+            'kopf': 'Kopf',
+            'schaft': 'Schaft', 
+            'pfanne': 'Pfanne', 
+            'femurkomponente': 'Femurkomponente', 
+            'tibiaplateau': 'Tibiaplateau', 
+            'patellaersatz': 'Patellaersatz'
         }
         widgets = {
-            'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ursache'}), 
+            'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ursache', 'style': 'height: 150px;'}), 
             'verfuegbarkeit': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Verfügbarkeit'}),
             'herkunftsort': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Herkunftsort'}), 
             'entnahme_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
             'eingang_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-            'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen'}),
-            'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
+            'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen', 'style': 'height: 150px;'}),
+            'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer in Jahren'}), 
             'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
             'bild': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Bild'}),
-            # 'patient': forms.Select() hier weitermachen
+            'lagerort': forms.Select(attrs={'class': 'form-select'}),
+            'patient': forms.Select(attrs={'class': 'form-select'}),
+            'reoperation': forms.Select(attrs={'class': 'form-select'}),
+            'inlay': forms.Select(attrs={'class': 'form-select'}),
+            'kopf': forms.Select(attrs={'class': 'form-select'}),
+            'schaft': forms.Select(attrs={'class': 'form-select'}),
+            'pfanne': forms.Select(attrs={'class': 'form-select'}),
+            'femurkomponente': forms.Select(attrs={'class': 'form-select'}),
+            'tibiaplateau': forms.Select(attrs={'class': 'form-select'}),
+            'patellaersatz': forms.Select(attrs={'class': 'form-select'}),
+
         }
 
 # ----------------------- Data Update Forms ----------------------- #

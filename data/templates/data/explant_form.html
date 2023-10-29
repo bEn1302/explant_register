@@ -2,49 +2,196 @@
 {% block form %}
 
 {% if user.is_authenticated %}
-    <h2>Explant data registration</h2>
         <div class="container">
-            <form action="" method="POST" novalidate>
+            <br>
+            <h2>Explant data registration</h2>
+            <form class="row g-3" method="POST" novalidate>
                 {% csrf_token %}
+                <!-- normal explant informations -->
+                <div class="col-md-6">
+                    {{ explantat_form.ursache }}
+                </div>
+                <div class="col-md-6">
+                    {{ explantat_form.bruchgeschehen }}
+                </div>
+                <div class="col-md-6">
+                    {{ explantat_form.herkunftsort }}
+                </div>
+                <div class="col-md-6">
+                    {{ explantat_form.nutzungsdauer }}
+                </div>
 
-                {{ explantat_form.as_p }}
-                
-                {% if form.errors %}
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                    <div class="alert alert-danger">
-                                        <strong>{{ error|escape }}</strong>
-                                    </div>
-                            {% endfor %}
-                        {% endfor %}
-                {% else %}
-                     <div class="alert alert-succes alert-dismissible fade show" role="alert">
-                        <strong>Success!</strong> Data has been inserted
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>               
-                {% endif %}
+                <!-- Bild -->
+                <div class="col-md-1">
+                    <label for="{{ explantat_form.bild.id_for_label }}" class="form-label">Bild:</label>
+                </div>
+                <div class="col-md-5">
+                    {{ explantat_form.bild }}
+                </div>
 
-                <h3>Lagerort</h3>
-                {{ lagerort_form.as_p }}
-                <h3>Patient</h3>
-                {{ patient_form.as_p }}
-                <h3>Reoperation</h3>
-                {{ reoperation_form.as_p }}
-                <h3>Inlay</h3>
-                {{ inlay_form.as_p }}
-                <h3>Kopf</h3>
-                {{ kopf_form.as_p }}
+                <!-- Verfügbarkeit -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.verfuegbarkeit.id_for_label }}" class="form-label">Verfügbarkeit:</label>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-check">
+                        {{ explantat_form.verfuegbarkeit }}
+                    </div>
+                </div>
+
+                <!-- Reinigung Input -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.reinigung.id_for_label }}" class="form-label">Reinigung:</label>
+                </div>
+                <div class="col-md-1">
+                    {{ explantat_form.reinigung }}
+                </div>
+
+                <!-- Lagerort -->
+                <div class="col-md-2">
+                    <label for="{{ lagerort_form.lagerort.id_for_label }}" class="form-label">Lagerort:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.lagerort }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addLagerortModal">Add</button>
+                </div>
+
+                <!-- Patient Input -->
+                <div class="col-md-2">
+                    <label for="{{ patient_form.patient.id_for_label }}" class="form-label">Patient:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.patient }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">Add</button>
+                </div>
+
+                <!-- Reoperation -->
+                <div class="col-md-2">
+                    <label for="{{ reoperation_form.reoperation.id_for_label }}" class="form-label">Reoperation:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.reoperation }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReoperationModal">Add</button>
+                </div>
+
+                <!-- Inlay -->
+                <div class="col-md-2">
+                    <label for="{{ inlay_form.inlay.id_for_label }}" class="form-label">Inlay:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.inlay }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addInlayModal">Add</button>
+                </div>
+
+                <!-- Entnahmedatum -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.entnahme_datum.id_for_label }}" class="form-label">Entnahmedatum:</label>
+                </div>
+                <div class="col-md-4">
+                    {{ explantat_form.entnahme_datum }}
+                </div>
                 
-                <h3>Femurkomponente</h3>
-                {{ femurkomponente_form.as_p }}
-                <h3>Schaft</h3>
-                {{ schaft_form.as_p }}
-                <h3>Tibiaplateau</h3>
-                {{ tibiaplateau_form.as_p }}
-                <h3>Pfanne</h3>
-                {{ pfanne_form.as_p }}
-                <h3>Patellaersatz</h3>
-                {{ patellaersatz_form.as_p }}
+                <!-- Eingangsdatum -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.eingang_datum.id_for_label }}" class="form-label">Eingangsdatum:</label>
+                </div>
+                <div class="col-md-4">
+                    {{ explantat_form.eingang_datum }}
+                </div>
+                <hr>
+                <!-------------------------- 
+                    explantat components 
+                ------------------------------->
+                <!-- Kopf -->
+                <div class="col-md-2">
+                    <label for="{{ kopf_form.kopf.id_for_label }}" class="form-label">Kopf:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.kopf }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addKopfModal">Add</button>
+                </div>
+                <!-- Femurkomponente -->
+                <div class="col-md-2">
+                    <label for="{{ femurkomponente_form.femurkomponente.id_for_label }}" class="form-label">Femurkomponente:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.femurkomponente }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFemurkomponenteModal">Add</button>
+                </div>
+                <!-- Schaft -->
+                <div class="col-md-2">
+                    <label for="{{ schaft_form.schaft.id_for_label }}" class="form-label">Schaft:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.schaft }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchaftModal">Add</button>
+                </div>
+                <!-- Tibiaplateau -->
+                <div class="col-md-2">
+                    <label for="{{ tibiaplateau_form.tibiaplateau.id_for_label }}" class="form-label">Tibiaplateau:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.tibiaplateau }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTibiaplateauModal">Add</button>
+                </div>
+                <!-- Pfanne -->
+                <div class="col-md-2">
+                    <label for="{{ pfanne_form.pfanne.id_for_label }}" class="form-label">Pfanne:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.pfanne }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPfanneModal">Add</button>
+                </div>
+                <!-- Patellaersatz -->
+                <div class="col-md-2">
+                    <label for="{{ patellaersatz_form.patellaersatz.id_for_label }}" class="form-label">Patellaersatz:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.patellaersatz }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatellaersatzModal">Add</button>
+                </div>
+
+                <!-- Modals -->
+                <div class="modal fade" id="addLagerortModal" tabindex="-1" aria-labelledby="addLagerortModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Lagerort</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div id="LagerortModal" class="modal-body">
+                                    <div id="alert-container"></div>
+                                    {{ lagerort_form.as_p }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-outline-primary">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
     
                 <input type="submit" value="submit" class="btn btn-primary">
             </form>
