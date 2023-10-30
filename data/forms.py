@@ -162,16 +162,16 @@ class PatellaersatzForm(ModelForm):
         }    
 
 class ExplantatForm(ModelForm):
-    # lagerort_form = LagerortForm()
-    # patient_form = PatientForm()
-    # reoperation_form = ReoperationForm()
-    # inlay_form = InlayForm()
-    # kopf_form = KopfForm()
-    # femurkomponente_form = FemurkomponenteForm()
-    # schaft_form = SchaftForm()
-    # tibiaplateau_form = TibiaplateauForm()
-    # pfanne_form = PfanneForm()
-    # patellaersatz_form = PatellaersatzForm()
+    lagerort_form = LagerortForm()
+    patient_form = PatientForm()
+    reoperation_form = ReoperationForm()
+    inlay_form = InlayForm()
+    kopf_form = KopfForm()
+    femurkomponente_form = FemurkomponenteForm()
+    schaft_form = SchaftForm()
+    tibiaplateau_form = TibiaplateauForm()
+    pfanne_form = PfanneForm()
+    patellaersatz_form = PatellaersatzForm()
     
     class Meta:
         model = Explantat
