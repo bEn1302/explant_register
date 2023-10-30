@@ -86,7 +86,7 @@ class Reoperation(models.Model):
         verbose_name_plural = "Reperationen"
     
     def __str__(self):
-        return self.reoperation_datum
+        return self.reoperation_datum.strftime('%Y-%m-%d')
 
 class Patient(models.Model):
     geburtsdatum = models.DateField('Geburtsdatum')
