@@ -162,6 +162,16 @@ class PatellaersatzForm(ModelForm):
         }    
 
 class ExplantatForm(ModelForm):
+    lagerort_form = LagerortForm()
+    patient_form = PatientForm()
+    reoperation_form = ReoperationForm()
+    inlay_form = InlayForm()
+    kopf_form = KopfForm()
+    femurkomponente_form = FemurkomponenteForm()
+    schaft_form = SchaftForm()
+    tibiaplateau_form = TibiaplateauForm()
+    pfanne_form = PfanneForm()
+    patellaersatz_form = PatellaersatzForm()
     
     class Meta:
         model = Explantat
@@ -174,18 +184,18 @@ class ExplantatForm(ModelForm):
             'eingang_datum': '', 
             'bruchgeschehen': '', 
             'nutzungsdauer': '', 
-            'reinigung': 'Reinigung', 
+            'reinigung': '', 
             'bild': '',
-            'lagerort': 'Lagerort', 
-            'patient': 'Patient', 
-            'reoperation': 'Reoperation',
-            'inlay': 'Inlay', 
-            'kopf': 'Kopf',
-            'schaft': 'Schaft', 
-            'pfanne': 'Pfanne', 
-            'femurkomponente': 'Femurkomponente', 
-            'tibiaplateau': 'Tibiaplateau', 
-            'patellaersatz': 'Patellaersatz'
+            'lagerort': '', 
+            'patient': '', 
+            'reoperation': '',
+            'inlay': '', 
+            'kopf': '',
+            'schaft': '', 
+            'pfanne': '', 
+            'femurkomponente': '', 
+            'tibiaplateau': '', 
+            'patellaersatz': ''
         }
         widgets = {
             'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ursache', 'style': 'height: 150px;'}), 
