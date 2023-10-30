@@ -8,12 +8,18 @@ class Femurkomponente(models.Model):
 
     class Meta:
         verbose_name_plural = "Femurkomponenten"
+    
+    def __str__(self):
+        return f"{self.hersteller} - {self.modell}"
 
 class Tibiaplateau(models.Model):
     hersteller = models.CharField('Hersteller')
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
+
+    def __str__(self):
+        return f"{self.hersteller} - {self.modell}"
 
 class Patellaersatz(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -24,6 +30,9 @@ class Patellaersatz(models.Model):
     class Meta:
         verbose_name_plural = "Patellaersätze"
 
+    def __str__(self):
+        return f"{self.hersteller} - {self.modell}"
+
 class Kopf(models.Model):
     hersteller = models.CharField('Hersteller')
     modell = models.CharField('Modell')
@@ -33,11 +42,17 @@ class Kopf(models.Model):
     class Meta:
         verbose_name_plural = "Köpfe"
 
+    def __str__(self):
+        return f"{self.hersteller} - {self.modell}"
+
 class Inlay(models.Model):
     hersteller = models.CharField('Hersteller')
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
+
+    def __str__(self):
+        return f"{self.hersteller} - {self.modell}"
 
 class Schaft(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -48,6 +63,9 @@ class Schaft(models.Model):
     class Meta:
         verbose_name_plural = "Schafte"
 
+    def __str__(self):
+        return f"{self.hersteller} - {self.modell}"
+
 class Pfanne(models.Model):
     hersteller = models.CharField('Hersteller')
     modell = models.CharField('Modell')
@@ -57,12 +75,18 @@ class Pfanne(models.Model):
     class Meta:
         verbose_name_plural = "Pfannen"
 
+    def __str__(self):
+        return f"{self.hersteller} - {self.modell}"
+
 class Reoperation(models.Model):
     reoperation = models.BooleanField('Reoperation')
     reoperation_datum = models.DateField('Reoperationsdatum')
 
     class Meta:
         verbose_name_plural = "Reperationen"
+    
+    def __str__(self):
+        return self.reoperation_datum
 
 class Patient(models.Model):
     geburtsdatum = models.DateField('Geburtsdatum')
@@ -77,6 +101,9 @@ class Lagerort(models.Model):
 
     class Meta:
         verbose_name_plural = "Lagerorte"
+
+    def __str__(self):
+        return f"{self.schrank} - {self.kiste}"
 
 class Explantat(models.Model):
     ursache = models.TextField('Ursache')
