@@ -14,6 +14,12 @@
   </style>
   
   <br>
+  {% if request.GET.success %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle"></i> Das Formular wurde erfolgreich abgesendet.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endif %}
   <h2>Hüfte Explant</h2>
   <br>
   <a class="btn btn-outline-primary btn-sm" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>

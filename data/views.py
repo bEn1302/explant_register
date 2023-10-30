@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
@@ -93,14 +94,14 @@ def all_analytics(request):
 
 # Data Insert
 def add_explant(request):
-    submitted = False
     if request.method == 'POST':
         explantat_form = ExplantatForm(request.POST, request.FILES)
         if explantat_form.is_valid():
-            explantat_form.save()  # Speichert das Formular
-            return HttpResponseRedirect('/forms?submitted=True')  # Weiterleitung zur Liste der Explantate
+            explantat_form.save()
+            # Leite zur Seite "table-explants" weiter und übergebe die Erfolgsmeldung als GET-Parameter
+            return HttpResponseRedirect(f"{reverse('table-explants')}?success=True")
+    
     else:
         explantat_form = ExplantatForm()
-        if submitted in request.GET:
-            submitted = True
-    return render(request, 'data/explant_form.html', {'explantat_form': explantat_form, 'submitted': submitted})
+
+    return render(request, 'data/explant_form.html', {'explantat_form': explantat_form})
