@@ -5,7 +5,7 @@
         <div class="container">
             <br>
             <h2>Explant data registration</h2>
-            <form class="row g-3" method="POST" novalidate>
+            <form class="row g-3" method="POST" action="{% url 'add-explants' %}">
                 {% csrf_token %}
                 <!-- normal explant informations -->
                 <div class="col-md-6">
@@ -65,7 +65,7 @@
 
                 <!-- Lagerort -->
                 <div class="col-md-2">
-                    <label for="{{ lagerort_form.lagerort.id_for_label }}" class="form-label">Lagerort:</label>
+                    <label for="{{ explantat_form.lagerort.id_for_label }}" class="form-label">Lagerort:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.lagerort }}
@@ -76,7 +76,7 @@
 
                 <!-- Patient Input -->
                 <div class="col-md-2">
-                    <label for="{{ patient_form.patient.id_for_label }}" class="form-label">Patient:</label>
+                    <label for="{{ explantat_form.patient.id_for_label }}" class="form-label">Patient:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.patient }}
@@ -87,7 +87,7 @@
 
                 <!-- Reoperation -->
                 <div class="col-md-2">
-                    <label for="{{ reoperation_form.reoperation.id_for_label }}" class="form-label">Reoperation:</label>
+                    <label for="{{ explantat_form.reoperation.id_for_label }}" class="form-label">Reoperation:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.reoperation }}
@@ -98,7 +98,7 @@
 
                 <!-- Inlay -->
                 <div class="col-md-2">
-                    <label for="{{ inlay_form.inlay.id_for_label }}" class="form-label">Inlay:</label>
+                    <label for="{{ explantat_form.inlay.id_for_label }}" class="form-label">Inlay:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.inlay }}
@@ -114,7 +114,7 @@
                 ------------------------------->
                 <!-- Kopf -->
                 <div class="col-md-2">
-                    <label for="{{ kopf_form.kopf.id_for_label }}" class="form-label">Kopf:</label>
+                    <label for="{{ explantat_form.kopf.id_for_label }}" class="form-label">Kopf:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.kopf }}
@@ -124,7 +124,7 @@
                 </div>
                 <!-- Femurkomponente -->
                 <div class="col-md-2">
-                    <label for="{{ femurkomponente_form.femurkomponente.id_for_label }}" class="form-label">Femurkomponente:</label>
+                    <label for="{{ explantat_form.femurkomponente.id_for_label }}" class="form-label">Femurkomponente:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.femurkomponente }}
@@ -134,7 +134,7 @@
                 </div>
                 <!-- Schaft -->
                 <div class="col-md-2">
-                    <label for="{{ schaft_form.schaft.id_for_label }}" class="form-label">Schaft:</label>
+                    <label for="{{ explantat_form.schaft.id_for_label }}" class="form-label">Schaft:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.schaft }}
@@ -144,7 +144,7 @@
                 </div>
                 <!-- Tibiaplateau -->
                 <div class="col-md-2">
-                    <label for="{{ tibiaplateau_form.tibiaplateau.id_for_label }}" class="form-label">Tibiaplateau:</label>
+                    <label for="{{ explantat_form.tibiaplateau.id_for_label }}" class="form-label">Tibiaplateau:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.tibiaplateau }}
@@ -154,7 +154,7 @@
                 </div>
                 <!-- Pfanne -->
                 <div class="col-md-2">
-                    <label for="{{ pfanne_form.pfanne.id_for_label }}" class="form-label">Pfanne:</label>
+                    <label for="{{ explantat_form.pfanne.id_for_label }}" class="form-label">Pfanne:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.pfanne }}
@@ -164,7 +164,7 @@
                 </div>
                 <!-- Patellaersatz -->
                 <div class="col-md-2">
-                    <label for="{{ patellaersatz_form.patellaersatz.id_for_label }}" class="form-label">Patellaersatz:</label>
+                    <label for="{{ explantat_form.patellaersatz.id_for_label }}" class="form-label">Patellaersatz:</label>
                 </div>
                 <div class="col-md-3">
                     {{ explantat_form.patellaersatz }}
@@ -194,8 +194,7 @@
                         </div>
                     </div>
                 </div>
-    
-                <input type="submit" value="submit" class="btn btn-primary">
+                <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>
 

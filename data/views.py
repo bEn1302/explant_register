@@ -92,107 +92,13 @@ def all_analytics(request):
 
 
 # Data Insert
-# def explant_form(request):
-#     if request.method == 'POST' or None:
-#         explantat_form = ExplantatForm(request.POST or None, request.FILES)
-#         lagerort_form = LagerortForm(request.POST or None)  # Lagerort-Formular
-#         patient_form = PatientForm(request.POST or None)  # Patient-Formular
-#         reoperation_form = ReoperationForm(request.POST or None)  # Reoperation-Formular
-#         inlay_form = InlayForm(request.POST or None)  # Inlay-Formular
-#         kopf_form = KopfForm(request.POST or None)  # Kopf-Formular
-#         femurkomponente_form = FemurkomponenteForm(request.POST or None)  # Femurkomponente-Formular
-#         schaft_form = SchaftForm(request.POST or None)  # Schaft-Formular
-#         tibiaplateau_form = TibiaplateauForm(request.POST or None)  # Tibiaplateau-Formular
-#         pfanne_form = PfanneForm(request.POST) # Pfanne-Formular
-#         patellaersatz_form = PatellaersatzForm(request.POST or None) # Patellaersatz-Formular
-
-#         if explantat_form.is_valid() and lagerort_form.is_valid() and patient_form.is_valid() and reoperation_form.is_valid() and inlay_form.is_valid() and kopf_form.is_valid() and femurkomponente_form.is_valid() and schaft_form.is_valid() and tibiaplateau_form.is_valid() and pfanne_form.is_valid() and patellaersatz_form.is_valid():
-#             explantat = explantat_form.save(commit=False)
-#             lagerort = lagerort_form.save()
-#             patient = patient_form.save()
-#             reoperation = reoperation_form.save()
-#             inlay = inlay_form.save()
-#             kopf = kopf_form.save()
-#             femurkomponente = femurkomponente_form.save()
-#             schaft = schaft_form.save()
-#             tibiaplateau = tibiaplateau_form.save()
-#             pfanne = pfanne_form.save()
-#             patellaersatz = patellaersatz_form.save()
-
-#             # Setzen Sie die Verknüpfung von Explantat zu Inlay
-#             explantat.patellaersatz = patellaersatz
-#             explantat.pfanne = pfanne
-#             explantat.tibiaplateau = tibiaplateau
-#             explantat.schaft = schaft
-#             explantat.femurkomponente = femurkomponente
-#             explantat.kopf = kopf
-#             explantat.inlay = inlay
-#             explantat.reoperation = reoperation
-#             explantat.patient = patient
-#             explantat.lagerort = lagerort
-#             explantat.save()
-            
-#             # Weiterleitung zur Erfolgsseite oder zur Liste der Explantate
-#             return redirect('table-explants')
-
-#     else:
-#         explantat_form = ExplantatForm()
-#         lagerort_form = LagerortForm()
-#         patient_form = PatientForm()
-#         reoperation_form = ReoperationForm()
-#         inlay_form = InlayForm()
-#         kopf_form = KopfForm()
-#         femurkomponente_form = FemurkomponenteForm()
-#         schaft_form = SchaftForm()
-#         tibiaplateau_form = TibiaplateauForm()
-#         pfanne_form = PfanneForm()
-#         patellaersatz_form = PatellaersatzForm()
-
-#     return render(request, 'data/explant_form.html', {'explantat_form': explantat_form,
-#                                                       'lagerort_form':lagerort_form,
-#                                                       'patient_form':patient_form,
-#                                                       'reoperation_form':reoperation_form, 
-#                                                       'inlay_form': inlay_form,
-#                                                       'kopf_form':kopf_form,
-#                                                       'femurkomponente_form':femurkomponente_form,
-#                                                       'schaft_form':schaft_form,
-#                                                       'tibiaplateau_form':tibiaplateau_form,
-#                                                       'pfanne_form':pfanne_form,
-#                                                       'patellaersatz_form':patellaersatz_form,
-#                                                       })
-
 def explant_form(request):
-    lagerort = Lagerort.objects.last()  # Hier bekommst du den zuletzt hinzugefügten Lagerort
     if request.method == 'POST':
-        form = ExplantatForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            form.save()
-            return redirect('table-explants')
-
+        explantat_form = ExplantatForm(request.POST, request.FILES)
+        if explantat_form.is_valid():
+            explantat_form.save()  # Speichert das Formular
+            return redirect('table-explants')  # Weiterleitung zur Liste der Explantate
     else:
-        form = ExplantatForm()
+        explantat_form = ExplantatForm()
 
-    return render(request, 'data/explant_form.html', {'form': form, 'lagerort_form': LagerortForm(),'lagerort': lagerort, })
-
-
-def add_lagerort(request):
-    if request.method == 'POST':
-        lagerort_form = LagerortForm(request.POST)
-        if lagerort_form.is_valid():
-            lagerort = lagerort_form.save()  # Speichere den Lagerort in der Datenbank
-            return render(request, 'data/explant_form.html', {
-                'lagerort_form': lagerort_form,
-                'lagerort': lagerort,
-                # Füge hier andere Formulare hinzu, die du auf der Seite benötigst
-            })
-        else:
-            error_message = "Es ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben."
-            return render(request, 'data/explant_form.html', {
-                'lagerort_form': lagerort_form,
-                'error_message': error_message,
-            })
-    else:
-        lagerort_form = LagerortForm()
-
-    return render(request, 'data/explant_form.html', {'lagerort_form': lagerort_form})
+    return render(request, 'data/explant_form.html', {'explantat_form': explantat_form})
