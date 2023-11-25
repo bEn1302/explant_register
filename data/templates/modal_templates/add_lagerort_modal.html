@@ -1,0 +1,37 @@
+<!-- Hier den Modal-Inhalt für Lagerort einfügen -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Add Lagerort</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Hier Lagerort-Formular einfügen -->
+                {{ lagerort_form.as_p }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm('lagerort')">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function submitForm(fieldName) {
+        // AJAX-Anfrage, um die Formulardaten zu senden und das Modal zu schließen
+        $.ajax({
+            url: `/add_${fieldName}/`,  // URL zur Ansicht, die die Daten speichert
+            type: 'POST',
+            data: $('#addModalContainer form').serialize(),  // Formulardaten serialisieren
+            success: function (data) {
+                // Schließen Sie das Modal
+                $('#addModal').modal('hide');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+</script>

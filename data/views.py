@@ -105,3 +105,8 @@ def add_explant(request):
         explantat_form = ExplantatForm()
 
     return render(request, 'data/explant_form.html', {'explantat_form': explantat_form})
+
+#Test
+def add_lagerort_modal(request):
+    lagerort_form = LagerortForm()
+    return render(request, '/modal_templates/add_lagerort_modal.html', {'lagerort_form': lagerort_form})
