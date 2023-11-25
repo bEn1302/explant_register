@@ -22,7 +22,7 @@
     function submitForm(fieldName) {
         // AJAX-Anfrage, um die Formulardaten zu senden und das Modal zu schließen
         $.ajax({
-            url: `/add_${fieldName}/`,  // URL zur Ansicht, die die Daten speichert
+            url: "/add_lagerort/",
             type: 'POST',
             data: $('#addModalContainer form').serialize(),  // Formulardaten serialisieren
             success: function (data) {

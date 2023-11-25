@@ -107,6 +107,19 @@ def add_explant(request):
     return render(request, 'data/explant_form.html', {'explantat_form': explantat_form})
 
 #Test
+def add_lagerort(request):
+    if request.method == 'POST':
+        lagerort_form = LagerortForm(request.POST)
+        if lagerort_form.is_valid():
+            lagerort = lagerort_form.save(commit=False)
+            lagerort.save()
+            return JsonResponse({'success': True, 'message': 'Lagerort erfolgreich hinzugefügt'})
+        else:
+            errors = lagerort_form.errors.as_json()
+            return JsonResponse({'success': False, 'errors': errors}, status=400)
+    else:
+        return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
+    
 def add_lagerort_modal(request):
     lagerort_form = LagerortForm()
     return render(request, '/modal_templates/add_lagerort_modal.html', {'lagerort_form': lagerort_form})

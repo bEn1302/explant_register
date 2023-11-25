@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import *
 
 
 urlpatterns = [
@@ -21,4 +22,7 @@ urlpatterns = [
     path('tibiaplateau/<int:pk>/update/', views.tibiaplateau_update, name='tibiaplateau_update'),
     path('pfanne/<int:pk>/update/', views.pfanne_update, name='pfanne_update'),
     path('patellaersatz/<int:pk>/update/', views.patellaersatz_update, name='patellaersatz_update'),
+
+    path('add_lagerort_modal/', add_lagerort_modal, name='add_lagerort_modal'),
+    path('add_lagerort/', add_lagerort, name='add_lagerort'),
 ]
