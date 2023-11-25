@@ -13,7 +13,7 @@ urlpatterns = [
     path('forms', views.add_explant, name="add-explants"),
     path('search', views.search, name="search"),
     
-    # Update Views
+    # update views
     path('lagerort/<int:pk>/update/', views.lagerort_update, name='lagerort_update'),
     path('patient/<int:pk>/update/', views.patient_update, name='patient_update'),
     path('reoperation/<int:pk>/update/', views.reoperation_update, name='reoperation_update'),
@@ -25,6 +25,15 @@ urlpatterns = [
     path('pfanne/<int:pk>/update/', views.pfanne_update, name='pfanne_update'),
     path('patellaersatz/<int:pk>/update/', views.patellaersatz_update, name='patellaersatz_update'),
 
-    path('add_lagerort_modal/', add_lagerort_modal, name='add_lagerort_modal'),
+    # Data insert views
     path('add_lagerort/', add_lagerort, name='add_lagerort'),
+    path('add_patient/', add_patient, name='add_patient'),
+    path('add_reoperation/', add_reoperation, name='add_reoperation'),
+    path('add_inlay/', add_inlay, name='add_inlay'),
+    path('add_schaft/', add_schaft, name='add_schaft'),
+    path('add_kopf/', add_kopf, name='add_kopf'),
+    path('add_pfanne/', add_pfanne, name='add_pfanne'),
+    path('add_femurkomponente/', add_femurkomponente, name='add_femurkomponente'),
+    path('add_tibiaplateau/', add_tibiaplateau, name='add_tibiaplateau'),
+    path('add_patellaersatz/', add_patellaersatz, name='add_patellaersatz'),
 ]
