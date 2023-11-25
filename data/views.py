@@ -122,4 +122,4 @@ def add_lagerort(request):
     
 def add_lagerort_modal(request):
     lagerort_form = LagerortForm()
-    return render(request, '/modal_templates/add_lagerort_modal.html', {'lagerort_form': lagerort_form})
+    return render(request, 'modal_templates/add_lagerort_modal.html', {'lagerort_form': lagerort_form})
