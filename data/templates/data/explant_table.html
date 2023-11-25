@@ -20,22 +20,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   {% endif %}
-  <!-- <h2>Hüfte Explant</h2>
-  <br>
-  <div class="container shadow rounded">
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
-    <button type="button" class="btn btn-outline-secondary btn-sm"><i class="bi bi-box-arrow-up"></i> Export</button>
-    <button type="button" class="btn btn-outline-secondary btn-sm"><i class="bi bi-trash3"></i> Delete</button>
-    {% include 'data/table_template.html' with data=huefte_explant_table is_huefte=True %}
-  </div>
-  <br>
-  <h2>Knie Explant</h2>
-  <br>
-  <a class="btn btn-outline-primary btn-sm" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
-  <button type="button" class="btn btn-outline-secondary btn-sm"><i class="bi bi-box-arrow-up"></i> Export</button>
-  <button type="button" class="btn btn-outline-secondary btn-sm"><i class="bi bi-trash3"></i> Delete</button>
-  {% include 'data/table_template.html' with data=knie_explant_table is_huefte=False %} -->
-
+  
   <ul class="nav nav-tabs" id="myTabs">
     <li class="nav-item">
       <a class="nav-link active" id="huefte-tab" data-bs-toggle="tab" href="#huefte">Hüfte Explant</a>
@@ -68,9 +53,9 @@
   </div>
   
 
-  <script src="{% static '/js/expand_table.js' %}"></script>
-  <script src="{% static '/js/update_form.js' %}"></script>
-  <script src="{% static '/js/checkbox_table.js' %}"></script>
+  <script defer src="{% static '/js/expand_table.js' %}"></script>
+  <script defer src="{% static '/js/update_form.js' %}"></script>
+  <script defer src="{% static '/js/checkbox_table.js' %}"></script>
   
 
 {% else %}
