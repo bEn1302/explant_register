@@ -34,7 +34,7 @@
   {% endif %}
 
   <div class="container shadow-sm rounded">
-    <form id="deleteForm" method="post" action="{% url 'delete_selected_explantate' %}">
+    <form id="deleteForm" method="post" action="{% url 'delete_selected_explants' %}">
       {% csrf_token %}
       <ul class="nav nav-tabs" id="myTabs">
         <li class="nav-item">
