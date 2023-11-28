@@ -19,11 +19,11 @@
             {% for explant in data %}
                 <tr class="table-row">
                     {% if is_huefte %}
-                        <td><input type="checkbox" class="huefte-row-checkbox" name="selected_ids[]" value="{{ explantat.id }}"></td>
+                        <td><input type="checkbox" class="huefte-row-checkbox" name="selected_ids[]" value="{{ explant.id }}"></td>
                     {% else %}
-                        <td><input type="checkbox" class="knie-row-checkbox" name="selected_ids[]" value="{{ explantat.id }}"></td>
+                        <td><input type="checkbox" class="knie-row-checkbox" name="selected_ids[]" value="{{ explant.id }}"></td>
                     {% endif %}
-                    <td>{{ explant.id }}</td>
+                    <td>{{ .id }}</td>
                     <td>{{ explant.ursache }}</td>
                     <td>{{ explant.verfuegbarkeit }}</td>
                     <td>{{ explant.herkunftsort }}</td>
