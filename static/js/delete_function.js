@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var deleteButtons = document.querySelectorAll('.deleteButton');
-    
+
     deleteButtons.forEach(function(deleteButton) {
         deleteButton.addEventListener('click', function() {
             var form = deleteButton.closest('form');
