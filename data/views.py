@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 from django.urls import reverse
 from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
@@ -92,13 +93,12 @@ def all_analytics(request):
     return render(request, 'data/explant_analytic.html')
 
 
-# Data Insert
+# --------------------------- Data Insert ---------------------------
 def add_explant(request):
     if request.method == 'POST':
         explantat_form = ExplantatForm(request.POST, request.FILES)
         if explantat_form.is_valid():
             explantat_form.save()
-            # Leite zur Seite "table-explants" weiter und übergebe die Erfolgsmeldung als GET-Parameter
             return HttpResponseRedirect(f"{reverse('table-explants')}?success=True")
     
     else:
@@ -113,7 +113,6 @@ def add_model_instance(request, form_class, redirect_name):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            # Weiterleitung zur 'forms'-Seite
             return redirect(redirect_name)
         else:
             errors = form.errors.as_json()
@@ -150,3 +149,10 @@ def add_tibiaplateau(request):
 
 def add_patellaersatz(request):
     return add_model_instance(request, PatellaersatzForm, 'add-explants')
+
+# --------------------------- Delte Data ---------------------------
+@require_POST
+def delete_selected_explantate(request):
+    selected_ids = request.POST.getlist('selected_ids[]')
+    Explantat.objects.filter(pk__in=selected_ids).delete()
+    return redirect('table-explants')
