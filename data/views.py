@@ -152,7 +152,7 @@ def add_patellaersatz(request):
 
 # --------------------------- Delte Data ---------------------------
 @require_POST
-def delete_selected_explantate(request):
+def delete_selected_explants(request):
     selected_ids = request.POST.getlist('selected_ids[]')
     Explantat.objects.filter(pk__in=selected_ids).delete()
     return redirect('table-explants')

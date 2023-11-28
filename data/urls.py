@@ -36,4 +36,7 @@ urlpatterns = [
     path('add_femurkomponente/', add_femurkomponente, name='add_femurkomponente'),
     path('add_tibiaplateau/', add_tibiaplateau, name='add_tibiaplateau'),
     path('add_patellaersatz/', add_patellaersatz, name='add_patellaersatz'),
+
+    # delete Explants
+    path('delete_selected_explants/', delete_selected_explants, name='delete_selected_explants'),
 ]
