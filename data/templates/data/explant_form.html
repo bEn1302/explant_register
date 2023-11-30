@@ -7,7 +7,7 @@
         <div class="container shadow rounded mt-5">
             <br>
             <h2>Explant data registration</h2>
-            <form id="explantForm" class="row g-3" method=POST action="">
+            <form id="explantForm" class="row g-3" method=POST action="{% url 'add-explant' %}">
                 {% csrf_token %}
                 <!-- normal explant informations -->
                 <div class="col-md-6">
