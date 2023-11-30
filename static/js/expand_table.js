@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     triggerCells.forEach((cell) => {
       // Create an icon element and add it to the cell
       const icon = document.createElement("i");
-      icon.classList.add("bi", "bi-plus-circle");
+      icon.classList.add("bi", "bi-eye");
       cell.appendChild(icon);
 
       cell.addEventListener("click", function () {
@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
         extendedRow.classList.toggle("d-none");
 
         // Toggle the class of the icon to change its appearance
-        icon.classList.toggle("bi-plus-circle");
-        icon.classList.toggle("bi-dash-circle");
+        icon.classList.toggle("bi-eye");
+        icon.classList.toggle("bi-eye-slash");
       });
     });
   });
