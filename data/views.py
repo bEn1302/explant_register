@@ -107,48 +107,48 @@ def add_explant(request):
     return render(request, 'data/explant_form.html', {'explantat_form': explantat_form})
 
 # Verknüpfte Tabellen
-def add_model_instance_ajax(request, form_class, redirect_name):
+def add_model_instance(request, form_class, redirect_name):
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            return JsonResponse({'success': True})
+            return redirect(redirect_name)
         else:
             errors = form.errors.as_json()
             return JsonResponse({'success': False, 'errors': errors}, status=400)
     else:
         return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
 
-def add_lagerort_ajax(request):
-    return add_model_instance_ajax(request, LagerortForm, 'add-explants')
+def add_lagerort(request):
+    return add_model_instance(request, LagerortForm, 'add-explants')
 
-def add_patient_ajax(request):
-    return add_model_instance_ajax(request, PatientForm, 'add-explants')
+def add_patient(request):
+    return add_model_instance(request, PatientForm, 'add-explants')
 
-def add_reoperation_ajax(request):
-    return add_model_instance_ajax(request, ReoperationForm, 'add-explants')
+def add_reoperation(request):
+    return add_model_instance(request, ReoperationForm, 'add-explants')
 
-def add_inlay_ajax(request):
-    return add_model_instance_ajax(request, InlayForm, 'add-explants')
+def add_inlay(request):
+    return add_model_instance(request, InlayForm, 'add-explants')
 
-def add_kopf_ajax(request):
-    return add_model_instance_ajax(request, KopfForm, 'add-explants')
+def add_kopf(request):
+    return add_model_instance(request, KopfForm, 'add-explants')
 
-def add_schaft_ajax(request):
-    return add_model_instance_ajax(request, SchaftForm, 'add-explants')
+def add_schaft(request):
+    return add_model_instance(request, SchaftForm, 'add-explants')
 
-def add_pfanne_ajax(request):
-    return add_model_instance_ajax(request, PfanneForm, 'add-explants')
+def add_pfanne(request):
+    return add_model_instance(request, PfanneForm, 'add-explants')
 
-def add_femurkomponente_ajax(request):
-    return add_model_instance_ajax(request, FemurkomponenteForm, 'add-explants')
+def add_femurkomponente(request):
+    return add_model_instance(request, FemurkomponenteForm, 'add-explants')
 
-def add_tibiaplateau_ajax(request):
-    return add_model_instance_ajax(request, TibiaplateauForm, 'add-explants')
+def add_tibiaplateau(request):
+    return add_model_instance(request, TibiaplateauForm, 'add-explants')
 
-def add_patellaersatz_ajax(request):
-    return add_model_instance_ajax(request, PatellaersatzForm, 'add-explants')
+def add_patellaersatz(request):
+    return add_model_instance(request, PatellaersatzForm, 'add-explants')
 
 # --------------------------- Delte Data ---------------------------
 @require_POST
