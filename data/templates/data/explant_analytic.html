@@ -35,10 +35,10 @@
 </script>
 
 {% else %}
-    {% url 'start' as start %}
-    <script>
-        window.location.href = "{{ start }}";
-    </script>
+  {% url 'sign_in' as sign_in %}
+  <script>
+      window.location.href = "{% url 'sign_in' %}";
+  </script>
 
 {% endif %}
 

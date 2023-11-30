@@ -385,9 +385,9 @@
     <script defer src="{% static 'js/form_data_persistence.js' %}"></script>
             
     {% else %}
-    {% url 'start' as start %}
+    {% url 'sign_in' as sign_in %}
     <script>
-        window.location.href = "{{ start }}";
+        window.location.href = "{% url 'sign_in' %}";
     </script>
 
 {% endif %}
