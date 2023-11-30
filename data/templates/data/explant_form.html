@@ -7,7 +7,7 @@
         <div class="container shadow rounded mt-5">
             <br>
             <h2>Explant data registration</h2>
-            <form class="row g-3" method=POST action="">
+            <form id="explantForm" class="row g-3" method=POST action="">
                 {% csrf_token %}
                 <!-- normal explant informations -->
                 <div class="col-md-6">
@@ -108,8 +108,6 @@
                 <div class="col-md-1">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addInlayModal">Add</button>
                 </div>
-
-                
                 <hr>
                 <!-------------------------- 
                     explantat components 
@@ -377,14 +375,35 @@
                                 {{ explantat_form.patellaersatz_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="submitExplant" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
+        <script>
+            $(document).ready(function(){
+                $("#submitExplant").click(function(){
+                    var formData = new FormData($("#explantForm")[0]);
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "add-explants" %}',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(data){
+                            console.log(data);
+                        },
+                        error: function(error){
+                            console.log(error);
+                        }
+                    });
+                });
+            });
+        </script>
+            
     {% else %}
     {% url 'start' as start %}
     <script>
