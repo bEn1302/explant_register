@@ -7,7 +7,7 @@
         <div class="container shadow rounded mt-5">
             <br>
             <h2>Explant data registration</h2>
-            <form id="explantForm" class="row g-3" method=POST action="{% url 'add-explant' %}">
+            <form class="row g-3" method=POST action="">
                 {% csrf_token %}
                 <!-- normal explant informations -->
                 <div class="col-md-6">
@@ -192,7 +192,7 @@
                                 {{ explantat_form.lagerort_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addLagerortButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -213,7 +213,7 @@
                                 {{ explantat_form.patient_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addPatientButton class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -234,7 +234,7 @@
                                 {{ explantat_form.reoperation_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addReoperationButton class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -255,7 +255,7 @@
                                 {{ explantat_form.inlay_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addInlayButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -275,7 +275,7 @@
                                 {{ explantat_form.kopf_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addKopfButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -295,7 +295,7 @@
                                 {{ explantat_form.schaft_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addSchaftButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -315,7 +315,7 @@
                                 {{ explantat_form.pfanne_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addPfanneButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -335,7 +335,7 @@
                                 {{ explantat_form.femurkomponente_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addFemurkomponenteButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -355,7 +355,7 @@
                                 {{ explantat_form.tibiaplateau_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addTibiaplateauButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -375,34 +375,14 @@
                                 {{ explantat_form.patellaersatz_form.as_p }}
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" id="submitExplant" class="btn btn-outline-primary">Add</button>
+                                <button type="submit" id="addPatellaersatzButton" class="btn btn-outline-primary">Add</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function(){
-                $("#submitExplant").click(function(){
-                    var formData = new FormData($("#explantForm")[0]);
-                    
-                    $.ajax({
-                        type: 'POST',
-                        url: '{% url "add-explants" %}',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(data){
-                            console.log(data);
-                        },
-                        error: function(error){
-                            console.log(error);
-                        }
-                    });
-                });
-            });
-        </script>
+    <script defer src="{% static '/js/ajax_modal_submit.js' %}"></script>
             
     {% else %}
     {% url 'start' as start %}

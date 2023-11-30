@@ -26,16 +26,16 @@ urlpatterns = [
     path('patellaersatz/<int:pk>/update/', views.patellaersatz_update, name='patellaersatz_update'),
 
     # Data insert views
-    path('add_lagerort/', add_lagerort, name='add_lagerort'),
-    path('add_patient/', add_patient, name='add_patient'),
-    path('add_reoperation/', add_reoperation, name='add_reoperation'),
-    path('add_inlay/', add_inlay, name='add_inlay'),
-    path('add_schaft/', add_schaft, name='add_schaft'),
-    path('add_kopf/', add_kopf, name='add_kopf'),
-    path('add_pfanne/', add_pfanne, name='add_pfanne'),
-    path('add_femurkomponente/', add_femurkomponente, name='add_femurkomponente'),
-    path('add_tibiaplateau/', add_tibiaplateau, name='add_tibiaplateau'),
-    path('add_patellaersatz/', add_patellaersatz, name='add_patellaersatz'),
+    path('add_lagerort/', add_lagerort_ajax, name='add_lagerort'),
+    path('add_patient/', add_patient_ajax, name='add_patient'),
+    path('add_reoperation/', add_reoperation_ajax, name='add_reoperation'),
+    path('add_inlay/', add_inlay_ajax, name='add_inlay'),
+    path('add_schaft/', add_schaft_ajax, name='add_schaft'),
+    path('add_kopf/', add_kopf_ajax, name='add_kopf'),
+    path('add_pfanne/', add_pfanne_ajax, name='add_pfanne'),
+    path('add_femurkomponente/', add_femurkomponente_ajax, name='add_femurkomponente'),
+    path('add_tibiaplateau/', add_tibiaplateau_ajax, name='add_tibiaplateau'),
+    path('add_patellaersatz/', add_patellaersatz_ajax, name='add_patellaersatz'),
 
     # delete Explants
     path('delete_selected_explants/', delete_selected_explants, name='delete_selected_explants'),
