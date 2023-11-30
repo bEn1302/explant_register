@@ -99,8 +99,10 @@ def add_explant(request):
         explantat_form = ExplantatForm(request.POST, request.FILES)
         if explantat_form.is_valid():
             explantat_form.save()
-            return HttpResponseRedirect(f"{reverse('table-explants')}?success=True")
-    
+            return JsonResponse({'success': True})  # AJAX-Anfrage erfolgreich
+        else:
+            errors = explantat_form.errors.as_json()
+            return JsonResponse({'success': False, 'errors': errors}, status=400)  # Fehler bei der Validierung
     else:
         explantat_form = ExplantatForm()
 
