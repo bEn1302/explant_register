@@ -107,25 +107,9 @@ def add_explant(request):
     return render(request, 'data/explant_form.html', {'explantat_form': explantat_form})
 
 # Verknüpfte Tabellen
-def add_model_instance(request, form_class, redirect_name):
+def add_model_instance(request, form_class):
     if request.method == 'POST':
         form = form_class(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.save()
-            return redirect(redirect_name)
-        else:
-            errors = form.errors.as_json()
-            return JsonResponse({'success': False, 'errors': errors}, status=400)
-    else:
-        return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
-
-# def add_lagerort(request):
-#     return add_model_instance(request, LagerortForm, 'add-explants')
-
-def add_lagerort(request):
-    if request.method == 'POST':
-        form = LagerortForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
@@ -136,32 +120,35 @@ def add_lagerort(request):
     else:
         return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
 
+def add_lagerort(request):
+    return add_model_instance(request, LagerortForm)
+
 def add_patient(request):
-    return add_model_instance(request, PatientForm, 'add-explants')
+    return add_model_instance(request, PatientForm)
 
 def add_reoperation(request):
-    return add_model_instance(request, ReoperationForm, 'add-explants')
+    return add_model_instance(request, ReoperationForm)
 
 def add_inlay(request):
-    return add_model_instance(request, InlayForm, 'add-explants')
+    return add_model_instance(request, InlayForm)
 
 def add_kopf(request):
-    return add_model_instance(request, KopfForm, 'add-explants')
+    return add_model_instance(request, KopfForm)
 
 def add_schaft(request):
-    return add_model_instance(request, SchaftForm, 'add-explants')
+    return add_model_instance(request, SchaftForm)
 
 def add_pfanne(request):
-    return add_model_instance(request, PfanneForm, 'add-explants')
+    return add_model_instance(request, PfanneForm)
 
 def add_femurkomponente(request):
-    return add_model_instance(request, FemurkomponenteForm, 'add-explants')
+    return add_model_instance(request, FemurkomponenteForm)
 
 def add_tibiaplateau(request):
-    return add_model_instance(request, TibiaplateauForm, 'add-explants')
+    return add_model_instance(request, TibiaplateauForm)
 
 def add_patellaersatz(request):
-    return add_model_instance(request, PatellaersatzForm, 'add-explants')
+    return add_model_instance(request, PatellaersatzForm)
 
 # --------------------------- Delte Data ---------------------------
 @require_POST
