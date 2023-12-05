@@ -109,16 +109,16 @@ class Explantat(models.Model):
     ursache = models.TextField('Ursache')
     verfuegbarkeit = models.BooleanField('Verfügbarkeit')
     herkunftsort = models.CharField('Herkunftsort')
-    entnahme_datum = models.DateField('Entnahmedatum')
+    entnahme_datum = models.DateField('Entnahmedatum', blank=True, null=True)
     eingang_datum = models.DateField('Eingangsdatum')
     bruchgeschehen = models.TextField('Bruchgeschehen')
-    nutzungsdauer = models.IntegerField('Nutzungsdauer')        # in Jahre
+    nutzungsdauer = models.IntegerField('Nutzungsdauer', blank=True, null=True)        # in Jahre
     reinigung = models.BooleanField('Reinigung')
     bild = models.FileField('Bild', blank=True, null=True)
     lagerort = models.ForeignKey(Lagerort, blank=True, null=True, on_delete=models.CASCADE)         
     patient = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE)           
     reoperation = models.ForeignKey(Reoperation, blank=True, null=True, on_delete=models.CASCADE)
-    inlay = models.ForeignKey(Inlay, on_delete=models.PROTECT)
+    inlay = models.ForeignKey(Inlay, blank=True, null=True, on_delete=models.PROTECT)
     # Hüftexplantate
     kopf = models.ForeignKey(Kopf, blank=True, null=True, on_delete=models.PROTECT)
     schaft = models.ForeignKey(Schaft, blank=True, null=True, on_delete=models.PROTECT)
