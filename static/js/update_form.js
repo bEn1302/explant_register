@@ -4,11 +4,10 @@ $(document).ready(function() {
         e.preventDefault(); // Verhindert das Standardverhalten des Formulars
 
         var form = $(this);
-        var pkValue = explant.lagerort.pk || '';
         
         $.ajax({
             type: 'POST',
-            url: form.attr('action').replace('__pk__', pkValue), // Verwenden Sie den action-Wert aus dem Formular
+            url: form.attr('action'), // Verwenden Sie den action-Wert aus dem Formular
             data: form.serialize(),
             success: function(data) {
                 if (data.success) {
