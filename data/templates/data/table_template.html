@@ -67,7 +67,7 @@
                                     <div class="modal fade" id="lagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="lagerortModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                           <div class="modal-content">
-                                            <form id="update-form{{ explant.id }}" method="post" action="{% url 'lagerort_update' explant.lagerort.pk|default_if_none:'' %}">
+                                            <form id="update-form{{ explant.id }}" method="post" action="{% url 'lagerort_update' pk=explant.lagerort.pk|default_if_none:'' %}">
                                               {% csrf_token %}
                                               <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
@@ -109,7 +109,7 @@
                                     <div class="modal fade" id="patientModal{{ explant.id }}" tabindex="-1" aria-labelledby="patientModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <form id="update-form{{ explant.id }}" method="post" action="{% url 'patient_update' explant.patient.pk|default_if_none:'' %}">
+                                                <form id="update-form{{ explant.id }}" method="post" action="{% url 'patient_update' pk=explant.patient.pk|default_if_none:'' %}">
                                                     {% csrf_token %}
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
@@ -152,7 +152,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <!-- Update Form ... -->
-                                                <form id="update-form{{ explant.id }}" method="post" action="{% url 'reoperation_update' explant.reoperation.pk|default_if_none:'' %}">
+                                                <form id="update-form{{ explant.id }}" method="post" action="{% url 'reoperation_update' pk=explant.reoperation.pk|default_if_none:'' %}">
                                                     {% csrf_token %}
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reoperation</h1>
@@ -202,7 +202,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <!-- Update Form ... -->
-                                                <form id="update-form{{ explant.id }}" method="post" action="{% url 'inlay_update' explant.inlay.pk|default_if_none:'' %}">
+                                                <form id="update-form{{ explant.id }}" method="post" action="{% url 'inlay_update' pk=explant.inlay.pk|default_if_none:'' %}">
                                                     {% csrf_token %}
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Update Inlay</h1>
@@ -261,7 +261,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'kopf_update' explant.kopf.pk|default_if_none:'' %}">
+                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'kopf_update' pk=explant.kopf.pk|default_if_none:'' %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Kopf</h1>
@@ -320,7 +320,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'femurkomponente_update' explant.femurkomponente.pk|default_if_none:'' %}">
+                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'femurkomponente_update' pk=explant.femurkomponente.pk|default_if_none:'' %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Femurkomponente</h1>
@@ -380,7 +380,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'schaft_update' explant.schaft.pk|default_if_none:'' %}">
+                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'schaft_update' pk=explant.schaft.pk|default_if_none:'' %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Schaft</h1>
@@ -439,7 +439,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'tibiaplateau_update' explant.tibiaplateau.pk|default_if_none:'' %}">
+                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'tibiaplateau_update' pk=explant.tibiaplateau.pk|default_if_none:'' %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Tibiaplateau</h1>
@@ -499,7 +499,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'pfanne_update' explant.pfanne.pk|default_if_none:'' %}">
+                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'pfanne_update' pk=explant.pfanne.pk|default_if_none:'' %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Pfanne</h1>
@@ -558,7 +558,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'patellaersatz_update' explant.patellaersatz.pk|default_if_none:'' %}">
+                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'patellaersatz_update' pk=explant.patellaersatz.pk|default_if_none:'' %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patellaersatz</h1>
