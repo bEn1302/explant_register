@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.urls import reverse
+from django.db.models import Q
 from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
@@ -26,8 +27,12 @@ def search(request):
 
 
 def explants_table_view(request):
-    huefte_explant_table = Explantat.objects.filter(kopf__isnull=False, pfanne__isnull=False, schaft__isnull=False)
-    knie_explant_table = Explantat.objects.filter(femurkomponente__isnull=False, tibiaplateau__isnull=False, patellaersatz__isnull=False)
+    huefte_explant_table = Explantat.objects.filter(
+        Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False)
+    )
+    knie_explant_table = Explantat.objects.filter(
+        Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
+    )
 
     context = {
         'huefte_explant_table': huefte_explant_table,
