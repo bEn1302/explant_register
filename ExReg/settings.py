@@ -87,8 +87,8 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': 'containers-us-west-154.railway.app',
-        'PORT': '5799',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '37825',
     }
 }
 
