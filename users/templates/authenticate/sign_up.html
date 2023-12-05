@@ -1,123 +1,131 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sign up into ExReg</title>
-    <link
-      rel="shortcut icon"
-      href="{% static '/img/favicon.svg' %}"
-      type="image/x-icon"
-    />
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <!-- My CSS -->
-    <link rel="stylesheet" href="{% static '/css/sign_in.css' %}" />
-  </head>
-  <body>
-    <!-- Main Container -->
-    <div
-      class="container d-flex justify-content-center align-items-center min-vh-100"
-    >
-      <!-- Login Container -->
-      <div class="row border rounded-5 p-3 bg-white shadow box-area">
-        <!-- Left Box -->
-        <div
-          class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-          style="background: #2045d6"
-        >
-          <div class="featured-image mb-3">
-            <img
-              src="{% static '/img/file.svg' %}"
-              class="img-fluid"
-              style="width: 250px"
-              alt="account"
-            />
-            <p class="text-white fs-2" style="font-weight: 600">
-              Welcome to ExReg
-            </p>
-            <small class="text-white text-wrap text-center"
-              >Let's begin the adventure</small
-            >
+
+{% if user.is_authenticated %}
+  {% url 'dashboard' as dashboard %}
+  <script>
+      window.location.href = "{% url 'dashboard' %}";
+  </script>
+{% else %}
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Sign up into ExReg</title>
+      <link
+        rel="shortcut icon"
+        href="{% static '/img/favicon.svg' %}"
+        type="image/x-icon"
+      />
+      <!-- Bootstrap CSS -->
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+      />
+      <!-- My CSS -->
+      <link rel="stylesheet" href="{% static '/css/sign_in.css' %}" />
+    </head>
+    <body>
+      <!-- Main Container -->
+      <div
+        class="container d-flex justify-content-center align-items-center min-vh-100"
+      >
+        <!-- Login Container -->
+        <div class="row border rounded-5 p-3 bg-white shadow box-area">
+          <!-- Left Box -->
+          <div
+            class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+            style="background: #2045d6"
+          >
+            <div class="featured-image mb-3">
+              <img
+                src="{% static '/img/file.svg' %}"
+                class="img-fluid"
+                style="width: 250px"
+                alt="account"
+              />
+              <p class="text-white fs-2" style="font-weight: 600">
+                Welcome to ExReg
+              </p>
+              <small class="text-white text-wrap text-center"
+                >Let's begin the adventure</small
+              >
+            </div>
           </div>
-        </div>
-        <!-- Right Box -->
-        <div class="col-md-6 right-box">
-          {% if form.errors %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              <strong>Invalid Syntax</strong> Make sure that
-              <ul class="list-group list-group list-group-flush">
-                <li class="list-group-item list-group-item-warning">Your password can’t be too similar to your other personal information.</li>
-                <li class="list-group-item list-group-item-warning">Your password must contain at least 8 characters.</li>
-                <li class="list-group-item list-group-item-warning">Your password can’t be a commonly used password.</li>
-                <li class="list-group-item list-group-item-warning">Your password can’t be entirely numeric.</li>
-              </ul>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {% endif %}
-          <div class="row align-items-center">
-            <div class="header-text mb-4">
-              <h2>Hello,</h2>
-              <p>We are happy to see you.</p>
-            </div>
-            <form action="{% url 'sign_up' %}" method="POST">
-              {% csrf_token %}
-              {{ form.as_p }}
-              
-              <!-- <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg bg-light fs-6"
-                  placeholder="Username"
-                  name="username"
-                />
+          <!-- Right Box -->
+          <div class="col-md-6 right-box">
+            {% if form.errors %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Invalid Syntax</strong> Make sure that
+                <ul class="list-group list-group list-group-flush">
+                  <li class="list-group-item list-group-item-warning">Your password can’t be too similar to your other personal information.</li>
+                  <li class="list-group-item list-group-item-warning">Your password must contain at least 8 characters.</li>
+                  <li class="list-group-item list-group-item-warning">Your password can’t be a commonly used password.</li>
+                  <li class="list-group-item list-group-item-warning">Your password can’t be entirely numeric.</li>
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
-              <div class="input-group mb-3">
-                <input
-                  type="email"
-                  class="form-control form-control-lg bg-light fs-6"
-                  placeholder="Email address"
-                  name="email"
-                />
+            {% endif %}
+            <div class="row align-items-center">
+              <div class="header-text mb-4">
+                <h2>Hello,</h2>
+                <p>We are happy to see you.</p>
               </div>
-              <div class="input-group mb-3">
-                <input
-                  type="password"
-                  class="form-control form-control-lg bg-light fs-6"
-                  placeholder="Password"
-                  name="password1"
-                />
+              <form action="{% url 'sign_up' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                
+                <!-- <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg bg-light fs-6"
+                    placeholder="Username"
+                    name="username"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <input
+                    type="email"
+                    class="form-control form-control-lg bg-light fs-6"
+                    placeholder="Email address"
+                    name="email"
+                  />
+                </div>
+                <div class="input-group mb-3">
+                  <input
+                    type="password"
+                    class="form-control form-control-lg bg-light fs-6"
+                    placeholder="Password"
+                    name="password1"
+                  />
+                </div>
+                <div class="input-group mb-5">
+                  <input
+                    type="password"
+                    class="form-control form-control-lg bg-light fs-6"
+                    placeholder="Confirm Password"
+                    name="password2"
+                  /> -->
+                </div>
+                <div class="input-group mb-3">
+                  <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Sign up</button>
+                </div>
+              </form>
+              <div class="row">
+                <small>Do have account? <a href="{% url 'sign_in' %}">Sign in</a></small>
               </div>
-              <div class="input-group mb-5">
-                <input
-                  type="password"
-                  class="form-control form-control-lg bg-light fs-6"
-                  placeholder="Confirm Password"
-                  name="password2"
-                /> -->
-              </div>
-              <div class="input-group mb-3">
-                <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Sign up</button>
-              </div>
-            </form>
-            <div class="row">
-              <small>Do have account? <a href="{% url 'sign_in' %}">Sign in</a></small>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+  </html>
+{% endif %}
