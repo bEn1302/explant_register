@@ -1,0 +1,395 @@
+{% extends 'data/base.html' %} 
+{% load static %} 
+{% block update_explant %}
+
+
+{% if user.is_authenticated %}
+        <div class="container shadow rounded mt-5">
+            <br>
+            <h2>Explant data registration</h2>
+            <form class="row g-3" method=POST action="">
+                {% csrf_token %}
+                <!-- normal explant informations -->
+                <div class="col-md-6">
+                    {{ explantat_form.ursache }}
+                </div>
+                <div class="col-md-6">
+                    {{ explantat_form.bruchgeschehen }}
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.herkunftsort }}
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.nutzungsdauer }}
+                </div>
+
+                <!-- Verfügbarkeit -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.verfuegbarkeit.id_for_label }}" class="form-check-label">Verfügbarkeit:</label>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-check">
+                        {{ explantat_form.verfuegbarkeit }}
+                    </div>
+                </div>
+
+                <!-- Reinigung Input -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.reinigung.id_for_label }}" class="form-label">Reinigung:</label>
+                </div>
+                <div class="col-md-1">
+                    {{ explantat_form.reinigung }}
+                </div>
+
+                <!-- Bild -->
+                <!-- <div class="col-md-1">
+                    <label for="{{ explantat_form.bild.id_for_label }}" class="form-label">Bild:</label>
+                </div> -->
+                <div class="col-md-4">
+                    {{ explantat_form.bild }}
+                </div>
+
+                <!-- Entnahmedatum -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.entnahme_datum.id_for_label }}" class="form-label">Entnahmedatum:</label>
+                </div>
+                <div class="col-md-2">
+                    {{ explantat_form.entnahme_datum }}
+                </div>
+                
+                <!-- Eingangsdatum -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.eingang_datum.id_for_label }}" class="form-label">Eingangsdatum:</label>
+                </div>
+                <div class="col-md-2">
+                    {{ explantat_form.eingang_datum }}
+                </div>
+
+                <!-- Lagerort -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.lagerort.id_for_label }}" class="form-label">Lagerort:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.lagerort }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addLagerortModal">Add</button>
+                </div>
+
+                <!-- Patient Input -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.patient.id_for_label }}" class="form-label">Patient:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.patient }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">Add</button>
+                </div>
+
+                <!-- Reoperation -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.reoperation.id_for_label }}" class="form-label">Reoperation:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.reoperation }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReoperationModal">Add</button>
+                </div>
+
+                <!-- Inlay -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.inlay.id_for_label }}" class="form-label">Inlay:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.inlay }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addInlayModal">Add</button>
+                </div>
+                <hr>
+                <!-------------------------- 
+                    explantat components 
+                ------------------------------->
+                <!-- Kopf -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.kopf.id_for_label }}" class="form-label">Kopf:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.kopf }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addKopfModal">Add</button>
+                </div>
+                <!-- Femurkomponente -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.femurkomponente.id_for_label }}" class="form-label">Femurkomponente:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.femurkomponente }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFemurkomponenteModal">Add</button>
+                </div>
+                <!-- Schaft -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.schaft.id_for_label }}" class="form-label">Schaft:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.schaft }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchaftModal">Add</button>
+                </div>
+                <!-- Tibiaplateau -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.tibiaplateau.id_for_label }}" class="form-label">Tibiaplateau:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.tibiaplateau }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTibiaplateauModal">Add</button>
+                </div>
+                <!-- Pfanne -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.pfanne.id_for_label }}" class="form-label">Pfanne:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.pfanne }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPfanneModal">Add</button>
+                </div>
+                <!-- Patellaersatz -->
+                <div class="col-md-2">
+                    <label for="{{ explantat_form.patellaersatz.id_for_label }}" class="form-label">Patellaersatz:</label>
+                </div>
+                <div class="col-md-3">
+                    {{ explantat_form.patellaersatz }}
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatellaersatzModal">Add</button>
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" value="Update" class="btn btn-primary mb-3">
+                </div>
+            </form>
+
+            <!-- Lagerort Modal -->
+            <div class="modal fade" id="addLagerortModal" tabindex="-1" aria-labelledby="addLagerortModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addLagerortForm" action="{% url 'add_lagerort' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Lagerort</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="LagerortModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.lagerort_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addLagerortButton" class="btn btn-outline-primary add-button" data-form-id="addLagerortForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Patient Modal -->
+            <div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addPatientForm" action="{% url 'add_patient' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Patient</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="PatientModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.patient_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addPatientButton" class="btn btn-outline-primary add-button" data-form-id="addPatientForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Reoperation Modal -->
+            <div class="modal fade" id="addReoperationModal" tabindex="-1" aria-labelledby="addReoperationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addReoperationForm" action="{% url 'add_reoperation' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Reoperation</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="ReoperationModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.reoperation_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addReoperationButton" class="btn btn-outline-primary add-button" data-form-id="addReoperationForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Inlay Modal -->
+            <div class="modal fade" id="addInlayModal" tabindex="-1" aria-labelledby="addInlayModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addInlayForm" action="{% url 'add_inlay' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Inlay</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="InlayModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.inlay_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addInlayButton" class="btn btn-outline-primary add-button" data-form-id="addInlayForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Kopf Modal -->
+            <div class="modal fade" id="addKopfModal" tabindex="-1" aria-labelledby="addKopfModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addKopfForm" action="{% url 'add_kopf' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add kopf</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="KopfModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.kopf_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addKopfButton" class="btn btn-outline-primary add-button" data-form-id="addKopfForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Schaft Modal -->
+            <div class="modal fade" id="addSchaftModal" tabindex="-1" aria-labelledby="addSchaftModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addSchaftForm" action="{% url 'add_schaft' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add schaft</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="SchaftModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.schaft_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addSchaftButton" class="btn btn-outline-primary add-button" data-form-id="addSchaftForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Pfanne Modal -->
+            <div class="modal fade" id="addPfanneModal" tabindex="-1" aria-labelledby="addPfanneModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addPfanneForm" action="{% url 'add_pfanne' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Pfanne</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="PfanneModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.pfanne_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addPfanneButton" class="btn btn-outline-primary add-button" data-form-id="addPfanneForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Femurkomponente Modal -->
+            <div class="modal fade" id="addFemurkomponenteModal" tabindex="-1" aria-labelledby="addFemurkomponenteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addFemurkomponenteForm" action="{% url 'add_femurkomponente' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Femurkomponente</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="FemurkomponenteModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.femurkomponente_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addFemurkomponenteButton" class="btn btn-outline-primary add-button" data-form-id="addFemurkomponenteForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Tibiaplateau Modal -->
+            <div class="modal fade" id="addTibiaplateauModal" tabindex="-1" aria-labelledby="addTibiaplateauModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addTibiaplateauForm" action="{% url 'add_tibiaplateau' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Tibiaplateau</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="TibiaplateauModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.tibiaplateau_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addTibiaplateauButton" class="btn btn-outline-primary add-button" data-form-id="addTibiaplateauForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Patellaersatz Modal -->
+            <div class="modal fade" id="addPatellaersatzModal" tabindex="-1" aria-labelledby="addPatellaersatzModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post" id="addPatellaersatzForm" action="{% url 'add_patellaersatz' %}">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Patellaersatz</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="PatellaersatzModal" class="modal-body">
+                                <div id="alert-container"></div>
+                                {{ explantat_form.patellaersatz_form.as_p }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="addPatellaersatzButton" class="btn btn-outline-primary add-button" data-form-id="addPatellaersatzForm">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script defer src="{% static 'js/form_data_persistence.js' %}"></script>
+            
+    {% else %}
+    {% url 'sign_in' as sign_in %}
+    <script>
+        window.location.href = "{% url 'sign_in' %}";
+    </script>
+
+{% endif %}
+
+{% endblock %}

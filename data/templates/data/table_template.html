@@ -34,7 +34,7 @@
                     <td>{{ explant.reinigung }}</td>
                     <td>
                         <i class="trigger-cell"></i>
-                        <i class="bi bi-pencil-square"></i>
+                        <a href="{% url 'explant_update' explant.id %}"><i class="bi bi-pencil-square"></i></a>
                     </td>
                     </tr>
                     <tr class="extended-row d-none">

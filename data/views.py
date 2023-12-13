@@ -97,6 +97,16 @@ def patellaersatz_update(request, pk):
 def all_analytics(request):
     return render(request, 'data/explant_analytic.html')
 
+# --------------------------- Update Explants ---------------------------
+def explant_update(request, explant_id):
+    explant = Explantat.objects.get(pk=explant_id)
+    form = ExplantatForm(request.POST or None, instance=explant)
+    if form.is_valid():
+        form.save()
+        return redirect('table-explants')
+    
+    return render(request, 'data/update_explant.html', {'explant': explant, 'form':form})
+
 
 # --------------------------- Data Insert ---------------------------
 def add_explant(request):
