@@ -1,7 +1,4 @@
 {% block content %}
-    <style>
-        a {text-decoration: none; }
-    </style>
     <table id="explant-table" class="table {% if is_huefte %}huefte{% else %}knie{% endif %}">
     <thead>
         <tr>
@@ -37,7 +34,7 @@
                     <td>{{ explant.reinigung }}</td>
                     <td>
                         <i class="trigger-cell"></i>
-                        <a href="{% url 'explant_update' explant.id %}" style="text-decoration:none"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{% url 'explant_update' explant.id %}" style="color:black"><i class="bi bi-pencil-square"></i></a>
                     </td>
                     </tr>
                     <tr class="extended-row d-none">
