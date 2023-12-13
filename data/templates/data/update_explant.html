@@ -181,7 +181,7 @@
             <div class="modal fade" id="addLagerortModal" tabindex="-1" aria-labelledby="addLagerortModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <form method="post" id="addLagerortForm" action="{% url 'add_lagerort' %}">
+                        <form method="post" id="addLagerortForm" action="{% url 'add_lagerort' %}?next={% url 'update_explant' %}">
                             {% csrf_token %}
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Lagerort</h1>
