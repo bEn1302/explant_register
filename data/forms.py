@@ -15,8 +15,7 @@ class LagerortForm(ModelForm):
             'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Schrank'}),
             'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Kiste'}),
         }
-    previous_path = forms.CharField(widget=forms.HiddenInput(), required=False)
-    
+
 class PatientForm(ModelForm):
     class Meta:
         model = Patient

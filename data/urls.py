@@ -14,7 +14,7 @@ urlpatterns = [
     path('search', views.search, name="search"),
     
     # update views
-    path('update_explant/<explant_id>', views.explant_update, name='explant_update'),
+    path('update_explant/<int:explant_id>', views.explant_update, name='explant_update'),
     path('lagerort/<int:pk>/update/', views.lagerort_update, name='lagerort_update'),
     path('patient/<int:pk>/update/', views.patient_update, name='patient_update'),
     path('reoperation/<int:pk>/update/', views.reoperation_update, name='reoperation_update'),

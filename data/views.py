@@ -128,8 +128,9 @@ def add_model_instance(request, form_class):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            previous_path = form.cleaned_data.get('previous_path', '/')
-            return redirect(previous_path)
+
+            # Redirect back to the referring page
+            return redirect(request.META.get('HTTP_REFERER', '/'))
         else:
             errors = form.errors.as_json()
             return JsonResponse({'success': False, 'errors': errors}, status=400)
