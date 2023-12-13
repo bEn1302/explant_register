@@ -129,7 +129,7 @@ def add_model_instance(request, form_class, redirect_name):
             instance = form.save(commit=False)
             instance.save()
 
-            return JsonResponse({'success': True, 'redirect': redirect_name})
+            return redirect(redirect_name)
         else:
             errors = form.errors.as_json()
             return JsonResponse({'success': False, 'errors': errors}, status=400)
