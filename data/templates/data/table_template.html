@@ -1,4 +1,7 @@
 {% block content %}
+    <style>
+        a {text-decoration: none; }
+    </style>
     <table id="explant-table" class="table {% if is_huefte %}huefte{% else %}knie{% endif %}">
     <thead>
         <tr>
@@ -23,7 +26,7 @@
                     {% else %}
                         <td><input type="checkbox" class="knie-row-checkbox" name="selected_ids[]" value="{{ explant.id }}"></td>
                     {% endif %}
-                    <td>{{ .id }}</td>
+                    <td>{{ explant.id }}</td>
                     <td>{{ explant.ursache }}</td>
                     <td>{{ explant.verfuegbarkeit }}</td>
                     <td>{{ explant.herkunftsort }}</td>
