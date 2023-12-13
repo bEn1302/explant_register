@@ -128,7 +128,8 @@ def add_model_instance(request, form_class, redirect_name):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            return redirect(redirect_name)
+
+            return JsonResponse({'success': True, 'redirect': redirect_name})
         else:
             errors = form.errors.as_json()
             return JsonResponse({'success': False, 'errors': errors}, status=400)
@@ -136,7 +137,7 @@ def add_model_instance(request, form_class, redirect_name):
         return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
 
 def add_lagerort(request):
-    return add_model_instance(request, LagerortForm, 'add-explants')
+    return add_model_instance(request, LagerortForm, request.get_full_path())
 
 def add_patient(request):
     return add_model_instance(request, PatientForm, 'add-explants')
