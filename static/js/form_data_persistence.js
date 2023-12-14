@@ -88,7 +88,7 @@ $(document).ready(function () {
     });
 
 
-    $('.btn-primary').on('click', function (event) {
+    $('add-explant').on('click', function (event) {
         // Entferne die gespeicherten Daten aus dem Local Storage
         localStorage.removeItem('ursache');
         localStorage.removeItem('verfuegbarkeit');
