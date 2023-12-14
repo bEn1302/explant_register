@@ -24,7 +24,24 @@ $(document).ready(function () {
     if (localStorage.getItem('reinigung')) {
         $('#id_reinigung').prop('checked', localStorage.getItem('reinigung') === 'true');
     }
-    // Füge weitere Felder hinzu...
+    if (localStorage.getItem('entnahme_datum')) {
+        $('#id_entnahme_datum').val(localStorage.getItem('entnahme_datum'));
+    }
+    if (localStorage.getItem('eingang_datum')) {
+        $('#id_eingang_datum').val(localStorage.getItem('eingang_datum'));
+    }
+    if (localStorage.getItem('lagerort')) {
+        $('#id_lagerort').val(localStorage.getItem('lagerort'));
+    }
+    if (localStorage.getItem('patient')) {
+        $('#id_patient').val(localStorage.getItem('patient'));
+    }
+    if (localStorage.getItem('reoperation')) {
+        $('#id_reoperation').val(localStorage.getItem('reoperation'));
+    }
+    if (localStorage.getItem('inlay')) {
+        $('#id_inlay').val(localStorage.getItem('inlay'));
+    }
 
     // Überwache Änderungen und speichere sie lokal
     $('#id_ursache').on('input', function () {
@@ -50,5 +67,42 @@ $(document).ready(function () {
     });
     $('#id_reinigung').on('change', function () {
         localStorage.setItem('reinigung', $(this).prop('checked'));
+    });
+    $('#id_entnahme_datum').on('input', function () {
+        localStorage.setItem('entnahme_datum', $(this).val());
+    });
+    $('#id_eingang_datum').on('input', function () {
+        localStorage.setItem('eingang_datum', $(this).val());
+    });
+    $('#id_lagerort').on('input', function () {
+        localStorage.setItem('lagerort', $(this).val());
+    });
+    $('#id_patient').on('input', function () {
+        localStorage.setItem('patient', $(this).val());
+    });
+    $('#id_reoperation').on('input', function () {
+        localStorage.setItem('reoperation', $(this).val());
+    });
+    $('#id_inlay').on('input', function () {
+        localStorage.setItem('inlay', $(this).val());
+    });
+
+
+    $('.btn-primary').on('click', function (event) {
+        // Entferne die gespeicherten Daten aus dem Local Storage
+        localStorage.removeItem('ursache');
+        localStorage.removeItem('verfuegbarkeit');
+        localStorage.removeItem('herkunftsort');
+        localStorage.removeItem('entnahme_datum');
+        localStorage.removeItem('eingang_datum');
+        localStorage.removeItem('bruchgeschehen');
+        localStorage.removeItem('nutzungsdauer');
+        localStorage.removeItem('reinigung');
+        localStorage.removeItem('entnahme_datum');
+        localStorage.removeItem('eingang_datum');
+        localStorage.removeItem('lagerort');
+        localStorage.removeItem('patient');
+        localStorage.removeItem('reoperation');
+        localStorage.removeItem('inlay');
     });
 });
