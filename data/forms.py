@@ -206,7 +206,7 @@ class ExplantatForm(ModelForm):
             'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen', 'style': 'height: 150px;'}),
             'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
             'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
-            'bild': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Bild'}),
+            'bild': forms.FileInput(attrs={'class': 'form-control'}),
             'lagerort': forms.Select(attrs={'class': 'form-select'}),
             'patient': forms.Select(attrs={'class': 'form-select'}),
             'reoperation': forms.Select(attrs={'class': 'form-select'}),
