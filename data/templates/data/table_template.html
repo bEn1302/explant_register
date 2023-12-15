@@ -44,11 +44,7 @@
                                 <div class="col-md-3">
                                 <!-- Extended content goes here -->
                                     <ul class="list-group">
-                                        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                            Bild
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#BildModal{{ explant.id }}">Update</button>
-                                        </li>
+                                        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">Bild</li>
                                         {% if explant.bild %}
                                             <li class="list-group-item text-center"><img src="{{ explant.bild.url }}" alt="" width="200" class="mx-auto"></li>
                                         {% endif %}
