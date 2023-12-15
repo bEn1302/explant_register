@@ -7,7 +7,7 @@
         <div class="container shadow rounded mt-5">
             <br>
             <h2>Explant data registration</h2>
-            <form class="row g-3" method=POST action="">
+            <form class="row g-3" method=POST action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!-- normal explant informations -->
                 <div class="col-md-6">
@@ -42,9 +42,6 @@
                 </div>
 
                 <!-- Bild -->
-                <!-- <div class="col-md-1">
-                    <label for="{{ explantat_form.bild.id_for_label }}" class="form-label">Bild:</label>
-                </div> -->
                 <div class="col-md-4">
                     {{ explantat_form.bild }}
                 </div>

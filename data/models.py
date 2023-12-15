@@ -114,7 +114,7 @@ class Explantat(models.Model):
     bruchgeschehen = models.TextField('Bruchgeschehen')
     nutzungsdauer = models.IntegerField('Nutzungsdauer', blank=True, null=True)        # in Jahre
     reinigung = models.BooleanField('Reinigung')
-    bild = models.FileField('Bild', blank=True, null=True)
+    bild = models.ImageField('Bild', blank=True, null=True, upload_to='images/')
     lagerort = models.ForeignKey(Lagerort, blank=True, null=True, on_delete=models.CASCADE)         
     patient = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE)           
     reoperation = models.ForeignKey(Reoperation, blank=True, null=True, on_delete=models.CASCADE)
