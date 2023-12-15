@@ -40,6 +40,7 @@ def explants_table_view(request):
     }
 
     return render(request, 'data/explant_table.html', context)
+    return render(request, 'data/dashboard.html', context)
 
 
 # --------------------------- Update ----------------------------
