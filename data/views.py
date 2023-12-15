@@ -35,7 +35,10 @@ def explants_table_view(request):
     )
     all_explant_table = huefte_explant_table & knie_explant_table
 
+    is_huefte = request.GET.get('is_huefte')
+
     context = {
+        'is_huefte': is_huefte,
         'huefte_explant_table': huefte_explant_table,
         'knie_explant_table': knie_explant_table,
         'all_explant_table': all_explant_table,
