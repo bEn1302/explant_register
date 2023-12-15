@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.db.models import Q
 from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
+from itertools import chain
 from .forms import *
 
 def start(request):
@@ -33,10 +34,12 @@ def explants_table_view(request):
     knie_explant_table = Explantat.objects.filter(
         Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
     )
+    combined_explant_table = list(chain(huefte_explant_table, knie_explant_table))
 
     context = {
         'huefte_explant_table': huefte_explant_table,
         'knie_explant_table': knie_explant_table,
+        'combined_explant_table': combined_explant_table,
     }
 
     return render(request, 'data/explant_table.html', context)
