@@ -8,31 +8,46 @@
 </div>
 <!-- Charts -->
 <canvas class="my-4 w-100" id="myChart" width="900" height="380">
-  {% block charts %}
-  <!-- Charts -->
-  {% endblock %}
+  {% include 'data/explant_analytic.html' %}
 </canvas>
 <!--Table-->
 <h2>Data</h2>
-    <div class="container shadow-sm rounded">
-      <form id="deleteForm" method="post" action="{% url 'delete_selected_explants' %}">
-        {% csrf_token %}
-          <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
-          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill"><i class="bi bi-box-arrow-up"></i> Export</button>
-          <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
-          <div class="container">
-            {% block content %}
-                {% include 'data/table_template.html' with data=huefte_explant_table is_huefte=True %}
-                {% include 'data/table_template.html' with data=knie_explant_table is_huefte=False %}
-            {% endblock %}
-          </div>
-      </form>
+  <div class="table-responsive">
+    <div class="container mt-3 mb-2">
+      <div class="container shadow-sm rounded">
+        <table class="table table-sm">
+          <thead>
+              <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Ursache</th>
+              <th scope="col">Verfügbarkeit</th>
+              <th scope="col">Herkunftsort</th>
+              <th scope="col">Entnahmedatum</th>
+              <th scope="col">Eingangsdatum</th>
+              <th scope="col">Bruchgeschehen</th>
+              <th scope="col">Nutzungsdauer</th>
+              <th scope="col">Reinigung</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for explant in explant_list %}
+                  <tr class="table-row">
+                      <td>{{ explant.id }}</td>
+                      <td>{{ explant.ursache }}</td>
+                      <td>{{ explant.verfuegbarkeit }}</td>
+                      <td>{{ explant.herkunftsort }}</td>
+                      <td>{{ explant.entnahme_datum }}</td>
+                      <td>{{ explant.eingang_datum }}</td>
+                      <td>{{ explant.bruchgeschehen }}</td>
+                      <td>{{ explant.nutzungsdauer }}</td>
+                      <td>{{ explant.reinigung }}</td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
     </div>
-
-<script defer src="{% static '/js/delete_function.js' %}"></script>
-<script defer src="{% static '/js/expand_table.js' %}"></script>
-<script defer src="{% static '/js/update_form.js' %}"></script>
-<script defer src="{% static '/js/checkbox_table.js' %}"></script>
+  </div>
 
 {% else %}
     {% url 'sign_in' as sign_in %}

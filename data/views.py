@@ -10,7 +10,8 @@ def start(request):
     return render(request, 'startpage/index.html')
 
 def home(request):
-    return render(request, 'data/dashboard.html')
+    explant_list = Explantat.objects.all()
+    return render(request, 'data/dashboard.html', {'explant_list': explant_list})
 
 def disclaimer(request):
     return render(request, 'startpage/impressum.html')
@@ -40,7 +41,6 @@ def explants_table_view(request):
     }
 
     return render(request, 'data/explant_table.html', context)
-    return render(request, 'data/dashboard.html', context)
 
 
 # --------------------------- Update ----------------------------
