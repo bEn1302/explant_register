@@ -21,8 +21,10 @@
           <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill"><i class="bi bi-box-arrow-up"></i> Export</button>
           <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
           <div class="container">
-                {% include 'data/explant_table.html' with data=huefte_explant_table is_huefte=True %}
-                {% include 'data/explant_table.html' with data=knie_explant_table is_huefte=False %}
+            {% block content %}
+                {% include 'data/table_template.html' with data=huefte_explant_table is_huefte=True %}
+                {% include 'data/table_template.html' with data=knie_explant_table is_huefte=False %}
+            {% endblock %}
           </div>
       </form>
     </div>
