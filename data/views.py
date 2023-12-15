@@ -33,10 +33,7 @@ def explants_table_view(request):
     knie_explant_table = Explantat.objects.filter(
         Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
     )
-    all_explant_table = Explantat.objects.filter(
-        Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False) |
-        Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
-    )
+    all_explant_table = huefte_explant_table & knie_explant_table
 
     context = {
         'huefte_explant_table': huefte_explant_table,
