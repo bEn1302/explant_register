@@ -100,7 +100,7 @@ def all_analytics(request):
 # --------------------------- Update Explants ---------------------------
 def explant_update(request, explant_id):
     explant = Explantat.objects.get(pk=explant_id)
-    explantat_form = ExplantatForm(request.POST or None, instance=explant)
+    explantat_form = ExplantatForm(request.POST or None, request.FILES or None , instance=explant)
     if explantat_form.is_valid():
         explantat_form.save()
         return redirect('table-explants')
