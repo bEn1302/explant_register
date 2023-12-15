@@ -1,6 +1,15 @@
 from django import forms
 from django.forms import ModelForm, inlineformset_factory
+from django.forms.widgets import ClearableFileInput
 from .models import *
+
+# ----------------------- Cutom Label for file Input ----------------------- #
+class CustomClearableFileInput(ClearableFileInput):
+    def get_template_substitution_values(self, value):
+        values = super().get_template_substitution_values(value)
+        values['clear_checkbox_label'] = values['clear_checkbox_label'].replace('Change:', '').strip()
+        return values
+
 
 # ----------------------- Data Insert Forms ----------------------- #
 class LagerortForm(ModelForm):
@@ -206,7 +215,7 @@ class ExplantatForm(ModelForm):
             'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen', 'style': 'height: 150px;'}),
             'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
             'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
-            'bild': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'bild': CustomClearableFileInput(attrs={'class': 'form-control'}),
             'lagerort': forms.Select(attrs={'class': 'form-select'}),
             'patient': forms.Select(attrs={'class': 'form-select'}),
             'reoperation': forms.Select(attrs={'class': 'form-select'}),
