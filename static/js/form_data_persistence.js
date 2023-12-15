@@ -31,7 +31,7 @@ $(document).ready(function () {
     $('.add-explant').on('click', function (event) {
         // Entferne die gespeicherten Daten aus dem Local Storage
         fields.forEach(function (field) {
-            localStorage.removeItem(`id_${field}`);
+            localStorage.removeItem(`${field}`);
         });
-    });
+    });    
 });
