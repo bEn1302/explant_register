@@ -28,10 +28,10 @@ def search(request):
 
 def explants_table_view(request):
     huefte_explant_table = Explantat.objects.filter(
-        Q(inlay__isnull=False) | Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False)
+        Q(kopf__isnull=False) | Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False)
     )
     knie_explant_table = Explantat.objects.filter(
-        Q(inlay__isnull=False) | Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
+        Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
     )
 
     context = {
