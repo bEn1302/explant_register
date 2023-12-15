@@ -1,4 +1,4 @@
-{% extends 'data/base.html' %} {% block dashboard %}
+{% extends 'data/base.html' %} {% load static %}  {% block dashboard %}
 
 {% if user.is_authenticated %}
 <div
@@ -16,9 +16,7 @@
 <h2>Data</h2>
 <div class="table-responsive">
   <table class="table table-striped table-sm">
-    {% block table %}
-    <!-- table things -->
-    {% endblock %}
+    {% include 'data/table_template.html' %}
   </table>
 </div>
 
