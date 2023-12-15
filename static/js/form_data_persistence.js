@@ -27,28 +27,11 @@ $(document).ready(function () {
         });
     });
 
-    // Überwache das Klicken auf den Submit-Button
-    $('#add-explant').on('click', function (event) {
+    /// Überwache das Klicken auf den Submit-Button
+    $('add-explant').on('click', function (event) {
         // Entferne die gespeicherten Daten aus dem Local Storage
-        localStorage.removeItem('ursache');
-        localStorage.removeItem('verfuegbarkeit');
-        localStorage.removeItem('herkunftsort');
-        localStorage.removeItem('entnahme_datum');
-        localStorage.removeItem('eingang_datum');
-        localStorage.removeItem('bruchgeschehen');
-        localStorage.removeItem('nutzungsdauer');
-        localStorage.removeItem('reinigung');
-        localStorage.removeItem('entnahme_datum');
-        localStorage.removeItem('eingang_datum');
-        localStorage.removeItem('lagerort');
-        localStorage.removeItem('patient');
-        localStorage.removeItem('reoperation');
-        localStorage.removeItem('inlay');
-        localStorage.removeItem('kopf');
-        localStorage.removeItem('femurkomponente');
-        localStorage.removeItem('schaft');
-        localStorage.removeItem('tibiaplateau');
-        localStorage.removeItem('pfanne');
-        localStorage.removeItem('patellaersatz');
-    });    
+        fields.forEach(function (field) {
+            localStorage.removeItem(`id_${field}`);
+        });
+    });
 });
