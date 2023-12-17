@@ -40,4 +40,8 @@ urlpatterns = [
 
     # delete Explants
     path('delete_selected_explants/', delete_selected_explants, name='delete_selected_explants'),
+
+    # generate pdf
+    path('explant_pdf/', explant_pdf, name='explant_pdf'),
+
 ]

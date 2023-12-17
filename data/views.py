@@ -9,14 +9,23 @@ from .forms import *
 # Import Pagination
 from django.core.paginator import Paginator
 
+# Import generate PDF
+from django.http import HttpResponse
+from django.http import FileResponse
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer
+from io import BytesIO
+from reportlab.lib import colors
+from reportlab.pdfgen import canvas
+
 def start(request):
     return render(request, 'startpage/index.html')
 
 def home(request):
-    explant_list = Explantat.objects.all()
+    explant_list = Explantat.objects.all().order_by('-id')
 
     # Pagination
-    p = Paginator(Explantat.objects.all(), 10)
+    p = Paginator(explant_list, 10)
     page = request.GET.get('page')
     explants = p.get_page(page)
     nums = 'a' * explants.paginator.num_pages
@@ -184,3 +193,115 @@ def delete_selected_explants(request):
     selected_ids = request.POST.getlist('selected_ids[]')
     Explantat.objects.filter(pk__in=selected_ids).delete()
     return redirect('table-explants')
+
+
+# --------------------------- generate PDF ---------------------------
+def explant_pdf(request):
+    buffer = BytesIO()
+
+    # Informationen für jeden Datensatz erstellen
+    data = []
+    for explant in Explantat.objects.all():
+        # Allgemeine Informationen
+        general_info = [
+            ["ID", explant.id],
+            ["Ursache", explant.ursache],
+            ["Verfügbarkeit", "Ja" if explant.verfuegbarkeit else "Nein"],
+            ["Herkunftsort", explant.herkunftsort],
+            ["Entnahmedatum", explant.entnahme_datum.strftime('%Y-%m-%d') if explant.entnahme_datum else ""],
+            ["Eingangsdatum", explant.eingang_datum.strftime('%Y-%m-%d')],
+            ["Bruchgeschehen", explant.bruchgeschehen],
+            ["Nutzungsdauer", str(explant.nutzungsdauer) + " Jahre" if explant.nutzungsdauer else ""],
+            ["Reinigung", "Ja" if explant.reinigung else "Nein"],
+            ["Bild", explant.bild.url if explant.bild else ""],
+        ]
+
+        # Patienteninformationen
+        patient_info = [
+            ["Geburtsdatum", explant.patient.geburtsdatum] if explant.patient else ["", ""],
+            ["Gewicht", explant.patient.gewicht] if explant.patient else ["", ""],
+        ]
+
+        # Inlay-Informationen
+        inlay_info = [
+            ["Hersteller", explant.inlay.hersteller] if explant.inlay else ["", ""],
+            ["Modell", explant.inlay.modell] if explant.inlay else ["", ""],
+            ["Material", explant.inlay.material] if explant.inlay else ["", ""],
+            ["Größe", explant.inlay.groeße] if explant.inlay else ["", ""],
+        ]
+
+        # Kopf-Informationen
+        kopf_info = [
+            ["Hersteller", explant.kopf.hersteller] if explant.kopf else ["", ""],
+            ["Modell", explant.kopf.modell] if explant.kopf else ["", ""],
+            ["Material", explant.kopf.material] if explant.kopf else ["", ""],
+            ["Größe", explant.kopf.groeße] if explant.kopf else ["", ""],
+        ]
+
+        # Schaft-Informationen
+        schaft_info = [
+            ["Hersteller", explant.schaft.hersteller] if explant.schaft else ["", ""],
+            ["Modell", explant.schaft.modell] if explant.schaft else ["", ""],
+            ["Material", explant.schaft.material] if explant.schaft else ["", ""],
+            ["Größe", explant.schaft.groeße] if explant.schaft else ["", ""],
+        ]
+
+        # Pfanne-Informationen
+        pfanne_info = [
+            ["Hersteller", explant.pfanne.hersteller] if explant.pfanne else ["", ""],
+            ["Modell", explant.pfanne.modell] if explant.pfanne else ["", ""],
+            ["Material", explant.pfanne.material] if explant.pfanne else ["", ""],
+            ["Größe", explant.pfanne.groeße] if explant.pfanne else ["", ""],
+        ]
+
+        # Reoperation-Informationen
+        reoperation_info = [
+            ["Reoperation", explant.reoperation.reoperation] if explant.reoperation else ["", ""],
+            ["Reoperationsdatum", explant.reoperation.reoperation_datum.strftime('%Y-%m-%d')] if explant.reoperation else ["", ""],
+        ]
+
+        # Femurkomponente-Informationen
+        femurkomponente_info = [
+            ["Hersteller", explant.femurkomponente.hersteller] if explant.femurkomponente else ["", ""],
+            ["Modell", explant.femurkomponente.modell] if explant.femurkomponente else ["", ""],
+            ["Material", explant.femurkomponente.material] if explant.femurkomponente else ["", ""],
+            ["Größe", explant.femurkomponente.groeße] if explant.femurkomponente else ["", ""],
+        ]
+
+        # Tibiaplateau-Informationen
+        tibiaplateau_info = [
+            ["Hersteller", explant.tibiaplateau.hersteller] if explant.tibiaplateau else ["", ""],
+            ["Modell", explant.tibiaplateau.modell] if explant.tibiaplateau else ["", ""],
+            ["Material", explant.tibiaplateau.material] if explant.tibiaplateau else ["", ""],
+            ["Größe", explant.tibiaplateau.groeße] if explant.tibiaplateau else ["", ""],
+        ]
+
+        # Patellaersatz-Informationen
+        patellaersatz_info = [
+            ["Hersteller", explant.patellaersatz.hersteller] if explant.patellaersatz else ["", ""],
+            ["Modell", explant.patellaersatz.modell] if explant.patellaersatz else ["", ""],
+            ["Material", explant.patellaersatz.material] if explant.patellaersatz else ["", ""],
+            ["Größe", explant.patellaersatz.groeße] if explant.patellaersatz else ["", ""],
+        ]
+
+        # Zusammenführen der Abschnitte
+        combined_info = general_info + patient_info + inlay_info + kopf_info + schaft_info + pfanne_info + reoperation_info + femurkomponente_info + tibiaplateau_info + patellaersatz_info 
+
+        # Tabelle für diesen Datensatz erstellen und zur Gesamttabelle hinzufügen
+        table = Table(combined_info, colWidths=[100, 200])
+        data.append(table)
+
+    # Dokument erstellen
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    
+    # Hinzufügen der Tabellen zum Dokument
+    doc.build(data)
+
+    # Buffer zurücksetzen
+    buffer.seek(0)
+    
+    # Response für das PDF-Dokument erstellen
+    response = HttpResponse(buffer.read(), content_type="application/pdf")
+    response["Content-Disposition"] = "inline; filename=explant_report.pdf"
+
+    return response
