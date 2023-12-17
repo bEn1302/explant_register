@@ -12,39 +12,60 @@
 </canvas>
 <!--Table-->
 <h2>Data</h2>
-  <div class="table-responsive">
     <div class="container mt-3 mb-2">
-      <div class="container shadow-sm rounded">
-        <table class="table table-sm">
-          <thead>
-              <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Ursache</th>
-              <th scope="col">Verfügbarkeit</th>
-              <th scope="col">Herkunftsort</th>
-              <th scope="col">Entnahmedatum</th>
-              <th scope="col">Eingangsdatum</th>
-              <th scope="col">Bruchgeschehen</th>
-              <th scope="col">Nutzungsdauer</th>
-              <th scope="col">Reinigung</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for explant in explant_list %}
-                  <tr class="table-row">
-                      <td>{{ explant.id }}</td>
-                      <td>{{ explant.ursache }}</td>
-                      <td>{{ explant.verfuegbarkeit }}</td>
-                      <td>{{ explant.herkunftsort }}</td>
-                      <td>{{ explant.entnahme_datum }}</td>
-                      <td>{{ explant.eingang_datum }}</td>
-                      <td>{{ explant.bruchgeschehen }}</td>
-                      <td>{{ explant.nutzungsdauer }}</td>
-                      <td>{{ explant.reinigung }}</td>
-                  </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+      <div class="container shadow-sm rounded py-1">
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Ursache</th>
+                <th scope="col">Verfügbarkeit</th>
+                <th scope="col">Herkunftsort</th>
+                <th scope="col">Entnahmedatum</th>
+                <th scope="col">Eingangsdatum</th>
+                <th scope="col">Bruchgeschehen</th>
+                <th scope="col">Nutzungsdauer</th>
+                <th scope="col">Reinigung</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for explant in explants %}
+                    <tr class="table-row">
+                        <td>{{ explant.id }}</td>
+                        <td>{{ explant.ursache }}</td>
+                        <td>{{ explant.verfuegbarkeit }}</td>
+                        <td>{{ explant.herkunftsort }}</td>
+                        <td>{{ explant.entnahme_datum }}</td>
+                        <td>{{ explant.eingang_datum }}</td>
+                        <td>{{ explant.bruchgeschehen }}</td>
+                        <td>{{ explant.nutzungsdauer }}</td>
+                        <td>{{ explant.reinigung }}</td>
+                    </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            {% if explants.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+              <li class="page-item"><a class="page-link" href="?page={{ explants.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            <!-- <li class="page-item disabled"><a class="page-link" href="#">Page: {{ explants.number }} of {{ explants.paginator.num_pages }}</a></li> -->
+            {% for i in nums %}
+                <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+            {% endfor %}
+
+            {% if explants.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ explants.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ explants.paginator.num_pages}}">Last &raquo;</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+
       </div>
     </div>
   </div>

@@ -6,12 +6,22 @@ from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
 
+# Import Pagination
+from django.core.paginator import Paginator
+
 def start(request):
     return render(request, 'startpage/index.html')
 
 def home(request):
     explant_list = Explantat.objects.all()
-    return render(request, 'data/dashboard.html', {'explant_list': explant_list})
+
+    # Pagination
+    p = Paginator(Explantat.objects.all(), 10)
+    page = request.GET.get('page')
+    explants = p.get_page(page)
+    nums = 'a' * explants.paginator.num_pages
+
+    return render(request, 'data/dashboard.html', {'explant_list': explant_list, 'explants':explants, 'nums':nums})
 
 def disclaimer(request):
     return render(request, 'startpage/impressum.html')
