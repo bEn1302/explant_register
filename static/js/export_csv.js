@@ -1,31 +1,62 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Handler for the click on the export button
-    document.getElementById("exportButton").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default behavior of the button
+    // Handler für den Klick auf den Export-Button für Hüftexplantate
+    document.getElementById("exportCsvHuefte").addEventListener("click", function(event) {
+        event.preventDefault(); // Standardverhalten des Buttons verhindern
         
-        // Array to collect the selected IDs
+        // Array zur Sammlung der ausgewählten IDs
         var selectedIds = [];
         
-        // Check if the table contains class 'huefte' or 'knie' to determine the checkbox class
+        // Checken Sie, ob die Tabelle die Klasse 'huefte' hat, um die Checkbox-Klasse zu bestimmen
         var className = document.querySelector('#explant-table').classList.contains('huefte') ? 'huefte-row-checkbox' : 'knie-row-checkbox';
         
-        // Checkboxes to gather selected IDs
+        // Checkboxen zur Sammlung der ausgewählten IDs
         var checkboxes = document.querySelectorAll('.' + className + ':checked');
         
-        // Collect IDs from selected checkboxes
+        // IDs von ausgewählten Checkboxen sammeln
         checkboxes.forEach(function(checkbox) {
             selectedIds.push(checkbox.value);
         });
         
-        // Check if at least one dataset is selected
+        // Überprüfen, ob mindestens ein Datensatz ausgewählt wurde
         if (selectedIds.length > 0) {
-            // Create the URL for the CSV export and add the selected IDs as parameters
+            // URL für den CSV-Export erstellen und die ausgewählten IDs als Parameter hinzufügen
             var exportUrl = "{% url 'explant_csv' %}?selected_ids=" + selectedIds.join("&selected_ids=");
             
-            // Redirect to the CSV export URL
+            // Weiterleitung zur URL für den CSV-Export
             window.location.href = exportUrl;
         } else {
-            // Notify the user about the lack of selection
+            // Benutzer über fehlende Auswahl informieren
+            alert("Bitte wählen Sie mindestens einen Datensatz aus.");
+        }
+    });
+    
+    // Handler für den Klick auf den Export-Button für Knieexplantate
+    document.getElementById("exportCsvKnie").addEventListener("click", function(event) {
+        event.preventDefault(); // Standardverhalten des Buttons verhindern
+        
+        // Array zur Sammlung der ausgewählten IDs
+        var selectedIds = [];
+        
+        // Checken Sie, ob die Tabelle die Klasse 'huefte' hat, um die Checkbox-Klasse zu bestimmen
+        var className = document.querySelector('#explant-table').classList.contains('huefte') ? 'huefte-row-checkbox' : 'knie-row-checkbox';
+        
+        // Checkboxen zur Sammlung der ausgewählten IDs
+        var checkboxes = document.querySelectorAll('.' + className + ':checked');
+        
+        // IDs von ausgewählten Checkboxen sammeln
+        checkboxes.forEach(function(checkbox) {
+            selectedIds.push(checkbox.value);
+        });
+        
+        // Überprüfen, ob mindestens ein Datensatz ausgewählt wurde
+        if (selectedIds.length > 0) {
+            // URL für den CSV-Export erstellen und die ausgewählten IDs als Parameter hinzufügen
+            var exportUrl = "{% url 'explant_csv' %}?selected_ids=" + selectedIds.join("&selected_ids=");
+            
+            // Weiterleitung zur URL für den CSV-Export
+            window.location.href = exportUrl;
+        } else {
+            // Benutzer über fehlende Auswahl informieren
             alert("Bitte wählen Sie mindestens einen Datensatz aus.");
         }
     });
