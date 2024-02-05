@@ -208,8 +208,11 @@ def explant_csv(request):
     # add column headings
     writer.writerow(['ID', 'Ursache', 'Verfügbarkeit', 'Herkunftsort', 'Entnahmedatum', 'Eingangdatum', 'Bruchgeschehen', 'Nutzungsdauer', 'Reinigung', 'Bild', 'Lagerort', 'Patient', 'Reoperation', 'Inlay', 'Kopf', 'Schaft', 'Pfanne', 'Femurkomponente', 'Tibiaplateau', 'Patellaersatz'])
 
-    # get all explants with related fields
-    explants = Explantat.objects.select_related('lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz').all()
+    # get selected ids from request
+    selected_ids = request.GET.getlist('selected_ids[]', [])
+    
+    # get explants with selected ids and related fields
+    explants = Explantat.objects.select_related('lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz').filter(pk__in=selected_ids)
 
     # loop through and output
     for explant in explants:
