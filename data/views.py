@@ -190,6 +190,13 @@ def add_tibiaplateau(request):
 def add_patellaersatz(request):
     return add_model_instance(request, PatellaersatzForm)
 
+# --------------------------- Delete Data ---------------------------
+@require_POST
+def delete_selected_explants(request):
+    selected_ids = request.POST.getlist('selected_ids[]')
+    Explantat.objects.filter(pk__in=selected_ids).delete()
+    return redirect('table-explants')
+
 # --------------------------- generate CSV ---------------------------
 def explant_csv(request):
     response = HttpResponse(content_type='text/csv')
