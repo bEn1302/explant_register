@@ -211,10 +211,8 @@ def explant_csv(request):
     # get selected ids from request
     selected_ids = [int(id) for id in request.GET.getlist('selected_ids', [])]
     
-    print("Selected IDs:", selected_ids)
     # get explants with selected ids and related fields
     explants = Explantat.objects.select_related('lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz').filter(pk__in=selected_ids)
-    print("Filtered Explants:", explants)
 
     # loop through and output
     for explant in explants:
@@ -254,7 +252,13 @@ def explant_pdf(request):
 
     # Informationen für jeden Datensatz erstellen
     data = []
-    for explant in Explantat.objects.all():
+
+    # get selected ids from request
+    selected_ids = [int(id) for id in request.GET.getlist('selected_ids', [])]
+    # get explants with selected ids and related fields
+    explants = Explantat.objects.select_related('patient', 'inlay', 'kopf', 'schaft', 'pfanne', 'reoperation', 'femurkomponente', 'tibiaplateau', 'patellaersatz').filter(pk__in=selected_ids)
+
+    for explant in explants:
         # Allgemeine Informationen
         general_info = [
             ["ID", explant.id],
