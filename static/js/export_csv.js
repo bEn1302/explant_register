@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Handler für den Klick auf den Export-Link
+    // Handler für den Klick auf den Export-Button
     document.getElementById("exportButton").addEventListener("click", function(event) {
-        event.preventDefault(); // Verhindern Sie das Standardverhalten des Links
-        
         // Array zum Sammeln der ausgewählten IDs
         var selectedIds = [];
         
@@ -14,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Überprüfen, ob mindestens ein Datensatz ausgewählt wurde
         if (selectedIds.length > 0) {
             // Erstellen Sie den URL für den CSV-Export und fügen Sie die ausgewählten IDs als Parameter hinzu
-            var exportUrl = "{% url 'explant_csv' %}?selected_ids=" + selectedIds.join(",");
+            var exportUrl = "{% url 'explant_csv' %}?selected_ids=" + selectedIds.join("&selected_ids=");
             
             // Weiterleitung zum CSV-Export-URL
             window.location.href = exportUrl;
