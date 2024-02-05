@@ -190,13 +190,6 @@ def add_tibiaplateau(request):
 def add_patellaersatz(request):
     return add_model_instance(request, PatellaersatzForm)
 
-# --------------------------- Delte Data ---------------------------
-@require_POST
-def delete_selected_explants(request):
-    selected_ids = request.POST.getlist('selected_ids[]')
-    Explantat.objects.filter(pk__in=selected_ids).delete()
-    return redirect('table-explants')
-
 # --------------------------- generate CSV ---------------------------
 def explant_csv(request):
     response = HttpResponse(content_type='text/csv')
@@ -209,7 +202,7 @@ def explant_csv(request):
     writer.writerow(['ID', 'Ursache', 'Verfügbarkeit', 'Herkunftsort', 'Entnahmedatum', 'Eingangdatum', 'Bruchgeschehen', 'Nutzungsdauer', 'Reinigung', 'Bild', 'Lagerort', 'Patient', 'Reoperation', 'Inlay', 'Kopf', 'Schaft', 'Pfanne', 'Femurkomponente', 'Tibiaplateau', 'Patellaersatz'])
 
     # get selected ids from request
-    selected_ids = request.GET.getlist('selected_ids[]', [])
+    selected_ids = request.POST.getlist('selected_ids[]', [])  # Änderung hier: Verwendung von request.POST anstelle von request.GET
     
     # get explants with selected ids and related fields
     explants = Explantat.objects.select_related('lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz').filter(pk__in=selected_ids)
