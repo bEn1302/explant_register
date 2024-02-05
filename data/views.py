@@ -209,10 +209,12 @@ def explant_csv(request):
     writer.writerow(['ID', 'Ursache', 'Verfügbarkeit', 'Herkunftsort', 'Entnahmedatum', 'Eingangdatum', 'Bruchgeschehen', 'Nutzungsdauer', 'Reinigung', 'Bild', 'Lagerort', 'Patient', 'Reoperation', 'Inlay', 'Kopf', 'Schaft', 'Pfanne', 'Femurkomponente', 'Tibiaplateau', 'Patellaersatz'])
 
     # get selected ids from request
-    selected_ids = request.POST.getlist('selected_ids[]', [])  # Änderung hier: Verwendung von request.POST anstelle von request.GET
+    selected_ids = [int(id) for id in request.GET.getlist('selected_ids', [])]
     
+    print("Selected IDs:", selected_ids)
     # get explants with selected ids and related fields
     explants = Explantat.objects.select_related('lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz').filter(pk__in=selected_ids)
+    print("Filtered Explants:", explants)
 
     # loop through and output
     for explant in explants:

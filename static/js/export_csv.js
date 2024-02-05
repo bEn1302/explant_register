@@ -27,7 +27,7 @@ function handleExport(event, checkboxClass) {
     // Check if at least one dataset is selected
     if (selectedIds.length > 0) {
         // Create the URL for the CSV export and add the selected IDs as parameters
-        var exportUrl = "{% url 'explant_csv' %}?selected_ids=" + selectedIds.join("&selected_ids=");
+        var exportUrl = "/explant_csv/?selected_ids=" + selectedIds.join("&selected_ids=");
         
         // Redirect to the CSV export URL
         window.location.href = exportUrl;
