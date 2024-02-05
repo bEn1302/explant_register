@@ -44,4 +44,7 @@ urlpatterns = [
     # generate pdf
     path('explant_pdf/', explant_pdf, name='explant_pdf'),
 
+    # generate csv
+    path('explant_csv/', explant_csv, name='explant_csv'),
+
 ]

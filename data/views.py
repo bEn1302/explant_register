@@ -6,6 +6,9 @@ from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
 
+# Import csv
+import csv
+
 # Import Pagination
 from django.core.paginator import Paginator
 
@@ -194,6 +197,25 @@ def delete_selected_explants(request):
     Explantat.objects.filter(pk__in=selected_ids).delete()
     return redirect('table-explants')
 
+# --------------------------- generate CSV ---------------------------
+def explant_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=explants.csv'
+
+    # create a csv writer
+    writer = csv.writer(response)
+
+    # designate to model
+    explants = Explantat.objects.all()
+
+    # add column headings
+    writer.writerow(['Ursache', 'Verfügbarkeit', 'Herkunftsort', 'Entnahmedatum', 'Eingangdatum', 'Bruchgeschehen', 'Nutzungsdauer', 'Reinigung', 'Bild', 'Lagerort', 'Patient', 'Reoperation', 'Inlay', 'Kopf', 'Schaft', 'Pfanne', 'Femurkomponente', 'Tibiaplateau', 'Patellaersatz'])
+
+    # loop through and output
+    for explant in explants:
+        writer.writerow([explant.ursache, explant.verfuegbarkeit, explant.herkunftsort, explant.eingang_datum, explant.eingang_datum, explant.bruchgeschehen, explant.nutzungsdauer, explant.reinigung, explant.bild, explant.lagerort, explant.patient, explant.reoperation, explant.inlay, explant.kopf, explant.schaft, explant.pfanne, explant.femurkomponente, explant.tibiaplateau, explant.patellaersatz])
+        
+    return response
 
 # --------------------------- generate PDF ---------------------------
 def explant_pdf(request):

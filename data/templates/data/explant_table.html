@@ -48,7 +48,8 @@
         <div class="tab-pane fade show active" id="huefte">
           <div class="container mt-3 mb-2">
             <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
-            <a id="exportButton" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-box-arrow-up"></i> Export</a>
+            <a id="exportButton" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> Export as PDF</a>
+            <a id="exportButton" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> Export as CSV</a>
             <!-- <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill"><i class="bi bi-box-arrow-up"></i> Export</button> -->
             <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
           </div>
@@ -60,7 +61,8 @@
       <div class="tab-pane fade" id="knie">
           <div class="container mt-3 mb-2">
             <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
-            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill"><i class="bi bi-box-arrow-up"></i> Export</button>
+            <a id="exportButton" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> Export as PDF</a>
+            <a id="exportButton" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> Export as CSV</a>
             <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
           </div>
           <div class="container">
