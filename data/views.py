@@ -16,10 +16,13 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.http import FileResponse
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image
 from io import BytesIO
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
+from reportlab.lib.styles import getSampleStyleSheet
+from django.utils.html import format_html
 
 def start(request):
     return render(request, 'startpage/index.html')
@@ -247,6 +250,31 @@ def explant_csv(request):
     return response
 
 # --------------------------- generate PDF ---------------------------
+def create_info_table(data, title):
+    # Tabelle für Informationen erstellen
+    table = Table(data, colWidths=[225, 250])
+
+    # Stil für die Tabelle definieren
+    style = TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('BOTTOMPADDING', (0, 0), (-0.5, 0), 6),
+            ('BACKGROUND', (0, 1), (-1, -1), colors.whitesmoke),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ])
+
+    table.setStyle(style)
+
+    # Überschrift für Informationen erstellen
+    title_style = getSampleStyleSheet()['Heading1']
+    title_style.spaceBefore = 10
+    title_style.fontSize = 14
+    title = Paragraph(f"<b>{title}</b>", title_style)
+
+    return title, table
+
 def explant_pdf(request):
     buffer = BytesIO()
 
@@ -256,12 +284,12 @@ def explant_pdf(request):
     # get selected ids from request
     selected_ids = [int(id) for id in request.GET.getlist('selected_ids', [])]
     # get explants with selected ids and related fields
-    explants = Explantat.objects.select_related('patient', 'inlay', 'kopf', 'schaft', 'pfanne', 'reoperation', 'femurkomponente', 'tibiaplateau', 'patellaersatz').filter(pk__in=selected_ids)
+    explants = Explantat.objects.select_related('lagerort','patient', 'inlay', 'kopf', 'schaft', 'pfanne', 'reoperation', 'femurkomponente', 'tibiaplateau', 'patellaersatz').filter(pk__in=selected_ids)
 
     for explant in explants:
         # Allgemeine Informationen
         general_info = [
-            ["ID", explant.id],
+            ["ID", str(explant.id)],
             ["Ursache", explant.ursache],
             ["Verfügbarkeit", "Ja" if explant.verfuegbarkeit else "Nein"],
             ["Herkunftsort", explant.herkunftsort],
@@ -270,14 +298,42 @@ def explant_pdf(request):
             ["Bruchgeschehen", explant.bruchgeschehen],
             ["Nutzungsdauer", str(explant.nutzungsdauer) + " Jahre" if explant.nutzungsdauer else ""],
             ["Reinigung", "Ja" if explant.reinigung else "Nein"],
-            ["Bild", explant.bild.url if explant.bild else ""],
         ]
+
+         # Bild in das PDF einfügen, wenn vorhanden
+        if explant.bild:
+            image = Image(explant.bild.path)
+            image.drawHeight = min(4 * cm, image.drawHeight) # Bildhöhe anpassen
+            image.drawWidth = min(6 * cm, image.drawWidth)  # Bildbreite anpassen
+            general_info.append(["Bild", image])
+        else:
+            general_info.append(["Bild", ""])
+
+        general_title, general_table = create_info_table(general_info, "Allgemeines")
+        data.append(general_title)
+        data.append(general_table)
+
+        # Lagerortinformationen
+        lagerort_info = [
+            ["Schrank", explant.lagerort.schrank] if explant.lagerort else ["", ""],
+            ["Kiste", explant.lagerort.kiste] if explant.lagerort else ["", ""],
+        ]
+
+        lagerort_title, lagerort_table = create_info_table(lagerort_info, "Lagerort")
+        data.append(lagerort_title)
+        data.append(lagerort_table)
 
         # Patienteninformationen
         patient_info = [
             ["Geburtsdatum", explant.patient.geburtsdatum] if explant.patient else ["", ""],
             ["Gewicht", explant.patient.gewicht] if explant.patient else ["", ""],
         ]
+        
+
+        # Tabelle und Überschrift für Patienteninformationen hinzufügen
+        patient_title, patient_table = create_info_table(patient_info, "Patient")
+        data.append(patient_title)
+        data.append(patient_table)
 
         # Inlay-Informationen
         inlay_info = [
@@ -287,6 +343,10 @@ def explant_pdf(request):
             ["Größe", explant.inlay.groeße] if explant.inlay else ["", ""],
         ]
 
+        inlay_title, inlay_table = create_info_table(inlay_info, "Inlay")
+        data.append(inlay_title)
+        data.append(inlay_table)
+
         # Kopf-Informationen
         kopf_info = [
             ["Hersteller", explant.kopf.hersteller] if explant.kopf else ["", ""],
@@ -294,6 +354,10 @@ def explant_pdf(request):
             ["Material", explant.kopf.material] if explant.kopf else ["", ""],
             ["Größe", explant.kopf.groeße] if explant.kopf else ["", ""],
         ]
+
+        kopf_title, kopf_table = create_info_table(kopf_info, "Kopf")
+        data.append(kopf_title)
+        data.append(kopf_table)
 
         # Schaft-Informationen
         schaft_info = [
@@ -303,6 +367,10 @@ def explant_pdf(request):
             ["Größe", explant.schaft.groeße] if explant.schaft else ["", ""],
         ]
 
+        schaft_title, schaft_table = create_info_table(schaft_info, "Schaft")
+        data.append(schaft_title)
+        data.append(schaft_table)
+
         # Pfanne-Informationen
         pfanne_info = [
             ["Hersteller", explant.pfanne.hersteller] if explant.pfanne else ["", ""],
@@ -311,11 +379,19 @@ def explant_pdf(request):
             ["Größe", explant.pfanne.groeße] if explant.pfanne else ["", ""],
         ]
 
+        pfanne_title, pfanne_table = create_info_table(pfanne_info, "Pfanne")
+        data.append(pfanne_title)
+        data.append(pfanne_table)
+
         # Reoperation-Informationen
         reoperation_info = [
             ["Reoperation", explant.reoperation.reoperation] if explant.reoperation else ["", ""],
             ["Reoperationsdatum", explant.reoperation.reoperation_datum.strftime('%Y-%m-%d')] if explant.reoperation else ["", ""],
         ]
+
+        reoperation_title, reoperation_table = create_info_table(reoperation_info, "Reoperation")
+        data.append(reoperation_title)
+        data.append(reoperation_table)
 
         # Femurkomponente-Informationen
         femurkomponente_info = [
@@ -325,6 +401,10 @@ def explant_pdf(request):
             ["Größe", explant.femurkomponente.groeße] if explant.femurkomponente else ["", ""],
         ]
 
+        femurkomponente_title, femurkomponente_table = create_info_table(femurkomponente_info, "Femurkomponente")
+        data.append(femurkomponente_title)
+        data.append(femurkomponente_table)
+
         # Tibiaplateau-Informationen
         tibiaplateau_info = [
             ["Hersteller", explant.tibiaplateau.hersteller] if explant.tibiaplateau else ["", ""],
@@ -332,6 +412,10 @@ def explant_pdf(request):
             ["Material", explant.tibiaplateau.material] if explant.tibiaplateau else ["", ""],
             ["Größe", explant.tibiaplateau.groeße] if explant.tibiaplateau else ["", ""],
         ]
+
+        tibiaplateau_title, tibiaplateau_table = create_info_table(tibiaplateau_info, "Tibiaplateau")
+        data.append(tibiaplateau_title)
+        data.append(tibiaplateau_table)
 
         # Patellaersatz-Informationen
         patellaersatz_info = [
@@ -341,15 +425,12 @@ def explant_pdf(request):
             ["Größe", explant.patellaersatz.groeße] if explant.patellaersatz else ["", ""],
         ]
 
-        # Zusammenführen der Abschnitte
-        combined_info = general_info + patient_info + inlay_info + kopf_info + schaft_info + pfanne_info + reoperation_info + femurkomponente_info + tibiaplateau_info + patellaersatz_info 
-
-        # Tabelle für diesen Datensatz erstellen und zur Gesamttabelle hinzufügen
-        table = Table(combined_info, colWidths=[100, 200])
-        data.append(table)
+        patellaersatz_title, patellaersatz_table = create_info_table(patellaersatz_info, "Patellaersatz")
+        data.append(patellaersatz_title)
+        data.append(patellaersatz_table)
 
     # Dokument erstellen
-    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    doc = SimpleDocTemplate(buffer, pagesize=letter, topMargin=0.5 * cm, bottomMargin=2.0 * cm, leftMargin=2.5 * cm, rightMargin=2.0 * cm)
     
     # Hinzufügen der Tabellen zum Dokument
     doc.build(data)
