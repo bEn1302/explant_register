@@ -205,15 +205,41 @@ def explant_csv(request):
     # create a csv writer
     writer = csv.writer(response)
 
-    # designate to model
-    explants = Explantat.objects.all()
-
     # add column headings
-    writer.writerow(['Ursache', 'Verfügbarkeit', 'Herkunftsort', 'Entnahmedatum', 'Eingangdatum', 'Bruchgeschehen', 'Nutzungsdauer', 'Reinigung', 'Bild', 'Lagerort', 'Patient', 'Reoperation', 'Inlay', 'Kopf', 'Schaft', 'Pfanne', 'Femurkomponente', 'Tibiaplateau', 'Patellaersatz'])
+    writer.writerow(['ID', 'Ursache', 'Verfügbarkeit', 'Herkunftsort', 'Entnahmedatum', 'Eingangdatum', 'Bruchgeschehen', 'Nutzungsdauer', 'Reinigung', 'Bild', 'Lagerort', 'Patient', 'Reoperation', 'Inlay', 'Kopf', 'Schaft', 'Pfanne', 'Femurkomponente', 'Tibiaplateau', 'Patellaersatz'])
+
+    # get all explants with related fields
+    explants = Explantat.objects.select_related('lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz').all()
 
     # loop through and output
     for explant in explants:
-        writer.writerow([explant.ursache, explant.verfuegbarkeit, explant.herkunftsort, explant.eingang_datum, explant.eingang_datum, explant.bruchgeschehen, explant.nutzungsdauer, explant.reinigung, explant.bild, explant.lagerort, explant.patient, explant.reoperation, explant.inlay, explant.kopf, explant.schaft, explant.pfanne, explant.femurkomponente, explant.tibiaplateau, explant.patellaersatz])
+        # Format dates if needed
+        entnahmedatum = explant.entnahme_datum.strftime('%Y-%m-%d') if explant.entnahme_datum else ''
+        eingangdatum = explant.eingang_datum.strftime('%Y-%m-%d')
+        
+        # add row to CSV
+        writer.writerow([
+            explant.pk,
+            explant.ursache,
+            explant.verfuegbarkeit,
+            explant.herkunftsort,
+            entnahmedatum,
+            eingangdatum,
+            explant.bruchgeschehen,
+            explant.nutzungsdauer,
+            explant.reinigung,
+            explant.bild,
+            explant.lagerort,
+            explant.patient,
+            explant.reoperation,
+            explant.inlay,
+            explant.kopf,
+            explant.schaft,
+            explant.pfanne,
+            explant.femurkomponente,
+            explant.tibiaplateau,
+            explant.patellaersatz
+        ])
         
     return response
 
