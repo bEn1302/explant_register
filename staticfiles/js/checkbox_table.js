@@ -1,15 +1,7 @@
-document.getElementById('selectAll').addEventListener('change', handleSelectAll);
-
-function handleSelectAll() {
-    const tableElement = document.querySelector('#explant-table');
-    if (!tableElement) {
-        console.error('Table element not found');
-        return;
+document.getElementById('selectAll').addEventListener('change', function() {
+    var className = document.querySelector('#explant-table').classList.contains('huefte') ? 'huefte-row-checkbox' : 'knie-row-checkbox';
+    var checkboxes = document.querySelectorAll('.' + className);
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = this.checked;
     }
-
-    const className = tableElement.classList.contains('huefte') ? 'huefte-row-checkbox' : 'knie-row-checkbox';
-    const checkboxes = document.querySelectorAll('.' + className);
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = this.checked;
-    });
-}
+});
