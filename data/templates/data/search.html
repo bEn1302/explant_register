@@ -1,9 +1,8 @@
-{% extends 'data/base.html' %} {% block search %}
+{% extends 'data/base.html' %} {% load static %} {% block search %}
 
 {% if user.is_authenticated %}
 
     {% if searched %}
-        
         
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
             <h1 class="h2">Hüftexplantate</h1>
@@ -35,7 +34,7 @@
                     <td>{{ explant.bruchgeschehen }}</td>
                     <td>{{ explant.nutzungsdauer }}</td>
                     <td>{{ explant.reinigung }}</td>
-                    <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
+                    <td class="trigger-cell"></td>
                 </tr>
                 <tr class="extended-row d-none">
                     <td colspan="11">
@@ -196,7 +195,7 @@
                         <td>{{ explant.bruchgeschehen }}</td>
                         <td>{{ explant.nutzungsdauer }} Jahre</td>
                         <td>{{ explant.reinigung }}</td>
-                        <td class="trigger-cell"><i class="bi bi-plus-circle"></i></td>
+                        <td class="trigger-cell"></td>
                     </tr>
                     <tr class="extended-row d-none">
                         <td colspan="11">
@@ -330,25 +329,7 @@
                 </tbody>
             </table>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-            const triggerCells = document.querySelectorAll(".trigger-cell");
-        
-            let plus = true;
-            triggerCells.forEach((cell) => {
-                cell.addEventListener("click", function () {
-                const extendedRow = this.closest(".table-row").nextElementSibling;
-                extendedRow.classList.toggle("d-none");
-                if (plus) {
-                    cell.innerHTML = '<i class="bi bi-dash-circle"></i>';
-                } else {
-                    cell.innerHTML = '<i class="bi bi-plus-circle"></i>';
-                }
-                plus = !plus;
-                });
-            });
-            });
-        </script>
+        <script defer src="{% static '/js/expand_table.js' %}"></script>
         
     {% else %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
