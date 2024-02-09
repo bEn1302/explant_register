@@ -119,10 +119,6 @@ def pfanne_update(request, pk):
 def patellaersatz_update(request, pk):
     return update_model(request, Patellaersatz, PatellaersatzUpdateForm, 'table-explants', pk)
 
-
-def all_analytics(request):
-    return render(request, 'data/explant_analytic.html')
-
 # --------------------------- Update Explants ---------------------------
 def explant_update(request, explant_id):
     explant = Explantat.objects.get(pk=explant_id)
@@ -435,7 +431,6 @@ def explant_pdf(request):
     # Hinzufügen der Tabellen zum Dokument
     doc.build(data)
 
-    # Buffer zurücksetzen
     buffer.seek(0)
     
     # Response für das PDF-Dokument erstellen
@@ -443,3 +438,28 @@ def explant_pdf(request):
     response["Content-Disposition"] = "inline; filename=explant_report.pdf"
 
     return response
+
+# --------------------------- chart  ---------------------------
+def all_analytics(request):
+    explantate_count = Explantat.objects.count()
+    reoperationen_count = Reoperation.objects.count()
+    inlays_count = Inlay.objects.count()
+    köpfe_count = Kopf.objects.count()
+    patellaersätze_count = Patellaersatz.objects.count()
+    schafte_count = Schaft.objects.count()
+    pfannen_count = Pfanne.objects.count()
+    tibiaplateau_count = Tibiaplateau.objects.count()
+    femurkomponenten_count = Femurkomponente.objects.count()
+
+    context = {
+        'explantate_count': explantate_count,
+        'reoperationen_count': reoperationen_count,
+        'inlays_count': inlays_count,
+        'köpfe_count': köpfe_count,
+        'patellaersätze_count': patellaersätze_count,
+        'schafte_count': schafte_count,
+        'pfannen_count': pfannen_count,
+        'tibiaplateau_count': tibiaplateau_count,
+        'femurkomponenten_count': femurkomponenten_count,
+    }
+    return render(request, 'explant_analytic.html', context)
