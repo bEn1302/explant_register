@@ -6,11 +6,44 @@
   <h1 class="h2">Dashboard</h1>
 </div>
 <!-- Charts -->
-  <canvas class="my-4 w-100" id="myChart" width="900" height="380">
-    {% include 'data/explant_analytic.html' %}
-  </canvas>
+  <canvas class="my-4 w-100" id="mixedChart" width="900" height="380"></canvas>
+  <script>
+    const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: 'Bar Dataset',
+                data: ["{{ explantate_count }}", "{{ reoperationen_count }}", "{{ inlays_count }}", "{{ köpfe_count }}", "{{ schafte_count }}", "{{ pfannen_count }}", "{{ patellaersätze_count }}", "{{ tibiaplateau_count }}", "{{ femurkomponenten_count }}"],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                // this dataset is drawn below
+                order: 2
+            }, {
+                label: 'Line Dataset',
+                data: [10, 5, 7, 2], // Hier müssten Ihre eigenen Daten sein
+                type: 'line',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                // this dataset is drawn on top
+                order: 1
+            }],
+            labels: ["Explantate", "Reoperationen", "Inlays", "Köpfe", "Schafte", "Pfannen", "Patellaersätze", "Tibiaplateau", "Femurkomponenten"]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+  </script>
 <!--Table-->
-<h2>Data</h2>
+<h2>Recently added</h2>
     <div class="container mt-3 mb-2">
       <div class="container shadow-sm rounded py-1">
         <div class="table-responsive">
