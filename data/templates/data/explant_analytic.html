@@ -1,15 +1,14 @@
 {% extends 'data/base.html' %} {% block charts %}
 
 {% if user.is_authenticated %}
-<div
-  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
->
+<title>Analytics</title>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Analytics</h1>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
 <canvas class="my-4 w-100" id="myChart" width="900" height="380">
   <!-- Charts -->
-</canvas>
+</canvas> 
 <script>
   // Daten für den Graphen
   var data = {
@@ -47,7 +46,10 @@
   var options = {
       scales: {
           y: {
-              beginAtZero: true
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1
+            }
           }
       }
   };

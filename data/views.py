@@ -29,6 +29,7 @@ def start(request):
 
 def home(request):
     explant_list = Explantat.objects.all().order_by('-id')
+    chart_data = get_analytics_data()
 
     # Pagination
     p = Paginator(explant_list, 10)
@@ -36,7 +37,14 @@ def home(request):
     explants = p.get_page(page)
     nums = 'a' * explants.paginator.num_pages
 
-    return render(request, 'data/dashboard.html', {'explant_list': explant_list, 'explants':explants, 'nums':nums})
+    context = {
+        'explant_list': explant_list,
+        'explants': explants,
+        'nums': nums,
+    }
+    context.update(chart_data)
+
+    return render(request, 'data/dashboard.html', context)
 
 def disclaimer(request):
     return render(request, 'startpage/impressum.html')
@@ -440,7 +448,7 @@ def explant_pdf(request):
     return response
 
 # --------------------------- chart  ---------------------------
-def all_analytics(request):
+def get_analytics_data():
     explantate_count = Explantat.objects.count()
     reoperationen_count = Reoperation.objects.count()
     inlays_count = Inlay.objects.count()
@@ -451,7 +459,7 @@ def all_analytics(request):
     tibiaplateau_count = Tibiaplateau.objects.count()
     femurkomponenten_count = Femurkomponente.objects.count()
 
-    context = {
+    return {
         'explantate_count': explantate_count,
         'reoperationen_count': reoperationen_count,
         'inlays_count': inlays_count,
@@ -462,4 +470,7 @@ def all_analytics(request):
         'tibiaplateau_count': tibiaplateau_count,
         'femurkomponenten_count': femurkomponenten_count,
     }
-    return render(request, 'explant_analytic.html', context)
+
+def all_analytics(request):
+    data = get_analytics_data()
+    return render(request, 'data/explant_analytic.html', data)
