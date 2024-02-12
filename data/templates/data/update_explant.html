@@ -43,7 +43,11 @@
 
                 <!-- Bild -->
                 <div class="col-md-4">
-                    Derzeit: <a href="{{ explant.bild.url }}">{{ explant.bild.url }}</a>
+                    {% if explant.bild %}
+                        Derzeit: <a href="{{ explant.bild.url }}">{{ explant.bild.url }}</a>
+                    {% else %}
+                        Kein Bild vorhanden
+                    {% endif %}
                     {{ explantat_form.bild }}
                 </div>
 
