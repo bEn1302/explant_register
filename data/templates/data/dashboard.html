@@ -1,4 +1,4 @@
-{% extends 'data/base.html' %} {% load static %}  {% block dashboard %}
+{% extends 'data/base.html' %} {% load static %} {% load custom_filters %} {% block dashboard %}
 
 {% if user.is_authenticated %}
 <title>Dashboard</title>
@@ -50,27 +50,27 @@
           <table class="table table-sm table-hover">
             <thead>
                 <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Ursache</th>
-                <th scope="col">Verfügbarkeit</th>
-                <th scope="col">Herkunftsort</th>
-                <th scope="col">Entnahmedatum</th>
-                <th scope="col">Eingangsdatum</th>
-                <th scope="col">Bruchgeschehen</th>
-                <th scope="col">Nutzungsdauer</th>
-                <th scope="col">Reinigung</th>
+                  <th class="text-center" scope="col">ID</th>
+                  <th class="text-center" scope="col">Ursache</th>
+                  <th class="text-center" scope="col">Verfügbarkeit</th>
+                  <th class="text-center" scope="col">Herkunftsort</th>
+                  <th class="text-center" scope="col">Entnahmedatum</th>
+                  <th class="text-center" scope="col">Eingangsdatum</th>
+                  <th class="text-center" scope="col">Bruchgeschehen</th>
+                  <th class="text-center" scope="col">Nutzungsdauer</th>
+                  <th class="text-center" scope="col">Reinigung</th>
                 </tr>
             </thead>
             <tbody>
                 {% for explant in explants %}
                     <tr class="table-row">
                         <td>{{ explant.id }}</td>
-                        <td>{{ explant.ursache }}</td>
+                        <td>{{ explant.ursache|truncate:25 }}</td>
                         <td>{{ explant.verfuegbarkeit }}</td>
                         <td>{{ explant.herkunftsort }}</td>
                         <td>{{ explant.entnahme_datum }}</td>
                         <td>{{ explant.eingang_datum }}</td>
-                        <td>{{ explant.bruchgeschehen }}</td>
+                        <td>{{ explant.bruchgeschehen|truncate:25 }}</td>
                         <td>{{ explant.nutzungsdauer }}</td>
                         <td>{{ explant.reinigung }}</td>
                     </tr>
