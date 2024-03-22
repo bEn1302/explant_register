@@ -5,7 +5,7 @@ from django.db.models import Q
 from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
-
+from django.contrib import messages
 # Import csv
 import csv
 
@@ -143,7 +143,9 @@ def add_explant(request):
     if request.method == 'POST':
         explantat_form = ExplantatForm(request.POST, request.FILES)
         if explantat_form.is_valid():
-            explantat_form.save()
+            explant = explantat_form.save(commit=False)
+            explant.owner = request.user.id # logged in User
+            explant.save()
             return HttpResponseRedirect(f"{reverse('table-explants')}?success=True")
     
     else:
@@ -200,9 +202,19 @@ def add_patellaersatz(request):
 # --------------------------- Delete Data ---------------------------
 @require_POST
 def delete_selected_explants(request):
-    selected_ids = request.POST.getlist('selected_ids[]')
-    Explantat.objects.filter(pk__in=selected_ids).delete()
+    if request.method == 'POST':
+        selected_ids = request.POST.getlist('selected_ids[]')
+        for selected_id in selected_ids:
+            explant = Explantat.objects.get(pk=selected_id)
+            if request.user.id == explant.owner:
+                explant.delete()
+                messages.success(request, 'Explant deleted!')
+            else:
+                messages.warning(request, f'You are not authorized to delete Explant ID(s): {selected_id}')
+
     return redirect('table-explants')
+    
+
 
 # --------------------------- generate CSV ---------------------------
 def explant_csv(request):

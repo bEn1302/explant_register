@@ -4,6 +4,8 @@
 
 
 {% if user.is_authenticated %}
+    <!-- TEST Rechtesystem -->
+    {% if user.id == explant.owner %}    
         <div class="container shadow rounded mt-5">
             <br>
             <h2>Update Explant</h2>
@@ -390,8 +392,16 @@
                 </div>
             </div>
         </div>
-            
     {% else %}
+        <!-- noch schön machen!!! -->
+        <h2>Acces Denied</h2>
+        <p>Only the user who has entered the data in the database can edit it ...</p>
+        Logged in User: {{ user }}
+        <br>
+        Owner: {{ explant.owner }}
+    {% endif %}
+            
+{% else %}
     {% url 'sign_in' as sign_in %}
     <script>
         window.location.href = "{% url 'sign_in' %}";

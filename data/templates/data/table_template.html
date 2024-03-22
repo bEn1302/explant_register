@@ -1,5 +1,21 @@
 {% load custom_filters %}
 {% block content %}
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% elif message.tags == 'warning' %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{ message }}</strong> Please try again...
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
     <table id="explant-table" class="table {% if is_huefte %}huefte{% else %}knie{% endif %}">
     <thead>
         <tr>
@@ -36,7 +52,10 @@
                     <td class="text-center">{{ explant.reinigung }}</td>
                     <td class="text-center">
                         <i class="trigger-cell"></i>
-                        <a href="{% url 'explant_update' explant.id %}" style="color:black"><i class="bi bi-pencil-square"></i></a>
+                        <!-- nur Icon anzeigen wenn man auch den Eintrag bearbeiten darf -->
+                        {% if user.id == explant.owner %}
+                            <a href="{% url 'explant_update' explant.id %}" style="color:black"><i class="bi bi-pencil-square"></i></a>
+                        {% endif %}
                         <a href="" style="color:black"><i class="bi bi-person-circle"></i></a>
                     </td>
                     </tr>
@@ -62,7 +81,9 @@
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                             Lagerort
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#lagerortModal{{ explant.id }}">Update</button>
+                                            {% if user.id == explant.owner %}
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#lagerortModal{{ explant.id }}">Update</button>
+                                            {% endif %}
                                         </li>
                                         <li class="list-group-item">
                                         Schrank: {{ explant.lagerort.schrank }}
@@ -116,7 +137,9 @@
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                             Patient
-                                            <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patientModal{{ explant.id }}">Update</button>
+                                            {% if user.id == explant.owner %}
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patientModal{{ explant.id }}">Update</button>
+                                            {% endif %}
                                         </li>
                                         <li class="list-group-item">
                                             Geburtsdatum: {{ explant.patient.geburtsdatum }}
@@ -170,7 +193,9 @@
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                             Reoperation
-                                        <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#reoperationModal{{ explant.id }}">Update</button>
+                                            {% if user.id == explant.owner %}
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#reoperationModal{{ explant.id }}">Update</button>
+                                            {% endif %}
                                         </li>
                                         <li class="list-group-item">
                                             Reoperation: {{ explant.reoperation.reoperation }}
@@ -226,7 +251,9 @@
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                             Inlay
-                                            <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#inlayModal{{ explant.id }}">Update</button>
+                                            {% if user.id == explant.owner %}
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#inlayModal{{ explant.id }}">Update</button>
+                                            {% endif %}    
                                         </li>
                                         <li class="list-group-item">
                                             Hersteller: {{ explant.inlay.hersteller }}
@@ -297,7 +324,9 @@
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 Kopf
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal{{ explant.id }}">Update</button>
+                                                {% if user.id == explant.owner %}
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal{{ explant.id }}">Update</button>
+                                                {% endif %}
                                             </li>
                                             <li class="list-group-item">
                                                 Hersteller: {{ explant.kopf.hersteller }}
@@ -368,7 +397,9 @@
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 Femurkomponente
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal{{ explant.id }}">Update</button>
+                                                {% if user.id == explant.owner %}
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal{{ explant.id }}">Update</button>
+                                                {% endif %}    
                                             </li>
                                             <li class="list-group-item">
                                                 Hersteller: {{ explant.femurkomponente.hersteller }}
@@ -440,7 +471,9 @@
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 Schaft
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal{{ explant.id }}">Update</button>
+                                                {% if user.id == explant.owner %}
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal{{ explant.id }}">Update</button>
+                                                {% endif %}
                                             </li>
                                             <li class="list-group-item">
                                                 Hersteller: {{ explant.schaft.hersteller }}
@@ -511,7 +544,9 @@
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 Tibiaplateau
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal{{ explant.id }}">Update</button>
+                                                {% if user.id == explant.owner %}
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal{{ explant.id }}">Update</button>
+                                                {% endif %}
                                             </li>
                                             <li class="list-group-item">
                                                 Hersteller: {{ explant.tibiaplateau.hersteller }}
@@ -583,7 +618,9 @@
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 Pfanne
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal{{ explant.id }}">Update</button>
+                                                {% if user.id == explant.owner %}
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal{{ explant.id }}">Update</button>
+                                                {% endif %}
                                             </li>
                                             <li class="list-group-item">
                                                 Hersteller: {{ explant.pfanne.hersteller }}
@@ -654,7 +691,9 @@
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 Patellaersatz
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal{{ explant.id }}">Update</button>
+                                                {% if user.id == explant.owner %}
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal{{ explant.id }}">Update</button>
+                                                {% endif %}
                                             </li>
                                             <li class="list-group-item">
                                                 Hersteller: {{ explant.patellaersatz.hersteller }}

@@ -127,6 +127,8 @@ class Explantat(models.Model):
     femurkomponente = models.ForeignKey(Femurkomponente, blank=True, null=True, on_delete=models.PROTECT)
     tibiaplateau = models.ForeignKey(Tibiaplateau, blank=True, null=True, on_delete=models.PROTECT)
     patellaersatz = models.ForeignKey(Patellaersatz, blank=True, null=True, on_delete=models.PROTECT)
+    # owner
+    owner = models.IntegerField('Owner', blank=False, default=1)
 
     class Meta:
         verbose_name_plural = "Explantate"
