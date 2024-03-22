@@ -1,5 +1,6 @@
 from django import template
-from django.utils.html import strip_tags
+# Import User Model from Django
+from django.contrib.auth.models import User
 
 register = template.Library()
 
@@ -11,3 +12,11 @@ def truncate(value, length):
     else:
         truncated_value = value
     return truncated_value
+
+@register.simple_tag
+def get_username_from_id(user_id):
+    try:
+        user = User.objects.get(pk=user_id)
+        return user.username
+    except User.DoesNotExist:
+        return None

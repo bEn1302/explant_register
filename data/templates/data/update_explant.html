@@ -1,5 +1,6 @@
 {% extends 'data/base.html' %} 
 {% load static %} 
+{% load custom_filters %}
 {% block update_explant %}
 
 
@@ -394,11 +395,19 @@
         </div>
     {% else %}
         <!-- noch schön machen!!! -->
-        <h2>Acces Denied</h2>
-        <p>Only the user who has entered the data in the database can edit it ...</p>
-        Logged in User: {{ user }}
-        <br>
-        Owner: {{ explant.owner }}
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <h2><strong>Acces Denied</strong></h2> Only the user who has entered the data in the database can edit it ...
+            <br>
+            <br>
+            <strong>Logged in User:</strong> {{ user }}
+            <br>
+            <strong>Owner:</strong>
+            {% with explant.owner as owner_id %}
+                {% get_username_from_id owner_id as owner_username %}
+                {{ owner_username }}
+            {% endwith %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     {% endif %}
             
 {% else %}

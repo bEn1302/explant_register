@@ -8,10 +8,8 @@ from .forms import *
 from django.contrib import messages
 # Import csv
 import csv
-
 # Import Pagination
 from django.core.paginator import Paginator
-
 # Import generate PDF
 from django.http import HttpResponse
 from django.http import FileResponse
@@ -213,8 +211,6 @@ def delete_selected_explants(request):
                 messages.warning(request, f'You are not authorized to delete Explant ID(s): {selected_id}')
 
     return redirect('table-explants')
-    
-
 
 # --------------------------- generate CSV ---------------------------
 def explant_csv(request):
