@@ -1,0 +1,177 @@
+{% extends 'data/base.html' %} {% load static %} {% load custom_filters %}
+
+{% block account %}
+    {% if user.is_authenticated %}
+        <title>Account</title>
+        <div class="container mt-4">
+            <div class="row">
+                <!-- account details -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="col">
+                            <center>
+                                <h4>Your Profile</h4>
+                            </center>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <center>
+                                <img width="100px" src="{% static '/img/avatar.svg' %}" />
+                                <br>
+                                <br>
+                                Username: {{user}}
+                            </center>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                        </div>
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="inputText" class="form-label">First name</label>
+                                <input type="text" class="form-control" placeholder="{{ user.first_name }}" id="inputText">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputText" class="form-label">Last name</label>
+                                <input type="text" class="form-control" placeholder="{{ user.last_name }}" id="inputText">
+                            </div>
+                            <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="{{ user.email }}" id="inputEmail">
+                            </div>
+                            <div class="col-md-6">
+                            <label for="inputPhone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="inputPhone">
+                            </div>
+                            <div class="col-12">
+                            <label for="inputAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            </div>
+                            <div class="col-md-6">
+                            <label for="inputCity" class="form-label">City</label>
+                            <input type="text" class="form-control" id="inputCity">
+                            </div>
+                            <div class="col-md-4">
+                            <label for="inputState" class="form-label">State</label>
+                            <select id="inputState" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Baden-Württemberg</option>
+                                <option>Bayern</option>
+                                <option>Baden-Württemberg</option>
+                                <option>Berlin</option>
+                                <option>Brandenburg</option>
+                                <option>Bremen</option>
+                                <option>Hamburg</option>
+                                <option>Hessen</option>
+                                <option>Mecklenburg-Vorpommern</option>
+                                <option>Niedersachsen</option>
+                                <option>Nordrhein-Westfalen</option>
+                                <option>Rheinland-Pfalz</option>
+                                <option>Saarland</option>
+                                <option>Sachsen</option>
+                                <option>Sachsen-Anhalt</option>
+                                <option>Schleswig-Holstein</option>
+                                <option>Thüringen</option>
+                            </select>
+                            </div>
+                            <div class="col-md-2">
+                            <label for="inputZip" class="form-label">Zip</label>
+                            <input type="text" class="form-control" id="inputZip">
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                            <div class="col-md-6 mt-0">
+                                <label for="inputPassword" class="form-label">Old Password</label>
+                                <input type="password" class="form-control" id="inputPassword" disabled>
+                            </div>
+                            <div class="col-md-6 mt-0">
+                                <label for="inputPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="inputPassword">
+                            </div>
+                            <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- registered data -->
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="col">
+                            <center>
+                                <h4>Registered Data</h4>
+                            </center>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <form id="deleteForm" method="post" action="{% url 'delete_selected_explants' %}">
+                                {% csrf_token %}
+                                <ul class="nav nav-tabs" id="myTabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="huefte-tab" data-bs-toggle="tab" href="#huefte">Hüftexplantat</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="knie-tab" data-bs-toggle="tab" href="#knie">Knieexplant</a>
+                                </li>
+                                </ul>
+                                <div class="tab-content">
+                                <div class="tab-pane fade show active" id="huefte">
+                                    <div class="container mt-3 mb-2">
+                                    <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
+                                    <a id="exportPdfHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> Export as PDF</a>
+                                    <a id="exportCsvHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> Export as CSV</a>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        {% include 'data/table_template.html' with data=huefte_explant_table is_huefte=True %}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="knie">
+                                    <div class="container mt-3 mb-2">
+                                    <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
+                                    <a id="exportPdfKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> Export as PDF</a>
+                                    <a id="exportCsvKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> Export as CSV</a>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        {% include 'data/table_template.html' with data=knie_explant_table is_huefte=False %}
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <script defer src="{% static '/js/checkbox_table.js' %}"></script>
+        <script defer src="{% static '/js/export.js' %}"></script>
+        <script defer src="{% static '/js/delete_function.js' %}"></script>
+        <script defer src="{% static '/js/expand_table.js' %}"></script>
+        <script defer src="{% static '/js/expand_text.js' %}"></script>
+        <script defer src="{% static '/js/update_form.js' %}"></script>
+    
+    {% else %}
+        {% url 'sign_in' as sign_in %}
+        <script>
+            window.location.href = "{% url 'sign_in' %}";
+        </script>
+
+    {% endif %}
+{% endblock %}

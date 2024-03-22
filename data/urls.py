@@ -13,6 +13,7 @@ urlpatterns = [
     path('forms', views.add_explant, name="add-explants"),
     path('search', views.search, name="search"),
     path('users', views.users, name="users"),
+    path('account', views.account, name="account"),
     
     # update views
     path('update_explant/<int:explant_id>', views.explant_update, name='explant_update'),

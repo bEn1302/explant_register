@@ -4,7 +4,7 @@
 {% block table %}
 
 {% if user.is_authenticated %}
-<title>Data</title>
+  <title>Data</title>
   <style>
     .btn-outline-secondary:hover{
       text-decoration: none;
@@ -79,9 +79,6 @@
   <script defer src="{% static '/js/expand_text.js' %}"></script>
   <script defer src="{% static '/js/update_form.js' %}"></script>
   
-  
-  
-
 {% else %}
     {% url 'sign_in' as sign_in %}
     <script>

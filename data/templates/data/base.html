@@ -152,7 +152,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'account' %}">
                   <i class="bi bi-person-circle"></i>
                   Account
                 </a>
@@ -169,6 +169,7 @@
           {% block search %}{% endblock %} 
           {% block update_explant %}{% endblock %}
           {% block users %}{% endblock %}
+          {% block account %}{% endblock %}
         </main>
       </div>
     </div>

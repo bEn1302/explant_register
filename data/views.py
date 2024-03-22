@@ -486,3 +486,21 @@ def all_analytics(request):
 # --------------------------- Users  ---------------------------
 def users(request):
     return render(request, 'data/users.html')
+
+# --------------------------- Account  ---------------------------
+def account(request):
+    huefte_explant_table = Explantat.objects.filter(
+        Q(kopf__isnull=False) | Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False),
+        owner=request.user.id
+    )
+    knie_explant_table = Explantat.objects.filter(
+        Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False),
+        owner=request.user.id
+    )
+
+    context = {
+        'huefte_explant_table': huefte_explant_table,
+        'knie_explant_table': knie_explant_table,
+    }
+
+    return render(request, 'data/account.html', context)
