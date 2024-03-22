@@ -12,6 +12,7 @@ urlpatterns = [
     path('explants', views.explants_table_view, name="table-explants"),
     path('forms', views.add_explant, name="add-explants"),
     path('search', views.search, name="search"),
+    path('users', views.users, name="users"),
     
     # update views
     path('update_explant/<int:explant_id>', views.explant_update, name='explant_update'),

@@ -482,3 +482,7 @@ def get_analytics_data():
 def all_analytics(request):
     data = get_analytics_data()
     return render(request, 'data/explant_analytic.html', data)
+
+# --------------------------- Users  ---------------------------
+def users(request):
+    return render(request, 'data/users.html')
