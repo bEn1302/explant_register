@@ -46,20 +46,20 @@
                             </div>
                             <div class="col-md-6">
                             <label for="inputPhone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="inputPhone">
+                            <input type="tel" class="form-control" placeholder="{{ user.userprofile.phone }}" id="inputPhone">
                             </div>
                             <div class="col-12">
                             <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                            </div>
-                            <div class="col-md-6">
-                            <label for="inputCity" class="form-label">City</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <input type="text" class="form-control" placeholder="{{ user.userprofile.address }}" id="inputAddress">
                             </div>
                             <div class="col-md-4">
+                            <label for="inputCity" class="form-label">City</label>
+                            <input type="text" class="form-control" placeholder="{{ user.userprofile.city }}" id="inputCity">
+                            </div>
+                            <div class="col-md-5">
                             <label for="inputState" class="form-label">State</label>
                             <select id="inputState" class="form-select">
-                                <option selected>Choose...</option>
+                                <option selected>{{ user.userprofile.state }}</option>
                                 <option>Baden-Württemberg</option>
                                 <option>Bayern</option>
                                 <option>Baden-Württemberg</option>
@@ -79,9 +79,9 @@
                                 <option>Thüringen</option>
                             </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                             <label for="inputZip" class="form-label">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
+                            <input type="text" class="form-control" placeholder="{{ user.userprofile.zip_code }}" id="inputZip">
                             </div>
                             <div class="col-md-12">
                                 <hr>
