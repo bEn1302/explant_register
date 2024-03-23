@@ -5,20 +5,17 @@ from django import forms
 
 class RegisterUserForm(UserCreationForm):
     email = forms.EmailField(label="",help_text=False, widget=forms.EmailInput(attrs={'class':'form-control form-control-lg bg-light fs-6', 'placeholder':'Email address'}))
-    #first_name = forms.CharField(help_text=False, max_length=50, widget=forms.TextInput(attrs={'class':'form-control form-control-lg bg-light fs-6', 'placeholder':'First name}))
-    #last_name = forms.CharField(help_text=False, max_length=50, widget=forms.TextInput(attrs={'class':'form-control form-control-lg bg-light fs-6', 'placeholder':'Last name'}))
+    first_name = forms.CharField(label="",help_text=False, max_length=25, widget=forms.TextInput(attrs={'class':'form-control form-control-lg bg-light fs-6', 'placeholder':'First name'}))
+    last_name = forms.CharField(label="",help_text=False, max_length=25, widget=forms.TextInput(attrs={'class':'form-control form-control-lg bg-light fs-6', 'placeholder':'Last name'}))
     
     class Meta:
         model = User
         fields = ('username', 
-                  #'first_name', 'last_name',
-                  'email', 'password1', 'password2')
-        # help_texts = {
-        #     'username': None,
-        #     'email': None,
-        #     # 'first_name': None,
-        #     # 'last_name': None
-        # }
+                  'first_name', 
+                  'last_name',
+                  'email', 
+                  'password1', 
+                  'password2')
         
     def __init__(self, *args, **kwargs):
         super(RegisterUserForm, self).__init__(*args, **kwargs)

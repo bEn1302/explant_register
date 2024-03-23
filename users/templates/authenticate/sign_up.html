@@ -68,42 +68,34 @@
               </div>
               <form action="{% url 'sign_up' %}" method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
-                
-                <!-- <div class="input-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control form-control-lg bg-light fs-6"
-                    placeholder="Username"
-                    name="username"
-                  />
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-md-0 mb-3">
+                        {{ form.first_name }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.last_name }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                      {{ form.username }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    {{ form.email }}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-md-0 mb-3">
+                        {{ form.password1 }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.password2 }}
+                    </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input
-                    type="email"
-                    class="form-control form-control-lg bg-light fs-6"
-                    placeholder="Email address"
-                    name="email"
-                  />
-                </div>
-                <div class="input-group mb-3">
-                  <input
-                    type="password"
-                    class="form-control form-control-lg bg-light fs-6"
-                    placeholder="Password"
-                    name="password1"
-                  />
-                </div>
-                <div class="input-group mb-5">
-                  <input
-                    type="password"
-                    class="form-control form-control-lg bg-light fs-6"
-                    placeholder="Confirm Password"
-                    name="password2"
-                  /> -->
-                </div>
-                <div class="input-group mb-3">
-                  <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Sign up</button>
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Sign up</button>
                 </div>
               </form>
               <div class="row">
