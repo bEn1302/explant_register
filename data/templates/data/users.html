@@ -5,11 +5,6 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Users</h1>
         </div>
-        <style>
-            .active-user{
-                border: 2px solid #007bff;
-            }
-        </style>
         <!-- user table -->
         <div class="container shadow-sm rounded">
             <div class="table-responsive">
@@ -28,9 +23,9 @@
                     </thead>
                     <tbody>
                         {% for user in users %}
-                        <tr {% if user.id == user_id %}class="active-user"{% endif %}>
+                        <tr>
                             <td class="align-middle">{{ user.id }}</td>
-                            <td class="align-middle"><img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 40px; height: 40px;"></td>
+                            <td class="align-middle">{% if user.userprofile.profile_picture %}<img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 40px; height: 40px;">{% else %}<img src="{% static '/img/avatar.svg' %}" alt="Default Profile Picture" class="rounded-circle" style="width: 40px; height: 40px;">{% endif %}</td>
                             <td class="align-middle">{{ user.first_name }} {{ user.last_name }}</td>
                             <td class="align-middle">{{ user.email }}</td>
                             <td class="align-middle">{{ user.date_joined|date:"F d, Y" }}</td>
@@ -53,7 +48,7 @@
                             </td>
                         </tr>
                         {% endfor %}
-                    </tbody>
+                    </tbody>                 
                 </table>
             </div>
         </div>

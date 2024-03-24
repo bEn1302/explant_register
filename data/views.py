@@ -487,14 +487,14 @@ def all_analytics(request):
     data = get_analytics_data()
     return render(request, 'data/explant_analytic.html', data)
 
-# --------------------------- Users  ---------------------------
 def users(request):
     user_id = request.GET.get('user_id')  # Benutzer-ID aus der URL abrufen
-    users = User.objects.all()
 
     if user_id:
         user = get_object_or_404(User, id=user_id)
         users = [user]
+    else:
+        users = User.objects.all()
 
     return render(request, 'data/users.html', {'users': users, 'user_id': user_id})
 
