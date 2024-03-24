@@ -1,19 +1,66 @@
 {% extends 'data/base.html' %} {% load static %}
 {% block users %}
-
     {% if user.is_authenticated %}
-    <title>Users</title>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Users</h1>
-    </div>
-    <!-- user table -->
-
+        <title>Users</title>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Users</h1>
+        </div>
+        <style>
+            .active-user{
+                border: 2px solid #007bff;
+            }
+        </style>
+        <!-- user table -->
+        <div class="container shadow-sm rounded">
+            <div class="table-responsive">
+                <table class="table table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Profile</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Date Joined</th>
+                            <th scope="col">Last Login</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr {% if user.id == user_id %}class="active-user"{% endif %}>
+                            <td class="align-middle">{{ user.id }}</td>
+                            <td class="align-middle"><img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 40px; height: 40px;"></td>
+                            <td class="align-middle">{{ user.first_name }} {{ user.last_name }}</td>
+                            <td class="align-middle">{{ user.email }}</td>
+                            <td class="align-middle">{{ user.date_joined|date:"F d, Y" }}</td>
+                            <td class="align-middle">{{ user.last_login|date:"F d, Y" }}</td>
+                            <td class="align-middle">
+                                {% if user.is_active %}
+                                    <span class="badge bg-success fs-6">Active</span>
+                                {% else %}
+                                    <span class="badge bg-danger fs-6">Inactive</span>
+                                {% endif %}
+                            </td>
+                            <td class="align-middle">
+                                {% if user.is_superuser %}
+                                    <span class="badge bg-primary fs-6">Superuser</span>
+                                {% elif user.is_staff %}
+                                    <span class="badge bg-secondary fs-6">Staff</span>
+                                {% else %}
+                                    <span class="badge bg-info fs-6">Normal</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     {% else %}
         {% url 'sign_in' as sign_in %}
         <script>
             window.location.href = "{% url 'sign_in' %}";
         </script>
-
     {% endif %}
-
 {% endblock %}
