@@ -32,6 +32,7 @@
                         </div>
                         </div>
                         <form class="row g-3">
+                            {% csrf_token %}
                             <div class="col-md-6">
                                 <label for="inputText" class="form-label">First name</label>
                                 <input type="text" class="form-control" placeholder="{{ user.first_name }}" id="inputText">
