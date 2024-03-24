@@ -6,6 +6,8 @@ from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
 from django.contrib import messages
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.decorators import login_required
 # Import csv
 import csv
 # Import Pagination
@@ -504,3 +506,17 @@ def account(request):
     }
 
     return render(request, 'data/account.html', context)
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        profile_form = ProfileUpdateForm(request.POST, instance=request.user.userprofile)
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        if profile_form.is_valid() and user_form.is_valid():
+            profile_form.save()
+            user_form.save()
+            return redirect('account')
+    else:
+        profile_form = ProfileUpdateForm(instance=request.user.userprofile)
+        user_form = UserUpdateForm(instance=request.user)
+    return render(request, 'data/account.html', {'profile_form': profile_form, 'user_form': user_form})

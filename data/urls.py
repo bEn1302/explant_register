@@ -27,6 +27,7 @@ urlpatterns = [
     path('tibiaplateau/<int:pk>/update/', views.tibiaplateau_update, name='tibiaplateau_update'),
     path('pfanne/<int:pk>/update/', views.pfanne_update, name='pfanne_update'),
     path('patellaersatz/<int:pk>/update/', views.patellaersatz_update, name='patellaersatz_update'),
+    path('update-profile/', update_profile, name='update_profile'),
 
     # Data insert views
     path('add_lagerort/', add_lagerort, name='add_lagerort'),

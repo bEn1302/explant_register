@@ -323,3 +323,14 @@ class PatellaersatzUpdateForm(ModelForm):
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
         }             
+
+# ----------------------- User Profile Forms ----------------------- #
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['phone', 'address', 'state', 'zip_code', 'city', 'profile_picture']
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
