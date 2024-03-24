@@ -8,6 +8,8 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
 # Import csv
 import csv
 # Import Pagination
@@ -510,7 +512,7 @@ def account(request):
 @login_required
 def update_profile(request):
     if request.method == 'POST':
-        profile_form = ProfileUpdateForm(request.POST, instance=request.user.userprofile)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
         user_form = UserUpdateForm(request.POST, instance=request.user)
         if profile_form.is_valid() and user_form.is_valid():
             profile_form.save()
@@ -520,3 +522,6 @@ def update_profile(request):
         profile_form = ProfileUpdateForm(instance=request.user.userprofile)
         user_form = UserUpdateForm(instance=request.user)
     return render(request, 'data/account.html', {'profile_form': profile_form, 'user_form': user_form})
+
+class CustomPasswordChangeView(PasswordChangeView):
+    success_url = reverse_lazy('account')

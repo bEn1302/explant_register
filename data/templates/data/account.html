@@ -19,7 +19,11 @@
                         <div class="row">
                         <div class="col">
                             <center>
-                                <img width="100px" src="{% static '/img/avatar.svg' %}" />
+                                {% if user.userprofile.profile_picture %}
+                                    <img width="100px" src="{{ user.userprofile.profile_picture.url }}">
+                                {% else %}
+                                    <img width="100px" src="{% static '/img/avatar.svg' %}" />
+                                {% endif %}
                                 <br>
                                 <br>
                                 Username: {{user}}
@@ -47,23 +51,22 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="id_phone">Phone</label>
-                                <input type="text" id="id_phone" name="phone" value="{{ user.userprofile.phone }}" class="form-control">
+                                <input type="tel" id="id_phone" name="phone" value="{{ user.userprofile.phone }}" class="form-control">
                             </div>
                             <div class="col-12">
                                 <label for="id_address">Address</label>
                                 <input type="text" id="id_address" name="address" value="{{ user.userprofile.address }}" class="form-control">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <label for="id_city">City</label>
                                 <input type="text" id="id_city" name="city" value="{{ user.userprofile.city }}" class="form-control">
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                             <label for="id_state">State</label>
                             <select type="text" id="id_state" name="state" class="form-control form-select">
                                 <option selected>{{ user.userprofile.state }}</option>
                                 <option>Baden-Württemberg</option>
                                 <option>Bayern</option>
-                                <option>Baden-Württemberg</option>
                                 <option>Berlin</option>
                                 <option>Brandenburg</option>
                                 <option>Bremen</option>
@@ -84,18 +87,21 @@
                                 <label for="id_zip_code">Zip</label>
                                 <input type="text" id="id_zip_code" name="zip_code" value="{{ user.userprofile.zip_code }}" class="form-control">
                             </div>
+                            <div class="col-md-9">
+                                <label for="id_profile_picture">Profile picture</label>
+                                <input type="file" id="id_profile_picture" name="profile_picture" class="form-control">
+                            </div>
                             <div class="col-md-12">
                                 <hr>
                             </div>
-                            <div class="col-md-6 mt-0">
-                                <label for="id_new_password" class="form-label">New Password</label>
-                                <input type="password" id="id_new_password" name="new_password" class="form-control" required>
+                            <div class="col-md-4 mt-0">
+                                <!-- <label for="id_username">Username</label> -->
+                                <input type="text" id="id_username" name="username" value="{{ user.username }}" class="form-control" required>
                             </div>
-                            <div class="col-md-6 mt-0">
-                                <label for="id_confirm_password" class="form-label">Confirm Password</label>
-                                <input type="password" id="id_confirm_password" name="confirm_password" class="form-control" required>
+                            <div class="col-md-5 mt-0 ">
+                                <a class="btn btn-secondary" href="{% url 'password' %}">Change Password</a>
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-3 mt-0">
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>

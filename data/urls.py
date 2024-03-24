@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
 from .views import *
@@ -28,6 +29,7 @@ urlpatterns = [
     path('pfanne/<int:pk>/update/', views.pfanne_update, name='pfanne_update'),
     path('patellaersatz/<int:pk>/update/', views.patellaersatz_update, name='patellaersatz_update'),
     path('update-profile/', update_profile, name='update_profile'),
+    path('password/', CustomPasswordChangeView.as_view(), name='password'),
 
     # Data insert views
     path('add_lagerort/', add_lagerort, name='add_lagerort'),
