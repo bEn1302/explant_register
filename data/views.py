@@ -487,6 +487,8 @@ def all_analytics(request):
     data = get_analytics_data()
     return render(request, 'data/explant_analytic.html', data)
 
+# --------------------------- Users  ---------------------------
+
 def users(request):
     user_id = request.GET.get('user_id')  # Benutzer-ID aus der URL abrufen
 
@@ -496,7 +498,13 @@ def users(request):
     else:
         users = User.objects.all()
 
-    return render(request, 'data/users.html', {'users': users, 'user_id': user_id})
+    # Pagination
+    p = Paginator(users, 10)
+    page = request.GET.get('page')
+    users = p.get_page(page)
+    nums = 'a' * users.paginator.num_pages
+
+    return render(request, 'data/users.html', {'users': users, 'user_id': user_id, 'nums':nums})
 
 # --------------------------- Account  ---------------------------
 def account(request):
