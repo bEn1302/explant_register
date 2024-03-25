@@ -306,12 +306,12 @@ def explant_pdf(request):
         # Allgemeine Informationen
         general_info = [
             ["ID", str(explant.id)],
-            ["Ursache", explant.ursache],
+            ["Ursache", Paragraph(explant.ursache, style=getSampleStyleSheet()['BodyText'])] if explant.ursache else ["", ""],
             ["Verfügbarkeit", "Ja" if explant.verfuegbarkeit else "Nein"],
             ["Herkunftsort", explant.herkunftsort],
             ["Entnahmedatum", explant.entnahme_datum.strftime('%Y-%m-%d') if explant.entnahme_datum else ""],
             ["Eingangsdatum", explant.eingang_datum.strftime('%Y-%m-%d')],
-            ["Bruchgeschehen", explant.bruchgeschehen],
+            ["Bruchgeschehen", Paragraph(explant.bruchgeschehen, style=getSampleStyleSheet()['BodyText'])] if explant.bruchgeschehen else ["", ""],
             ["Nutzungsdauer", str(explant.nutzungsdauer) + " Jahre" if explant.nutzungsdauer else ""],
             ["Reinigung", "Ja" if explant.reinigung else "Nein"],
         ]
@@ -324,126 +324,135 @@ def explant_pdf(request):
             general_info.append(["Bild", image])
         else:
             general_info.append(["Bild", ""])
-
+        
         general_title, general_table = create_info_table(general_info, "Allgemeines")
         data.append(general_title)
         data.append(general_table)
 
         # Lagerortinformationen
-        lagerort_info = [
-            ["Schrank", explant.lagerort.schrank] if explant.lagerort else ["", ""],
-            ["Kiste", explant.lagerort.kiste] if explant.lagerort else ["", ""],
-        ]
+        if explant.lagerort:
+            lagerort_info = [
+                ["Schrank", explant.lagerort.schrank] if explant.lagerort else ["", ""],
+                ["Kiste", explant.lagerort.kiste] if explant.lagerort else ["", ""],
+            ]
 
-        lagerort_title, lagerort_table = create_info_table(lagerort_info, "Lagerort")
-        data.append(lagerort_title)
-        data.append(lagerort_table)
+            lagerort_title, lagerort_table = create_info_table(lagerort_info, "Lagerort")
+            data.append(lagerort_title)
+            data.append(lagerort_table)
 
         # Patienteninformationen
-        patient_info = [
-            ["Geburtsdatum", explant.patient.geburtsdatum] if explant.patient else ["", ""],
-            ["Gewicht", explant.patient.gewicht] if explant.patient else ["", ""],
-        ]
-        
+        if explant.patient:
+            patient_info = [
+                ["Geburtsdatum", explant.patient.geburtsdatum] if explant.patient else ["", ""],
+                ["Gewicht", explant.patient.gewicht] if explant.patient else ["", ""],
+            ]
 
-        # Tabelle und Überschrift für Patienteninformationen hinzufügen
-        patient_title, patient_table = create_info_table(patient_info, "Patient")
-        data.append(patient_title)
-        data.append(patient_table)
+            # Tabelle und Überschrift für Patienteninformationen hinzufügen
+            patient_title, patient_table = create_info_table(patient_info, "Patient")
+            data.append(patient_title)
+            data.append(patient_table)
 
         # Inlay-Informationen
-        inlay_info = [
-            ["Hersteller", explant.inlay.hersteller] if explant.inlay else ["", ""],
-            ["Modell", explant.inlay.modell] if explant.inlay else ["", ""],
-            ["Material", explant.inlay.material] if explant.inlay else ["", ""],
-            ["Größe", explant.inlay.groeße] if explant.inlay else ["", ""],
-        ]
+        if explant.inlay:
+            inlay_info = [
+                ["Hersteller", explant.inlay.hersteller] if explant.inlay else ["", ""],
+                ["Modell", explant.inlay.modell] if explant.inlay else ["", ""],
+                ["Material", explant.inlay.material] if explant.inlay else ["", ""],
+                ["Größe", explant.inlay.groeße] if explant.inlay else ["", ""],
+            ]
 
-        inlay_title, inlay_table = create_info_table(inlay_info, "Inlay")
-        data.append(inlay_title)
-        data.append(inlay_table)
+            inlay_title, inlay_table = create_info_table(inlay_info, "Inlay")
+            data.append(inlay_title)
+            data.append(inlay_table)
 
         # Kopf-Informationen
-        kopf_info = [
-            ["Hersteller", explant.kopf.hersteller] if explant.kopf else ["", ""],
-            ["Modell", explant.kopf.modell] if explant.kopf else ["", ""],
-            ["Material", explant.kopf.material] if explant.kopf else ["", ""],
-            ["Größe", explant.kopf.groeße] if explant.kopf else ["", ""],
-        ]
+        if explant.kopf:
+            kopf_info = [
+                ["Hersteller", explant.kopf.hersteller] if explant.kopf else ["", ""],
+                ["Modell", explant.kopf.modell] if explant.kopf else ["", ""],
+                ["Material", explant.kopf.material] if explant.kopf else ["", ""],
+                ["Größe", explant.kopf.groeße] if explant.kopf else ["", ""],
+            ]
 
-        kopf_title, kopf_table = create_info_table(kopf_info, "Kopf")
-        data.append(kopf_title)
-        data.append(kopf_table)
+            kopf_title, kopf_table = create_info_table(kopf_info, "Kopf")
+            data.append(kopf_title)
+            data.append(kopf_table)
 
         # Schaft-Informationen
-        schaft_info = [
-            ["Hersteller", explant.schaft.hersteller] if explant.schaft else ["", ""],
-            ["Modell", explant.schaft.modell] if explant.schaft else ["", ""],
-            ["Material", explant.schaft.material] if explant.schaft else ["", ""],
-            ["Größe", explant.schaft.groeße] if explant.schaft else ["", ""],
-        ]
+        if explant.schaft:
+            schaft_info = [
+                ["Hersteller", explant.schaft.hersteller] if explant.schaft else ["", ""],
+                ["Modell", explant.schaft.modell] if explant.schaft else ["", ""],
+                ["Material", explant.schaft.material] if explant.schaft else ["", ""],
+                ["Größe", explant.schaft.groeße] if explant.schaft else ["", ""],
+            ]
 
-        schaft_title, schaft_table = create_info_table(schaft_info, "Schaft")
-        data.append(schaft_title)
-        data.append(schaft_table)
+            schaft_title, schaft_table = create_info_table(schaft_info, "Schaft")
+            data.append(schaft_title)
+            data.append(schaft_table)
 
         # Pfanne-Informationen
-        pfanne_info = [
-            ["Hersteller", explant.pfanne.hersteller] if explant.pfanne else ["", ""],
-            ["Modell", explant.pfanne.modell] if explant.pfanne else ["", ""],
-            ["Material", explant.pfanne.material] if explant.pfanne else ["", ""],
-            ["Größe", explant.pfanne.groeße] if explant.pfanne else ["", ""],
-        ]
+        if explant.pfanne:
+            pfanne_info = [
+                ["Hersteller", explant.pfanne.hersteller] if explant.pfanne else ["", ""],
+                ["Modell", explant.pfanne.modell] if explant.pfanne else ["", ""],
+                ["Material", explant.pfanne.material] if explant.pfanne else ["", ""],
+                ["Größe", explant.pfanne.groeße] if explant.pfanne else ["", ""],
+            ]
 
-        pfanne_title, pfanne_table = create_info_table(pfanne_info, "Pfanne")
-        data.append(pfanne_title)
-        data.append(pfanne_table)
+            pfanne_title, pfanne_table = create_info_table(pfanne_info, "Pfanne")
+            data.append(pfanne_title)
+            data.append(pfanne_table)
 
         # Reoperation-Informationen
-        reoperation_info = [
-            ["Reoperation", explant.reoperation.reoperation] if explant.reoperation else ["", ""],
-            ["Reoperationsdatum", explant.reoperation.reoperation_datum.strftime('%Y-%m-%d')] if explant.reoperation else ["", ""],
-        ]
+        if explant.reoperation:
+            reoperation_info = [
+                ["Reoperation", explant.reoperation.reoperation] if explant.reoperation else ["", ""],
+                ["Reoperationsdatum", explant.reoperation.reoperation_datum.strftime('%Y-%m-%d')] if explant.reoperation else ["", ""],
+            ]
 
-        reoperation_title, reoperation_table = create_info_table(reoperation_info, "Reoperation")
-        data.append(reoperation_title)
-        data.append(reoperation_table)
+            reoperation_title, reoperation_table = create_info_table(reoperation_info, "Reoperation")
+            data.append(reoperation_title)
+            data.append(reoperation_table)
 
         # Femurkomponente-Informationen
-        femurkomponente_info = [
-            ["Hersteller", explant.femurkomponente.hersteller] if explant.femurkomponente else ["", ""],
-            ["Modell", explant.femurkomponente.modell] if explant.femurkomponente else ["", ""],
-            ["Material", explant.femurkomponente.material] if explant.femurkomponente else ["", ""],
-            ["Größe", explant.femurkomponente.groeße] if explant.femurkomponente else ["", ""],
-        ]
+        if explant.femurkomponente:    
+            femurkomponente_info = [
+                ["Hersteller", explant.femurkomponente.hersteller] if explant.femurkomponente else ["", ""],
+                ["Modell", explant.femurkomponente.modell] if explant.femurkomponente else ["", ""],
+                ["Material", explant.femurkomponente.material] if explant.femurkomponente else ["", ""],
+                ["Größe", explant.femurkomponente.groeße] if explant.femurkomponente else ["", ""],
+            ]
 
-        femurkomponente_title, femurkomponente_table = create_info_table(femurkomponente_info, "Femurkomponente")
-        data.append(femurkomponente_title)
-        data.append(femurkomponente_table)
+            femurkomponente_title, femurkomponente_table = create_info_table(femurkomponente_info, "Femurkomponente")
+            data.append(femurkomponente_title)
+            data.append(femurkomponente_table)
 
         # Tibiaplateau-Informationen
-        tibiaplateau_info = [
-            ["Hersteller", explant.tibiaplateau.hersteller] if explant.tibiaplateau else ["", ""],
-            ["Modell", explant.tibiaplateau.modell] if explant.tibiaplateau else ["", ""],
-            ["Material", explant.tibiaplateau.material] if explant.tibiaplateau else ["", ""],
-            ["Größe", explant.tibiaplateau.groeße] if explant.tibiaplateau else ["", ""],
-        ]
+        if explant.tibiaplateau:
+            tibiaplateau_info = [
+                ["Hersteller", explant.tibiaplateau.hersteller] if explant.tibiaplateau else ["", ""],
+                ["Modell", explant.tibiaplateau.modell] if explant.tibiaplateau else ["", ""],
+                ["Material", explant.tibiaplateau.material] if explant.tibiaplateau else ["", ""],
+                ["Größe", explant.tibiaplateau.groeße] if explant.tibiaplateau else ["", ""],
+            ]
 
-        tibiaplateau_title, tibiaplateau_table = create_info_table(tibiaplateau_info, "Tibiaplateau")
-        data.append(tibiaplateau_title)
-        data.append(tibiaplateau_table)
+            tibiaplateau_title, tibiaplateau_table = create_info_table(tibiaplateau_info, "Tibiaplateau")
+            data.append(tibiaplateau_title)
+            data.append(tibiaplateau_table)
 
         # Patellaersatz-Informationen
-        patellaersatz_info = [
-            ["Hersteller", explant.patellaersatz.hersteller] if explant.patellaersatz else ["", ""],
-            ["Modell", explant.patellaersatz.modell] if explant.patellaersatz else ["", ""],
-            ["Material", explant.patellaersatz.material] if explant.patellaersatz else ["", ""],
-            ["Größe", explant.patellaersatz.groeße] if explant.patellaersatz else ["", ""],
-        ]
+        if explant.patellaersatz:
+            patellaersatz_info = [
+                ["Hersteller", explant.patellaersatz.hersteller] if explant.patellaersatz else ["", ""],
+                ["Modell", explant.patellaersatz.modell] if explant.patellaersatz else ["", ""],
+                ["Material", explant.patellaersatz.material] if explant.patellaersatz else ["", ""],
+                ["Größe", explant.patellaersatz.groeße] if explant.patellaersatz else ["", ""],
+            ]
 
-        patellaersatz_title, patellaersatz_table = create_info_table(patellaersatz_info, "Patellaersatz")
-        data.append(patellaersatz_title)
-        data.append(patellaersatz_table)
+            patellaersatz_title, patellaersatz_table = create_info_table(patellaersatz_info, "Patellaersatz")
+            data.append(patellaersatz_title)
+            data.append(patellaersatz_table)
 
     # Dokument erstellen
     doc = SimpleDocTemplate(buffer, pagesize=letter, topMargin=0.5 * cm, bottomMargin=2.0 * cm, leftMargin=2.5 * cm, rightMargin=2.0 * cm)
