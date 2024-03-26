@@ -508,7 +508,7 @@ def users(request):
         users = User.objects.all()
 
     # Pagination
-    p = Paginator(users, 10)
+    p = Paginator(users, 11)
     page = request.GET.get('page')
     users = p.get_page(page)
     nums = 'a' * users.paginator.num_pages

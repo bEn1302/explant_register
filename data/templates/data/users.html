@@ -5,71 +5,108 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Users</h1>
         </div>
-        <!-- user table -->
-        <div class="container shadow-sm rounded pb-1">
-            <div class="table-responsive">
-                <table class="table table-striped mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Profile</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Date Joined</th>
-                            <th scope="col">Last Login</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                        <tr>
-                            <td class="align-middle">{{ user.id }}</td>
-                            <td class="align-middle">{% if user.userprofile.profile_picture %}<img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 40px; height: 40px;">{% else %}<img src="{% static '/img/avatar.svg' %}" alt="Default Profile Picture" class="rounded-circle" style="width: 40px; height: 40px;">{% endif %}</td>
-                            <td class="align-middle">{{ user.first_name }} {{ user.last_name }}</td>
-                            <td class="align-middle">{{ user.email }}</td>
-                            <td class="align-middle">{{ user.date_joined|date:"F d, Y" }}</td>
-                            <td class="align-middle">{{ user.last_login|date:"F d, Y" }}</td>
-                            <td class="align-middle">
-                                {% if user.is_active %}
-                                    <span class="badge bg-success fs-6">Active</span>
-                                {% else %}
-                                    <span class="badge bg-danger fs-6">Inactive</span>
-                                {% endif %}
-                            </td>
-                            <td class="align-middle">
-                                {% if user.is_superuser %}
-                                    <span class="badge bg-primary fs-6">Superuser</span>
-                                {% elif user.is_staff %}
-                                    <span class="badge bg-secondary fs-6">Staff</span>
-                                {% else %}
-                                    <span class="badge bg-info fs-6">Normal</span>
-                                {% endif %}
-                            </td>
-                        </tr>
+            <!-- user table -->
+            <div class="container shadow-sm rounded pb-1">
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm mt-3">
+                        <thead>
+                            <tr>
+                                <th class="" scope="col">ID</th>
+                                <th class="" scope="col">Profile</th>
+                                <th class="" scope="col">Name</th>
+                                <th class="" scope="col">Email</th>
+                                <th class="" scope="col">Date Joined</th>
+                                <th class="" scope="col">Last Login</th>
+                                <th class="" scope="col">User Group</th>
+                                <th class="text-center" scope="col">Status</th>
+                                <th class="" scope="col">Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td class="align-middle">{{ user.id }}</td>
+                                <td class="align-middle">{% if user.userprofile.profile_picture %}<img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 40px; height: 40px;">{% else %}<img src="{% static '/img/avatar.svg' %}" alt="Default Profile Picture" class="rounded-circle" style="width: 40px; height: 40px;">{% endif %}</td>
+                                <td class="align-middle">{{ user.first_name }} {{ user.last_name }}</td>
+                                <td class="align-middle">{{ user.email }}</td>
+                                <td class="align-middle">{{ user.date_joined|date:"F d, Y" }}</td>
+                                <td class="align-middle">{{ user.last_login|date:"F d, Y" }}</td>
+                                <td class="align-middle">
+                                    {% for group in user.groups.all %}
+                                        {% if group.name == 'Patienten' %}
+                                            Patient
+                                        {% elif group.name == 'Experten' %}
+                                            Experte
+                                        {% elif group.name == 'Moderatoren' %}
+                                            Moderator
+                                        {% else %}
+                                            Unbekannt
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td class="align-middle text-center">
+                                    {% if user.is_active %}
+                                        <i class="bi bi-check-circle-fill text-success" title="Active"></i>
+                                    {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger" title="Inactive"></i>
+                                    {% endif %}
+                                </td>
+                                <style>
+                                    .badge-custom {
+                                        padding: 5px 10px;
+                                        border-radius: 5px;
+                                        font-size: 14px;
+                                    }
+
+                                    .badge-normal {
+                                        background-color: #007bff; /* Blau */
+                                        color: white;
+                                    }
+
+                                    .badge-staff {
+                                        background-color: #ffc107; /* Gelb */
+                                        color: #343a40; /* Dunkelgrau */
+                                    }
+
+                                    .badge-superuser {
+                                        background-color: #28a745; /* Grün */
+                                        color: white;
+                                    }
+                                </style>
+                                <td class="align-middle">
+                                    {% if user.is_superuser %}
+                                        <span class="badge badge-custom badge-superuser">Superuser</span>
+                                    {% elif user.is_staff %}
+                                        <span class="badge badge-custom badge-staff">Staff</span>
+                                    {% else %}
+                                        <span class="badge badge-custom badge-normal">Normal</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>                 
+                    </table>
+                </div>
+                <!-- Pagination -->
+                <nav class="mb-3" aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {% if users.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ users.previous_page_number }}">Previous</a></li>
+                        {% endif %}
+            
+                        <!-- <li class="page-item disabled"><a class="page-link" href="#">Page: {{ users.number }} of {{ users.paginator.num_pages }}</a></li> -->
+                        {% for i in nums %}
+                            <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
                         {% endfor %}
-                    </tbody>                 
-                </table>
+            
+                        {% if users.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ users.next_page_number }}">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ users.paginator.num_pages}}">Last &raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
-            <!-- Pagination -->
-            <nav class="mb-3" aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    {% if users.has_previous %}
-                        <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
-                        <li class="page-item"><a class="page-link" href="?page={{ users.previous_page_number }}">Previous</a></li>
-                    {% endif %}
-        
-                    <!-- <li class="page-item disabled"><a class="page-link" href="#">Page: {{ users.number }} of {{ users.paginator.num_pages }}</a></li> -->
-                    {% for i in nums %}
-                        <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
-                    {% endfor %}
-        
-                    {% if users.has_next %}
-                        <li class="page-item"><a class="page-link" href="?page={{ users.next_page_number }}">Next</a></li>
-                        <li class="page-item"><a class="page-link" href="?page={{ users.paginator.num_pages}}">Last &raquo;</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
         </div>
     {% else %}
         {% url 'sign_in' as sign_in %}
