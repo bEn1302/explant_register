@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['*', 'https://explantregister-production.up.railway.app']
+ALLOWED_HOSTS = ['*', 'https://explantregister-production.up.railway.app', 'https://explantregister-testing.up.railway.app']
 
 
 # Application definition
@@ -48,10 +48,11 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://explantregister-production.up.railway.app",
+    "https://explantregister-testing.up.railway.app",
     # ... Weitere vertrauenswürdige Ursprungs-URLs
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://explantregister-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://explantregister-production.up.railway.app','https://explantregister-testing.up.railway.app']
 
 ROOT_URLCONF = 'ExReg.urls'
 
@@ -141,8 +142,6 @@ STATICFILES_DIRS = (
       os.path.join(BASE_DIR, 'static'),
 
 )
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
