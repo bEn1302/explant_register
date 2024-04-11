@@ -22,6 +22,7 @@ django-auto-logout = "*"
 pip-upgrader = "*"
 django-multi-captcha-admin = "*"
 django-simple-captcha = "*"
+django-import-export = "*"
 
 [dev-packages]
 

@@ -34,8 +34,9 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'data',
     'users',
-    
+
     'captcha',
+    'import_export',
 ]
 
 MIDDLEWARE = [

@@ -1,80 +1,82 @@
 from django.contrib import admin
 from .models import *
+from import_export.admin import ImportExportModelAdmin
 
-admin.site.register(UserProfile)
+admin.site.register(UserProfile, ImportExportModelAdmin)
 
-@admin.register(Explantat)
-class ExplantatAdmin(admin.ModelAdmin):
+class ExplantatAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'ursache', 'verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum', 'bruchgeschehen', 'nutzungsdauer', 'reinigung')
     ordering = ('id',)
     search_fields = ('id', 'ursache', 'verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum','bruchgeschehen', 'nutzungsdauer', 'reinigung')
     list_filter = ('verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum', 'reinigung')
+admin.site.register(Explantat, ExplantatAdmin)
 
-@admin.register(Lagerort)
-class LagerortAdmin(admin.ModelAdmin):
+
+class LagerortAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'schrank', 'kiste')
     ordering = ('id',)
     search_fields = ('id', 'schrank', 'kiste')
+admin.site.register(Lagerort, LagerortAdmin)
 
-@admin.register(Reoperation)
-class ReoperationAdmin(admin.ModelAdmin):
+class ReoperationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'reoperation', 'reoperation_datum')
     ordering = ('id',)
     search_fields = ('id', 'reoperation', 'reoperation_datum')
     list_filter = ('reoperation', 'reoperation_datum')
+admin.site.register(Reoperation, ReoperationAdmin)
 
-@admin.register(Patient)
-class PatientAdmin(admin.ModelAdmin):
+class PatientAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'geburtsdatum', 'gewicht')
     ordering = ('id',)
     search_fields = ('id', 'geburtsdatum', 'gewicht')
     list_filter = ('geburtsdatum', 'gewicht')
+admin.site.register(Patient, PatientAdmin)
 
-@admin.register(Inlay)
-class InlayAdmin(admin.ModelAdmin):
+class InlayAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
     ordering = ('id',)
     search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
     list_filter = ('hersteller', 'modell', 'material', 'groeße')
+admin.site.register(Inlay, InlayAdmin)
 
-@admin.register(Kopf)
-class KopfAdmin(admin.ModelAdmin):
+class KopfAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
     ordering = ('id',)
     search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
     list_filter = ('hersteller', 'modell', 'material', 'groeße')
+admin.site.register(Kopf, KopfAdmin)
 
-@admin.register(Pfanne)
-class PfanneAdmin(admin.ModelAdmin):
+class PfanneAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
     ordering = ('id',)
     search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
     list_filter = ('hersteller', 'modell', 'material', 'groeße')
+admin.site.register(Pfanne, PfanneAdmin)
 
-@admin.register(Schaft)
-class SchaftAdmin(admin.ModelAdmin):
+class SchaftAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
     ordering = ('id',)
     search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
     list_filter = ('hersteller', 'modell', 'material', 'groeße')
+admin.site.register(Schaft, SchaftAdmin)
 
-@admin.register(Tibiaplateau)
-class TibiaplateauAdmin(admin.ModelAdmin):
+class TibiaplateauAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
     ordering = ('id',)
     search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
     list_filter = ('hersteller', 'modell', 'material', 'groeße')
+admin.site.register(Tibiaplateau, TibiaplateauAdmin)
 
-@admin.register(Femurkomponente)
-class FemurkomponenteAdmin(admin.ModelAdmin):
+class FemurkomponenteAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
     ordering = ('id',)
     search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
     list_filter = ('hersteller', 'modell', 'material', 'groeße')
+admin.site.register(Femurkomponente, FemurkomponenteAdmin)
 
-@admin.register(Patellaersatz)
-class PatellaersatzAdmin(admin.ModelAdmin):
+class PatellaersatzAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
     ordering = ('id',)
     search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
     list_filter = ('hersteller', 'modell', 'material', 'groeße')
+admin.site.register(Patellaersatz, PatellaersatzAdmin)

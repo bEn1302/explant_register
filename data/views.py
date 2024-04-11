@@ -208,7 +208,7 @@ def delete_selected_explants(request):
         selected_ids = request.POST.getlist('selected_ids[]')
         for selected_id in selected_ids:
             explant = Explantat.objects.get(pk=selected_id)
-            if request.user.id == explant.owner:
+            if request.user.is_superuser or request.user.id == explant.owner:
                 explant.delete()
                 messages.success(request, 'Explant deleted!')
             else:
