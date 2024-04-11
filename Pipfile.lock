@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6084570e38ae6440e7788e5420b0820dbdf997c8362dbd95694f00f0991d8e04"
+            "sha256": "aebfd03e48bb5ce4b59a379f8e1d2ea116efa4e50111973e58b711059f82e812"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -170,6 +170,28 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==4.2.0"
+        },
+        "django-multi-captcha-admin": {
+            "hashes": [
+                "sha256:cf579d741ac120fb3ec9d6cdcd67f9ff91356f92a59f9ad084abc22ca9a30d9b"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3'",
+            "version": "==2.0.0"
+        },
+        "django-ranged-response": {
+            "hashes": [
+                "sha256:f71fff352a37316b9bead717fc76e4ddd6c9b99c4680cdf4783b9755af1cf985"
+            ],
+            "version": "==0.2.0"
+        },
+        "django-simple-captcha": {
+            "hashes": [
+                "sha256:3ae9a7e650cb0cdbcfd4a75aa91fdf25dcc523ef541a7b1f004bd4357798fc03",
+                "sha256:d188516d326fadd2d5ad076eb89649d55c02cabafe3fdcc2154ac18e9f6d4b97"
+            ],
+            "index": "pypi",
+            "version": "==0.6.0"
         },
         "docopt": {
             "hashes": [

@@ -20,6 +20,8 @@ whitenoise = "==6.5.0"
 reportlab = "*"
 django-auto-logout = "*"
 pip-upgrader = "*"
+django-multi-captcha-admin = "*"
+django-simple-captcha = "*"
 
 [dev-packages]
 

@@ -23,6 +23,7 @@ ALLOWED_HOSTS = ['*', 'https://explantregister-production.up.railway.app', 'http
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,6 +34,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'data',
     'users',
+    
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -157,4 +160,9 @@ AUTO_LOGOUT = {
     'SESSION_TIME': timedelta(hours=2),
     'MESSAGE': 'The session has expired. Please login again to continue.',
     'REDIRECT_TO_LOGIN_IMMEDIATELY': True,
+}
+
+# recaptcha
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
 }
