@@ -499,21 +499,19 @@ def all_analytics(request):
 # --------------------------- Users  ---------------------------
 
 def users(request):
-    user_id = request.GET.get('user_id')  # Benutzer-ID aus der URL abrufen
+    explantat_owner_id = request.GET.get('explantat_owner_id')
 
-    if user_id:
-        user = get_object_or_404(User, id=user_id)
-        users = [user]
+    if explantat_owner_id:
+        users_list = User.objects.filter(id=explantat_owner_id)
     else:
-        users = User.objects.all()
+        users_list = User.objects.all()
 
-    # Pagination
-    p = Paginator(users, 11)
-    page = request.GET.get('page')
-    users = p.get_page(page)
-    nums = 'a' * users.paginator.num_pages
+    paginator = Paginator(users_list, 11)
+    page_number = request.GET.get('page')
+    users = paginator.get_page(page_number)
+    nums = 'a' * paginator.num_pages
 
-    return render(request, 'data/users.html', {'users': users, 'user_id': user_id, 'nums':nums})
+    return render(request, 'data/users.html', {'users': users, 'explantat_owner_id': explantat_owner_id, 'nums': nums})
 
 # --------------------------- Account  ---------------------------
 def account(request):
