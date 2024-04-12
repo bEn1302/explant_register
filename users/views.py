@@ -31,8 +31,8 @@ def register_user(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            group = Group.objects.get(name='Patienten')  # Gruppe "Patient" abrufen
-            user.groups.add(group)  # Benutzer zur "Patient"-Gruppe hinzufügen
+            group = Group.objects.get(name='Benutzer')  # Gruppe "Benutzer" abrufen
+            user.groups.add(group)  # Benutzer zur "Benutzer"-Gruppe hinzufügen
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password1"]
             user = authenticate(username=username, password=password)

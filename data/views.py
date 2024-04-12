@@ -6,7 +6,7 @@ from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 
@@ -89,6 +89,11 @@ def explants_table_view(request):
 
     return render(request, 'data/explant_table.html', context)
 
+# --------------------------- Rights ----------------------------
+def is_expert_or_moderator(user):
+    return user.groups.filter(name__in=['Experten', 'Moderatoren']).exists()
+
+    # @user_passes_test(is_expert_or_moderator) verwenden
 
 # --------------------------- Update ----------------------------
 def update_model(request, model_cls, form_cls, redirect_url, pk):
@@ -505,7 +510,7 @@ def bar_chart_data():
         'femurkomponenten_count': femurkomponenten_count,
     }
 
-# pie chart
+# doughnut chart
 def doughnut_chart_data(request):
     # Kategorisierung durch Filter von Eigenschaften/ Attributen
     huefte_explant_count = Explantat.objects.filter(
@@ -517,6 +522,16 @@ def doughnut_chart_data(request):
     ).count()
 
     total_explantates = Explantat.objects.count()
+
+    """
+    Weitere Implantate (für Später):
+        - weitere Endoprothesen: Schulter, oberes Sprunggelenk
+        - Herzschrittmacher
+        - Stents
+        - Cochleaimplantat
+        - Retina-Implantat
+        - Zahnimplantat
+    """
 
     if total_explantates == 0:
         huefte_percentage = 0
@@ -532,6 +547,7 @@ def doughnut_chart_data(request):
         'knie_percentage': knie_percentage
     }
 
+@user_passes_test(is_expert_or_moderator)
 def all_analytics(request):
     bar_chart_data_val = bar_chart_data()
     doughnut_chart_data_val = doughnut_chart_data(request)

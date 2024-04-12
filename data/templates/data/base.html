@@ -91,6 +91,7 @@
       <div class="navbar-nav me-3">
           <div class="nav-item text-nowrap d-md-block d-none">
               <a class="nav-link" href="{% url 'account' %}">
+                <span class="me-2">{{ user.username }}</span>
                 {% if user.userprofile.profile_picture %}
                     <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px;">
                 {% else %}
@@ -115,12 +116,14 @@
                   Dashboard
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'analytic-explants' %}">
-                  <i class="bi bi-pie-chart-fill"></i>
-                  Analytics
-                </a>
-              </li>
+              {% if user_is_expert_or_moderator %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'analytic-explants' %}">
+                    <i class="bi bi-pie-chart-fill"></i>
+                    Analytics
+                  </a>
+                </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'table-explants' %}">
                   <i class="bi bi-table"></i>

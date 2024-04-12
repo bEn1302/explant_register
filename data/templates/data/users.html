@@ -33,8 +33,8 @@
                                 <td class="align-middle">{{ user.last_login|date:"F d, Y" }}</td>
                                 <td class="align-middle">
                                     {% for group in user.groups.all %}
-                                        {% if group.name == 'Patienten' %}
-                                            Patient
+                                        {% if group.name == 'Benutzer' %}
+                                            Benutzer
                                         {% elif group.name == 'Experten' %}
                                             Experte
                                         {% elif group.name == 'Moderatoren' %}

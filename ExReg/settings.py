@@ -76,6 +76,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django_auto_logout.context_processors.auto_logout_client',
+                'data.context_processors.user_is_expert_or_moderator',
             ],
         },
     },

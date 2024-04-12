@@ -108,6 +108,7 @@
                     </div>
                 </div>
             </div>
+            {% if user_is_expert_or_moderator %}
             <!-- registered data -->
             <div class="col-md-7">
                 <div class="card">
@@ -120,9 +121,9 @@
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col">
-                            <hr>
-                        </div>
+                            <div class="col">
+                                <hr>
+                            </div>
                         </div>
                         <div class="row">
                             <form id="deleteForm" method="post" action="{% url 'delete_selected_explants' %}">
@@ -164,6 +165,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             </div>
         </div>
 
