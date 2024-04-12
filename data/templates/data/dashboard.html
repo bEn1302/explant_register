@@ -8,39 +8,50 @@
 <!-- Charts -->
   <canvas class="my-4 w-100" id="mixedChart" width="900" height="380"></canvas>
   <script>
+    // Daten für gemischte Chart
     const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
-        type: 'bar',
-        data: {
-            datasets: [{
-                label: 'quantity',
-                data: ["{{ explantate_count }}", "{{ reoperationen_count }}", "{{ inlays_count }}", "{{ köpfe_count }}", "{{ schafte_count }}", "{{ pfannen_count }}", "{{ patellaersätze_count }}", "{{ tibiaplateau_count }}", "{{ femurkomponenten_count }}"],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1,
-                // this dataset is drawn below
-                order: 2
-            }, {
-                label: 'recycled',
-                data: [10, 5, 7, 2], // Hier müssten Ihre eigenen Daten sein
-                type: 'line',
-                borderColor: 'rgba(46, 204, 113, 1)',
-                borderWidth: 1,
-                // this dataset is drawn on top
-                order: 1
-            }],
-            labels: ["Explantate", "Reoperationen", "Inlays", "Köpfe", "Schafte", "Pfannen", "Patellaersätze", "Tibiaplateau", "Femurkomponenten"]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: 'quantity',
+                    data: [
+                        '{{ explantate_count }}',
+                        '{{ reoperationen_count }}',
+                        '{{ inlays_count }}',
+                        '{{ köpfe_count }}',
+                        '{{ schafte_count }}',
+                        '{{ pfannen_count }}',
+                        '{{ patellaersätze_count }}',
+                        '{{ tibiaplateau_count }}',
+                        '{{ femurkomponenten_count }}'
+                    ],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    // this dataset is drawn below
+                    order: 2
+                }, {
+                    label: 'recycled',
+                    data: [10, 5, 7, 2], // noch reelle Daten hinzufügen!
+                    type: 'line',
+                    borderColor: 'rgba(46, 204, 113, 1)',
+                    borderWidth: 1,
+                    // this dataset is drawn on top
+                    order: 1
+                }],
+                labels: ["Explantate", "Reoperationen", "Inlays", "Köpfe", "Schafte", "Pfannen", "Patellaersätze", "Tibiaplateau", "Femurkomponenten"]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
                     }
                 }
             }
-        }
-    });
+        });
   </script>
 <!--Table-->
 <h2>Recently added</h2>

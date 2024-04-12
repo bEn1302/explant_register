@@ -10,13 +10,13 @@
         <!-- Hauptdiagramm -->
       </canvas> 
       <script>
-        // Daten für das gemischte Chart
+        // Daten für gemischte Chart
         const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
             type: 'bar',
             data: {
                 datasets: [{
                     label: 'quantity',
-                    data: ["{{ explantate_count }}", "{{ reoperationen_count }}", "{{ inlays_count }}", "{{ köpfe_count }}", "{{ schafte_count }}", "{{ pfannen_count }}", "{{ patellaersätze_count }}", "{{ tibiaplateau_count }}", "{{ femurkomponenten_count }}"],
+                    data: ["{{ bar_chart_data.explantate_count }}", "{{ bar_chart_data.reoperationen_count }}", "{{ bar_chart_data.inlays_count }}", "{{ bar_chart_data.köpfe_count }}", "{{ bar_chart_data.schafte_count }}", "{{ bar_chart_data.pfannen_count }}", "{{ bar_chart_data.patellaersätze_count }}", "{{ bar_chart_data.tibiaplateau_count }}", "{{ bar_chart_data.femurkomponenten_count }}"],
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
@@ -24,7 +24,7 @@
                     order: 2
                 }, {
                     label: 'recycled',
-                    data: [10, 5, 7, 2], // Hier müssten Ihre eigenen Daten sein
+                    data: [10, 5, 7, 2], // noch reelle Daten hinzufügen!
                     type: 'line',
                     borderColor: 'rgba(46, 204, 113, 1)',
                     borderWidth: 1,
@@ -52,23 +52,24 @@
       <!-- Erstes kleines Diagramm -->
       <canvas id="Doughnut" width="200" height="200"></canvas>
       <script>
-        var ctx1 = document.getElementById('Doughnut').getContext('2d');
-        var donutChart1 = new Chart(ctx1, {
+        const doughnutCanvas = document.getElementById('Doughnut').getContext('2d');
+        const doughnutChart = new Chart(doughnutCanvas, {
             type: 'doughnut',
             data: {
-                labels: ['A', 'B', 'C'],
+                labels: ['Hüfte', 'Knie'],
                 datasets: [{
-                    label: 'Data',
-                    data: [30, 20, 50],
+                    label: 'Explantate',
+                    data: [
+                        '{{ doughnut_chart_data.huefte_explant_count }}',
+                        '{{ doughnut_chart_data.knie_explant_count }}'
+                    ],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
+                        'rgba(54, 162, 235, 0.2)'
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
+                        'rgba(54, 162, 235, 1)'
                     ],
                     borderWidth: 1
                 }]
@@ -77,7 +78,7 @@
                 cutout: '70%'
             }
         });
-      </script>
+    </script>
     </div>
     <div class="col-lg-4">
       <!-- Zweites kleines Diagramm -->

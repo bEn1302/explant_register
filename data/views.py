@@ -1,19 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.urls import reverse
-from django.db.models import Q
+from django.db.models import Q, Count
 from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
 from django.contrib import messages
-from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
+
 # Import csv
 import csv
+
 # Import Pagination
 from django.core.paginator import Paginator
+
 # Import generate PDF
 from django.http import HttpResponse
 from django.http import FileResponse
@@ -31,7 +33,7 @@ def start(request):
 
 def home(request):
     explant_list = Explantat.objects.all().order_by('-id')
-    chart_data = get_analytics_data()
+    chart_data = bar_chart_data()
 
     # Pagination
     p = Paginator(explant_list, 10)
@@ -69,6 +71,16 @@ def explants_table_view(request):
     knie_explant_table = Explantat.objects.filter(
         Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
     )
+
+    """
+    Weitere Implantate (für Später):
+        - weitere Endoprothesen: Schulter, oberes Sprunggelenk
+        - Herzschrittmacher
+        - Stents
+        - Cochleaimplantat
+        - Retina-Implantat
+        - Zahnimplantat
+    """
 
     context = {
         'huefte_explant_table': huefte_explant_table,
@@ -469,7 +481,8 @@ def explant_pdf(request):
     return response
 
 # --------------------------- chart  ---------------------------
-def get_analytics_data():
+# bar chart:
+def bar_chart_data():
     explantate_count = Explantat.objects.count()
     reoperationen_count = Reoperation.objects.count()
     inlays_count = Inlay.objects.count()
@@ -492,12 +505,39 @@ def get_analytics_data():
         'femurkomponenten_count': femurkomponenten_count,
     }
 
+# pie chart
+def doughnut_chart_data(request):
+    # Kategorisierung durch Filter von Eigenschaften/ Attributen
+    huefte_explant_count = Explantat.objects.filter(
+        Q(kopf__isnull=False) | Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False)
+    ).count()
+
+    knie_explant_count = Explantat.objects.filter(
+        Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
+    ).count()
+
+    total_explantates = Explantat.objects.count()
+
+    if total_explantates == 0:
+        huefte_percentage = 0
+        knie_percentage = 0
+    else:
+        huefte_percentage = (huefte_explant_count / total_explantates) * 100
+        knie_percentage = (knie_explant_count / total_explantates) * 100
+
+    return {
+        'huefte_explant_count': huefte_explant_count,
+        'knie_explant_count': knie_explant_count,
+        'huefte_percentage': huefte_percentage,
+        'knie_percentage': knie_percentage
+    }
+
 def all_analytics(request):
-    data = get_analytics_data()
-    return render(request, 'data/explant_analytic.html', data)
+    bar_chart_data_val = bar_chart_data()
+    doughnut_chart_data_val = doughnut_chart_data(request)
+    return render(request, 'data/explant_analytic.html', {'doughnut_chart_data': doughnut_chart_data_val, 'bar_chart_data': bar_chart_data_val})
 
 # --------------------------- Users  ---------------------------
-
 def users(request):
     explantat_owner_id = request.GET.get('explantat_owner_id')
 
