@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -153,6 +154,8 @@ class Explantat(models.Model):
     patellaersatz = models.ForeignKey(Patellaersatz, blank=True, null=True, on_delete=models.PROTECT)
     # owner
     owner = models.IntegerField('Owner', blank=False, default=1)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = "Explantate"

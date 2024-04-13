@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.urls import reverse
 from django.db.models import Q, Count
+from django.db.models.functions import ExtractMonth
 from .models import *
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .forms import *
@@ -151,6 +152,7 @@ def explant_update(request, explant_id):
     explant = Explantat.objects.get(pk=explant_id)
     explantat_form = ExplantatForm(request.POST or None, request.FILES or None , instance=explant)
     if explantat_form.is_valid():
+        explant.updated_at = timezone.now()
         explantat_form.save()
         return redirect('table-explants')
     
@@ -488,7 +490,7 @@ def explant_pdf(request):
 
     return response
 
-# --------------------------- chart  ---------------------------
+# --------------------------- charts  ---------------------------
 # bar chart:
 def bar_chart_data():
     explantate_count = Explantat.objects.count()
@@ -550,11 +552,34 @@ def doughnut_chart_data(request):
         'knie_percentage': knie_percentage
     }
 
+# line chart
+def line_chart_data(request):
+    # Filtere die Explantate nach dem Jahr 2024
+    explantate = Explantat.objects.filter(created_at__year=2024)
+    # Zähle die Anzahl der Explantate pro Monat
+    monthly_counts = explantate.annotate(month=ExtractMonth('created_at')).values('month').annotate(count=Count('id'))
+    
+    # Initialisiere Listen für die Monate und die zugehörigen Anzahlen
+    months = []
+    counts = []
+
+    # Iteriere über die Ergebnisse und fülle die Listen
+    for entry in monthly_counts:
+        months.append(entry['month'])
+        counts.append(entry['count'])
+    
+    # Gib die Daten als JSON zurück
+    return {
+        'months': months,
+        'counts': counts,
+    }
+
 @user_passes_test(is_expert_or_moderator)
 def all_analytics(request):
     bar_chart_data_val = bar_chart_data()
     doughnut_chart_data_val = doughnut_chart_data(request)
-    return render(request, 'data/explant_analytic.html', {'doughnut_chart_data': doughnut_chart_data_val, 'bar_chart_data': bar_chart_data_val})
+    line_chart_data_val = line_chart_data(request)
+    return render(request, 'data/explant_analytic.html', {'doughnut_chart_data': doughnut_chart_data_val, 'bar_chart_data': bar_chart_data_val, 'line_chart_data': line_chart_data_val})
 
 # --------------------------- Users  ---------------------------
 def users(request):
