@@ -10,41 +10,62 @@
         <!-- Hauptdiagramm -->
       </canvas> 
       <script>
-        // Daten für gemischte Chart
-        const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                datasets: [{
-                    label: 'quantity',
-                    data: ["{{ bar_chart_data.explantate_count }}", "{{ bar_chart_data.inlays_count }}", "{{ bar_chart_data.köpfe_count }}", "{{ bar_chart_data.schafte_count }}", "{{ bar_chart_data.pfannen_count }}", "{{ bar_chart_data.patellaersätze_count }}", "{{ bar_chart_data.tibiaplateau_count }}", "{{ bar_chart_data.femurkomponenten_count }}", "{{ bar_chart_data.reoperationen_count }}"],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                    // this dataset is drawn below
-                    order: 2
-                }, {
-                    label: 'recycled',
-                    data: [10, 5, 7, 2], // noch reelle Daten hinzufügen!
-                    type: 'line',
-                    borderColor: 'rgba(46, 204, 113, 1)',
-                    borderWidth: 1,
-                    // this dataset is drawn on top
-                    order: 1
-                }],
-                labels: ["Explantate", "Inlays", "Köpfe", "Schafte", "Pfannen", "Patellaersätze", "Tibiaplateau", "Femurkomponenten", "Reoperationen"]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
+        // Rohdaten
+        const rawData = [
+            { label: "Explantate", quantity: "{{ bar_chart_data.explantate_count }}" },
+            { label: "Inlays", quantity: "{{ bar_chart_data.inlays_count }}" },
+            { label: "Köpfe", quantity: "{{ bar_chart_data.köpfe_count }}" },
+            { label: "Schafte", quantity: "{{ bar_chart_data.schafte_count }}" },
+            { label: "Pfannen", quantity: "{{ bar_chart_data.pfannen_count }}" },
+            { label: "Patellaersätze", quantity: "{{ bar_chart_data.patellaersätze_count }}" },
+            { label: "Tibiaplateau", quantity: "{{ bar_chart_data.tibiaplateau_count }}" },
+            { label: "Femurkomponenten", quantity: "{{ bar_chart_data.femurkomponenten_count }}" },
+            { label: "Reoperationen", quantity: "{{ bar_chart_data.reoperationen_count }}" }
+        ];
+    
+        // Filtere die Daten, um Einträge mit quantity = 0 zu entfernen
+        const filteredData = rawData.filter(item => parseInt(item.quantity) > 0);
+    
+        // Rendere das Chart nur, wenn es Daten gibt
+        if (filteredData.length > 0) {
+            const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: 'quantity',
+                        data: filteredData.map(item => parseInt(item.quantity)),
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        // this dataset is drawn below
+                        order: 2
+                    }, {
+                        label: 'recycled',
+                        data: [10, 5, 7, 2], // hier noch reelle Daten hinzufügen!
+                        type: 'line',
+                        borderColor: 'rgba(46, 204, 113, 1)',
+                        borderWidth: 1,
+                        // this dataset is drawn on top
+                        order: 1
+                    }],
+                    labels: filteredData.map(item => item.label)
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
                         }
                     }
                 }
-            }
-        });
-      </script>
+            });
+        } else {
+            console.log('Keine Daten vorhanden.');
+        }
+    </script>
+    
     </div>
   </div>
   <div class="row mt-4">
