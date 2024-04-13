@@ -158,6 +158,7 @@ def explant_update(request, explant_id):
 
 
 # --------------------------- Data Insert ---------------------------
+@user_passes_test(is_expert_or_moderator)
 def add_explant(request):
     if request.method == 'POST':
         explantat_form = ExplantatForm(request.POST, request.FILES)
@@ -234,6 +235,7 @@ def delete_selected_explants(request):
     return redirect('table-explants')
 
 # --------------------------- generate CSV ---------------------------
+@user_passes_test(is_expert_or_moderator)
 def explant_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=explants.csv'
@@ -308,6 +310,7 @@ def create_info_table(data, title):
 
     return title, table
 
+@user_passes_test(is_expert_or_moderator)
 def explant_pdf(request):
     buffer = BytesIO()
 
