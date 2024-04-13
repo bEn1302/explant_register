@@ -15,6 +15,7 @@ urlpatterns = [
     path('search', views.search, name="search"),
     path('users', views.users, name="users"),
     path('account', views.account, name="account"),
+    path('help', views.help, name="help"),
     
     # update views
     path('update_explant/<int:explant_id>', views.explant_update, name='explant_update'),

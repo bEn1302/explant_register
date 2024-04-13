@@ -150,7 +150,7 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'help' %}">
                   <i class="bi bi-question-circle-fill"></i>
                   Help
                 </a>
@@ -186,6 +186,7 @@
           {% block update_explant %}{% endblock %}
           {% block users %}{% endblock %}
           {% block account %}{% endblock %}
+          {% block help %}{% endblock %}
         </main>
       </div>
     </div>

@@ -631,3 +631,7 @@ def update_profile(request):
 
 class CustomPasswordChangeView(PasswordChangeView):
     success_url = reverse_lazy('account')
+
+# --------------------------- Help  ---------------------------
+def help(request):
+    return render(request, 'data/help.html')
