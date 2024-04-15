@@ -59,13 +59,38 @@ def search(request):
         searched = request.GET['searched']
         print(searched)
         # search results
-        explants = Explantat.objects.filter(
+
+        explants = Explantat.objects.distinct().filter(
             Q(id__icontains=searched)|
             Q(ursache__icontains=searched)|
             Q(herkunftsort__icontains=searched)|
             Q(bruchgeschehen__icontains=searched)|
-            Q(nutzungsdauer__icontains=searched)
-            )
+            Q(nutzungsdauer__icontains=searched)|
+            # Modelle
+            Q(inlay__modell__icontains=searched)|
+            Q(kopf__modell__icontains=searched)|
+            Q(pfanne__modell__icontains=searched)|
+            Q(schaft__modell__icontains=searched)|
+            Q(patellaersatz__modell__icontains=searched)|
+            Q(tibiaplateau__modell__icontains=searched)|
+            Q(femurkomponente__modell__icontains=searched)|
+            # Hersteller
+            Q(inlay__hersteller__icontains=searched)|
+            Q(kopf__hersteller__icontains=searched)|
+            Q(pfanne__hersteller__icontains=searched)|
+            Q(schaft__hersteller__icontains=searched)|
+            Q(patellaersatz__hersteller__icontains=searched)|
+            Q(tibiaplateau__hersteller__icontains=searched)|
+            Q(femurkomponente__hersteller__icontains=searched)|
+            # Material
+            Q(inlay__material__icontains=searched)|
+            Q(kopf__material__icontains=searched)|
+            Q(pfanne__material__icontains=searched)|
+            Q(schaft__material__icontains=searched)|
+            Q(patellaersatz__material__icontains=searched)|
+            Q(tibiaplateau__material__icontains=searched)|
+            Q(femurkomponente__material__icontains=searched)
+        )
 
 
         return render(request, 'data/search.html', {'searched': searched, 'explants':explants})
