@@ -55,12 +55,20 @@ def disclaimer(request):
     return render(request, 'startpage/impressum.html')
 
 def search(request):
-    if request.method == 'POST':
-        searched = request.POST['searched']
+    if request.method == 'GET':
+        searched = request.GET['searched']
+        print(searched)
         # search results
-        huefte_explants = Explantat.objects.filter(ursache__icontains=searched, kopf__isnull=False, pfanne__isnull=False, schaft__isnull=False)
-        knie_explants = Explantat.objects.filter(ursache__icontains=searched, tibiaplateau__isnull=False, patellaersatz__isnull=False)
-        return render(request, 'data/search.html', {'searched': searched, 'huefte_explants':huefte_explants, 'knie_explants':knie_explants})
+        explants = Explantat.objects.filter(
+            Q(id__icontains=searched)|
+            Q(ursache__icontains=searched)|
+            Q(herkunftsort__icontains=searched)|
+            Q(bruchgeschehen__icontains=searched)|
+            Q(nutzungsdauer__icontains=searched)
+            )
+
+
+        return render(request, 'data/search.html', {'searched': searched, 'explants':explants})
     else:
         return render(request, 'data/search.html', {})
 

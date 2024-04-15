@@ -74,10 +74,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="col-md-3 d-flex justify-content-center align-items-center d-md-block d-none">
-          <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
+          <form class="d-flex" role="search" method="GET" action="{% url 'search' %}">
               {% csrf_token %}
               <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search" name="searched"/>
+                  <input type="text" class="form-control" placeholder="Search anything" name="searched" value="{{ searched }}"/>
                   <button
                       class="btn btn-outline-primary"
                       type="submit"

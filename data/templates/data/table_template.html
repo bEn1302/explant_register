@@ -43,13 +43,25 @@
                     <td class="text-center">{{ explant.id }}</td>
                     <td class="text-center trigger-text-cell" data-full-text="{{ explant.ursache }}">{{ explant.ursache|truncate:25 }}</td>
                     <td class="text-center" style="display: none;">{{ explant.ursache }}</td>
-                    <td class="text-center">{{ explant.verfuegbarkeit }}</td>
+                    <td class="align-middle text-center">
+                        {% if explant.verfuegbarkeit %}
+                            <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
+                        {% else %}
+                            <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
+                        {% endif %}
+                    </td>
                     <td class="text-center">{{ explant.herkunftsort }}</td>
                     <td class="text-center">{{ explant.entnahme_datum }}</td>
                     <td class="text-center">{{ explant.eingang_datum }}</td>
                     <td class="text-center trigger-text-cell" data-full-text="{{ explant.bruchgeschehen }}">{{ explant.bruchgeschehen|truncate:25 }}</td>
-                    <td class="text-center">{{ explant.nutzungsdauer }}</td>
-                    <td class="text-center">{{ explant.reinigung }}</td>
+                    <td class="text-center">{{ explant.nutzungsdauer }} Jahre</td>
+                    <td class="align-middle text-center">
+                        {% if explant.reinigung %}
+                            <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
+                        {% else %}
+                            <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
+                        {% endif %}
+                    </td>
                     <td class="text-center">
                         <i class="trigger-cell"></i>
                         <!-- nur Icon anzeigen wenn man auch den Eintrag bearbeiten darf -->
@@ -195,8 +207,12 @@
                                                 <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#reoperationModal{{ explant.id }}">Update</button>
                                             {% endif %}
                                         </li>
-                                        <li class="list-group-item">
-                                            Reoperation: {{ explant.reoperation.reoperation }}
+                                        <li class="list-group-item"> 
+                                            {% if explant.reoperation.reoperation %}
+                                                Reoperation: <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
+                                            {% else %}
+                                                Reoperation: <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
+                                            {% endif %}
                                         </li>
                                         <li class="list-group-item">
                                             Datum: {{ explant.reoperation.reoperation_datum }}
