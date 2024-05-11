@@ -10,6 +10,8 @@
             <h2>Explant data registration</h2>
             <form class="row g-3" method=POST action="" enctype="multipart/form-data">
                 {% csrf_token %}
+                <input type="hidden" name="selected_tab" id="selected_tab" value="{{ selected_tab }}">
+                
                 <!-- normal explant informations -->
                 <div class="col-md-6">
                     {{ explantat_form.ursache }}
@@ -111,25 +113,30 @@
                     explantat components 
                 ------------------------------->
                 <!-- Kopf -->
-                <div class="col-md-2">
-                    <label for="{{ explantat_form.kopf.id_for_label }}" class="form-label">Kopf:</label>
-                </div>
-                <div class="col-md-3">
-                    {{ explantat_form.kopf }}
-                </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addKopfModal">Add</button>
-                </div>
-                <!-- Femurkomponente -->
-                <div class="col-md-2">
-                    <label for="{{ explantat_form.femurkomponente.id_for_label }}" class="form-label">Femurkomponente:</label>
-                </div>
-                <div class="col-md-3">
-                    {{ explantat_form.femurkomponente }}
-                </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFemurkomponenteModal">Add</button>
-                </div>
+                {% if selected_tab == 'huefte' %}
+                    <div class="col-md-2">
+                        <label for="{{ explantat_form.kopf.id_for_label }}" class="form-label">Kopf:</label>
+                    </div>
+                    <div class="col-md-3">
+                        {{ explantat_form.kopf }}
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addKopfModal">Add</button>
+                    </div>
+                {% endif %}
+                {% if selected_tab == 'knie' %}
+                    <!-- Femurkomponente -->
+                    <div class="col-md-2">
+                        <label for="{{ explantat_form.femurkomponente.id_for_label }}" class="form-label">Femurkomponente:</label>
+                    </div>
+                    <div class="col-md-3">
+                        {{ explantat_form.femurkomponente }}
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFemurkomponenteModal">Add</button>
+                    </div>
+                {% endif %}
+                {% if selected_tab == 'huefte' %}
                 <!-- Schaft -->
                 <div class="col-md-2">
                     <label for="{{ explantat_form.schaft.id_for_label }}" class="form-label">Schaft:</label>
@@ -140,38 +147,47 @@
                 <div class="col-md-1">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSchaftModal">Add</button>
                 </div>
-                <!-- Tibiaplateau -->
-                <div class="col-md-2">
-                    <label for="{{ explantat_form.tibiaplateau.id_for_label }}" class="form-label">Tibiaplateau:</label>
-                </div>
-                <div class="col-md-3">
-                    {{ explantat_form.tibiaplateau }}
-                </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTibiaplateauModal">Add</button>
-                </div>
-                <!-- Pfanne -->
-                <div class="col-md-2">
-                    <label for="{{ explantat_form.pfanne.id_for_label }}" class="form-label">Pfanne:</label>
-                </div>
-                <div class="col-md-3">
-                    {{ explantat_form.pfanne }}
-                </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPfanneModal">Add</button>
-                </div>
-                <!-- Patellaersatz -->
-                <div class="col-md-2">
-                    <label for="{{ explantat_form.patellaersatz.id_for_label }}" class="form-label">Patellaersatz:</label>
-                </div>
-                <div class="col-md-3">
-                    {{ explantat_form.patellaersatz }}
-                </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatellaersatzModal">Add</button>
-                </div>
-                <div class="col-md-1">
-                    <input type="submit" value="Submit" class="btn btn-primary mb-3 add-explant">
+                {% endif %}
+                {% if selected_tab == 'knie' %}
+                    <!-- Tibiaplateau -->
+                    <div class="col-md-2">
+                        <label for="{{ explantat_form.tibiaplateau.id_for_label }}" class="form-label">Tibiaplateau:</label>
+                    </div>
+                    <div class="col-md-3">
+                        {{ explantat_form.tibiaplateau }}
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTibiaplateauModal">Add</button>
+                    </div>
+                {% endif %}
+                {% if selected_tab == 'huefte' %}
+                    <!-- Pfanne -->
+                    <div class="col-md-2">
+                        <label for="{{ explantat_form.pfanne.id_for_label }}" class="form-label">Pfanne:</label>
+                    </div>
+                    <div class="col-md-3">
+                        {{ explantat_form.pfanne }}
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPfanneModal">Add</button>
+                    </div>
+                {% endif %}
+                {% if selected_tab == 'knie' %}
+                    <!-- Patellaersatz -->
+                    <div class="col-md-2">
+                        <label for="{{ explantat_form.patellaersatz.id_for_label }}" class="form-label">Patellaersatz:</label>
+                    </div>
+                    <div class="col-md-3">
+                        {{ explantat_form.patellaersatz }}
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatellaersatzModal">Add</button>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-end">
+                        <input type="submit" value="Submit" class="btn btn-primary mb-3 add-explant">
+                    </div>
                 </div>
             </form>
 

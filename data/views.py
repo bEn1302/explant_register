@@ -195,6 +195,7 @@ def explant_update(request, explant_id):
 # --------------------------- Data Insert ---------------------------
 @user_passes_test(is_expert_or_moderator)
 def add_explant(request):
+    selected_tab = request.GET.get('selected_tab')
     if request.method == 'POST':
         explantat_form = ExplantatForm(request.POST, request.FILES)
         if explantat_form.is_valid():
@@ -206,7 +207,7 @@ def add_explant(request):
     else:
         explantat_form = ExplantatForm()
 
-    return render(request, 'data/explant_form.html', {'explantat_form': explantat_form})
+    return render(request, 'data/explant_form.html', {'explantat_form': explantat_form, 'selected_tab': selected_tab})
 
 # Verknüpfte Tabellen
 def add_model_instance(request, form_class):
