@@ -112,10 +112,31 @@ class Reoperation(models.Model):
     
     def __str__(self):
         return self.reoperation_datum.strftime('%Y-%m-%d')
+    
+# --- Reopertion ändern zu Operation ---
+# class Operation(models.Model):
+#     reoperation = models.BooleanField('Reoperation')
+#     reoperation_datum = models.DateField('Reoperationsdatum')
+#     implantatposition = models.ImageField('Implantatposition', blank=True, null=True, upload_to='images/')
+#     operierender_arzt = models.CharField('operierender Arzt')
+#     klinik = models.CharField('Klinik')
+#     operationsdauer = models.IntegerField('Operationsdauer')        # in h
+#     nebenwirkungen = models.TextField('Nebenwirkungen')
+#     postoperative_komplikationen = models.TextField('postoperative Komplikationen')
+
+#     class Meta:
+#         verbose_name_plural = "Operationen"
 
 class Patient(models.Model):
     geburtsdatum = models.DateField('Geburtsdatum')
     gewicht = models.FloatField('Gewicht')          # in kg
+    # groesse = models.FloatField('Größe')            # in m
+    # geschlecht = models.CharField('Geschlecht')     # männlich, weiblich, divers
+    # aktivitaet = models.TextField('Aktivität')      # viel/wenig Bewegung --> was etc.
+    # begleiterkrankungen = models.TextField('Begleiterkrankungen')
+    # nachuntersuchungen = models.TextField('Nachuntersuchungen')
+    # med_vorgeschichte = models.TextField('Medizinische Vorgeschichte')
+    # roentgenbilder = models.ImageField('Röntgenbilder', blank=True, null=True, upload_to='images/')
 
     class Meta:
         verbose_name_plural = "Patienten"
@@ -123,6 +144,7 @@ class Patient(models.Model):
 class Lagerort(models.Model):
     schrank = models.IntegerField('Schrank')
     kiste = models.IntegerField('Kiste')
+    # einrichtung = models.CharField('Einrichtung')
 
     class Meta:
         verbose_name_plural = "Lagerorte"
