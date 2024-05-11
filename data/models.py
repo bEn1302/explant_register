@@ -35,7 +35,7 @@ class Femurkomponente(models.Model):
         verbose_name_plural = "Femurkomponenten"
     
     def __str__(self):
-        return f"{self.hersteller} - {self.modell}"
+        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Tibiaplateau(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -44,7 +44,7 @@ class Tibiaplateau(models.Model):
     groeße = models.FloatField('Größe')         # in cm / mm
 
     def __str__(self):
-        return f"{self.hersteller} - {self.modell}"
+        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Patellaersatz(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -56,7 +56,7 @@ class Patellaersatz(models.Model):
         verbose_name_plural = "Patellaersätze"
 
     def __str__(self):
-        return f"{self.hersteller} - {self.modell}"
+        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Kopf(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -68,7 +68,7 @@ class Kopf(models.Model):
         verbose_name_plural = "Köpfe"
 
     def __str__(self):
-        return f"{self.hersteller} - {self.modell}"
+        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Inlay(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -77,7 +77,7 @@ class Inlay(models.Model):
     groeße = models.FloatField('Größe')         # in cm / mm
 
     def __str__(self):
-        return f"{self.hersteller} - {self.modell}"
+        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Schaft(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -89,7 +89,7 @@ class Schaft(models.Model):
         verbose_name_plural = "Schafte"
 
     def __str__(self):
-        return f"{self.hersteller} - {self.modell}"
+        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Pfanne(models.Model):
     hersteller = models.CharField('Hersteller')
@@ -101,7 +101,7 @@ class Pfanne(models.Model):
         verbose_name_plural = "Pfannen"
 
     def __str__(self):
-        return f"{self.hersteller} - {self.modell}"
+        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Reoperation(models.Model):
     reoperation = models.BooleanField('Reoperation')
@@ -150,7 +150,7 @@ class Lagerort(models.Model):
         verbose_name_plural = "Lagerorte"
 
     def __str__(self):
-        return f"{self.schrank} - {self.kiste}"
+        return f" Schrank: {self.schrank} - Kiste: {self.kiste}"
 
 class Explantat(models.Model):
     ursache = models.TextField('Ursache')
