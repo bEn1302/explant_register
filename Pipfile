@@ -23,6 +23,8 @@ pip-upgrader = "*"
 django-multi-captcha-admin = "*"
 django-simple-captcha = "*"
 django-import-export = "*"
+django-filter = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 
