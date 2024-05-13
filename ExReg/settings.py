@@ -170,3 +170,13 @@ AUTO_LOGOUT = {
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
+
+# Jazzmin (https://django-jazzmin.readthedocs.io/)
+JAZZMIN_SETTINGS = {
+    "site_title": "ExReg Admin",
+    "site_header": "ExReg",
+    "site_brand": "ExReg",
+    "site_icon": "img/favicon.svg",
+    "welcome_sign": "Welcome to ExReg",
+    "copyright": "ExReg",
+}
