@@ -35,3 +35,7 @@ ul.sublist a:hover{
     color: var(--black);
     text-decoration: underline;
 }
+
+.card {
+    border: none;
+}
