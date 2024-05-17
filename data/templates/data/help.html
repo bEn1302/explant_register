@@ -2,125 +2,93 @@
 
 {% block help %}
     {% if user.is_authenticated %}
-        
+    <head>
+        <link rel="stylesheet" href="{% static '/css/help_page.css' %}" />
+    </head>
     <title>Help center</title>
         <div class="container mt-4">
             <div class="row">
               <div class="col-md-3">
                 <div class="p-3">
-                  <!-- Inhalt des ersten Containers -->
-                    <!-- erster Teil -->
-                    <!-- <div class="d-flex align-items-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
-                            <path d="M7.5 11v5.777c0 .115.04.226.12.309C8.054 17.538 9.681 19 12.5 19s4.445-1.462 4.88-1.914a.442.442 0 00.12-.31V11" stroke="#190041" stroke-width="2"></path>
-                            <path d="M3.5 14.5V9.325a.5.5 0 01.297-.457l8.5-3.778a.5.5 0 01.406 0l7.769 3.453a.5.5 0 010 .914l-7.77 3.454a.5.5 0 01-.404 0L4.5 9.5" stroke="#190041" stroke-width="2" stroke-linecap="round"></path>
-                        </svg>
-                        <h5 class="fw-semibold m-0">Learn</h5>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item border-0">
-                            <div class="d-flex">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i> Hauptpunkt 1</span>
-                            </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4">Unterpunkt 1</li>
-                                    <li class="ps-4">Unterpunkt 2</li>
-                                    <li class="ps-4">Unterpunkt 3</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i> Hauptpunkt 1</span>
-                            </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4">Unterpunkt 1</li>
-                                    <li class="ps-4">Unterpunkt 2</li>
-                                    <li class="ps-4">Unterpunkt 3</li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul> -->
-                    <!-- zweiter Teil -->
-                    <div class="d-flex align-items-center"><!-- mt-4 entfernt -->
+                <!-- Inhalt des ersten Containers -->
+                  <!-- erster Teil -->
+                    <div class="d-flex align-items-center">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
                             <path clip-rule="evenodd" d="M14 5H8C7 5 6 6 6 7v10c0 1 1 2 2 2h8c1 0 2-1 2-2V9l-4-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M10 15h4M10 12h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path clip-rule="evenodd" d="M13 5v4a1 1 0 001 1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.5 7.5l2 2 1-1-2-2-1 1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <h5 class="fw-semibold m-0">Help docs</h5>
                     </div>
-                    <ul class="list-group">
+                    <ul class="list-group mt-1">
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i>New to ExReg</span>
+                                <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>New to ExReg</a>
                             </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4"><a href="">Welcome to ExReg</a></li>
-                                    <li class="ps-4"><a href="">How ExReg is organized</a></li>
-                                    <li class="ps-4"><a href="">Navigating ExReg</a></li>
+                            <div class="container">
+                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
+                                    <li class="ps-4 mt-2"><a href="">Welcome to ExReg</a></li>
+                                    <li class="ps-4 mt-2"><a href="">How ExReg is organized</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Navigating ExReg</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i>Share and collaborate</span>
+                                <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Share and collaborate</a>
                             </div>
                             <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
+                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i>Organize your data</span>
+                                <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Organize your data</a>
                             </div>
                             <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
+                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i>Settings</span>
+                                <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Settings</a>
                             </div>
                             <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
+                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i>Security</span>
+                                <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Security</a>
                             </div>
                             <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4"><a href="">Unterpunkt</a></li>
+                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold"><i class="bi bi-chevron-right toggle-subitems"></i>Legal and privacy</span>
+                                <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Legal and privacy</a>
                             </div>
                             <div>
-                                <ul class="list-unstyled pl-3 text-body-secondary" style="display: none;">
-                                    <li class="ps-4">User Terms of Service</li>
-                                    <li class="ps-4">Privacy Policy</li>
-                                    <li class="ps-4">Open Source</li>
+                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
+                                    <li class="ps-4 mt-2"><a href="">User Terms of Service</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Privacy Policy</a></li>
+                                    <li class="ps-4 mt-2"><a href="">Open Source</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -136,8 +104,8 @@
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
                                 <span class="mr-auto fw-semibold">
-                                    <a href="">
-                                        <i class="bi bi-arrow-right-short"></i>Contact us
+                                    <a class="section-title" href="">
+                                        <i class="bi bi-arrow-right-short me-2"></i>Contact us
                                     </a>
                                 </span>
                             </div>
@@ -145,8 +113,8 @@
                         <li class="list-group-item border-0">
                             <div class="d-flex align-items-center">
                                 <span class="mr-auto fw-semibold">
-                                    <a href="">
-                                        <i class="bi bi-arrow-right-short"></i>Changelog
+                                    <a class="section-title" href="">
+                                        <i class="bi bi-arrow-right-short me-2"></i>Changelog
                                     </a>
                                 </span>
                             </div>
@@ -159,37 +127,75 @@
                 <!-- Zweiter Container (3 Teile) -->
                 <div class="p-3">
                   <!-- Inhalt des zweiten Containers -->
-                  <h1>Header</h1>
-                  <div class="d-inline-flex flex-wrap">
-                    <a href="{% url 'help' %}">Help</a>
-                    <span style="line-height: 0; display: block;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgb(12, 0, 32); opacity: 0.6;">
-                            <path d="M8 19l8-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </span>
-                    <a href="#">Tab name</a>
+                  <h1 class="mb-4 fw-bold">Help, resources, and support</h1>
+                  <p class="fs-5 fw-medium">
+                    Find the answers you need to leverage the full potential of ExReg.
+                  </p>
+                  <h2 class="mt-5 fw-bold">Help docs</h2>
+                  <!-- Sections -->
+                  <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                      <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    {% include 'data/help_template.html'%}
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <script>
-            // JavaScript, um Unterpunkte beim Klicken anzuzeigen
+            // JavaScript, um Unterpunkte beim Klicken anzuzeigen und das Icon zu ändern
             document.addEventListener("DOMContentLoaded", function() {
-              // Alle Listenelemente mit Unterpunkten auswählen
-              var listItemsWithSubitems = document.querySelectorAll('.list-group-item');
-              
-              // Iteriere über jedes Listenelement
-              listItemsWithSubitems.forEach(function(item) {
-                // Füge Klickereignis hinzu
-                item.addEventListener('click', function() {
-                  // Toggle-Anzeige der Unterpunkte
-                  var subItems = this.querySelector('ul');
-                  if (subItems) {
-                    subItems.style.display = (subItems.style.display === 'none' || subItems.style.display === '') ? 'block' : 'none';
-                  }
+                var listItemsWithSubitems = document.querySelectorAll('.list-group-item');
+
+                listItemsWithSubitems.forEach(function(item) {
+                    item.addEventListener('click', function() {
+                        var subItems = this.querySelector('ul');
+                        var icon = this.querySelector('.toggle-subitems');
+                        if (subItems) {
+                            var isExpanded = (subItems.style.display === 'block');
+                            subItems.style.display = isExpanded ? 'none' : 'block';
+                            if (icon) {
+                                icon.className = isExpanded ? 'bi bi-chevron-right me-2 toggle-subitems' : 'bi bi-chevron-down me-2 toggle-subitems';
+                            }
+                        }
+                    });
                 });
-              });
             });
           </script>
           
