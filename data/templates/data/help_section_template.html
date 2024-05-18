@@ -1,0 +1,45 @@
+{% block content %}
+<!-- help_section_template.html -->
+    <div class="d-inline-flex flex-wrap">
+        <a href="{% url 'help' %}">Help</a>
+        <span style="line-height: 0; display: block;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgb(12, 0, 32); opacity: 0.6;">
+                <path d="M8 19l8-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </span>
+        <a href="#">{{ tab_name }}</a>
+    </div>
+    <div class="container bg-light p-2 my-3 rounded-3">
+        <div class="row">
+            <div class="col-8 d-flex align-items-center justify-content-between">
+                <h1 class="fw-bold">{{ section_title }}</h1>
+            </div>
+            <div class="col-4 text-end">
+                <i class="{{ bt_icon }}" style="font-size: 100px;"></i>
+            </div>
+        </div>
+    </div>
+    <h2 class="mt-5 mb-4 fw-bold">Articles</h2><hr>
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-5">
+                <div>
+                    <img src="{{ article_image_url }}" class="card-img-top rounded-3" alt="{{ article_image_alt }}">
+                </div>
+            </div>
+            <div class="col-7 d-flex align-items-center">
+                <div class="">
+                    <h4 class="fw-bolder">{{ article_name }}</h4>
+                    <div style="display: flex; gap: 32px;">
+                        <div>
+                            <span style="color: rgb(109, 102, 121);">Last updated </span>{{ last_updated }}
+                        </div>
+                        <div class="css-i4l1z8 e1hj53v00">
+                            <span style="color: rgb(109, 102, 121);">Read time </span>{{ read_time }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

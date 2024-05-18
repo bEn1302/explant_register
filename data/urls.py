@@ -15,6 +15,8 @@ urlpatterns = [
     path('search', views.search, name="search"),
     path('users', views.users, name="users"),
     path('account', views.account, name="account"),
+    
+    # help center
     path('help', views.help, name="help"),
     
     # update views
