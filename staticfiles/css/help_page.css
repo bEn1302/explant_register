@@ -37,5 +37,32 @@ ul.sublist a:hover{
 }
 
 .card {
-    border: none;
+    border: none !important;
+}
+
+/* img zoom effect */
+.zoom-img {
+overflow: hidden;
+position: relative;
+}
+
+.zoom-img img {
+transition: transform 1s ease;
+width: 100%;
+height: auto;
+}
+
+.zoom-img:hover img {
+transform: scale(1.05);
+}
+
+/* Help center */
+.help_center a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+.help_center a:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
