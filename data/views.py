@@ -676,3 +676,10 @@ def help_section(request):
         'selected_section': selected_section
     }
     return render(request, 'helppage/help_section.html', context)
+
+def help_article(request):
+    selected_article = request.GET.get('selected_article', None)
+    context = {
+        'selected_article': selected_article
+    }
+    return render(request, 'helppage/help_article.html', context)

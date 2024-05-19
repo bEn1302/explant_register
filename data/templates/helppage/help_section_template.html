@@ -1,133 +1,8 @@
 {% block content %}
-    <!-- help_section_template.html -->
     <title>{{ section_title }}</title>
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-3 d-none d-lg-block">
-                <div class="p-3 sticky-top" style="top: 80px;">
-                    <!-- Inhalt des ersten Containers -->
-                    <!-- erster Teil -->
-                    <div class="d-flex align-items-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
-                            <path clip-rule="evenodd" d="M14 5H8C7 5 6 6 6 7v10c0 1 1 2 2 2h8c1 0 2-1 2-2V9l-4-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M10 15h4M10 12h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path clip-rule="evenodd" d="M13 5v4a1 1 0 001 1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.5 7.5l2 2 1-1-2-2-1 1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        <h5 class="fw-semibold m-0">Help docs</h5>
-                    </div>
-                    <ul class="list-group mt-1">
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <a href="{% url 'help-section' %}?selected_section=New_to_ExReg" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>New to ExReg</a>
-                            </div>
-                            <div class="container">
-                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
-                                    <li class="ps-4 mt-2"><a href="">Welcome to ExReg</a></li>
-                                    <li class="ps-4 mt-2"><a href="">How ExReg is organized</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Navigating ExReg</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <a href="{% url 'help-section' %}?selected_section=Share_and_collaborate" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Share & collaborate</a>
-                            </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <a href="{% url 'help-section' %}?selected_section=Organize_your_data" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Organize your data</a>
-                            </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <a href="{% url 'help-section' %}?selected_section=settings" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Settings</a>
-                            </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <a href="{% url 'help-section' %}?selected_section=security" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Security</a>
-                            </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Unterpunkt</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <a href="{% url 'help-section' %}?selected_section=Legal_and_privacy" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Legal and privacy</a>
-                            </div>
-                            <div>
-                                <ul class="list-unstyled pl-3 sublist" style="display: none;">
-                                    <li class="ps-4 mt-2"><a href="">User Terms of Service</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Privacy Policy</a></li>
-                                    <li class="ps-4 mt-2"><a href="">Open Source</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- dritter Teil -->
-                    <div class="d-flex align-items-center mt-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
-                            <path clip-rule="evenodd" d="M5.877 16C5.393 16 5 15.621 5 15.154c0-.196.07-.386.2-.537 1.028-1.209 1.543-2.424 1.543-3.647l-.004-.283.002.142-.015-.421c-.17-2.819 2.063-5.236 4.985-5.4l.153-.006.154-.002.118.002.153.007c2.856.159 5.052 2.471 4.993 5.207l-.008.192a9.416 9.416 0 00-.017.562c0 1.223.515 2.438 1.544 3.647.129.151.199.341.199.537a.858.858 0 01-.775.84l-.102.006H5.877z" stroke="currentColor" stroke-width="2"></path>
-                            <path d="M14 19c-.667.667-1.333 1-2 1s-1.333-.333-2-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <circle cx="12" cy="4.5" r="0.5" stroke="currentColor" stroke-width="2"></circle>
-                        </svg>
-                        <h5 class="fw-semibold m-0">Updates</h5>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold">
-                                    <a class="section-title" href="">
-                                        <i class="bi bi-arrow-right-short me-2"></i>Changelog
-                                    </a>
-                                </span>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold">
-                                    <a class="section-title" href="">
-                                        <i class="bi bi-arrow-right-short me-2"></i>Feedback
-                                    </a>
-                                </span>
-                            </div>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <div class="d-flex align-items-center">
-                                <span class="mr-auto fw-semibold">
-                                    <a class="section-title" href="">
-                                        <i class="bi bi-arrow-right-short me-2"></i>Roadmap
-                                    </a>
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            {% include "helppage/help_sidebar.html" %}
             <div class="col-md-auto border-start d-none d-lg-block"></div>
             <div class="col-md-8">
                 <!-- Zweiter Container -->
@@ -140,7 +15,7 @@
                                     <path d="M8 19l8-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                             </span>
-                            <a href="#">{{ tab_name }}</a>
+                            <a href="#">{{ section_tab_name }}</a>
                         </div>
                         <div class="container bg-light p-2 my-3 rounded-3">
                             <div class="row">
@@ -158,7 +33,7 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div>
-                                        <img src="{{ article_image_url }}" class="card-img-top rounded-3" alt="{{ article_image_alt }}">
+                                        <a href="{% url 'help-article' %}?selected_article={{ article_1_url }}" class="zoom-img"><img src="{{ article_image_url }}" class="card-img-top rounded-3"></a>
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex align-items-center">
@@ -181,7 +56,7 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div>
-                                        <img src="{{ article_image_url }}" class="card-img-top rounded-3" alt="{{ article_image_alt }}">
+                                        <a href="" class="zoom-img"><img src="{{ article_image_url }}" class="card-img-top rounded-3"></a>
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex align-items-center">
@@ -204,7 +79,7 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div>
-                                        <img src="{{ article_image_url }}" class="card-img-top rounded-3" alt="{{ article_image_alt }}">
+                                        <a href="" class="zoom-img"><img src="{{ article_image_url }}" class="card-img-top rounded-3"></a>
                                     </div>
                                 </div>
                                 <div class="col-7 d-flex align-items-center">
@@ -227,24 +102,4 @@
             </div>
         </div>
     </div>
-    <script>
-        // JavaScript, um Unterpunkte beim Klicken anzuzeigen und das Icon zu ändern
-        document.addEventListener("DOMContentLoaded", function() {
-            var listItemsWithSubitems = document.querySelectorAll('.list-group-item');
-
-            listItemsWithSubitems.forEach(function(item) {
-                item.addEventListener('click', function() {
-                    var subItems = this.querySelector('ul');
-                    var icon = this.querySelector('.toggle-subitems');
-                    if (subItems) {
-                        var isExpanded = (subItems.style.display === 'block');
-                        subItems.style.display = isExpanded ? 'none' : 'block';
-                        if (icon) {
-                            icon.className = isExpanded ? 'bi bi-chevron-right me-2 toggle-subitems' : 'bi bi-chevron-down me-2 toggle-subitems';
-                        }
-                    }
-                });
-            });
-        });
-      </script>
 {% endblock %}

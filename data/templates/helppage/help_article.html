@@ -1,0 +1,22 @@
+{% extends 'data/base.html' %} {% load static %} {% load custom_filters %}
+
+{% block help_article %}
+    {% if user.is_authenticated %}
+        <head>
+            <link rel="stylesheet" href="{% static '/css/help_page.css' %}" />
+        </head>
+
+        {% if selected_article == 'Welcome_to_ExReg' %}
+            {% include 'helppage/help_article_template.html' with article_title="Welcome to ExReg" section_tab_name="New to ExReg" article_tab_name="Welcome to ExReg" article_name="Welcome to ExReg"  article_image_url="https://placehold.co/750x500" last_updated="9. May 2024" read_time="3 min" %}
+        {% endif %}
+        
+
+
+    {% else %}
+        {% url 'sign_in' as sign_in %}
+        <script>
+            window.location.href = "{% url 'sign_in' %}";
+        </script>
+
+    {% endif %}
+{% endblock %}

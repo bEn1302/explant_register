@@ -19,6 +19,7 @@ urlpatterns = [
     # help center
     path('help', views.help, name="help"),
     path('help_section', views.help_section, name="help-section"),
+    path('help_article', views.help_article, name="help-article"),
     
     # update views
     path('update_explant/<int:explant_id>', views.explant_update, name='explant_update'),
