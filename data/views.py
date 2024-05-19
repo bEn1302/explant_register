@@ -668,4 +668,11 @@ class CustomPasswordChangeView(PasswordChangeView):
 
 # --------------------------- Help  ---------------------------
 def help(request):
-    return render(request, 'data/help.html')
+    return render(request, 'helppage/help.html')
+
+def help_section(request):
+    selected_section = request.GET.get('selected_section', None)
+    context = {
+        'selected_section': selected_section
+    }
+    return render(request, 'helppage/help_section.html', context)

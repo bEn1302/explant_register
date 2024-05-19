@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="col-md-3 d-none d-lg-block">
                     <div class="p-3 sticky-top" style="top: 80px;">
-                    <!-- Inhalt des ersten Containers -->
-                    <!-- erster Teil -->
+                        <!-- Inhalt des ersten Containers -->
+                        <!-- erster Teil -->
                         <div class="d-flex align-items-center">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
                                 <path clip-rule="evenodd" d="M14 5H8C7 5 6 6 6 7v10c0 1 1 2 2 2h8c1 0 2-1 2-2V9l-4-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -22,7 +22,7 @@
                         <ul class="list-group mt-1">
                             <li class="list-group-item border-0">
                                 <div class="d-flex align-items-center">
-                                    <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>New to ExReg</a>
+                                    <a href="{% url 'help-section' %}?selected_section=New_to_ExReg" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>New to ExReg</a>
                                 </div>
                                 <div class="container">
                                     <ul class="list-unstyled pl-3 sublist" style="display: none;">
@@ -34,7 +34,7 @@
                             </li>
                             <li class="list-group-item border-0">
                                 <div class="d-flex align-items-center">
-                                    <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Share and collaborate</a>
+                                    <a href="{% url 'help-section' %}?selected_section=Share_and_collaborate" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Share and collaborate</a>
                                 </div>
                                 <div>
                                     <ul class="list-unstyled pl-3 sublist" style="display: none;">
@@ -46,7 +46,7 @@
                             </li>
                             <li class="list-group-item border-0">
                                 <div class="d-flex align-items-center">
-                                    <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Organize your data</a>
+                                    <a href="{% url 'help-section' %}?selected_section=Organize_your_data" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Organize your data</a>
                                 </div>
                                 <div>
                                     <ul class="list-unstyled pl-3 sublist" style="display: none;">
@@ -58,7 +58,7 @@
                             </li>
                             <li class="list-group-item border-0">
                                 <div class="d-flex align-items-center">
-                                    <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Settings</a>
+                                    <a href="{% url 'help-section' %}?selected_section=settings" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Settings</a>
                                 </div>
                                 <div>
                                     <ul class="list-unstyled pl-3 sublist" style="display: none;">
@@ -70,7 +70,7 @@
                             </li>
                             <li class="list-group-item border-0">
                                 <div class="d-flex align-items-center">
-                                    <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Security</a>
+                                    <a href="{% url 'help-section' %}?selected_section=security" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Security</a>
                                 </div>
                                 <div>
                                     <ul class="list-unstyled pl-3 sublist" style="display: none;">
@@ -82,7 +82,7 @@
                             </li>
                             <li class="list-group-item border-0">
                                 <div class="d-flex align-items-center">
-                                    <a class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Legal and privacy</a>
+                                    <a href="{% url 'help-section' %}?selected_section=Legal_and_privacy" class="mr-auto fw-semibold section-title"><i class="bi bi-chevron-right me-2 toggle-subitems"></i>Legal & privacy</a>
                                 </div>
                                 <div>
                                     <ul class="list-unstyled pl-3 sublist" style="display: none;">
@@ -146,67 +146,67 @@
                                 <div class="row row-cols-1 row-cols-md-2 g-4">
                                     <div class="col">
                                         <div class="card h-100">
-                                            <a href="#section-title" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
+                                            <a href="{% url 'help-section' %}?selected_section=New_to_ExReg" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
                                             <div class="card-body">
-                                                <a href=""><h5 class="card-title fw-bold">New to ExReg</h5></a>
+                                                <a href="{% url 'help-section' %}?selected_section=New_to_ExReg"><h5 class="card-title fw-bold">New to ExReg</h5></a>
                                                 <a href="">Welcome to ExReg</a><br>
                                                 <a href="">How ExReg is organized</a><br>
-                                                <a href="" class="link-secondary">See more</a>
+                                                <a href="{% url 'help-section' %}?selected_section=New_to_ExReg" class="link-secondary">See more</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card h-100">
-                                            <a href="#section-title" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
+                                            <a href="{% url 'help-section' %}?selected_section=Share_and_collaborate" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
                                             <div class="card-body">
-                                                <a href=""><h5 class="card-title fw-bold">Section title</h5></a>
+                                                <a href="{% url 'help-section' %}?selected_section=Share_and_collaborate"><h5 class="card-title fw-bold">Share & collaborate</h5></a>
                                                 <a href="">Unterpunkt 1</a><br>
                                                 <a href="">Unterpunkt 2</a><br>
-                                                <a href="" class="link-secondary">See more</a>
+                                                <a href="{% url 'help-section' %}?selected_section=Share_and_collaborate" class="link-secondary">See more</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card h-100">
-                                            <a href="#section-title" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
+                                            <a href="{% url 'help-section' %}?selected_section=Organize_your_data" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
                                             <div class="card-body">
-                                                <a href=""><h5 class="card-title fw-bold">Section title</h5></a>
+                                                <a href="{% url 'help-section' %}?selected_section=Organize_your_data"><h5 class="card-title fw-bold">Organize your data</h5></a>
                                                 <a href="">Unterpunkt 1</a><br>
                                                 <a href="">Unterpunkt 2</a><br>
-                                                <a href="" class="link-secondary">See more</a>
+                                                <a href="{% url 'help-section' %}?selected_section=Organize_your_data" class="link-secondary">See more</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card h-100">
-                                            <a href="#section-title" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
+                                            <a href="{% url 'help-section' %}?selected_section=settings" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
                                             <div class="card-body">
-                                                <a href=""><h5 class="card-title fw-bold">Section title</h5></a>
+                                                <a href="{% url 'help-section' %}?selected_section=settings"><h5 class="card-title fw-bold">Settings</h5></a>
                                                 <a href="">Unterpunkt 1</a><br>
                                                 <a href="">Unterpunkt 2</a><br>
-                                                <a href="" class="link-secondary">See more</a>
+                                                <a href="{% url 'help-section' %}?selected_section=settings" class="link-secondary">See more</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card h-100">
-                                            <a href="#section-title" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
+                                            <a href="{% url 'help-section' %}?selected_section=security" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
                                             <div class="card-body">
-                                                <a href=""><h5 class="card-title fw-bold">Section title</h5></a>
+                                                <a href="{% url 'help-section' %}?selected_section=security"><h5 class="card-title fw-bold">Security</h5></a>
                                                 <a href="">Unterpunkt 1</a><br>
                                                 <a href="">Unterpunkt 2</a><br>
-                                                <a href="" class="link-secondary">See more</a>
+                                                <a href="{% url 'help-section' %}?selected_section=security" class="link-secondary">See more</a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card h-100">
-                                            <a href="#section-title" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
+                                            <a href="{% url 'help-section' %}?selected_section=Legal_and_privacy" class="zoom-img"><img src="https://placehold.co/360x240" class="card-img-top rounded-3" alt=""></a>
                                             <div class="card-body">
-                                                <a href=""><h5 class="card-title fw-bold">Section title</h5></a>
+                                                <a href="{% url 'help-section' %}?selected_section=Legal_and_privacy"><h5 class="card-title fw-bold">Legal & privacy</h5></a>
                                                 <a href="">Unterpunkt 1</a><br>
                                                 <a href="">Unterpunkt 2</a><br>
-                                                <a href="" class="link-secondary">See more</a>
+                                                <a href="{% url 'help-section' %}?selected_section=Legal_and_privacy" class="link-secondary">See more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@
                             </div>
 
                             <div class="d-none"><!-- Template Test -->
-                                {% include 'data/help_section_template.html' with tab_name="Test" section_title="New to ExReg" bt_icon="bi bi-house-heart" article_name="Article Name" article_image_url="https://placehold.co/260x175" article_image_alt="Alt text for article image" last_updated="9. May 2024" read_time="3 min" %}
+                                {% include 'helppage/help_section_template.html' with tab_name="Test" section_title="New to ExReg" bt_icon="bi bi-house-heart" article_name="Article Name" article_image_url="https://placehold.co/260x175" article_image_alt="Alt text for article image" last_updated="9. May 2024" read_time="3 min" %}
                             </div>
                         </div>
                 </div>
