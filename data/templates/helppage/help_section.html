@@ -30,7 +30,7 @@
             {% include 'helppage/help_section_template.html' with section_title="Legal & privacy" section_tab_name="Legal and privacy" section_name="Legal and privacy" bt_icon="bi bi-vector-pen" article_name="Article Name" article_image_url="https://placehold.co/260x175" last_updated="9. May 2024" read_time="3 min" %}
         {% endif %}
 
-
+        <script defer src="{% static '/js/expand_list.js' %}"></script>
     {% else %}
         {% url 'sign_in' as sign_in %}
         <script>
