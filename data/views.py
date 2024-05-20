@@ -415,6 +415,7 @@ def explant_pdf(request):
                 ["Modell", explant.inlay.modell] if explant.inlay else ["", ""],
                 ["Material", explant.inlay.material] if explant.inlay else ["", ""],
                 ["Größe", explant.inlay.groeße] if explant.inlay else ["", ""],
+                # ["recycelt", "Ja" if explant.inlay.recycelt else "Nein"],
             ]
 
             inlay_title, inlay_table = create_info_table(inlay_info, "Inlay")
@@ -428,6 +429,7 @@ def explant_pdf(request):
                 ["Modell", explant.kopf.modell] if explant.kopf else ["", ""],
                 ["Material", explant.kopf.material] if explant.kopf else ["", ""],
                 ["Größe", explant.kopf.groeße] if explant.kopf else ["", ""],
+                # ["recycelt", "Ja" if explant.kopf.recycelt else "Nein"],
             ]
 
             kopf_title, kopf_table = create_info_table(kopf_info, "Kopf")
@@ -441,6 +443,7 @@ def explant_pdf(request):
                 ["Modell", explant.schaft.modell] if explant.schaft else ["", ""],
                 ["Material", explant.schaft.material] if explant.schaft else ["", ""],
                 ["Größe", explant.schaft.groeße] if explant.schaft else ["", ""],
+                # ["recycelt", "Ja" if explant.schaft.recycelt else "Nein"],
             ]
 
             schaft_title, schaft_table = create_info_table(schaft_info, "Schaft")
@@ -454,6 +457,7 @@ def explant_pdf(request):
                 ["Modell", explant.pfanne.modell] if explant.pfanne else ["", ""],
                 ["Material", explant.pfanne.material] if explant.pfanne else ["", ""],
                 ["Größe", explant.pfanne.groeße] if explant.pfanne else ["", ""],
+                # ["recycelt", "Ja" if explant.pfanne.recycelt else "Nein"],
             ]
 
             pfanne_title, pfanne_table = create_info_table(pfanne_info, "Pfanne")
@@ -478,6 +482,7 @@ def explant_pdf(request):
                 ["Modell", explant.femurkomponente.modell] if explant.femurkomponente else ["", ""],
                 ["Material", explant.femurkomponente.material] if explant.femurkomponente else ["", ""],
                 ["Größe", explant.femurkomponente.groeße] if explant.femurkomponente else ["", ""],
+                # ["recycelt", "Ja" if explant.femurkomponente.recycelt else "Nein"],
             ]
 
             femurkomponente_title, femurkomponente_table = create_info_table(femurkomponente_info, "Femurkomponente")
@@ -491,6 +496,7 @@ def explant_pdf(request):
                 ["Modell", explant.tibiaplateau.modell] if explant.tibiaplateau else ["", ""],
                 ["Material", explant.tibiaplateau.material] if explant.tibiaplateau else ["", ""],
                 ["Größe", explant.tibiaplateau.groeße] if explant.tibiaplateau else ["", ""],
+                # ["recycelt", "Ja" if explant.tibiaplateau.recycelt else "Nein"],
             ]
 
             tibiaplateau_title, tibiaplateau_table = create_info_table(tibiaplateau_info, "Tibiaplateau")
@@ -504,6 +510,7 @@ def explant_pdf(request):
                 ["Modell", explant.patellaersatz.modell] if explant.patellaersatz else ["", ""],
                 ["Material", explant.patellaersatz.material] if explant.patellaersatz else ["", ""],
                 ["Größe", explant.patellaersatz.groeße] if explant.patellaersatz else ["", ""],
+                # ["recycelt", "Ja" if explant.patellaersatz.recycelt else "Nein"],
             ]
 
             patellaersatz_title, patellaersatz_table = create_info_table(patellaersatz_info, "Patellaersatz")

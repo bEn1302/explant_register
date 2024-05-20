@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <!-- Zweiter Container -->
             <div class="p-3">
-                <section class="help_section">
+                <section class="help_article">
                     <div class="d-inline-flex flex-wrap">
                         <a href="{% url 'help' %}" class="fw-medium link-secondary" style="text-decoration: none;">Help</a>
                         <span style="line-height: 0; display: block;">
@@ -34,7 +34,7 @@
                     <!-- Article Info -->
                     <div class="py-3">
                         <div class="my-4">
-                            <img class="rounded-3" src="{{ article_image_url }}" alt="">
+                            <img class="rounded-3" src="{{ article_image_url }}" alt=""> <!-- {# {% static '{{ article_image_url }}' %} #} -->
                         </div>
                         <div class="mb-4 fs-5">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non atque nisi, adipisci error corporis impedit veritatis debitis quas et quisquam obcaecati natus quo tempore eaque earum neque delectus molestiae blanditiis!</p>
