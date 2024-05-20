@@ -8,19 +8,19 @@
             <div class="p-3">
                 <section class="help_section">
                     <div class="d-inline-flex flex-wrap">
-                        <a href="{% url 'help' %}" class="link-secondary">Help</a>
+                        <a href="{% url 'help' %}" class="fw-medium link-secondary" style="text-decoration: none;">Help</a>
                         <span style="line-height: 0; display: block;">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgb(12, 0, 32); opacity: 0.6;">
                                 <path d="M8 19l8-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </span>
-                        <a href="#">{{ section_tab_name }}</a>
+                        <a href="{% url 'help-section' %}?selected_section={{ section_url }}" class="fw-medium link-secondary" style="text-decoration: none;">{{ section_tab_name }}</a>
                         <span style="line-height: 0; display: block;">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgb(12, 0, 32); opacity: 0.6;">
                                 <path d="M8 19l8-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </span>
-                        <a href="#">{{ article_tab_name }}</a>
+                        <a href="{% url 'help-article' %}?selected_article={{ article_url }}" class="fw-medium" style="text-decoration: none; color: var(--black);">{{ article_tab_name }}</a>
                     </div>
                     <h1 class="fw-bold mt-3">{{ article_name }}</h1>
                     <div style="display: flex; gap: 32px;">
@@ -33,14 +33,14 @@
                     </div>
                     <!-- Article Info -->
                     <div class="py-3">
-                        <div class="mb-4">
+                        <div class="my-4">
                             <img class="rounded-3" src="{{ article_image_url }}" alt="">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4 fs-5">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non atque nisi, adipisci error corporis impedit veritatis debitis quas et quisquam obcaecati natus quo tempore eaque earum neque delectus molestiae blanditiis!</p>
                         </div><hr>
                         <div class="py-3">
-                            <h4>Table of contens</h4>
+                            <h4>Table of contents</h4>
                             <div class="mt-2">
                                 <ul class="list-unstyled">
                                     <li><a href="#topic">Topic 1</a></li>
@@ -49,7 +49,7 @@
                                     <li><a href="#topic">Topic 4</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div><hr>
                     </div>
                 </section>
             </div>
