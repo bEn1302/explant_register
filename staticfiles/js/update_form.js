@@ -13,16 +13,6 @@ $(document).ready(function() {
             type: 'POST',
             url: form.attr('action'),
             data: form.serialize(),
-            success: function(data) {
-                if (data.success) {
-                    $('#alert-container').html('<div class="alert alert-success" role="alert">Lagerort erfolgreich aktualisiert.</div>');
-                } else {
-                    $('#alert-container').html('<div class="alert alert-danger" role="alert">Fehler beim Aktualisieren des Lagerorts.</div>');
-                }
-            },
-            error: function() {
-                $('#alert-container').html('<div class="alert alert-danger" role="alert">Fehler beim Senden der Anfrage.</div>');
-            }
         });
     });
 });

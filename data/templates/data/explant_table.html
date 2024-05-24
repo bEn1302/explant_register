@@ -27,11 +27,26 @@
   </style>
   
   <br>
-  {% if request.GET.success %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="bi bi-check-circle"></i> Das Formular wurde erfolgreich abgesendet.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+  <!-- Messages -->
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% elif message.tags == 'warning' %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% elif message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endif %}
+    {% endfor %}
   {% endif %}
 
   <script>
@@ -85,12 +100,12 @@
       </div>
     </form>
   </div>
+  <script defer src="{% static '/js/update_form.js' %}"></script>
   <script defer src="{% static '/js/checkbox_table.js' %}"></script>
   <script defer src="{% static '/js/export.js' %}"></script>
   <script defer src="{% static '/js/delete_function.js' %}"></script>
   <script defer src="{% static '/js/expand_table.js' %}"></script>
   <script defer src="{% static '/js/expand_text.js' %}"></script>
-  <script defer src="{% static '/js/update_form.js' %}"></script>
   
 {% else %}
     {% url 'sign_in' as sign_in %}

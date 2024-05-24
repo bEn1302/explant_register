@@ -1,21 +1,5 @@
 {% load custom_filters %}
 {% block content %}
-    <!-- Messages -->
-    {% if messages %}
-        {% for message in messages %}
-            {% if message.tags == 'success' %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ message }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% elif message.tags == 'warning' %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>{{ message }}</strong> Please try again...
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
     <table id="explant-table" class="table {% if is_huefte %}huefte{% else %}knie{% endif %}">
     <thead>
         <tr>
@@ -96,12 +80,26 @@
                                             {% endif %}
                                         </li>
                                         <li class="list-group-item">
-                                        Schrank: {{ explant.lagerort.schrank }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Schrank:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.lagerort.schrank }}
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                        Kiste: {{ explant.lagerort.kiste }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Kiste:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.lagerort.kiste }}
+                                                </div>
+                                            </div>
                                         </li>
-                                    </ul>
+                                    </ul>                                    
                                     <!-- Modal -->
                                     <div class="modal fade" id="lagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="lagerortModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -114,15 +112,14 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                            <div id="alert-container"></div>
-                                                            <div class='form-group'>
-                                                                <label for='schrank'>Schrank:</label>
-                                                                <input type='number' class='form-control' id='schrank' name='schrank' value='{{ explant.lagerort.schrank }}'>
-                                                            </div>
-                                                            <div class='form-group'>
-                                                                <label for='kiste'>Kiste:</label>
-                                                                <input type='number' class='form-control' id='kiste' name='kiste' value='{{ explant.lagerort.kiste }}'>
-                                                            </div>
+                                                        <div class='form-group'>
+                                                            <label for='schrank'>Schrank:</label>
+                                                            <input type='number' class='form-control' id='schrank' name='schrank' value='{{ explant.lagerort.schrank }}'>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='kiste'>Kiste:</label>
+                                                            <input type='number' class='form-control' id='kiste' name='kiste' value='{{ explant.lagerort.kiste }}'>
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-outline-primary">Update</button>
@@ -152,12 +149,26 @@
                                             {% endif %}
                                         </li>
                                         <li class="list-group-item">
-                                            Geburtsdatum: {{ explant.patient.geburtsdatum }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Geburtsdatum:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.patient.geburtsdatum }}
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            Gewicht: {{ explant.patient.gewicht }} kg
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Gewicht:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.patient.gewicht }} kg
+                                                </div>
+                                            </div>
                                         </li>
-                                    </ul>
+                                    </ul>                                    
                                     <!-- Modal -->
                                     <div class="modal fade" id="patientModal{{ explant.id }}" tabindex="-1" aria-labelledby="patientModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -170,8 +181,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div id="patientModal" class="modal-body">
-                                                            <div id="alert-container"></div>
-                                                            <div class='form-group'>
+                                                            <div class='form-group mb-3'>
                                                                 <label for='geburtsdatum'>Geburtsdatum:</label>
                                                                 <input type='date' class='form-control' id='geburtsdatum' name='geburtsdatum' value='{{ explant.patient.geburtsdatum }}'>
                                                             </div>
@@ -207,17 +217,31 @@
                                                 <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#reoperationModal{{ explant.id }}">Update</button>
                                             {% endif %}
                                         </li>
-                                        <li class="list-group-item"> 
-                                            {% if explant.reoperation.reoperation %}
-                                                Reoperation: <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
-                                            {% else %}
-                                                Reoperation: <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
-                                            {% endif %}
+                                        <li class="list-group-item ">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Reoperation:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {% if explant.reoperation.reoperation %}
+                                                        <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
+                                                    {% else %}
+                                                        <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            Datum: {{ explant.reoperation.reoperation_datum }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Datum:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.reoperation.reoperation_datum }}
+                                                </div>
+                                            </div>
                                         </li>
-                                    </ul>
+                                    </ul>                                    
                                     <!-- Modal -->
                                     <div class="modal fade" id="reoperationModal{{ explant.id }}" tabindex="-1" aria-labelledby="reoperationModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -231,9 +255,8 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div id="patientModal" class="modal-body">
-                                                            <div id="alert-container"></div>
                                                             <!-- Forms -->
-                                                            <div class='form-group'>
+                                                            <div class='form-group mb-3'>
                                                                 <label for='reoperation'>Reoperation:</label>
                                                                 <input type='' class='form-control' id='reoperation' name='reoperation' value='{{ explant.reoperation.reoperation }}'>
                                                             </div>
@@ -270,25 +293,62 @@
                                             {% endif %}    
                                         </li>
                                         <li class="list-group-item">
-                                            Hersteller: {{ explant.inlay.hersteller }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Hersteller:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.inlay.hersteller }}
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            Modell: {{ explant.inlay.modell }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Modell:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.inlay.modell }}
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            Material: {{ explant.inlay.material }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Material:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.inlay.material }}
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
-                                            Größe: {{ explant.inlay.groeße }} mm
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Größe:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.inlay.groeße }} mm
+                                                </div>
+                                            </div>
                                         </li>
-                                        <li class="list-group-item">recycelt: 
-                                            {% if explant.inlay.recycelt %}
-                                                <i class="bi bi-check-circle-fill text-success"></i>
-                                            {% else %}
-                                                <i class="bi bi-x-circle-fill text-danger"></i>
-                                            {% endif %}
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    recycelt:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    
+                                                        {% if explant.inlay.recycelt %}
+                                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                                        {% else %}
+                                                            <i class="bi bi-x-circle-fill text-danger"></i>
+                                                        {% endif %}
+                                                    
+                                                </div>
+                                            </div>
                                         </li>
-                                    </ul>
+                                    </ul>                                    
                                     <!-- Modal -->
                                     <div class="modal fade" id="inlayModal{{ explant.id }}" tabindex="-1" aria-labelledby="inlayModalLabel{{ explant.id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -302,21 +362,20 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div id="patientModal" class="modal-body">
-                                                            <div id="alert-container"></div>
                                                             <!-- Forms -->
-                                                            <div class='form-group'>
+                                                            <div class='form-group mb-3'>
                                                                 <label for='hersteller'>Hersteller:</label>
                                                                 <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.inlay.hersteller }}'>
                                                             </div>
-                                                            <div class='form-group'>
+                                                            <div class='form-group mb-3'>
                                                                 <label for='modell'>Modell:</label>
                                                                 <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.inlay.modell }}'>
                                                             </div>
-                                                            <div class='form-group'>
+                                                            <div class='form-group mb-3'>
                                                                 <label for='material'>Material:</label>
                                                                 <input type='text' class='form-control' id='material' name='material' value='{{ explant.inlay.material }}'>
                                                             </div>
-                                                            <div class='form-group'>
+                                                            <div class='form-group mb-3'>
                                                                 <label for='groeße'>Größe:</label>
                                                                 <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
                                                             </div>
@@ -354,25 +413,60 @@
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
-                                                Hersteller: {{ explant.kopf.hersteller }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Hersteller:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.kopf.hersteller }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Modell: {{ explant.kopf.modell }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Modell:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.kopf.modell }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Material: {{ explant.kopf.material }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Material:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.kopf.material }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Größe: {{ explant.kopf.groeße }} mm
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Größe:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.kopf.groeße }} mm
+                                                    </div>
+                                                </div>
                                             </li>
-                                            <li class="list-group-item">recycelt: 
-                                                {% if explant.kopf.recycelt %}
-                                                    <i class="bi bi-check-circle-fill text-success"></i>
-                                                {% else %}
-                                                    <i class="bi bi-x-circle-fill text-danger"></i>
-                                                {% endif %}
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        recycelt:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                            {% if explant.kopf.recycelt %}
+                                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                                            {% else %}
+                                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                                            {% endif %}
+                                                    </div>
+                                                </div>
                                             </li>
-                                        </ul>
+                                        </ul>                                                                            
                                         <!-- Modal -->
                                         <div class="modal fade" id="kopfModal{{ explant.id }}" tabindex="-1" aria-labelledby="kopftModalLabel{{ explant.id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -386,21 +480,20 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-                                                                <div id="alert-container"></div>
                                                                 <!-- Forms -->
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='hersteller'>Hersteller:</label>
                                                                     <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.kopf.hersteller }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='modell'>Modell:</label>
                                                                     <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.kopf.modell }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='material'>Material:</label>
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.kopf.material }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
                                                                 </div>
@@ -438,25 +531,62 @@
                                                 {% endif %}    
                                             </li>
                                             <li class="list-group-item">
-                                                Hersteller: {{ explant.femurkomponente.hersteller }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Hersteller:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.femurkomponente.hersteller }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Modell: {{ explant.femurkomponente.modell }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Modell:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.femurkomponente.modell }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Material: {{ explant.femurkomponente.material }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Material:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.femurkomponente.material }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Größe: {{ explant.femurkomponente.groeße }} mm
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Größe:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.femurkomponente.groeße }} mm
+                                                    </div>
+                                                </div>
                                             </li>
-                                            <li class="list-group-item">recycelt: 
-                                                {% if explant.femurkomponente.recycelt %}
-                                                    <i class="bi bi-check-circle-fill text-success"></i>
-                                                {% else %}
-                                                    <i class="bi bi-x-circle-fill text-danger"></i>
-                                                {% endif %}
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        recycelt:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        
+                                                            {% if explant.femurkomponente.recycelt %}
+                                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                                            {% else %}
+                                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                                            {% endif %}
+                                                        
+                                                    </div>
+                                                </div>
                                             </li>
-                                        </ul>
+                                        </ul>                                  
                                         <!-- Modal -->
                                         <div class="modal fade" id="femurkomponenteModal{{ explant.id }}" tabindex="-1" aria-labelledby="femurkomponenteModalLabel{{ explant.id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -470,21 +600,21 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-                                                                <div id="alert-container"></div>
+
                                                                 <!-- Forms -->
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='hersteller'>Hersteller:</label>
                                                                     <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.femurkomponente.hersteller }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='modell'>Modell:</label>
                                                                     <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.femurkomponente.modell }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='material'>Material:</label>
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.femurkomponente.material }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
                                                                 </div>
@@ -523,25 +653,62 @@
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
-                                                Hersteller: {{ explant.schaft.hersteller }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Hersteller:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.schaft.hersteller }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Modell: {{ explant.schaft.modell }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Modell:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.schaft.modell }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Material: {{ explant.schaft.material }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Material:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.schaft.material }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Größe: {{ explant.schaft.groeße }} mm
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Größe:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.schaft.groeße }} mm
+                                                    </div>
+                                                </div>
                                             </li>
-                                            <li class="list-group-item">recycelt: 
-                                                {% if explant.schaft.recycelt %}
-                                                    <i class="bi bi-check-circle-fill text-success"></i>
-                                                {% else %}
-                                                    <i class="bi bi-x-circle-fill text-danger"></i>
-                                                {% endif %}
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        recycelt:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        
+                                                            {% if explant.schaft.recycelt %}
+                                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                                            {% else %}
+                                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                                            {% endif %}
+                                                        
+                                                    </div>
+                                                </div>
                                             </li>
-                                        </ul>
+                                        </ul>                                        
                                         <!-- Modal -->
                                         <div class="modal fade" id="schaftModal{{ explant.id }}" tabindex="-1" aria-labelledby="schaftModalLabel{{ explant.id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -555,21 +722,21 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-                                                                <div id="alert-container"></div>
+
                                                                 <!-- Forms -->
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='hersteller'>Hersteller:</label>
                                                                     <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.schaft.hersteller }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='modell'>Modell:</label>
                                                                     <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.schaft.modell }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='material'>Material:</label>
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.schaft.material }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
                                                                 </div>
@@ -607,25 +774,62 @@
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
-                                                Hersteller: {{ explant.tibiaplateau.hersteller }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Hersteller:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.tibiaplateau.hersteller }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Modell: {{ explant.tibiaplateau.modell }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Modell:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.tibiaplateau.modell }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Material: {{ explant.tibiaplateau.material }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Material:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.tibiaplateau.material }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Größe: {{ explant.tibiaplateau.groeße }} mm
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Größe:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.tibiaplateau.groeße }} mm
+                                                    </div>
+                                                </div>
                                             </li>
-                                            <li class="list-group-item">recycelt: 
-                                                {% if explant.tibiaplateau.recycelt %}
-                                                    <i class="bi bi-check-circle-fill text-success"></i>
-                                                {% else %}
-                                                    <i class="bi bi-x-circle-fill text-danger"></i>
-                                                {% endif %}
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        recycelt:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        
+                                                            {% if explant.tibiaplateau.recycelt %}
+                                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                                            {% else %}
+                                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                                            {% endif %}
+                                                        
+                                                    </div>
+                                                </div>
                                             </li>
-                                        </ul>
+                                        </ul>                                        
                                         <!-- Modal -->
                                         <div class="modal fade" id="tibiaplateauModal{{ explant.id }}" tabindex="-1" aria-labelledby="tibiaplateauModalLabel{{ explant.id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -639,21 +843,21 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-                                                                <div id="alert-container"></div>
+
                                                                 <!-- Forms -->
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='hersteller'>Hersteller:</label>
                                                                     <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.tibiaplateau.hersteller }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for' modell'>Modell:</label>
                                                                     <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.tibiaplateau.modell }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='material'>Material:</label>
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.tibiaplateau.material }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
                                                                 </div>
@@ -692,25 +896,62 @@
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
-                                                Hersteller: {{ explant.pfanne.hersteller }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Hersteller:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.pfanne.hersteller }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Modell: {{ explant.pfanne.modell }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Modell:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.pfanne.modell }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Material: {{ explant.pfanne.material }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Material:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.pfanne.material }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Größe: {{ explant.pfanne.groeße }} mm
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Größe:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.pfanne.groeße }} mm
+                                                    </div>
+                                                </div>
                                             </li>
-                                            <li class="list-group-item">recycelt: 
-                                                {% if explant.pfanne.recycelt %}
-                                                    <i class="bi bi-check-circle-fill text-success"></i>
-                                                {% else %}
-                                                    <i class="bi bi-x-circle-fill text-danger"></i>
-                                                {% endif %}
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        recycelt:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        
+                                                            {% if explant.pfanne.recycelt %}
+                                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                                            {% else %}
+                                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                                            {% endif %}
+                                                        
+                                                    </div>
+                                                </div>
                                             </li>
-                                        </ul>
+                                        </ul>                                                                                    
                                         <!-- Modal -->
                                         <div class="modal fade" id="pfanneModal{{ explant.id }}" tabindex="-1" aria-labelledby="pfanneModalLabel{{ explant.id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -724,21 +965,21 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-                                                                <div id="alert-container"></div>
+
                                                                 <!-- Forms -->
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='hersteller'>Hersteller:</label>
                                                                     <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.pfanne.hersteller }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='modell'>Modell:</label>
                                                                     <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.pfanne.modell }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='material'>Material:</label>
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.pfanne.material }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
                                                                 </div>
@@ -776,25 +1017,62 @@
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
-                                                Hersteller: {{ explant.patellaersatz.hersteller }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Hersteller:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.patellaersatz.hersteller }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Modell: {{ explant.patellaersatz.modell }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Modell:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.patellaersatz.modell }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Material: {{ explant.patellaersatz.material }}
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Material:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.patellaersatz.material }}
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="list-group-item">
-                                                Größe: {{ explant.patellaersatz.groeße }} mm
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Größe:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        {{ explant.patellaersatz.groeße }} mm
+                                                    </div>
+                                                </div>
                                             </li>
-                                            <li class="list-group-item">recycelt: 
-                                                {% if explant.patellaersatz.recycelt %}
-                                                    <i class="bi bi-check-circle-fill text-success"></i>
-                                                {% else %}
-                                                    <i class="bi bi-x-circle-fill text-danger"></i>
-                                                {% endif %}
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        recycelt:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        
+                                                            {% if explant.patellaersatz.recycelt %}
+                                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                                            {% else %}
+                                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                                            {% endif %}
+                                                        
+                                                    </div>
+                                                </div>
                                             </li>
-                                        </ul>
+                                        </ul>                                        
                                         <!-- Modal -->
                                         <div class="modal fade" id="patellaersatzModal{{ explant.id }}" tabindex="-1" aria-labelledby="patellaersatzModalLabel{{ explant.id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -808,21 +1086,21 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-                                                                <div id="alert-container"></div>
+
                                                                 <!-- Forms -->
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='hersteller'>Hersteller:</label>
                                                                     <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.patellaersatz.hersteller }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='modell'>Modell:</label>
                                                                     <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.patellaersatz.modell }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='material'>Material:</label>
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.patellaersatz.material }}'>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                <div class='form-group mb-3'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
                                                                 </div>

@@ -137,16 +137,17 @@ def update_model(request, model_cls, form_cls, redirect_url, pk):
         form = form_cls(request.POST, instance=obj)
         if form.is_valid():
             form.save()
-            response_data = {'success': True}
+            messages.success(request, 'Daten erfolgreich aktualisiert.')
         else:
-            response_data = {'success': False, 'errors': form.errors}
-            return HttpResponseBadRequest(JsonResponse(response_data))
+            error_messages = "\n".join([f"{field}: {', '.join(errors)}" for field, errors in form.errors.items()])
+            messages.error(request, f'Fehler: {error_messages}')
+            # return redirect(redirect_url)
+            return HttpResponseBadRequest(JsonResponse({'success': False, 'errors': form.errors}))
     else:
         form = form_cls(instance=obj)
-        response_data = {'success': False}
 
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse(response_data)
+        return JsonResponse({'success': True})
     else:
         return redirect(redirect_url)
 
@@ -202,7 +203,7 @@ def add_explant(request):
             explant = explantat_form.save(commit=False)
             explant.owner = request.user.id # logged in User
             explant.save()
-            return HttpResponseRedirect(f"{reverse('table-explants')}?success=True")
+            messages.success(request, 'Das Formular wurde erfolgreich abgesendet.')
     
     else:
         explantat_form = ExplantatForm()
