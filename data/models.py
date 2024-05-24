@@ -30,7 +30,7 @@ class Femurkomponente(models.Model):
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
-    # recycelt = models.BooleanField('recycelt')
+    recycelt = models.BooleanField('recycelt', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Femurkomponenten"
@@ -43,7 +43,7 @@ class Tibiaplateau(models.Model):
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
-    # recycelt = models.BooleanField('recycelt')
+    recycelt = models.BooleanField('recycelt', blank=True, null=True)
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
@@ -53,7 +53,7 @@ class Patellaersatz(models.Model):
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
-    # recycelt = models.BooleanField('recycelt')
+    recycelt = models.BooleanField('recycelt', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Patellaersätze"
@@ -66,7 +66,7 @@ class Kopf(models.Model):
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
-    # recycelt = models.BooleanField('recycelt')
+    recycelt = models.BooleanField('recycelt', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Köpfe"
@@ -79,7 +79,7 @@ class Inlay(models.Model):
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
-    # recycelt = models.BooleanField('recycelt')
+    recycelt = models.BooleanField('recycelt', blank=True, null=True)
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
@@ -89,7 +89,7 @@ class Schaft(models.Model):
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
-    # recycelt = models.BooleanField('recycelt')
+    recycelt = models.BooleanField('recycelt', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Schafte"
@@ -102,7 +102,7 @@ class Pfanne(models.Model):
     modell = models.CharField('Modell')
     material = models.CharField('Material')
     groeße = models.FloatField('Größe')         # in cm / mm
-    # recycelt = models.BooleanField('recycelt')
+    recycelt = models.BooleanField('recycelt', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Pfannen"

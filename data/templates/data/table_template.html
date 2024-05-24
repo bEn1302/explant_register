@@ -281,6 +281,13 @@
                                         <li class="list-group-item">
                                             Größe: {{ explant.inlay.groeße }} mm
                                         </li>
+                                        <li class="list-group-item">recycelt: 
+                                            {% if explant.inlay.recycelt %}
+                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                            {% else %}
+                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                            {% endif %}
+                                        </li>
                                     </ul>
                                     <!-- Modal -->
                                     <div class="modal fade" id="inlayModal{{ explant.id }}" tabindex="-1" aria-labelledby="inlayModalLabel{{ explant.id }}" aria-hidden="true">
@@ -312,6 +319,10 @@
                                                             <div class='form-group'>
                                                                 <label for='groeße'>Größe:</label>
                                                                 <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='recycelt'>Recycelt:</label>
+                                                                <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.inlay.recycelt %}checked{% endif %}>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -354,6 +365,13 @@
                                             <li class="list-group-item">
                                                 Größe: {{ explant.kopf.groeße }} mm
                                             </li>
+                                            <li class="list-group-item">recycelt: 
+                                                {% if explant.kopf.recycelt %}
+                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                {% else %}
+                                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                         <!-- Modal -->
                                         <div class="modal fade" id="kopfModal{{ explant.id }}" tabindex="-1" aria-labelledby="kopftModalLabel{{ explant.id }}" aria-hidden="true">
@@ -385,6 +403,10 @@
                                                                 <div class='form-group'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label for='recycelt'>Recycelt:</label>
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.kopf.recycelt %}checked{% endif %}>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -427,6 +449,13 @@
                                             <li class="list-group-item">
                                                 Größe: {{ explant.femurkomponente.groeße }} mm
                                             </li>
+                                            <li class="list-group-item">recycelt: 
+                                                {% if explant.femurkomponente.recycelt %}
+                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                {% else %}
+                                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                         <!-- Modal -->
                                         <div class="modal fade" id="femurkomponenteModal{{ explant.id }}" tabindex="-1" aria-labelledby="femurkomponenteModalLabel{{ explant.id }}" aria-hidden="true">
@@ -458,6 +487,10 @@
                                                                 <div class='form-group'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label for='recycelt'>Recycelt:</label>
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.femurkomponente.recycelt %}checked{% endif %}>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -501,6 +534,13 @@
                                             <li class="list-group-item">
                                                 Größe: {{ explant.schaft.groeße }} mm
                                             </li>
+                                            <li class="list-group-item">recycelt: 
+                                                {% if explant.schaft.recycelt %}
+                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                {% else %}
+                                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                         <!-- Modal -->
                                         <div class="modal fade" id="schaftModal{{ explant.id }}" tabindex="-1" aria-labelledby="schaftModalLabel{{ explant.id }}" aria-hidden="true">
@@ -532,6 +572,10 @@
                                                                 <div class='form-group'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label for='recycelt'>Recycelt:</label>
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.schaft.recycelt %}checked{% endif %}>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -574,6 +618,13 @@
                                             <li class="list-group-item">
                                                 Größe: {{ explant.tibiaplateau.groeße }} mm
                                             </li>
+                                            <li class="list-group-item">recycelt: 
+                                                {% if explant.tibiaplateau.recycelt %}
+                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                {% else %}
+                                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                         <!-- Modal -->
                                         <div class="modal fade" id="tibiaplateauModal{{ explant.id }}" tabindex="-1" aria-labelledby="tibiaplateauModalLabel{{ explant.id }}" aria-hidden="true">
@@ -605,6 +656,10 @@
                                                                 <div class='form-group'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label for='recycelt'>Recycelt:</label>
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.tibiaplateau.recycelt %}checked{% endif %}>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -648,6 +703,13 @@
                                             <li class="list-group-item">
                                                 Größe: {{ explant.pfanne.groeße }} mm
                                             </li>
+                                            <li class="list-group-item">recycelt: 
+                                                {% if explant.pfanne.recycelt %}
+                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                {% else %}
+                                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                         <!-- Modal -->
                                         <div class="modal fade" id="pfanneModal{{ explant.id }}" tabindex="-1" aria-labelledby="pfanneModalLabel{{ explant.id }}" aria-hidden="true">
@@ -679,6 +741,10 @@
                                                                 <div class='form-group'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label for='recycelt'>Recycelt:</label>
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.pfanne.recycelt %}checked{% endif %}>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -721,6 +787,13 @@
                                             <li class="list-group-item">
                                                 Größe: {{ explant.patellaersatz.groeße }} mm
                                             </li>
+                                            <li class="list-group-item">recycelt: 
+                                                {% if explant.patellaersatz.recycelt %}
+                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                {% else %}
+                                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                         <!-- Modal -->
                                         <div class="modal fade" id="patellaersatzModal{{ explant.id }}" tabindex="-1" aria-labelledby="patellaersatzModalLabel{{ explant.id }}" aria-hidden="true">
@@ -752,6 +825,10 @@
                                                                 <div class='form-group'>
                                                                     <label for='groeße'>Größe:</label>
                                                                     <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label for='recycelt'>Recycelt:</label>
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.patellaersatz.recycelt %}checked{% endif %}>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

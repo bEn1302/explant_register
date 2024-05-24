@@ -34,49 +34,49 @@ class PatientAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 @admin.register(Inlay)
 class InlayAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße','recycelt')
 
 @admin.register(Kopf)
 class KopfAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße','recycelt')
 
 @admin.register(Pfanne)
 class PfanneAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße','recycelt')
 
 @admin.register(Schaft)
 class SchaftAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße','recycelt')
 
 @admin.register(Tibiaplateau)
 class TibiaplateauAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße','recycelt')
 
 @admin.register(Femurkomponente)
 class FemurkomponenteAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße','recycelt')
 
 @admin.register(Patellaersatz)
 class PatellaersatzAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße','recycelt')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße','recycelt')
