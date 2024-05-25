@@ -555,6 +555,15 @@ def bar_chart_data():
     tibiaplateau_count = Tibiaplateau.objects.count()
     femurkomponenten_count = Femurkomponente.objects.count()
 
+    # count recycelt objects
+    recycled_inlays_count = Inlay.objects.filter(recycelt=True).count()
+    recycled_köpfe_count = Kopf.objects.filter(recycelt=True).count()
+    recycled_schafte_count = Schaft.objects.filter(recycelt=True).count()
+    recycled_pfannen_count = Pfanne.objects.filter(recycelt=True).count()
+    recycled_tibiaplateaus_count = Tibiaplateau.objects.filter(recycelt=True).count()
+    recycled_patellaersaetze_count = Patellaersatz.objects.filter(recycelt=True).count()
+    recycled_femurkomponenten_count = Femurkomponente.objects.filter(recycelt=True).count()
+
     return {
         'explantate_count': explantate_count,
         'reoperationen_count': reoperationen_count,
@@ -565,6 +574,15 @@ def bar_chart_data():
         'pfannen_count': pfannen_count,
         'tibiaplateau_count': tibiaplateau_count,
         'femurkomponenten_count': femurkomponenten_count,
+
+        # recycelt objects
+        'recycled_inlays_count': recycled_inlays_count,
+        'recycled_köpfe_count': recycled_köpfe_count,
+        'recycled_schafte_count': recycled_schafte_count,
+        'recycled_pfannen_count': recycled_pfannen_count,
+        'recycled_tibiaplateaus_count': recycled_tibiaplateaus_count,
+        'recycled_patellaersaetze_count': recycled_patellaersaetze_count,
+        'recycled_femurkomponenten_count': recycled_femurkomponenten_count,
     }
 
 # doughnut chart

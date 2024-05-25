@@ -41,8 +41,17 @@
                   order: 2
               }, {
                   label: 'recycled',
-                  data: [0, 5, 7], // hier noch reelle Daten hinzufügen!
+                  data: [
+                        "{{ recycled_inlays_count }}",
+                        "{{ recycled_köpfe_count }}",
+                        "{{ recycled_schafte_count }}",
+                        "{{ recycled_pfannen_count }}",
+                        "{{ recycled_tibiaplateaus_count }}",
+                        "{{ recycled_patellaersaetze_count }}",
+                        "{{ recycled_femurkomponenten_count }}"
+                  ],
                   type: 'line',
+                  backgroundColor: 'rgba(46, 204, 113, 0.2)',
                   borderColor: 'rgba(46, 204, 113, 1)',
                   borderWidth: 1,
                   // this dataset is drawn on top
