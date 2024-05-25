@@ -1,0 +1,56 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-25 17:37+0200\n"
+"PO-Revision-Date: 2024-05-25 15:40+0000\n"
+"Last-Translator: Ben Emanuel Wießner <ben.wiessner@web.de>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: ExReg/settings.py:131
+msgid "Deutsch"
+msgstr "german"
+
+#: ExReg/settings.py:132
+msgid "Englisch"
+msgstr "english"
+
+#: data/models.py:9
+msgid "Benutzer"
+msgstr "user"
+
+#: data/models.py:10
+msgid "Telefonnummer"
+msgstr "phone"
+
+#: data/models.py:11
+msgid "Adresse"
+msgstr "address"
+
+#: data/models.py:12
+msgid "Bundesland"
+msgstr "state"
+
+#: data/models.py:13
+msgid "Postleitzahl"
+msgstr "zip code"
+
+#: data/models.py:14
+msgid "Stadt"
+msgstr "city"
+
+#: data/models.py:15
+msgid "Profilbild"
+msgstr "profile picture"

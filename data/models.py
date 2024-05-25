@@ -1,17 +1,18 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=20, null=True, blank=True)
-    address = models.CharField(max_length=50, null=True, blank=True)
-    state = models.CharField(max_length=50, null=True, blank=True)
-    zip_code = models.CharField(max_length=10, null=True, blank=True)
-    city = models.CharField(max_length=50, null=True, blank=True)
-    profile_picture = models.ImageField(upload_to='images/', null=True, blank=True)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, verbose_name=_("Benutzer"))
+    phone = models.CharField(max_length=20, null=True, blank=True, verbose_name=_("Telefonnummer"))
+    address = models.CharField(max_length=50, null=True, blank=True, verbose_name=_("Adresse"))
+    state = models.CharField(max_length=50, null=True, blank=True, verbose_name=_("Bundesland"))
+    zip_code = models.CharField(max_length=10, null=True, blank=True, verbose_name=_("Postleitzahl"))
+    city = models.CharField(max_length=50, null=True, blank=True, verbose_name=_("Stadt"))
+    profile_picture = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name=_("Profilbild"))
 
     def __str__(self):
         return str(self.user)

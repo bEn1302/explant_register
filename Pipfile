@@ -25,6 +25,7 @@ django-simple-captcha = "*"
 django-import-export = "*"
 django-filter = "*"
 django-jazzmin = "*"
+django-rosetta = "*"
 
 [dev-packages]
 
