@@ -248,7 +248,7 @@ class PatientUpdateForm(ModelForm):
         model = Patient
         fields = ('geburtsdatum', 'gewicht')
         widgets = { 
-            'geburtsdatum': forms.DateInput(attrs={'class': 'form-control',}),
+            'geburtsdatum': forms.DateInput(attrs={'class': 'form-control', 'type': 'date',}),
             'gewicht': forms.NumberInput(attrs={'class': 'form-control',}),
         }
 
@@ -257,7 +257,7 @@ class ReoperationUpdateForm(ModelForm):
         model = Reoperation
         fields = ('reoperation', 'reoperation_datum')
         widgets = { 
-            'reoperation': forms.CheckboxInput(attrs={'class': 'form-control',}),
+            'reoperation': forms.CheckboxInput(attrs={'class': 'form-check-input',}),
             'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date'}),
         }
 

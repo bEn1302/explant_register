@@ -4,12 +4,14 @@ from django.urls import reverse
 from django.db.models import Q, Count
 from django.db.models.functions import ExtractMonth
 from .models import *
-from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
+from django.http import JsonResponse
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
+
+import logging
 
 # Import csv
 import csv
@@ -138,18 +140,15 @@ def update_model(request, model_cls, form_cls, redirect_url, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'Daten erfolgreich aktualisiert.')
+            return redirect(redirect_url)
         else:
             error_messages = "\n".join([f"{field}: {', '.join(errors)}" for field, errors in form.errors.items()])
             messages.error(request, f'Fehler: {error_messages}')
-            # return redirect(redirect_url)
-            return HttpResponseBadRequest(JsonResponse({'success': False, 'errors': form.errors}))
+            return redirect(redirect_url)
     else:
         form = form_cls(instance=obj)
 
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return JsonResponse({'success': True})
-    else:
-        return redirect(redirect_url)
+    return redirect(redirect_url)
 
 def lagerort_update(request, pk):
     return update_model(request, Lagerort, LagerortUpdateForm, 'table-explants', pk)
@@ -188,6 +187,7 @@ def explant_update(request, explant_id):
     if explantat_form.is_valid():
         explant.updated_at = timezone.now()
         explantat_form.save()
+        messages.success(request, 'Daten erfolgreich aktualisiert.')
         return redirect('table-explants')
     
     return render(request, 'data/update_explant.html', {'explant': explant, 'explantat_form':explantat_form})

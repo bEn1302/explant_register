@@ -47,7 +47,7 @@
                         {% endif %}
                     </td>
                     <td class="text-center">
-                        <i class="trigger-cell"></i>
+                        <i class="trigger-cell" style="cursor: pointer;"></i>
                         <!-- nur Icon anzeigen wenn man auch den Eintrag bearbeiten darf -->
                         {% if user.id == explant.owner %}
                             <a href="{% url 'explant_update' explant.id %}" style="color:black"><i class="bi bi-pencil-square"></i></a>
@@ -111,14 +111,18 @@
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <div class='form-group'>
-                                                            <label for='schrank'>Schrank:</label>
-                                                            <input type='number' class='form-control' id='schrank' name='schrank' value='{{ explant.lagerort.schrank }}'>
+                                                    <div id="lagerortModal" class="modal-body">
+                                                        <div class='form-group row mb-3'>
+                                                            <label for='schrank' class="col-sm-3 col-form-label">Schrank:</label>
+                                                            <div class="col-sm-9">
+                                                                <input type='number' class='form-control' id='schrank' name='schrank' value='{{ explant.lagerort.schrank }}'>
+                                                            </div>                                                           
                                                         </div>
-                                                        <div class='form-group'>
-                                                            <label for='kiste'>Kiste:</label>
-                                                            <input type='number' class='form-control' id='kiste' name='kiste' value='{{ explant.lagerort.kiste }}'>
+                                                        <div class='form-group row'>
+                                                            <label for='kiste' class="col-sm-3 col-form-label">Kiste:</label>
+                                                            <div class="col-sm-9">
+                                                                <input type='number' class='form-control' id='kiste' name='kiste' value='{{ explant.lagerort.kiste }}'>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -181,13 +185,17 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div id="patientModal" class="modal-body">
-                                                            <div class='form-group mb-3'>
-                                                                <label for='geburtsdatum'>Geburtsdatum:</label>
-                                                                <input type='date' class='form-control' id='geburtsdatum' name='geburtsdatum' value='{{ explant.patient.geburtsdatum }}'>
+                                                            <div class='form-group row mb-3'>
+                                                                <label for='geburtsdatum' class="col-sm-3 col-form-label">Geburtsdatum:</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type='date' class='form-control' id='geburtsdatum' name='geburtsdatum' value='{{ explant.patient.geburtsdatum|date:'Y-m-d' }}'>
+                                                                </div>
                                                             </div>
-                                                            <div class='form-group'>
-                                                                <label for='gewicht'>Gewicht:</label>
-                                                                <input type='number' step="any" class='form-control' id='gewicht' name='gewicht' value='{{ explant.patient.gewicht }}'>
+                                                            <div class='form-group row'>
+                                                                <label for='gewicht' class="col-sm-3 col-form-label">Gewicht:</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type='number' step="any" class='form-control' id='gewicht' name='gewicht' value='{{ explant.patient.gewicht }}'>
+                                                                </div>                                                               
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -254,15 +262,19 @@
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reoperation</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div id="patientModal" class="modal-body">
+                                                        <div id="reoperationModal" class="modal-body">
                                                             <!-- Forms -->
-                                                            <div class='form-group mb-3'>
-                                                                <label for='reoperation'>Reoperation:</label>
-                                                                <input type='' class='form-control' id='reoperation' name='reoperation' value='{{ explant.reoperation.reoperation }}'>
+                                                            <div class='form-group row mb-3'>
+                                                                <label for='reoperation' class="col-sm-3 col-form-label">Reoperation:</label>
+                                                                <div class="col-sm-9 d-flex align-items-center">
+                                                                    <input type='checkbox' class='form-check-input' id='reoperation' name='reoperation' value='true' {% if explant.reoperation.reoperation %}checked{% endif %}>
+                                                                </div>                                                                
                                                             </div>
-                                                            <div class='form-group'>
-                                                                <label for='reoperation_datum'>Datum:</label>
-                                                                <input type='date' class='form-control' id='reoperation_datum' name='reoperation_datum' value='{{ explant.reoperation.reoperation_datum }}'>
+                                                            <div class='form-group row'>
+                                                                <label for='reoperation_datum' class="col-sm-3 col-form-label">Datum:</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type='date' class='form-control' id='reoperation_datum' name='reoperation_datum' value='{{ explant.reoperation.reoperation_datum|date:'Y-m-d' }}'>
+                                                                </div>                                                                
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -361,27 +373,37 @@
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update Inlay</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div id="patientModal" class="modal-body">
+                                                        <div id="inlayModal" class="modal-body">
                                                             <!-- Forms -->
-                                                            <div class='form-group mb-3'>
-                                                                <label for='hersteller'>Hersteller:</label>
-                                                                <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.inlay.hersteller }}'>
+                                                            <div class='form-group row mb-3'>
+                                                                <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.inlay.hersteller }}'>
+                                                                </div>
                                                             </div>
-                                                            <div class='form-group mb-3'>
-                                                                <label for='modell'>Modell:</label>
-                                                                <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.inlay.modell }}'>
+                                                            <div class='form-group row mb-3'>
+                                                                <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.inlay.modell }}'>
+                                                                </div>
                                                             </div>
-                                                            <div class='form-group mb-3'>
-                                                                <label for='material'>Material:</label>
-                                                                <input type='text' class='form-control' id='material' name='material' value='{{ explant.inlay.material }}'>
+                                                            <div class='form-group row mb-3'>
+                                                                <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.inlay.material }}'>
+                                                                </div>
                                                             </div>
-                                                            <div class='form-group mb-3'>
-                                                                <label for='groeße'>Größe:</label>
-                                                                <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
+                                                            <div class='form-group row mb-3'>
+                                                                <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
+                                                                </div>
                                                             </div>
-                                                            <div class='form-group'>
-                                                                <label for='recycelt'>Recycelt:</label>
-                                                                <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.inlay.recycelt %}checked{% endif %}>
+                                                            <div class='form-group row'>
+                                                                <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                <div class="col-sm-9 d-flex align-items-center">
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.inlay.recycelt %}checked{% endif %}>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -479,27 +501,37 @@
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update Kopf</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div id="patientModal" class="modal-body">
+                                                            <div id="kopftModal" class="modal-body">
                                                                 <!-- Forms -->
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='hersteller'>Hersteller:</label>
-                                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.kopf.hersteller }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.kopf.hersteller }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='modell'>Modell:</label>
-                                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.kopf.modell }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.kopf.modell }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='material'>Material:</label>
-                                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.kopf.material }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='material' name='material' value='{{ explant.kopf.material }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='groeße'>Größe:</label>
-                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    <label for='recycelt'>Recycelt:</label>
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.kopf.recycelt %}checked{% endif %}>
+                                                                <div class='form-group row'>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <div class="col-sm-9 d-flex align-items-center">
+                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.kopf.recycelt %}checked{% endif %}>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -600,27 +632,36 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-
                                                                 <!-- Forms -->
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='hersteller'>Hersteller:</label>
-                                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.femurkomponente.hersteller }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.femurkomponente.hersteller }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='modell'>Modell:</label>
-                                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.femurkomponente.modell }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.femurkomponente.modell }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='material'>Material:</label>
-                                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.femurkomponente.material }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='material' name='material' value='{{ explant.femurkomponente.material }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='groeße'>Größe:</label>
-                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    <label for='recycelt'>Recycelt:</label>
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.femurkomponente.recycelt %}checked{% endif %}>
+                                                                <div class='form-group row'>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <div class="col-sm-9 d-flex align-items-center">
+                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.femurkomponente.recycelt %}checked{% endif %}>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -721,28 +762,37 @@
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update Schaft</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div id="patientModal" class="modal-body">
-
+                                                            <div id="schaftModal" class="modal-body">
                                                                 <!-- Forms -->
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='hersteller'>Hersteller:</label>
-                                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.schaft.hersteller }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.schaft.hersteller }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='modell'>Modell:</label>
-                                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.schaft.modell }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.schaft.modell }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='material'>Material:</label>
-                                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.schaft.material }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='material' name='material' value='{{ explant.schaft.material }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='groeße'>Größe:</label>
-                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    <label for='recycelt'>Recycelt:</label>
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.schaft.recycelt %}checked{% endif %}>
+                                                                <div class='form-group row'>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <div class="col-sm-9 d-flex align-items-center">
+                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.schaft.recycelt %}checked{% endif %}>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -843,27 +893,36 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-
                                                                 <!-- Forms -->
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='hersteller'>Hersteller:</label>
-                                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.tibiaplateau.hersteller }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.tibiaplateau.hersteller }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for' modell'>Modell:</label>
-                                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.tibiaplateau.modell }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.tibiaplateau.modell }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='material'>Material:</label>
-                                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.tibiaplateau.material }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='material' name='material' value='{{ explant.tibiaplateau.material }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='groeße'>Größe:</label>
-                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    <label for='recycelt'>Recycelt:</label>
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.tibiaplateau.recycelt %}checked{% endif %}>
+                                                                <div class='form-group row'>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <div class="col-sm-9 d-flex align-items-center">
+                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.tibiaplateau.recycelt %}checked{% endif %}>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -965,27 +1024,36 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-
                                                                 <!-- Forms -->
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='hersteller'>Hersteller:</label>
-                                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.pfanne.hersteller }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.pfanne.hersteller }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='modell'>Modell:</label>
-                                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.pfanne.modell }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.pfanne.modell }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='material'>Material:</label>
-                                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.pfanne.material }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='material' name='material' value='{{ explant.pfanne.material }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='groeße'>Größe:</label>
-                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    <label for='recycelt'>Recycelt:</label>
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.pfanne.recycelt %}checked{% endif %}>
+                                                                <div class='form-group row'>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <div class="col-sm-9 d-flex align-items-center">
+                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.pfanne.recycelt %}checked{% endif %}>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -1086,27 +1154,36 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
-
                                                                 <!-- Forms -->
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='hersteller'>Hersteller:</label>
-                                                                    <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.patellaersatz.hersteller }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.patellaersatz.hersteller }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='modell'>Modell:</label>
-                                                                    <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.patellaersatz.modell }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.patellaersatz.modell }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='material'>Material:</label>
-                                                                    <input type='text' class='form-control' id='material' name='material' value='{{ explant.patellaersatz.material }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='text' class='form-control' id='material' name='material' value='{{ explant.patellaersatz.material }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group mb-3'>
-                                                                    <label for='groeße'>Größe:</label>
-                                                                    <input type='number' class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
+                                                                <div class='form-group row mb-3'>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
+                                                                    </div>
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    <label for='recycelt'>Recycelt:</label>
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.patellaersatz.recycelt %}checked{% endif %}>
+                                                                <div class='form-group row'>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <div class="col-sm-9 d-flex align-items-center">
+                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.patellaersatz.recycelt %}checked{% endif %}>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
