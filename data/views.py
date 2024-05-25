@@ -389,6 +389,7 @@ def explant_pdf(request):
         # Lagerortinformationen
         if explant.lagerort:
             lagerort_info = [
+                ["ID", str(explant.lagerort.id)],
                 ["Schrank", explant.lagerort.schrank] if explant.lagerort else ["", ""],
                 ["Kiste", explant.lagerort.kiste] if explant.lagerort else ["", ""],
             ]
@@ -400,6 +401,7 @@ def explant_pdf(request):
         # Patienteninformationen
         if explant.patient:
             patient_info = [
+                ["ID", str(explant.patient.id)],
                 ["Geburtsdatum", explant.patient.geburtsdatum] if explant.patient else ["", ""],
                 ["Gewicht", explant.patient.gewicht] if explant.patient else ["", ""],
             ]
@@ -412,6 +414,7 @@ def explant_pdf(request):
         # Inlay-Informationen
         if explant.inlay:
             inlay_info = [
+                ["ID", str(explant.inlay.id)],
                 ["Hersteller", explant.inlay.hersteller] if explant.inlay else ["", ""],
                 ["Modell", explant.inlay.modell] if explant.inlay else ["", ""],
                 ["Material", explant.inlay.material] if explant.inlay else ["", ""],
@@ -426,6 +429,7 @@ def explant_pdf(request):
         # Kopf-Informationen
         if explant.kopf:
             kopf_info = [
+                ["ID", str(explant.kopf.id)],
                 ["Hersteller", explant.kopf.hersteller] if explant.kopf else ["", ""],
                 ["Modell", explant.kopf.modell] if explant.kopf else ["", ""],
                 ["Material", explant.kopf.material] if explant.kopf else ["", ""],
@@ -440,6 +444,7 @@ def explant_pdf(request):
         # Schaft-Informationen
         if explant.schaft:
             schaft_info = [
+                ["ID", str(explant.schaft.id)],
                 ["Hersteller", explant.schaft.hersteller] if explant.schaft else ["", ""],
                 ["Modell", explant.schaft.modell] if explant.schaft else ["", ""],
                 ["Material", explant.schaft.material] if explant.schaft else ["", ""],
@@ -454,6 +459,7 @@ def explant_pdf(request):
         # Pfanne-Informationen
         if explant.pfanne:
             pfanne_info = [
+                ["ID", str(explant.pfanne.id)],
                 ["Hersteller", explant.pfanne.hersteller] if explant.pfanne else ["", ""],
                 ["Modell", explant.pfanne.modell] if explant.pfanne else ["", ""],
                 ["Material", explant.pfanne.material] if explant.pfanne else ["", ""],
@@ -468,6 +474,7 @@ def explant_pdf(request):
         # Reoperation-Informationen
         if explant.reoperation:
             reoperation_info = [
+                ["ID", str(explant.reoperation.id)],
                 ["Reoperation", explant.reoperation.reoperation] if explant.reoperation else ["", ""],
                 ["Reoperationsdatum", explant.reoperation.reoperation_datum.strftime('%Y-%m-%d')] if explant.reoperation else ["", ""],
             ]
@@ -479,6 +486,7 @@ def explant_pdf(request):
         # Femurkomponente-Informationen
         if explant.femurkomponente:    
             femurkomponente_info = [
+                ["ID", str(explant.femurkomponente.id)],
                 ["Hersteller", explant.femurkomponente.hersteller] if explant.femurkomponente else ["", ""],
                 ["Modell", explant.femurkomponente.modell] if explant.femurkomponente else ["", ""],
                 ["Material", explant.femurkomponente.material] if explant.femurkomponente else ["", ""],
@@ -493,6 +501,7 @@ def explant_pdf(request):
         # Tibiaplateau-Informationen
         if explant.tibiaplateau:
             tibiaplateau_info = [
+                ["ID", str(explant.tibiaplateau.id)],
                 ["Hersteller", explant.tibiaplateau.hersteller] if explant.tibiaplateau else ["", ""],
                 ["Modell", explant.tibiaplateau.modell] if explant.tibiaplateau else ["", ""],
                 ["Material", explant.tibiaplateau.material] if explant.tibiaplateau else ["", ""],
@@ -507,6 +516,7 @@ def explant_pdf(request):
         # Patellaersatz-Informationen
         if explant.patellaersatz:
             patellaersatz_info = [
+                ["ID", str(explant.patellaersatz.id)],
                 ["Hersteller", explant.patellaersatz.hersteller] if explant.patellaersatz else ["", ""],
                 ["Modell", explant.patellaersatz.modell] if explant.patellaersatz else ["", ""],
                 ["Material", explant.patellaersatz.material] if explant.patellaersatz else ["", ""],
