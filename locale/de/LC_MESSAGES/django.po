@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-26 16:12+0200\n"
+"POT-Creation-Date: 2024-05-26 17:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,4 +185,89 @@ msgstr ""
 
 #: data/models.py:203
 msgid "Explantate"
+msgstr ""
+
+#: data/templates/startpage/index.html:52
+#: data/templates/startpage/index.html:87
+#: data/templates/startpage/index.html:209
+msgid "Über Uns"
+msgstr ""
+
+#: data/templates/startpage/index.html:53
+#: data/templates/startpage/index.html:179
+#: data/templates/startpage/index.html:219
+msgid "Projekt"
+msgstr ""
+
+#: data/templates/startpage/index.html:58
+msgid "Anmelden"
+msgstr ""
+
+#: data/templates/startpage/index.html:69
+msgid "Explantate mit ExReg effizienter und besser analysieren"
+msgstr ""
+
+#: data/templates/startpage/index.html:72
+msgid "Los geht's"
+msgstr ""
+
+#: data/templates/startpage/index.html:73
+msgid "Mehr"
+msgstr ""
+
+#: data/templates/startpage/index.html:89
+msgid ""
+"Dieses Projekt ist ein „Jugend-Forscht“-Projekt aus Mecklenburg Vorpommern. "
+"Es widmet sich der Konzeption und Programmierung einer Datenbank für "
+"medizinische Explantate."
+msgstr ""
+
+#: data/templates/startpage/index.html:104
+msgid ""
+"Unser Team besteht bisher aus 2 Personen. Darüber hinaus erhalten wir "
+"Unterstützung von Dr. Daniel Klüß von der Universität Rostock, der uns bei "
+"Fragen zur Verfügung steht und in das Projekt involviert ist."
+msgstr ""
+
+#: data/templates/startpage/index.html:117
+msgid "Entwicklung"
+msgstr ""
+
+#: data/templates/startpage/index.html:119
+msgid ""
+"Bei der Entwicklung setzen wir auf das Frontend-Framework Bootstrap in der "
+"Version v5.3 und im Backend auf das Web-Framework Django."
+msgstr ""
+
+#: data/templates/startpage/index.html:135
+msgid "Unterstützung"
+msgstr ""
+
+#: data/templates/startpage/index.html:137
+msgid ""
+"Wir würden uns sehr über ihre Mitarbeit an unserem Projekt freuen. Wenn Sie "
+"also Anmerkungen haben oder auf ein Problem stoßen, zögern Sie nicht, uns zu "
+"kontaktieren."
+msgstr ""
+
+#: data/templates/startpage/index.html:157
+msgid ""
+"Um Schäden an Implantaten besser zu verstehen und die Herstellung oder "
+"Implantation zu verbessern, ist es wichtig Daten über Schäden zu sammeln und "
+"auszuwerten. Diese Daten sind jedoch oft unübersichtlich und schwer "
+"zugänglich, da sie in verschiedenen verschiedenen medizinischen "
+"Einrichtungen und in unterschiedlichen Formaten gespeichert werden."
+msgstr ""
+
+#: data/templates/startpage/index.html:181
+msgid ""
+"Eine geeignete und moderne Methode der Datenverarbeitung ist die Eingabe "
+"dieser Daten in eine Datenbank, da dies den Zugang für alle Beteiligten "
+"ermöglicht. Das Ziel der Forschung ist die Entwicklung einer funktionalen "
+"Datenbank zu entwickeln, die in der Lage ist, große Datenmengen über "
+"Explantatschäden zu speichern und auszuwerten."
+msgstr ""
+
+#: data/templates/startpage/index.html:227
+msgid "Haftungsausschluss"
 msgstr ""

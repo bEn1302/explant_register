@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ExpReg</title>
+    <title>ExReg</title>
     <link
       rel="shortcut icon"
       href="{% static '/img/favicon.svg' %}"
@@ -48,16 +49,13 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
             <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            <a class="nav-link" href="#about">About</a>
-            <a class="nav-link me-5" href="https://github.com/bEn1302/explant_register"
-              >Project</a
-            >
+            <a class="nav-link" href="#about">{% trans 'Über Uns' %}</a>
+            <a class="nav-link me-5" href="https://github.com/bEn1302/explant_register">{% trans 'Projekt' %}</a>
           </div>
           <a
             href="{% url 'sign_in' %}"
             class="btn btn-outline-primary shadow-sm d-sm d-block"
-            >Sign in</a
-          >
+            >{% trans 'Anmelden' %}</a>
         </div>
       </div>
     </nav>
@@ -68,13 +66,11 @@
           <!-- Text -->
           <div class="col-md-6">
             <div class="text">
-              Analyze explants with ExReg More Efficient and Better
+              {% trans 'Explantate mit ExReg effizienter und besser analysieren' %}
             </div>
             <div class="buttons">
-              <a href="{% url 'sign_up' %}" class="btn btn-primary">Get started</a>
-              <a href="#informations" class="btn btn-outline-secondary ms-3"
-                >More</a
-              >
+              <a href="{% url 'sign_up' %}" class="btn btn-primary">{% trans "Los geht's" %}</a>
+              <a href="#informations" class="btn btn-outline-secondary ms-3">{% trans "Mehr" %}</a>
             </div>
           </div>
           <!-- Image -->
@@ -88,11 +84,9 @@
     <section id="about" class="about">
       <div class="container">
         <div class="text-header text-center">
-          <h3>About Us</h3>
+          <h3>{% trans 'Über Uns' %}</h3>
           <p>
-            This project is a "Jugend-Forscht" project from Mecklenburg
-            Vorpommern. It is dedicated to the conception and programming of a
-            database for medical explants.
+            {% trans 'Dieses Projekt ist ein „Jugend-Forscht“-Projekt aus Mecklenburg Vorpommern. Es widmet sich der Konzeption und Programmierung einer Datenbank für medizinische Explantate.' %}
           </p>
         </div>
         <div class="items text-center">
@@ -102,12 +96,9 @@
                 <img src="{% static '/img/team.svg' %}" alt="icons" />
               </div>
               <div class="desc">
-                <h5>Our Team</h5>
+                <h5>{% trans 'Unser Team' %}</h5><!-- Our Team -->
                 <p>
-                  Our team consists of 2 people so far. In addition, we receive
-                  support from Dr. Daniel Klüß from the University of Rostock,
-                  who is available to answer our questions and is involved in
-                  the project.
+                  {% trans 'Unser Team besteht bisher aus 2 Personen. Darüber hinaus erhalten wir Unterstützung von Dr. Daniel Klüß von der Universität Rostock, der uns bei Fragen zur Verfügung steht und in das Projekt involviert ist.' %}
                 </p>
               </div>
             </div>
@@ -116,11 +107,9 @@
                 <img src="{% static '/img/coding.svg' %}" alt="icons" />
               </div>
               <div class="desc">
-                <h5>Development</h5>
+                <h5>{% trans 'Entwicklung' %}</h5>
                 <p>
-                  For the development we rely on the frontend framework
-                  Bootstrap in version v5.2 and in the backend the web framework
-                  Django.
+                  {% trans 'Bei der Entwicklung setzen wir auf das Frontend-Framework Bootstrap in der Version v5.3 und im Backend auf das Web-Framework Django.' %}
                 </p>
               </div>
             </div>
@@ -133,11 +122,9 @@
                 />
               </div>
               <div class="desc">
-                <h5>Support</h5>
+                <h5>{% trans 'Unterstützung' %}</h5>
                 <p>
-                  We would be very pleased about their cooperation in our
-                  project. So if you have any comments or encounter a problem,
-                  feel free to contact us.
+                  {% trans 'Wir würden uns sehr über ihre Mitarbeit an unserem Projekt freuen. Wenn Sie also Anmerkungen haben oder auf ein Problem stoßen, zögern Sie nicht, uns zu kontaktieren.' %}
                 </p>
               </div>
             </div>
@@ -152,13 +139,9 @@
           <!-- Text -->
           <div class="col-md-6">
             <div class="text-information">
-              <h5>Starting point</h5>
+              <h5>{% trans Ausgangslage %}</h5><!-- Starting point -->
               <p>
-                In order to better understand implant damage and make possible
-                improvements in manufacturing or implantation, it is important
-                to collect and evaluate data on damage. However, this data is
-                often confusing and difficult to access because it is stored in
-                different medical facilities and in different formats.
+                {% trans 'Um Schäden an Implantaten besser zu verstehen und die Herstellung oder Implantation zu verbessern, ist es wichtig Daten über Schäden zu sammeln und auszuwerten. Diese Daten sind jedoch oft unübersichtlich und schwer zugänglich, da sie in verschiedenen verschiedenen medizinischen Einrichtungen und in unterschiedlichen Formaten gespeichert werden.' %}
               </p>
             </div>
           </div>
@@ -175,13 +158,9 @@
           <!-- Text -->
           <div class="col-md-6">
             <div class="text-information">
-              <h5>Project</h5>
+              <h5>{% trans 'Projekt' %}</h5>
               <p>
-                A suitable and modern method of processing data is to enter this
-                data into a database, as this allows access for all parties
-                involved. The goal of the research is to develop a functional
-                database capable of storing and, if necessary, evaluating large
-                amounts of data on explant damage.
+                {% trans 'Eine geeignete und moderne Methode der Datenverarbeitung ist die Eingabe dieser Daten in eine Datenbank, da dies den Zugang für alle Beteiligten ermöglicht. Das Ziel der Forschung ist die Entwicklung einer funktionalen Datenbank zu entwickeln, die in der Lage ist, große Datenmengen über Explantatschäden zu speichern und auszuwerten.' %}
               </p>
             </div>
           </div>
@@ -204,7 +183,7 @@
               <div class="col-md-3">
                 <div>
                   <small>
-                    <a href="#about" class="text-decoration-none">About</a>
+                    <a href="#about" class="text-decoration-none">{% trans 'Über Uns' %}</a>
                   </small>
                 </div>
               </div>
@@ -214,7 +193,7 @@
                     <a
                       href="https://github.com/bEn1302/ExReg"
                       class="text-decoration-none"
-                      >Project</a
+                      >{% trans 'Projekt' %}</a
                     >
                   </small>
                 </div>
@@ -222,7 +201,7 @@
               <div class="col-md-3">
                 <div>
                   <small>
-                    <a href="{% url 'disclaimer' %}" class="text-decoration-none">Disclaimer</a>
+                    <a href="{% url 'disclaimer' %}" class="text-decoration-none">{% trans 'Haftungsausschluss' %}</a>
                   </small>
                 </div>
               </div>

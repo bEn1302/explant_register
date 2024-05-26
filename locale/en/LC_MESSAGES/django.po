@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-26 16:12+0200\n"
-"PO-Revision-Date: 2024-05-26 14:13+0000\n"
+"POT-Creation-Date: 2024-05-26 17:03+0200\n"
+"PO-Revision-Date: 2024-05-26 15:07+0000\n"
 "Last-Translator: Ben Emanuel Wießner <ben.wiessner@web.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -117,7 +117,6 @@ msgid "Reoperationsdatum"
 msgstr "Date of re-operation"
 
 #: data/models.py:128
-#| msgid "Reoperation"
 msgid "Reoperationen"
 msgstr "Re-operations"
 
@@ -188,3 +187,105 @@ msgstr "Owner"
 #: data/models.py:203
 msgid "Explantate"
 msgstr "explants"
+
+#: data/templates/startpage/index.html:52
+#: data/templates/startpage/index.html:87
+#: data/templates/startpage/index.html:209
+msgid "Über Uns"
+msgstr "About"
+
+#: data/templates/startpage/index.html:53
+#: data/templates/startpage/index.html:179
+#: data/templates/startpage/index.html:219
+msgid "Projekt"
+msgstr "Project"
+
+#: data/templates/startpage/index.html:58
+msgid "Anmelden"
+msgstr "Sign in"
+
+#: data/templates/startpage/index.html:69
+msgid "Explantate mit ExReg effizienter und besser analysieren"
+msgstr "Analyze explants with ExReg More Efficient and Better"
+
+#: data/templates/startpage/index.html:72
+msgid "Los geht's"
+msgstr "Get started"
+
+#: data/templates/startpage/index.html:73
+msgid "Mehr"
+msgstr "More"
+
+#: data/templates/startpage/index.html:89
+msgid ""
+"Dieses Projekt ist ein „Jugend-Forscht“-Projekt aus Mecklenburg Vorpommern. "
+"Es widmet sich der Konzeption und Programmierung einer Datenbank für "
+"medizinische Explantate."
+msgstr ""
+"This project is a \"Jugend-Forscht\" project from Mecklenburg Vorpommern. It"
+" is dedicated to the conception and programming of a database for medical "
+"explants."
+
+#: data/templates/startpage/index.html:104
+msgid ""
+"Unser Team besteht bisher aus 2 Personen. Darüber hinaus erhalten wir "
+"Unterstützung von Dr. Daniel Klüß von der Universität Rostock, der uns bei "
+"Fragen zur Verfügung steht und in das Projekt involviert ist."
+msgstr ""
+"Our team consists of 2 people so far. In addition, we receive support from "
+"Dr. Daniel Klüß from the University of Rostock, who is available to answer "
+"our questions and is involved in the project."
+
+#: data/templates/startpage/index.html:117
+msgid "Entwicklung"
+msgstr "Development"
+
+#: data/templates/startpage/index.html:119
+msgid ""
+"Bei der Entwicklung setzen wir auf das Frontend-Framework Bootstrap in der "
+"Version v5.3 und im Backend auf das Web-Framework Django."
+msgstr ""
+"For the development we rely on the frontend framework Bootstrap in version "
+"v5.3 and in the backend the web framework Django."
+
+#: data/templates/startpage/index.html:135
+msgid "Unterstützung"
+msgstr "Support"
+
+#: data/templates/startpage/index.html:137
+msgid ""
+"Wir würden uns sehr über ihre Mitarbeit an unserem Projekt freuen. Wenn Sie "
+"also Anmerkungen haben oder auf ein Problem stoßen, zögern Sie nicht, uns zu"
+" kontaktieren."
+msgstr ""
+"We would be very pleased about their cooperation in our project. So if you "
+"have any comments or encounter a problem, feel free to contact us."
+
+#: data/templates/startpage/index.html:157
+msgid ""
+"Um Schäden an Implantaten besser zu verstehen und die Herstellung oder "
+"Implantation zu verbessern, ist es wichtig Daten über Schäden zu sammeln und"
+" auszuwerten. Diese Daten sind jedoch oft unübersichtlich und schwer "
+"zugänglich, da sie in verschiedenen verschiedenen medizinischen "
+"Einrichtungen und in unterschiedlichen Formaten gespeichert werden."
+msgstr ""
+"In order to better understand implant damage and make improvements in "
+"manufacturing or implantation, it is important to collect and evaluate data "
+"on damage. However, this data is often confusing and difficult to access "
+"because it is stored in different medical facilities and in different "
+"formats."
+
+#: data/templates/startpage/index.html:181
+msgid ""
+"Eine geeignete und moderne Methode der Datenverarbeitung ist die Eingabe "
+"dieser Daten in eine Datenbank, da dies den Zugang für alle Beteiligten "
+"ermöglicht. Das Ziel der Forschung ist die Entwicklung einer funktionalen "
+"Datenbank zu entwickeln, die in der Lage ist, große Datenmengen über "
+"Explantatschäden zu speichern und auszuwerten."
+msgstr ""
+"A suitable and modern method of processing data is to enter this data into a database, as this allows access for all parties\n"
+"involved. The goal of the research is to develop a functional database capable of storing and, if necessary, evaluating large amounts of data on explant damage."
+
+#: data/templates/startpage/index.html:227
+msgid "Haftungsausschluss"
+msgstr "Disclaimer"
