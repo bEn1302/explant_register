@@ -204,6 +204,7 @@ def add_explant(request):
             explant.owner = request.user.id # logged in User
             explant.save()
             messages.success(request, 'Das Formular wurde erfolgreich abgesendet.')
+            return redirect('table-explants')
     
     else:
         explantat_form = ExplantatForm()

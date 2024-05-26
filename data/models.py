@@ -14,6 +14,9 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=50, null=True, blank=True, verbose_name=_("Stadt"))
     profile_picture = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name=_("Profilbild"))
 
+    class Meta:
+        verbose_name_plural = _("Benutzerprofile")
+
     def __str__(self):
         return str(self.user)
 
@@ -27,34 +30,37 @@ def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
 class Femurkomponente(models.Model):
-    hersteller = models.CharField('Hersteller')
-    modell = models.CharField('Modell')
-    material = models.CharField('Material')
-    groeße = models.FloatField('Größe')         # in cm / mm
-    recycelt = models.BooleanField('recycelt', blank=True, null=True)
+    hersteller = models.CharField(verbose_name=_("Hersteller"))
+    modell = models.CharField(verbose_name=_("Modell"))
+    material = models.CharField(verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = "Femurkomponenten"
+        verbose_name_plural = _("Femurkomponenten")
     
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Tibiaplateau(models.Model):
-    hersteller = models.CharField('Hersteller')
-    modell = models.CharField('Modell')
-    material = models.CharField('Material')
-    groeße = models.FloatField('Größe')         # in cm / mm
-    recycelt = models.BooleanField('recycelt', blank=True, null=True)
+    hersteller = models.CharField(verbose_name=_("Hersteller"))
+    modell = models.CharField(verbose_name=_("Modell"))
+    material = models.CharField(verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = _("Tibiaplateaus")
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Patellaersatz(models.Model):
-    hersteller = models.CharField('Hersteller')
-    modell = models.CharField('Modell')
-    material = models.CharField('Material')
-    groeße = models.FloatField('Größe')         # in cm / mm
-    recycelt = models.BooleanField('recycelt', blank=True, null=True)
+    hersteller = models.CharField(verbose_name=_("Hersteller"))
+    modell = models.CharField(verbose_name=_("Modell"))
+    material = models.CharField(verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Patellaersätze"
@@ -63,60 +69,63 @@ class Patellaersatz(models.Model):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Kopf(models.Model):
-    hersteller = models.CharField('Hersteller')
-    modell = models.CharField('Modell')
-    material = models.CharField('Material')
-    groeße = models.FloatField('Größe')         # in cm / mm
-    recycelt = models.BooleanField('recycelt', blank=True, null=True)
+    hersteller = models.CharField(verbose_name=_("Hersteller"))
+    modell = models.CharField(verbose_name=_("Modell"))
+    material = models.CharField(verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = "Köpfe"
+        verbose_name_plural = _("Köpfe")
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Inlay(models.Model):
-    hersteller = models.CharField('Hersteller')
-    modell = models.CharField('Modell')
-    material = models.CharField('Material')
-    groeße = models.FloatField('Größe')         # in cm / mm
-    recycelt = models.BooleanField('recycelt', blank=True, null=True)
+    hersteller = models.CharField(verbose_name=_("Hersteller"))
+    modell = models.CharField(verbose_name=_("Modell"))
+    material = models.CharField(verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = _("Inlays")
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Schaft(models.Model):
-    hersteller = models.CharField('Hersteller')
-    modell = models.CharField('Modell')
-    material = models.CharField('Material')
-    groeße = models.FloatField('Größe')         # in cm / mm
-    recycelt = models.BooleanField('recycelt', blank=True, null=True)
+    hersteller = models.CharField(verbose_name=_("Hersteller"))
+    modell = models.CharField(verbose_name=_("Modell"))
+    material = models.CharField(verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = "Schafte"
+        verbose_name_plural = _("Schafte")
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Pfanne(models.Model):
-    hersteller = models.CharField('Hersteller')
-    modell = models.CharField('Modell')
-    material = models.CharField('Material')
-    groeße = models.FloatField('Größe')         # in cm / mm
-    recycelt = models.BooleanField('recycelt', blank=True, null=True)
+    hersteller = models.CharField(verbose_name=_("Hersteller"))
+    modell = models.CharField(verbose_name=_("Modell"))
+    material = models.CharField(verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = "Pfannen"
+        verbose_name_plural = _("Pfannen")
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Reoperation(models.Model):
-    reoperation = models.BooleanField('Reoperation')
-    reoperation_datum = models.DateField('Reoperationsdatum')
+    reoperation = models.BooleanField(verbose_name=_('Reoperation'))
+    reoperation_datum = models.DateField(verbose_name=_('Reoperationsdatum'))
 
     class Meta:
-        verbose_name_plural = "Reperationen"
+        verbose_name_plural = _("Reoperationen")
     
     def __str__(self):
         return self.reoperation_datum.strftime('%Y-%m-%d')
@@ -136,40 +145,43 @@ class Reoperation(models.Model):
 #         verbose_name_plural = "Operationen"
 
 class Patient(models.Model):
-    geburtsdatum = models.DateField('Geburtsdatum')
-    gewicht = models.FloatField('Gewicht')          # in kg
-    # groesse = models.FloatField('Größe')            # in m
-    # geschlecht = models.CharField('Geschlecht')     # männlich, weiblich, divers
-    # aktivitaet = models.TextField('Aktivität')      # viel/wenig Bewegung --> was etc.
-    # begleiterkrankungen = models.TextField('Begleiterkrankungen')
-    # nachuntersuchungen = models.TextField('Nachuntersuchungen')
-    # med_vorgeschichte = models.TextField('Medizinische Vorgeschichte')
-    # roentgenbilder = models.ImageField('Röntgenbilder', blank=True, null=True, upload_to='images/')
+    geburtsdatum = models.DateField(verbose_name=_('Geburtsdatum'))
+    gewicht = models.FloatField(verbose_name=_('Gewicht'))          # in kg
+    # groesse = models.FloatField(verbose_name=_('Größe'))            # in m
+    # geschlecht = models.CharField(verbose_name=_('Geschlecht'))     # männlich, weiblich, divers
+    # aktivitaet = models.TextField(verbose_name=_('Aktivität'))      # viel/wenig Bewegung --> was etc.
+    # begleiterkrankungen = models.TextField(verbose_name=_('Begleiterkrankungen'))
+    # nachuntersuchungen = models.TextField(verbose_name=_('Nachuntersuchungen'))
+    # med_vorgeschichte = models.TextField(verbose_name=_('Medizinische Vorgeschichte'))
+    # roentgenbilder = models.ImageField(verbose_name=_('Röntgenbilder'), blank=True, null=True, upload_to='images/')
 
     class Meta:
-        verbose_name_plural = "Patienten"
+        verbose_name_plural = _("Patienten")
+
+    def __str__(self):
+        return f"{self.geburtsdatum} - {self.gewicht}"
 
 class Lagerort(models.Model):
-    schrank = models.IntegerField('Schrank')
-    kiste = models.IntegerField('Kiste')
-    # einrichtung = models.CharField('Einrichtung')
+    schrank = models.IntegerField(verbose_name=_('Schrank'))
+    kiste = models.IntegerField(verbose_name=_('Kiste'))
+    # einrichtung = models.CharField(verbose_name=_('Einrichtung'))
 
     class Meta:
-        verbose_name_plural = "Lagerorte"
+        verbose_name_plural = _("Lagerorte")
 
     def __str__(self):
         return f" Schrank: {self.schrank} - Kiste: {self.kiste}"
 
 class Explantat(models.Model):
-    ursache = models.TextField('Ursache')
-    verfuegbarkeit = models.BooleanField('Verfügbarkeit')
-    herkunftsort = models.CharField('Herkunftsort')
-    entnahme_datum = models.DateField('Entnahmedatum', blank=True, null=True)
-    eingang_datum = models.DateField('Eingangsdatum')
-    bruchgeschehen = models.TextField('Bruchgeschehen')
-    nutzungsdauer = models.IntegerField('Nutzungsdauer', blank=True, null=True)        # in Jahre
-    reinigung = models.BooleanField('Reinigung')
-    bild = models.ImageField('Bild', blank=True, null=True, upload_to='images/')
+    ursache = models.TextField(verbose_name=_('Ursache'))
+    verfuegbarkeit = models.BooleanField(verbose_name=_('Verfügbarkeit'))
+    herkunftsort = models.CharField(verbose_name=_('Herkunftsort'))
+    entnahme_datum = models.DateField(verbose_name=_('Entnahmedatum'), blank=True, null=True)
+    eingang_datum = models.DateField(verbose_name=_('Eingangsdatum'))
+    bruchgeschehen = models.TextField(verbose_name=_('Bruchgeschehen'))
+    nutzungsdauer = models.IntegerField(verbose_name=_('Nutzungsdauer'), blank=True, null=True)        # in Jahre
+    reinigung = models.BooleanField(verbose_name=_('Reinigung'))
+    bild = models.ImageField(verbose_name=_('Bild'), blank=True, null=True, upload_to='images/')
     lagerort = models.ForeignKey(Lagerort, blank=True, null=True, on_delete=models.CASCADE)         
     patient = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE)           
     reoperation = models.ForeignKey(Reoperation, blank=True, null=True, on_delete=models.CASCADE)
@@ -183,9 +195,9 @@ class Explantat(models.Model):
     tibiaplateau = models.ForeignKey(Tibiaplateau, blank=True, null=True, on_delete=models.PROTECT)
     patellaersatz = models.ForeignKey(Patellaersatz, blank=True, null=True, on_delete=models.PROTECT)
     # owner
-    owner = models.IntegerField('Owner', blank=False, default=1)
+    owner = models.IntegerField(verbose_name=_('Besitzer'), blank=False, default=1)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        verbose_name_plural = "Explantate"
+        verbose_name_plural = _("Explantate")

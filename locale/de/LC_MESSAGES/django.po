@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-25 17:37+0200\n"
+"POT-Creation-Date: 2024-05-26 16:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,4 +52,137 @@ msgstr ""
 
 #: data/models.py:15
 msgid "Profilbild"
+msgstr ""
+
+#: data/models.py:18
+msgid "Benutzerprofile"
+msgstr ""
+
+#: data/models.py:33 data/models.py:46 data/models.py:59 data/models.py:72
+#: data/models.py:85 data/models.py:98 data/models.py:111
+msgid "Hersteller"
+msgstr ""
+
+#: data/models.py:34 data/models.py:47 data/models.py:60 data/models.py:73
+#: data/models.py:86 data/models.py:99 data/models.py:112
+msgid "Modell"
+msgstr ""
+
+#: data/models.py:35 data/models.py:48 data/models.py:61 data/models.py:74
+#: data/models.py:87 data/models.py:100 data/models.py:113
+msgid "Material"
+msgstr ""
+
+#: data/models.py:36 data/models.py:49 data/models.py:62 data/models.py:75
+#: data/models.py:88 data/models.py:101 data/models.py:114
+msgid "Größe"
+msgstr ""
+
+#: data/models.py:37 data/models.py:50 data/models.py:63 data/models.py:76
+#: data/models.py:89 data/models.py:102 data/models.py:115
+msgid "recycelt"
+msgstr ""
+
+#: data/models.py:40
+msgid "Femurkomponenten"
+msgstr ""
+
+#: data/models.py:53
+msgid "Tibiaplateaus"
+msgstr ""
+
+#: data/models.py:79
+msgid "Köpfe"
+msgstr ""
+
+#: data/models.py:92
+msgid "Inlays"
+msgstr ""
+
+#: data/models.py:105
+msgid "Schafte"
+msgstr ""
+
+#: data/models.py:118
+msgid "Pfannen"
+msgstr ""
+
+#: data/models.py:124
+msgid "Reoperation"
+msgstr ""
+
+#: data/models.py:125
+msgid "Reoperationsdatum"
+msgstr ""
+
+#: data/models.py:128
+msgid "Reoperationen"
+msgstr ""
+
+#: data/models.py:148
+msgid "Geburtsdatum"
+msgstr ""
+
+#: data/models.py:149
+msgid "Gewicht"
+msgstr ""
+
+#: data/models.py:159
+msgid "Patienten"
+msgstr ""
+
+#: data/models.py:165
+msgid "Schrank"
+msgstr ""
+
+#: data/models.py:166
+msgid "Kiste"
+msgstr ""
+
+#: data/models.py:170
+msgid "Lagerorte"
+msgstr ""
+
+#: data/models.py:176
+msgid "Ursache"
+msgstr ""
+
+#: data/models.py:177
+msgid "Verfügbarkeit"
+msgstr ""
+
+#: data/models.py:178
+msgid "Herkunftsort"
+msgstr ""
+
+#: data/models.py:179
+msgid "Entnahmedatum"
+msgstr ""
+
+#: data/models.py:180
+msgid "Eingangsdatum"
+msgstr ""
+
+#: data/models.py:181
+msgid "Bruchgeschehen"
+msgstr ""
+
+#: data/models.py:182
+msgid "Nutzungsdauer"
+msgstr ""
+
+#: data/models.py:183
+msgid "Reinigung"
+msgstr ""
+
+#: data/models.py:184
+msgid "Bild"
+msgstr ""
+
+#: data/models.py:198
+msgid "Besitzer"
+msgstr ""
+
+#: data/models.py:203
+msgid "Explantate"
 msgstr ""
