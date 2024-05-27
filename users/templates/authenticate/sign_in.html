@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 {% if user.is_authenticated %}
   {% url 'dashboard' as dashboard %}
@@ -11,7 +12,7 @@
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Sign in into ExReg</title>
+      <title>{% trans 'Anmeldung' %}</title>
       <link
         rel="shortcut icon"
         href="{% static '/img/favicon.svg' %}"
@@ -54,19 +55,18 @@
                 alt="account"
               />
               <p class="text-white fs-2" style="font-weight: 600">
-                Welcome to ExReg
+                {% trans 'Willkommen bei ExReg' %}
               </p>
               <small class="text-white text-wrap text-center"
-                >Let's begin the adventure</small
-              >
+                >{% trans 'Das Abenteuer kann beginnen' %}</small>
             </div>
           </div>
           <!-- Right Box -->
           <div class="col-md-6 right-box">
             <div class="row align-items-center">
               <div class="header-text mb-4">
-                <h2>Hello, Again</h2>
-                <p>We are happy to have you back.</p>
+                <h2>{% trans 'Hallo,' %}</h2>
+                <p>{% trans 'Wir freuen uns, dass Sie zurück sind.' %}</p>
               </div>
               <form action="" method="POST">
                 {% csrf_token %}
@@ -105,23 +105,22 @@
                     <label
                       for="form-check"
                       class="form-check-label text-secondary"
-                      ><small>Remember Me</small></label
-                    >
+                      ><small>{% trans 'Angemeldet bleiben' %}</small></label>
                   </div>
                   <div class="forgot">
-                    <small><a href="#">Forgot Password?</a></small>
+                    <small><a href="#">{% trans 'Passwort vergessen?' %}</a></small>
                   </div>
                 </div>
                 <div class="input-group mb-3">
                   <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">
-                    Sign in
+                    {% trans 'Anmelden' %}
                   </button>
                 </div>
               </form>
               <div class="row">
-                <small
-                  >Don't have account? <a href="{% url 'sign_up' %}">Sign up</a></small
-                >
+                <small>{% trans 'Sie haben noch kein Konto?' %}
+                  <a href="{% url 'sign_up' %}">{% trans 'Registrieren' %}</a>
+                </small>
               </div>
             </div>
           </div>
@@ -131,11 +130,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="errorModalLabel">Oops! Something went wrong.</h5>
+                    <h5 class="modal-title" id="errorModalLabel">{% trans 'Huch! Etwas ist schief gelaufen.' %}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <strong>Please try again...</strong>
+                    <strong>{% trans 'Bitte versuchen Sie es noch einmal...' %}</strong>
                     <ul>
                         {% for message in messages %}
                           <li>{{ message }}</li>
@@ -143,7 +142,7 @@
                     </ul>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{% trans 'Schließen' %}</button>
                 </div>
             </div>
         </div>

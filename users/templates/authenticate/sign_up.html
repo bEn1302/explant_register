@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 {% if user.is_authenticated %}
   {% url 'dashboard' as dashboard %}
@@ -11,7 +12,7 @@
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Sign up into ExReg</title>
+      <title>{% trans 'Registrierung' %}</title><!-- Sign up into ExReg -->
       <link
         rel="shortcut icon"
         href="{% static '/img/favicon.svg' %}"
@@ -52,10 +53,10 @@
                 alt="account"
               />
               <p class="text-white fs-2" style="font-weight: 600">
-                Welcome to ExReg
+                {% trans 'Willkommen bei ExReg' %}
               </p>
               <small class="text-white text-wrap text-center"
-                >Let's begin the adventure</small
+                >{% trans 'Das Abenteuer kann beginnen' %}</small
               >
             </div>
           </div>
@@ -63,8 +64,8 @@
           <div class="col-md-6 right-box">
             <div class="row align-items-center">
               <div class="header-text mb-4">
-                <h2>Hello,</h2>
-                <p>We are happy to see you.</p>
+                <h2>{% trans 'Hallo,' %}</h2>
+                <p>{% trans 'Wir freuen uns, Sie zu sehen.' %}</p>
               </div>
               <form action="{% url 'sign_up' %}" method="POST">
                 {% csrf_token %}
@@ -95,11 +96,11 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Sign up</button>
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">{% trans 'Registrieren' %}</button>
                 </div>
               </form>
               <div class="row">
-                <small>Do have account? <a href="{% url 'sign_in' %}">Sign in</a></small>
+                <small>{% trans 'Haben Sie ein Konto?' %}<a href="{% url 'sign_in' %}">{% trans 'Anmelden' %}</a></small>
               </div>
             </div>
           </div>
@@ -109,20 +110,20 @@
           <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="errorModalLabel">Oops! Something went wrong.</h5>
+                      <h5 class="modal-title" id="errorModalLabel">{% trans 'Huch! Etwas ist schief gelaufen.' %}</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                      <strong>Make sure that:</strong>
+                      <strong>{% trans 'Stellen Sie das sicher:' %}</strong>
                       <ul>
-                          <li>Your password can’t be too similar to your other personal information.</li>
-                          <li>Your password must contain at least 8 characters.</li>
-                          <li>Your password can’t be a commonly used password.</li>
-                          <li>Your password can’t be entirely numeric.</li>
+                          <li>{% trans 'Ihr Passwort darf Ihren anderen persönlichen Daten nicht zu ähnlich sein.' %}</li> <!-- Your password can’t be too similar to your other personal information. -->
+                          <li>{% trans 'Ihr Passwort muss mindestens 8 Zeichen enthalten.' %}</li> <!-- Your password must contain at least 8 characters. -->
+                          <li>{% trans 'Ihr Passwort darf kein häufig verwendetes Passwort sein.' %}</li><!-- Your password can’t be a commonly used password. -->
+                          <li>{% trans 'Ihr Passwort darf nicht ausschließlich aus Zahlen bestehen.' %}</li><!-- Your password can’t be entirely numeric. -->
                       </ul>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{% trans 'Schließen' %}</button>
                   </div>
               </div>
           </div>

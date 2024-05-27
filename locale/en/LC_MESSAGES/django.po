@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-26 17:03+0200\n"
-"PO-Revision-Date: 2024-05-26 15:07+0000\n"
+"POT-Creation-Date: 2024-05-27 11:42+0200\n"
+"PO-Revision-Date: 2024-05-27 09:46+0000\n"
 "Last-Translator: Ben Emanuel Wießner <ben.wiessner@web.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -190,17 +190,19 @@ msgstr "explants"
 
 #: data/templates/startpage/index.html:52
 #: data/templates/startpage/index.html:87
-#: data/templates/startpage/index.html:209
+#: data/templates/startpage/index.html:186
 msgid "Über Uns"
 msgstr "About"
 
 #: data/templates/startpage/index.html:53
-#: data/templates/startpage/index.html:179
-#: data/templates/startpage/index.html:219
+#: data/templates/startpage/index.html:161
+#: data/templates/startpage/index.html:196
 msgid "Projekt"
 msgstr "Project"
 
 #: data/templates/startpage/index.html:58
+#: users/templates/authenticate/sign_in.html:116
+#: users/templates/authenticate/sign_up.html:103
 msgid "Anmelden"
 msgstr "Sign in"
 
@@ -226,7 +228,11 @@ msgstr ""
 " is dedicated to the conception and programming of a database for medical "
 "explants."
 
-#: data/templates/startpage/index.html:104
+#: data/templates/startpage/index.html:99
+msgid "Unser Team"
+msgstr "Our Team"
+
+#: data/templates/startpage/index.html:101
 msgid ""
 "Unser Team besteht bisher aus 2 Personen. Darüber hinaus erhalten wir "
 "Unterstützung von Dr. Daniel Klüß von der Universität Rostock, der uns bei "
@@ -236,11 +242,11 @@ msgstr ""
 "Dr. Daniel Klüß from the University of Rostock, who is available to answer "
 "our questions and is involved in the project."
 
-#: data/templates/startpage/index.html:117
+#: data/templates/startpage/index.html:110
 msgid "Entwicklung"
 msgstr "Development"
 
-#: data/templates/startpage/index.html:119
+#: data/templates/startpage/index.html:112
 msgid ""
 "Bei der Entwicklung setzen wir auf das Frontend-Framework Bootstrap in der "
 "Version v5.3 und im Backend auf das Web-Framework Django."
@@ -248,11 +254,11 @@ msgstr ""
 "For the development we rely on the frontend framework Bootstrap in version "
 "v5.3 and in the backend the web framework Django."
 
-#: data/templates/startpage/index.html:135
+#: data/templates/startpage/index.html:125
 msgid "Unterstützung"
 msgstr "Support"
 
-#: data/templates/startpage/index.html:137
+#: data/templates/startpage/index.html:127
 msgid ""
 "Wir würden uns sehr über ihre Mitarbeit an unserem Projekt freuen. Wenn Sie "
 "also Anmerkungen haben oder auf ein Problem stoßen, zögern Sie nicht, uns zu"
@@ -261,13 +267,17 @@ msgstr ""
 "We would be very pleased about their cooperation in our project. So if you "
 "have any comments or encounter a problem, feel free to contact us."
 
-#: data/templates/startpage/index.html:157
+#: data/templates/startpage/index.html:142
+msgid "Ausgangslage"
+msgstr "Starting point"
+
+#: data/templates/startpage/index.html:144
 msgid ""
 "Um Schäden an Implantaten besser zu verstehen und die Herstellung oder "
 "Implantation zu verbessern, ist es wichtig Daten über Schäden zu sammeln und"
 " auszuwerten. Diese Daten sind jedoch oft unübersichtlich und schwer "
-"zugänglich, da sie in verschiedenen verschiedenen medizinischen "
-"Einrichtungen und in unterschiedlichen Formaten gespeichert werden."
+"zugänglich, da sie in verschiedenen medizinischen Einrichtungen und in "
+"unterschiedlichen Formaten gespeichert werden."
 msgstr ""
 "In order to better understand implant damage and make improvements in "
 "manufacturing or implantation, it is important to collect and evaluate data "
@@ -275,17 +285,109 @@ msgstr ""
 "because it is stored in different medical facilities and in different "
 "formats."
 
-#: data/templates/startpage/index.html:181
+#: data/templates/startpage/index.html:163
 msgid ""
 "Eine geeignete und moderne Methode der Datenverarbeitung ist die Eingabe "
 "dieser Daten in eine Datenbank, da dies den Zugang für alle Beteiligten "
 "ermöglicht. Das Ziel der Forschung ist die Entwicklung einer funktionalen "
-"Datenbank zu entwickeln, die in der Lage ist, große Datenmengen über "
-"Explantatschäden zu speichern und auszuwerten."
+"Datenbank, die in der Lage ist, große Datenmengen über Explantatschäden zu "
+"speichern und auszuwerten."
 msgstr ""
 "A suitable and modern method of processing data is to enter this data into a database, as this allows access for all parties\n"
 "involved. The goal of the research is to develop a functional database capable of storing and, if necessary, evaluating large amounts of data on explant damage."
 
-#: data/templates/startpage/index.html:227
+#: data/templates/startpage/index.html:203
 msgid "Haftungsausschluss"
 msgstr "Disclaimer"
+
+#: users/templates/authenticate/sign_in.html:15
+msgid "Anmeldung"
+msgstr "Sign in into ExReg"
+
+#: users/templates/authenticate/sign_in.html:58
+#: users/templates/authenticate/sign_up.html:56
+msgid "Willkommen bei ExReg"
+msgstr "Welcome to ExReg"
+
+#: users/templates/authenticate/sign_in.html:61
+#: users/templates/authenticate/sign_up.html:59
+msgid "Das Abenteuer kann beginnen"
+msgstr "Let's begin the adventure"
+
+#: users/templates/authenticate/sign_in.html:68
+#: users/templates/authenticate/sign_up.html:67
+#| msgid "Hallo"
+msgid "Hallo,"
+msgstr "Hello"
+
+#: users/templates/authenticate/sign_in.html:69
+msgid "Wir freuen uns, dass Sie zurück sind."
+msgstr "We are happy to have you back."
+
+#: users/templates/authenticate/sign_in.html:108
+msgid "Angemeldet bleiben"
+msgstr "Remember Me"
+
+#: users/templates/authenticate/sign_in.html:111
+msgid "Passwort vergessen?"
+msgstr "Forgot Password?"
+
+#: users/templates/authenticate/sign_in.html:121
+msgid "Sie haben noch kein Konto?"
+msgstr "Don't have account?"
+
+#: users/templates/authenticate/sign_in.html:122
+#: users/templates/authenticate/sign_up.html:99
+msgid "Registrieren"
+msgstr "Sign up"
+
+#: users/templates/authenticate/sign_in.html:133
+#: users/templates/authenticate/sign_up.html:113
+msgid "Huch! Etwas ist schief gelaufen."
+msgstr "Oops! Something went wrong."
+
+#: users/templates/authenticate/sign_in.html:137
+msgid "Bitte versuchen Sie es noch einmal..."
+msgstr "Please try again..."
+
+#: users/templates/authenticate/sign_in.html:145
+#: users/templates/authenticate/sign_up.html:126
+msgid "Schließen"
+msgstr "Close"
+
+#: users/templates/authenticate/sign_up.html:15
+#| msgid "Registrieren"
+msgid "Registrierung"
+msgstr "Sign up"
+
+#: users/templates/authenticate/sign_up.html:68
+#| msgid "Wir freuen uns, dass Sie zurück sind."
+msgid "Wir freuen uns, Sie zu sehen."
+msgstr "We are happy to see you."
+
+#: users/templates/authenticate/sign_up.html:103
+#| msgid "Sie haben noch kein Konto?"
+msgid "Haben Sie ein Konto?"
+msgstr "Do have account?"
+
+#: users/templates/authenticate/sign_up.html:117
+msgid "Stellen Sie das sicher:"
+msgstr "Make sure that:"
+
+#: users/templates/authenticate/sign_up.html:119
+msgid ""
+"Ihr Passwort darf Ihren anderen persönlichen Daten nicht zu ähnlich sein."
+msgstr ""
+"Your password can’t be too similar to your other personal information."
+
+#: users/templates/authenticate/sign_up.html:120
+msgid "Ihr Passwort muss mindestens 8 Zeichen enthalten."
+msgstr "Your password must contain at least 8 characters."
+
+#: users/templates/authenticate/sign_up.html:121
+msgid "Ihr Passwort darf kein häufig verwendetes Passwort sein."
+msgstr "Your password can’t be a commonly used password."
+
+#: users/templates/authenticate/sign_up.html:122
+msgid "Ihr Passwort darf nicht ausschließlich aus Zahlen bestehen."
+msgstr "Your password can’t be entirely numeric."
