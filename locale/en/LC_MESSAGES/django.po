@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 14:38+0200\n"
+"POT-Creation-Date: 2024-05-27 15:13+0200\n"
 "PO-Revision-Date: 2024-05-27 12:41+0000\n"
 "Last-Translator: Ben Emanuel Wießner <ben.wiessner@web.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -518,8 +518,8 @@ msgid ""
 "Es widmet sich der Konzeption und Programmierung einer Datenbank für "
 "medizinische Explantate."
 msgstr ""
-"This project is a \"Jugend-Forscht\" project from Mecklenburg Vorpommern. It"
-" is dedicated to the conception and programming of a database for medical "
+"This project is a \"Jugend-Forscht\" project from Mecklenburg Vorpommern. It "
+"is dedicated to the conception and programming of a database for medical "
 "explants."
 
 #: data/templates/startpage/index.html:99
@@ -555,8 +555,8 @@ msgstr "Support"
 #: data/templates/startpage/index.html:127
 msgid ""
 "Wir würden uns sehr über ihre Mitarbeit an unserem Projekt freuen. Wenn Sie "
-"also Anmerkungen haben oder auf ein Problem stoßen, zögern Sie nicht, uns zu"
-" kontaktieren."
+"also Anmerkungen haben oder auf ein Problem stoßen, zögern Sie nicht, uns zu "
+"kontaktieren."
 msgstr ""
 "We would be very pleased about their cooperation in our project. So if you "
 "have any comments or encounter a problem, feel free to contact us."
@@ -568,8 +568,8 @@ msgstr "Starting point"
 #: data/templates/startpage/index.html:144
 msgid ""
 "Um Schäden an Implantaten besser zu verstehen und die Herstellung oder "
-"Implantation zu verbessern, ist es wichtig Daten über Schäden zu sammeln und"
-" auszuwerten. Diese Daten sind jedoch oft unübersichtlich und schwer "
+"Implantation zu verbessern, ist es wichtig Daten über Schäden zu sammeln und "
+"auszuwerten. Diese Daten sind jedoch oft unübersichtlich und schwer "
 "zugänglich, da sie in verschiedenen medizinischen Einrichtungen und in "
 "unterschiedlichen Formaten gespeichert werden."
 msgstr ""
@@ -587,20 +587,21 @@ msgid ""
 "Datenbank, die in der Lage ist, große Datenmengen über Explantatschäden zu "
 "speichern und auszuwerten."
 msgstr ""
-"A suitable and modern method of processing data is to enter this data into a database, as this allows access for all parties\n"
-"involved. The goal of the research is to develop a functional database capable of storing and, if necessary, evaluating large amounts of data on explant damage."
+"A suitable and modern method of processing data is to enter this data into a "
+"database, as this allows access for all parties\n"
+"involved. The goal of the research is to develop a functional database "
+"capable of storing and, if necessary, evaluating large amounts of data on "
+"explant damage."
 
 #: data/templates/startpage/index.html:203
 msgid "Haftungsausschluss"
 msgstr "Disclaimer"
 
-#: users/forms.py:8
-#| msgid "Email address"
+#: users/forms.py:8 users/templates/authenticate/sign_in.html:85
 msgid "Email-Adresse"
 msgstr "Email address"
 
 #: users/forms.py:9
-#| msgid "Username"
 msgid "Vorname"
 msgstr "First name"
 
@@ -608,18 +609,15 @@ msgstr "First name"
 msgid "Nachname"
 msgstr "Last name"
 
-#: users/forms.py:24
-#| msgid "Benutzer"
+#: users/forms.py:24 users/templates/authenticate/sign_in.html:77
 msgid "Benutzername"
 msgstr "Username"
 
-#: users/forms.py:27
-#| msgid "Password"
+#: users/forms.py:27 users/templates/authenticate/sign_in.html:93
 msgid "Passwort"
 msgstr "Password"
 
 #: users/forms.py:30
-#| msgid "Passwort vergessen?"
 msgid "Passwort bestätigen"
 msgstr "Confirm Password"
 
@@ -696,8 +694,7 @@ msgstr "Make sure that:"
 #: users/templates/authenticate/sign_up.html:119
 msgid ""
 "Ihr Passwort darf Ihren anderen persönlichen Daten nicht zu ähnlich sein."
-msgstr ""
-"Your password can’t be too similar to your other personal information."
+msgstr "Your password can’t be too similar to your other personal information."
 
 #: users/templates/authenticate/sign_up.html:120
 msgid "Ihr Passwort muss mindestens 8 Zeichen enthalten."

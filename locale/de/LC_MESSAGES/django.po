@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 14:38+0200\n"
+"POT-Creation-Date: 2024-05-27 15:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -576,7 +576,7 @@ msgstr ""
 msgid "Haftungsausschluss"
 msgstr ""
 
-#: users/forms.py:8
+#: users/forms.py:8 users/templates/authenticate/sign_in.html:85
 msgid "Email-Adresse"
 msgstr ""
 
@@ -588,11 +588,11 @@ msgstr ""
 msgid "Nachname"
 msgstr ""
 
-#: users/forms.py:24
+#: users/forms.py:24 users/templates/authenticate/sign_in.html:77
 msgid "Benutzername"
 msgstr ""
 
-#: users/forms.py:27
+#: users/forms.py:27 users/templates/authenticate/sign_in.html:93
 msgid "Passwort"
 msgstr ""
 
