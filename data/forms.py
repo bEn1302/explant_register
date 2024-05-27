@@ -1,5 +1,6 @@
 from django import forms
-from django.forms import ModelForm, inlineformset_factory
+from django.utils.translation import gettext_lazy as _
+from django.forms import ModelForm
 from .models import *
 
 # ----------------------- Data Insert Forms ----------------------- #
@@ -12,8 +13,8 @@ class LagerortForm(ModelForm):
             'kiste': '',
         }
         widgets = {
-            'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Schrank'}),
-            'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Kiste'}),
+            'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Schrank')}),
+            'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Kiste')}),
         }
 
 class PatientForm(ModelForm):
@@ -21,12 +22,12 @@ class PatientForm(ModelForm):
         model = Patient
         fields = ('geburtsdatum','gewicht')
         labels = {
-            'geburtsdatum': '',
+            'geburtsdatum': _('Geburtsdatum'),
             'gewicht': '',
         }
         widgets = { 
             'geburtsdatum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-            'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Gewicht'}),
+            'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Gewicht')}),
         }
 
 class ReoperationForm(ModelForm):
@@ -34,11 +35,11 @@ class ReoperationForm(ModelForm):
         model = Reoperation
         fields = ('reoperation', 'reoperation_datum')
         labels = {
-            'reoperation': '',
-            'reoperation_datum': '',
+            'reoperation': _('Reoperation'),
+            'reoperation_datum': _('Reoperationsdatum'),
         }
         widgets = { 
-            'reoperation': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'Reoperation'}),
+            'reoperation': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input'}),
             'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
         }
 
@@ -51,14 +52,14 @@ class InlayForm(forms.ModelForm):
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': '',
+            'recycelt': _('recycelt'),
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'recycelt'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class KopfForm(ModelForm):
@@ -70,14 +71,14 @@ class KopfForm(ModelForm):
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': '',
+            'recycelt': _('recycelt'),
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'recycelt'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }   
 
 class FemurkomponenteForm(ModelForm):
@@ -89,14 +90,14 @@ class FemurkomponenteForm(ModelForm):
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': '',
+            'recycelt': _('recycelt'),
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'recycelt'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class SchaftForm(ModelForm):
@@ -108,14 +109,14 @@ class SchaftForm(ModelForm):
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': '',
+            'recycelt': _('recycelt'),
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'recycelt'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }   
 
 class TibiaplateauForm(ModelForm):
@@ -127,14 +128,14 @@ class TibiaplateauForm(ModelForm):
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': '',
+            'recycelt': _('recycelt'),
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'recycelt'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class PfanneForm(ModelForm):
@@ -146,14 +147,14 @@ class PfanneForm(ModelForm):
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': '',
+            'recycelt': _('recycelt'),
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'recycelt'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class PatellaersatzForm(ModelForm):
@@ -165,14 +166,14 @@ class PatellaersatzForm(ModelForm):
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': '',
+            'recycelt': _('recycelt'),
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Hersteller'}),
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Modell'}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Material'}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Größe'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input', 'placeholder': 'recycelt'}),
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }    
 
 class ExplantatForm(ModelForm):
@@ -192,7 +193,7 @@ class ExplantatForm(ModelForm):
         fields = ('ursache', 'verfuegbarkeit', 'herkunftsort', 'entnahme_datum', 'eingang_datum', 'bruchgeschehen', 'nutzungsdauer', 'reinigung', 'bild', 'lagerort', 'patient', 'reoperation', 'inlay', 'kopf', 'schaft', 'pfanne', 'femurkomponente', 'tibiaplateau', 'patellaersatz')
         labels = {
             'ursache': '', 
-            'verfuegbarkeit': 'Verfügbarkeit',
+            'verfuegbarkeit': '',
             'herkunftsort': '', 
             'entnahme_datum': '', 
             'eingang_datum': '', 
@@ -212,14 +213,14 @@ class ExplantatForm(ModelForm):
             'patellaersatz': ''
         }
         widgets = {
-            'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ursache', 'style': 'height: 150px;'}), 
-            'verfuegbarkeit': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Verfügbarkeit'}),
-            'herkunftsort': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Herkunftsort'}), 
+            'ursache': forms.Textarea(attrs={'class': 'form-control', 'placeholder': _('Ursache'), 'style': 'height: 150px;'}), 
+            'verfuegbarkeit': forms.CheckboxInput(attrs={'class': 'form-control form-check-input',}),
+            'herkunftsort': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Herkunftsort')}), 
             'entnahme_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
             'eingang_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-            'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Bruchgeschehen', 'style': 'height: 150px;'}),
-            'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Nutzungsdauer'}), 
-            'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input', 'placeholder': 'Reinigung'}),
+            'bruchgeschehen': forms.Textarea(attrs={'class': 'form-control', 'placeholder': _('Bruchgeschehen'), 'style': 'height: 150px;'}),
+            'nutzungsdauer': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Nutzungsdauer')}), 
+            'reinigung': forms.CheckboxInput(attrs={'class': 'form-control form-check-input',}),
             'bild': forms.FileInput(attrs={'class': 'form-control'}),
             'lagerort': forms.Select(attrs={'class': 'form-select'}),
             'patient': forms.Select(attrs={'class': 'form-select'}),

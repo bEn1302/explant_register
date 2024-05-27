@@ -63,7 +63,7 @@ class Patellaersatz(models.Model):
     recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = "Patellaersätze"
+        verbose_name_plural = _("Patellaersätze")
 
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
@@ -182,18 +182,18 @@ class Explantat(models.Model):
     nutzungsdauer = models.IntegerField(verbose_name=_('Nutzungsdauer'), blank=True, null=True)        # in Jahre
     reinigung = models.BooleanField(verbose_name=_('Reinigung'))
     bild = models.ImageField(verbose_name=_('Bild'), blank=True, null=True, upload_to='images/')
-    lagerort = models.ForeignKey(Lagerort, blank=True, null=True, on_delete=models.CASCADE)         
-    patient = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE)           
-    reoperation = models.ForeignKey(Reoperation, blank=True, null=True, on_delete=models.CASCADE)
-    inlay = models.ForeignKey(Inlay, blank=True, null=True, on_delete=models.PROTECT)
+    lagerort = models.ForeignKey(Lagerort,verbose_name=_('Lagerort') ,blank=True, null=True, on_delete=models.CASCADE)         
+    patient = models.ForeignKey(Patient,verbose_name=_('Patient') , blank=True, null=True, on_delete=models.CASCADE)           
+    reoperation = models.ForeignKey(Reoperation,verbose_name=_('Reoperation') , blank=True, null=True, on_delete=models.CASCADE)
+    inlay = models.ForeignKey(Inlay,verbose_name=_('Inlay') ,blank=True, null=True, on_delete=models.PROTECT)
     # Hüftexplantate
-    kopf = models.ForeignKey(Kopf, blank=True, null=True, on_delete=models.PROTECT)
-    schaft = models.ForeignKey(Schaft, blank=True, null=True, on_delete=models.PROTECT)
-    pfanne = models.ForeignKey(Pfanne, blank=True, null=True, on_delete=models.PROTECT)
+    kopf = models.ForeignKey(Kopf,verbose_name=_('Kopf') ,blank=True, null=True, on_delete=models.PROTECT)
+    schaft = models.ForeignKey(Schaft,verbose_name=_('Schaft') ,blank=True, null=True, on_delete=models.PROTECT)
+    pfanne = models.ForeignKey(Pfanne,verbose_name=_('Pfanne') ,blank=True, null=True, on_delete=models.PROTECT)
     # Knieexplantate
-    femurkomponente = models.ForeignKey(Femurkomponente, blank=True, null=True, on_delete=models.PROTECT)
-    tibiaplateau = models.ForeignKey(Tibiaplateau, blank=True, null=True, on_delete=models.PROTECT)
-    patellaersatz = models.ForeignKey(Patellaersatz, blank=True, null=True, on_delete=models.PROTECT)
+    femurkomponente = models.ForeignKey(Femurkomponente,verbose_name=_('Femurkomponente') ,blank=True, null=True, on_delete=models.PROTECT)
+    tibiaplateau = models.ForeignKey(Tibiaplateau,verbose_name=_('Tibiaplateau') ,blank=True, null=True, on_delete=models.PROTECT)
+    patellaersatz = models.ForeignKey(Patellaersatz,verbose_name=_('Patellaersatz') ,blank=True, null=True, on_delete=models.PROTECT)
     # owner
     owner = models.IntegerField(verbose_name=_('Besitzer'), blank=False, default=1)
     created_at = models.DateTimeField(default=timezone.now)

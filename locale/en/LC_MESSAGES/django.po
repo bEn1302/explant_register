@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 11:42+0200\n"
-"PO-Revision-Date: 2024-05-27 09:46+0000\n"
+"POT-Creation-Date: 2024-05-27 13:22+0200\n"
+"PO-Revision-Date: 2024-05-27 11:22+0000\n"
 "Last-Translator: Ben Emanuel Wießner <ben.wiessner@web.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -26,6 +26,82 @@ msgstr "german"
 #: ExReg/settings.py:132
 msgid "Englisch"
 msgstr "english"
+
+#: data/forms.py:16 data/models.py:165
+msgid "Schrank"
+msgstr "Cupboard"
+
+#: data/forms.py:17 data/models.py:166
+msgid "Kiste"
+msgstr "Box"
+
+#: data/forms.py:25 data/models.py:148
+msgid "Geburtsdatum"
+msgstr "Date of birth"
+
+#: data/forms.py:30 data/models.py:149
+msgid "Gewicht"
+msgstr "Weight"
+
+#: data/forms.py:38 data/models.py:124 data/models.py:187
+#: data/templates/data/explant_form.html:93
+msgid "Reoperation"
+msgstr "Re-operation"
+
+#: data/forms.py:39 data/models.py:125
+msgid "Reoperationsdatum"
+msgstr "Date of re-operation"
+
+#: data/forms.py:55 data/forms.py:74 data/forms.py:93 data/forms.py:112
+#: data/forms.py:131 data/forms.py:150 data/forms.py:169 data/models.py:37
+#: data/models.py:50 data/models.py:63 data/models.py:76 data/models.py:89
+#: data/models.py:102 data/models.py:115
+msgid "recycelt"
+msgstr "recycled"
+
+#: data/forms.py:58 data/forms.py:77 data/forms.py:96 data/forms.py:115
+#: data/forms.py:134 data/forms.py:153 data/forms.py:172 data/models.py:33
+#: data/models.py:46 data/models.py:59 data/models.py:72 data/models.py:85
+#: data/models.py:98 data/models.py:111
+msgid "Hersteller"
+msgstr "Manufacturer"
+
+#: data/forms.py:59 data/forms.py:78 data/forms.py:97 data/forms.py:116
+#: data/forms.py:135 data/forms.py:154 data/forms.py:173 data/models.py:34
+#: data/models.py:47 data/models.py:60 data/models.py:73 data/models.py:86
+#: data/models.py:99 data/models.py:112
+msgid "Modell"
+msgstr "Model"
+
+#: data/forms.py:60 data/forms.py:79 data/forms.py:98 data/forms.py:117
+#: data/forms.py:136 data/forms.py:155 data/forms.py:174 data/models.py:35
+#: data/models.py:48 data/models.py:61 data/models.py:74 data/models.py:87
+#: data/models.py:100 data/models.py:113
+msgid "Material"
+msgstr "Material"
+
+#: data/forms.py:61 data/forms.py:80 data/forms.py:99 data/forms.py:118
+#: data/forms.py:137 data/forms.py:156 data/forms.py:175 data/models.py:36
+#: data/models.py:49 data/models.py:62 data/models.py:75 data/models.py:88
+#: data/models.py:101 data/models.py:114
+msgid "Größe"
+msgstr "Size"
+
+#: data/forms.py:216 data/models.py:176
+msgid "Ursache"
+msgstr "Cause"
+
+#: data/forms.py:218 data/models.py:178
+msgid "Herkunftsort"
+msgstr "Place of origin"
+
+#: data/forms.py:221 data/models.py:181
+msgid "Bruchgeschehen"
+msgstr "Fracture event"
+
+#: data/forms.py:222 data/models.py:182
+msgid "Nutzungsdauer"
+msgstr "Period of use"
 
 #: data/models.py:9
 msgid "Benutzer"
@@ -59,31 +135,6 @@ msgstr "Profile picture"
 msgid "Benutzerprofile"
 msgstr "User profiles"
 
-#: data/models.py:33 data/models.py:46 data/models.py:59 data/models.py:72
-#: data/models.py:85 data/models.py:98 data/models.py:111
-msgid "Hersteller"
-msgstr "Manufacturer"
-
-#: data/models.py:34 data/models.py:47 data/models.py:60 data/models.py:73
-#: data/models.py:86 data/models.py:99 data/models.py:112
-msgid "Modell"
-msgstr "Model"
-
-#: data/models.py:35 data/models.py:48 data/models.py:61 data/models.py:74
-#: data/models.py:87 data/models.py:100 data/models.py:113
-msgid "Material"
-msgstr "Material"
-
-#: data/models.py:36 data/models.py:49 data/models.py:62 data/models.py:75
-#: data/models.py:88 data/models.py:101 data/models.py:114
-msgid "Größe"
-msgstr "Size"
-
-#: data/models.py:37 data/models.py:50 data/models.py:63 data/models.py:76
-#: data/models.py:89 data/models.py:102 data/models.py:115
-msgid "recycelt"
-msgstr "recycled"
-
 #: data/models.py:40
 msgid "Femurkomponenten"
 msgstr "Femoral components"
@@ -91,6 +142,10 @@ msgstr "Femoral components"
 #: data/models.py:53
 msgid "Tibiaplateaus"
 msgstr "Tibial plateaus"
+
+#: data/models.py:66
+msgid "Patellaersätze"
+msgstr "patellar replacements"
 
 #: data/models.py:79
 msgid "Köpfe"
@@ -108,77 +163,73 @@ msgstr "Stems"
 msgid "Pfannen"
 msgstr "Acetabular cups"
 
-#: data/models.py:124
-msgid "Reoperation"
-msgstr "Re-operation"
-
-#: data/models.py:125
-msgid "Reoperationsdatum"
-msgstr "Date of re-operation"
-
 #: data/models.py:128
 msgid "Reoperationen"
 msgstr "Re-operations"
-
-#: data/models.py:148
-msgid "Geburtsdatum"
-msgstr "Date of birth"
-
-#: data/models.py:149
-msgid "Gewicht"
-msgstr "Weight"
 
 #: data/models.py:159
 msgid "Patienten"
 msgstr "Patients"
 
-#: data/models.py:165
-msgid "Schrank"
-msgstr "Cupboard"
-
-#: data/models.py:166
-msgid "Kiste"
-msgstr "Box"
-
 #: data/models.py:170
 msgid "Lagerorte"
 msgstr "Storage locations"
 
-#: data/models.py:176
-msgid "Ursache"
-msgstr "Cause"
-
-#: data/models.py:177
+#: data/models.py:177 data/templates/data/explant_form.html:32
 msgid "Verfügbarkeit"
 msgstr "Availability"
 
-#: data/models.py:178
-msgid "Herkunftsort"
-msgstr "Place of origin"
-
-#: data/models.py:179
+#: data/models.py:179 data/templates/data/explant_form.html:53
 msgid "Entnahmedatum"
 msgstr "Removal date"
 
-#: data/models.py:180
+#: data/models.py:180 data/templates/data/explant_form.html:61
 msgid "Eingangsdatum"
 msgstr "Date of receipt"
 
-#: data/models.py:181
-msgid "Bruchgeschehen"
-msgstr "Fracture event"
-
-#: data/models.py:182
-msgid "Nutzungsdauer"
-msgstr "Period of use"
-
-#: data/models.py:183
+#: data/models.py:183 data/templates/data/explant_form.html:40
 msgid "Reinigung"
 msgstr "Cleaning"
 
 #: data/models.py:184
 msgid "Bild"
 msgstr "Image"
+
+#: data/models.py:185 data/templates/data/explant_form.html:71
+msgid "Lagerort"
+msgstr "Storage location"
+
+#: data/models.py:186 data/templates/data/explant_form.html:82
+msgid "Patient"
+msgstr "Patient"
+
+#: data/models.py:188 data/templates/data/explant_form.html:104
+msgid "Inlay"
+msgstr "Inlay"
+
+#: data/models.py:190 data/templates/data/explant_form.html:116
+msgid "Kopf"
+msgstr "Head"
+
+#: data/models.py:191 data/templates/data/explant_form.html:140
+msgid "Schaft"
+msgstr "Stem"
+
+#: data/models.py:192 data/templates/data/explant_form.html:164
+msgid "Pfanne"
+msgstr "Acetabular cup"
+
+#: data/models.py:194 data/templates/data/explant_form.html:128
+msgid "Femurkomponente"
+msgstr "Femoral component"
+
+#: data/models.py:195 data/templates/data/explant_form.html:152
+msgid "Tibiaplateau"
+msgstr "Tibial plateau"
+
+#: data/models.py:196 data/templates/data/explant_form.html:176
+msgid "Patellaersatz"
+msgstr "patellar replacement"
 
 #: data/models.py:198
 msgid "Besitzer"
@@ -187,6 +238,28 @@ msgstr "Owner"
 #: data/models.py:203
 msgid "Explantate"
 msgstr "explants"
+
+#: data/templates/data/explant_form.html:7
+#| msgid "Reinigung"
+msgid "Eintragung"
+msgstr "Registration"
+
+#: data/templates/data/explant_form.html:10
+msgid "Registrierungsformular für Explantatdaten"
+msgstr "Explant data registration"
+
+#: data/templates/data/explant_form.html:74
+#: data/templates/data/explant_form.html:85
+#: data/templates/data/explant_form.html:96
+#: data/templates/data/explant_form.html:107
+#: data/templates/data/explant_form.html:119
+#: data/templates/data/explant_form.html:131
+#: data/templates/data/explant_form.html:143
+#: data/templates/data/explant_form.html:155
+#: data/templates/data/explant_form.html:167
+#: data/templates/data/explant_form.html:179
+msgid "Hinzufügen"
+msgstr "Add"
 
 #: data/templates/startpage/index.html:52
 #: data/templates/startpage/index.html:87
@@ -316,7 +389,6 @@ msgstr "Let's begin the adventure"
 
 #: users/templates/authenticate/sign_in.html:68
 #: users/templates/authenticate/sign_up.html:67
-#| msgid "Hallo"
 msgid "Hallo,"
 msgstr "Hello"
 
@@ -356,17 +428,14 @@ msgid "Schließen"
 msgstr "Close"
 
 #: users/templates/authenticate/sign_up.html:15
-#| msgid "Registrieren"
 msgid "Registrierung"
 msgstr "Sign up"
 
 #: users/templates/authenticate/sign_up.html:68
-#| msgid "Wir freuen uns, dass Sie zurück sind."
 msgid "Wir freuen uns, Sie zu sehen."
 msgstr "We are happy to see you."
 
 #: users/templates/authenticate/sign_up.html:103
-#| msgid "Sie haben noch kein Konto?"
 msgid "Haben Sie ein Konto?"
 msgstr "Do have account?"
 
