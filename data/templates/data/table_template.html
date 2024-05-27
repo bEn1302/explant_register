@@ -1,19 +1,20 @@
 {% load custom_filters %}
+{% load i18n %}
 {% block content %}
     <table id="explant-table" class="table {% if is_huefte %}huefte{% else %}knie{% endif %}">
     <thead>
         <tr>
         <th><input type="checkbox" id="selectAll"></th>
         <th class="text-center" scope="col">ID</th>
-        <th class="text-center" scope="col">Ursache</th>
-        <th class="text-center" scope="col">Verfügbarkeit</th>
-        <th class="text-center" scope="col">Herkunftsort</th>
-        <th class="text-center" scope="col">Entnahmedatum</th>
-        <th class="text-center" scope="col">Eingangsdatum</th>
-        <th class="text-center" scope="col">Bruchgeschehen</th>
-        <th class="text-center" scope="col">Nutzungsdauer</th>
-        <th class="text-center" scope="col">Reinigung</th>
-        <th class="text-center" scope="col">Aktion</th>
+        <th class="text-center" scope="col">{% trans 'Ursache' %}</th>
+        <th class="text-center" scope="col">{% trans 'Verfügbarkeit' %}</th>
+        <th class="text-center" scope="col">{% trans 'Herkunftsort' %}</th>
+        <th class="text-center" scope="col">{% trans 'Entnahmedatum' %}</th>
+        <th class="text-center" scope="col">{% trans 'Eingangsdatum' %}</th>
+        <th class="text-center" scope="col">{% trans 'Bruchgeschehen' %}</th>
+        <th class="text-center" scope="col">{% trans 'Nutzungsdauer' %}</th>
+        <th class="text-center" scope="col">{% trans 'Reinigung' %}</th>
+        <th class="text-center" scope="col">{% trans 'Aktion' %}</th>
         </tr>
     </thead>
     <tbody>
@@ -63,7 +64,7 @@
                                 <div class="col-md-3 mt-3">
                                 <!-- Extended content goes here -->
                                     <ul class="list-group">
-                                        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">Bild</li>
+                                        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">{% trans 'Bild' %}</li>
                                         <li class="list-group-item text-center"><img src="{{ explant.bild.url }}" alt="" width="200" class="mx-auto"></li>
                                     </ul>         
                                 </div>
@@ -73,7 +74,7 @@
                                     <!-- Extended content goes here -->
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                            Lagerort
+                                            {% trans 'Lagerort' %}
                                             <!-- Button trigger modal -->
                                             {% if user.id == explant.owner %}
                                                 <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#lagerortModal{{ explant.id }}">Update</button>
@@ -82,7 +83,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Schrank:
+                                                    {% trans 'Schrank' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.lagerort.schrank }}
@@ -92,7 +93,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Kiste:
+                                                    {% trans 'Kiste' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.lagerort.kiste }}
@@ -108,18 +109,18 @@
                                                 <form id="update-form{{ explant.id }}" method="post" action="{% url 'lagerort_update' explant.lagerort.pk %}">
                                                     {% csrf_token %}
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Lagerort' %}</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div id="lagerortModal" class="modal-body">
                                                         <div class='form-group row mb-3'>
-                                                            <label for='schrank' class="col-sm-3 col-form-label">Schrank:</label>
+                                                            <label for='schrank' class="col-sm-3 col-form-label">{% trans 'Schrank' %}:</label>
                                                             <div class="col-sm-9">
                                                                 <input type='number' class='form-control' id='schrank' name='schrank' value='{{ explant.lagerort.schrank }}'>
                                                             </div>                                                           
                                                         </div>
                                                         <div class='form-group row'>
-                                                            <label for='kiste' class="col-sm-3 col-form-label">Kiste:</label>
+                                                            <label for='kiste' class="col-sm-3 col-form-label">{% trans 'Kiste' %}:</label>
                                                             <div class="col-sm-9">
                                                                 <input type='number' class='form-control' id='kiste' name='kiste' value='{{ explant.lagerort.kiste }}'>
                                                             </div>
@@ -131,7 +132,7 @@
                                                 </form>
                                             {% else %}
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update Lagerort</h1>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Lagerort' %}</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -147,7 +148,7 @@
                                 <div class="col-md-3 mt-3">
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                            Patient
+                                            {% trans 'Patient' %}
                                             {% if user.id == explant.owner %}
                                                 <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patientModal{{ explant.id }}">Update</button>
                                             {% endif %}
@@ -155,7 +156,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Geburtsdatum:
+                                                    {% trans 'Geburtsdatum' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.patient.geburtsdatum }}
@@ -165,7 +166,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Gewicht:
+                                                    {% trans 'Gewicht' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.patient.gewicht }} kg
@@ -181,18 +182,18 @@
                                                     <form id="update-form{{ explant.id }}" method="post" action="{% url 'patient_update' explant.patient.pk %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Patient' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div id="patientModal" class="modal-body">
                                                             <div class='form-group row mb-3'>
-                                                                <label for='geburtsdatum' class="col-sm-3 col-form-label">Geburtsdatum:</label>
+                                                                <label for='geburtsdatum' class="col-sm-3 col-form-label">{% trans 'Geburtsdatum' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='date' class='form-control' id='geburtsdatum' name='geburtsdatum' value='{{ explant.patient.geburtsdatum|date:'Y-m-d' }}'>
                                                                 </div>
                                                             </div>
-                                                            <div class='form-group row'>
-                                                                <label for='gewicht' class="col-sm-3 col-form-label">Gewicht:</label>
+                                                            <div class='form-group row'>'
+                                                                <label for='gewicht' class="col-sm-3 col-form-label">{% trans 'Gewicht' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='number' step="any" class='form-control' id='gewicht' name='gewicht' value='{{ explant.patient.gewicht }}'>
                                                                 </div>                                                               
@@ -204,7 +205,7 @@
                                                     </form>
                                                 {% else %}
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Patient'}</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -220,7 +221,7 @@
                                 <div class="col-md-3 mt-3">
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                            Reoperation
+                                            {% trans 'Reoperation' %}
                                             {% if user.id == explant.owner %}
                                                 <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#reoperationModal{{ explant.id }}">Update</button>
                                             {% endif %}
@@ -228,7 +229,7 @@
                                         <li class="list-group-item ">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Reoperation:
+                                                    {% trans 'Reoperation' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {% if explant.reoperation.reoperation %}
@@ -242,7 +243,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Datum:
+                                                    {% trans 'Reoperationsdatum' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.reoperation.reoperation_datum }}
@@ -259,19 +260,19 @@
                                                     <form id="update-form{{ explant.id }}" method="post" action="{% url 'reoperation_update' explant.reoperation.pk %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reoperation</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Reoperation' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div id="reoperationModal" class="modal-body">
                                                             <!-- Forms -->
                                                             <div class='form-group row mb-3'>
-                                                                <label for='reoperation' class="col-sm-3 col-form-label">Reoperation:</label>
+                                                                <label for='reoperation' class="col-sm-3 col-form-label">{% trans 'Reoperation' %}:</label>
                                                                 <div class="col-sm-9 d-flex align-items-center">
                                                                     <input type='checkbox' class='form-check-input' id='reoperation' name='reoperation' value='true' {% if explant.reoperation.reoperation %}checked{% endif %}>
                                                                 </div>                                                                
                                                             </div>
                                                             <div class='form-group row'>
-                                                                <label for='reoperation_datum' class="col-sm-3 col-form-label">Datum:</label>
+                                                                <label for='reoperation_datum' class="col-sm-3 col-form-label">{% trans 'Reoperationsdatum' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='date' class='form-control' id='reoperation_datum' name='reoperation_datum' value='{{ explant.reoperation.reoperation_datum|date:'Y-m-d' }}'>
                                                                 </div>                                                                
@@ -283,7 +284,7 @@
                                                     </form>
                                                 {% else %}
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reoperation</h1>
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Reoperation' %}</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -299,7 +300,7 @@
                                 <div class="col-md-3 mt-3">
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                            Inlay
+                                            {% trans 'Inlay' %}
                                             {% if user.id == explant.owner %}
                                                 <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#inlayModal{{ explant.id }}">Update</button>
                                             {% endif %}    
@@ -307,7 +308,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Hersteller:
+                                                    {% trans 'Hersteller' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.inlay.hersteller }}
@@ -317,7 +318,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Modell:
+                                                    {% trans 'Modell' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.inlay.modell }}
@@ -327,7 +328,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Material:
+                                                    {% trans 'Material' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.inlay.material }}
@@ -337,7 +338,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    Größe:
+                                                    {% trans 'Größe' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.inlay.groeße }} mm
@@ -347,16 +348,14 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    recycelt:
+                                                    {% trans 'recycelt' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
-                                                    
                                                         {% if explant.inlay.recycelt %}
                                                             <i class="bi bi-check-circle-fill text-success"></i>
                                                         {% else %}
                                                             <i class="bi bi-x-circle-fill text-danger"></i>
                                                         {% endif %}
-                                                    
                                                 </div>
                                             </div>
                                         </li>
@@ -370,37 +369,37 @@
                                                     <form id="update-form{{ explant.id }}" method="post" action="{% url 'inlay_update' explant.inlay.pk %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Inlay</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Inlay' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div id="inlayModal" class="modal-body">
                                                             <!-- Forms -->
                                                             <div class='form-group row mb-3'>
-                                                                <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                <label for='hersteller' class="col-sm-3 col-form-label">{% trans 'Hersteller' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.inlay.hersteller }}'>
                                                                 </div>
                                                             </div>
                                                             <div class='form-group row mb-3'>
-                                                                <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                <label for='modell' class="col-sm-3 col-form-label">{% trans 'Modell' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.inlay.modell }}'>
                                                                 </div>
                                                             </div>
                                                             <div class='form-group row mb-3'>
-                                                                <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                <label for='material' class="col-sm-3 col-form-label">{% trans 'Material' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.inlay.material }}'>
                                                                 </div>
                                                             </div>
                                                             <div class='form-group row mb-3'>
-                                                                <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
                                                                 </div>
                                                             </div>
                                                             <div class='form-group row'>
-                                                                <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
                                                                 <div class="col-sm-9 d-flex align-items-center">
                                                                     <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.inlay.recycelt %}checked{% endif %}>
                                                                 </div>
@@ -412,7 +411,7 @@
                                                     </form>
                                                 {% else %}
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Inlay</h1>
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Inlay' %}</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -429,7 +428,7 @@
                                     <div class="col-md-3 mt-3">
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                                Kopf
+                                                {% trans 'Kopf' %}
                                                 {% if user.id == explant.owner %}
                                                     <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal{{ explant.id }}">Update</button>
                                                 {% endif %}
@@ -437,7 +436,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Hersteller:
+                                                        {% trans 'Hersteller' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.kopf.hersteller }}
@@ -447,7 +446,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Modell:
+                                                        {% trans 'Modell' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.kopf.modell }}
@@ -457,7 +456,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Material:
+                                                        {% trans 'Material' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.kopf.material }}
@@ -467,7 +466,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Größe:
+                                                        {% trans 'Größe' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.kopf.groeße }} mm
@@ -477,7 +476,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        recycelt:
+                                                        {% trans 'recycelt' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                             {% if explant.kopf.recycelt %}
@@ -498,37 +497,37 @@
                                                         <form id="update-form{{ explant.id }}" method="post" action="{% url 'kopf_update' explant.kopf.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Kopf</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Kopf' %}</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="kopftModal" class="modal-body">
                                                                 <!-- Forms -->
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">{% trans 'Hersteller' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.kopf.hersteller }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">{% trans 'Modell' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.kopf.modell }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <label for='material' class="col-sm-3 col-form-label">{% trans 'Material' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.kopf.material }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
                                                                     <div class="col-sm-9 d-flex align-items-center">
                                                                         <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.kopf.recycelt %}checked{% endif %}>
                                                                     </div>
@@ -540,7 +539,7 @@
                                                         </form>
                                                     {% else %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Kopf</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Kopf' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -557,7 +556,7 @@
                                     <div class="col-md-3 mt-3">
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                                Femurkomponente
+                                                {% trans 'Femurkomponente' %}
                                                 {% if user.id == explant.owner %}
                                                     <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal{{ explant.id }}">Update</button>
                                                 {% endif %}    
@@ -565,7 +564,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Hersteller:
+                                                        {% trans 'Hersteller' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.femurkomponente.hersteller }}
@@ -575,7 +574,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Modell:
+                                                        {% trans 'Modell' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.femurkomponente.modell }}
@@ -585,7 +584,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Material:
+                                                        {% trans 'Material' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.femurkomponente.material }}
@@ -595,7 +594,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Größe:
+                                                        {% trans 'Größe' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.femurkomponente.groeße }} mm
@@ -605,16 +604,14 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        recycelt:
+                                                        {% trans 'recycelt' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
-                                                        
-                                                            {% if explant.femurkomponente.recycelt %}
-                                                                <i class="bi bi-check-circle-fill text-success"></i>
-                                                            {% else %}
-                                                                <i class="bi bi-x-circle-fill text-danger"></i>
-                                                            {% endif %}
-                                                        
+                                                        {% if explant.femurkomponente.recycelt %}
+                                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                                        {% else %}
+                                                            <i class="bi bi-x-circle-fill text-danger"></i>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </li>
@@ -628,37 +625,37 @@
                                                         <form id="update-form{{ explant.id }}" method="post" action="{% url 'femurkomponente_update' explant.femurkomponente.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Femurkomponente</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Femurkomponente' %}</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
                                                                 <!-- Forms -->
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">{% trans 'Hersteller' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.femurkomponente.hersteller }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">{% trans 'Modell' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.femurkomponente.modell }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <label for='material' class="col-sm-3 col-form-label">{% trans 'Material' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.femurkomponente.material }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
                                                                     <div class="col-sm-9 d-flex align-items-center">
                                                                         <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.femurkomponente.recycelt %}checked{% endif %}>
                                                                     </div>
@@ -670,7 +667,7 @@
                                                         </form>
                                                     {% else %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Femurkomponente</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Femurkomponente' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -688,7 +685,7 @@
                                     <div class="col-md-3 mt-3">
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                                Schaft
+                                                {% trans 'Schaft' %}
                                                 {% if user.id == explant.owner %}
                                                     <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal{{ explant.id }}">Update</button>
                                                 {% endif %}
@@ -696,7 +693,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Hersteller:
+                                                        {% trans 'Hersteller' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.schaft.hersteller }}
@@ -706,7 +703,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Modell:
+                                                        {% trans 'Modell' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.schaft.modell }}
@@ -716,7 +713,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Material:
+                                                        {% trans 'Material' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.schaft.material }}
@@ -726,7 +723,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Größe:
+                                                        {% trans 'Größe' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.schaft.groeße }} mm
@@ -736,16 +733,14 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        recycelt:
+                                                        {% trans 'recycelt' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
-                                                        
-                                                            {% if explant.schaft.recycelt %}
-                                                                <i class="bi bi-check-circle-fill text-success"></i>
-                                                            {% else %}
-                                                                <i class="bi bi-x-circle-fill text-danger"></i>
-                                                            {% endif %}
-                                                        
+                                                        {% if explant.schaft.recycelt %}
+                                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                                        {% else %}
+                                                            <i class="bi bi-x-circle-fill text-danger"></i>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </li>
@@ -759,37 +754,37 @@
                                                         <form id="update-form{{ explant.id }}" method="post" action="{% url 'schaft_update' explant.schaft.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Schaft</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Schaft' %}</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="schaftModal" class="modal-body">
                                                                 <!-- Forms -->
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">{% trans 'Hersteller' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.schaft.hersteller }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">{% trans 'Modell' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.schaft.modell }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <label for='material' class="col-sm-3 col-form-label">{% trans 'Material' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.schaft.material }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
                                                                     <div class="col-sm-9 d-flex align-items-center">
                                                                         <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.schaft.recycelt %}checked{% endif %}>
                                                                     </div>
@@ -801,7 +796,7 @@
                                                         </form>
                                                     {% else %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Schaft</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Schaft' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -818,7 +813,7 @@
                                     <div class="col-md-3 mt-3">
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                                Tibiaplateau
+                                                {% trans 'Tibiaplateau' %}
                                                 {% if user.id == explant.owner %}
                                                     <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal{{ explant.id }}">Update</button>
                                                 {% endif %}
@@ -826,7 +821,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Hersteller:
+                                                        {% trans 'Hersteller' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.tibiaplateau.hersteller }}
@@ -836,7 +831,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Modell:
+                                                        {% trans 'Modell' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.tibiaplateau.modell }}
@@ -846,7 +841,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Material:
+                                                        {% trans 'Material' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.tibiaplateau.material }}
@@ -856,7 +851,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Größe:
+                                                        {% trans 'Größe' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.tibiaplateau.groeße }} mm
@@ -866,16 +861,14 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        recycelt:
+                                                        {% trans 'recycelt' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
-                                                        
-                                                            {% if explant.tibiaplateau.recycelt %}
-                                                                <i class="bi bi-check-circle-fill text-success"></i>
-                                                            {% else %}
-                                                                <i class="bi bi-x-circle-fill text-danger"></i>
-                                                            {% endif %}
-                                                        
+                                                        {% if explant.tibiaplateau.recycelt %}
+                                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                                        {% else %}
+                                                            <i class="bi bi-x-circle-fill text-danger"></i>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </li>
@@ -889,37 +882,37 @@
                                                         <form id="update-form{{ explant.id }}" method="post" action="{% url 'tibiaplateau_update' explant.tibiaplateau.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Tibiaplateau</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Tibiaplateau' %}</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
                                                                 <!-- Forms -->
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">{% trans 'Hersteller' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.tibiaplateau.hersteller }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">{% trans 'Modell' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.tibiaplateau.modell }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <label for='material' class="col-sm-3 col-form-label">{% trans 'Material' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.tibiaplateau.material }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
                                                                     <div class="col-sm-9 d-flex align-items-center">
                                                                         <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.tibiaplateau.recycelt %}checked{% endif %}>
                                                                     </div>
@@ -931,7 +924,7 @@
                                                         </form>
                                                     {% else %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Tibiaplateau</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Tibiaplateau' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -949,7 +942,7 @@
                                     <div class="col-md-3 mt-3">
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                                Pfanne
+                                                {% trans 'Pfanne' %}
                                                 {% if user.id == explant.owner %}
                                                     <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal{{ explant.id }}">Update</button>
                                                 {% endif %}
@@ -957,7 +950,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Hersteller:
+                                                        {% trans 'Hersteller' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.pfanne.hersteller }}
@@ -967,7 +960,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Modell:
+                                                        {% trans 'Modell' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.pfanne.modell }}
@@ -977,7 +970,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Material:
+                                                        {% trans 'Material' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.pfanne.material }}
@@ -987,7 +980,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Größe:
+                                                        {% trans 'Größe' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.pfanne.groeße }} mm
@@ -997,16 +990,14 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        recycelt:
+                                                        {% trans 'recycelt' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
-                                                        
-                                                            {% if explant.pfanne.recycelt %}
-                                                                <i class="bi bi-check-circle-fill text-success"></i>
-                                                            {% else %}
-                                                                <i class="bi bi-x-circle-fill text-danger"></i>
-                                                            {% endif %}
-                                                        
+                                                        {% if explant.pfanne.recycelt %}
+                                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                                        {% else %}
+                                                            <i class="bi bi-x-circle-fill text-danger"></i>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </li>
@@ -1020,37 +1011,37 @@
                                                         <form id="update-form{{ explant.id }}" method="post" action="{% url 'pfanne_update' explant.pfanne.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Pfanne</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Pfanne' %}</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
                                                                 <!-- Forms -->
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">{% trans 'Hersteller' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.pfanne.hersteller }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">{% trans 'Modell' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.pfanne.modell }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <label for='material' class="col-sm-3 col-form-label">{% trans 'Material' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.pfanne.material }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
                                                                     <div class="col-sm-9 d-flex align-items-center">
                                                                         <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.pfanne.recycelt %}checked{% endif %}>
                                                                     </div>
@@ -1062,7 +1053,7 @@
                                                         </form>
                                                     {% else %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Pfanne</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Pfanne' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -1079,7 +1070,7 @@
                                     <div class="col-md-3 mt-3">
                                         <ul class="list-group">
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
-                                                Patellaersatz
+                                                {% trans 'Patellaersatz' %}
                                                 {% if user.id == explant.owner %}
                                                     <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal{{ explant.id }}">Update</button>
                                                 {% endif %}
@@ -1087,7 +1078,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Hersteller:
+                                                        {% trans 'Hersteller' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.patellaersatz.hersteller }}
@@ -1097,7 +1088,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Modell:
+                                                        {% trans 'Modell' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.patellaersatz.modell }}
@@ -1107,7 +1098,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Material:
+                                                        {% trans 'Material' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.patellaersatz.material }}
@@ -1117,7 +1108,7 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        Größe:
+                                                        {% trans 'Größe' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
                                                         {{ explant.patellaersatz.groeße }} mm
@@ -1127,16 +1118,14 @@
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        recycelt:
+                                                        {% trans 'recycelt' %}:
                                                     </div>
                                                     <div class="col-6 text-end">
-                                                        
-                                                            {% if explant.patellaersatz.recycelt %}
-                                                                <i class="bi bi-check-circle-fill text-success"></i>
-                                                            {% else %}
-                                                                <i class="bi bi-x-circle-fill text-danger"></i>
-                                                            {% endif %}
-                                                        
+                                                        {% if explant.patellaersatz.recycelt %}
+                                                            <i class="bi bi-check-circle-fill text-success"></i>
+                                                        {% else %}
+                                                            <i class="bi bi-x-circle-fill text-danger"></i>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </li>
@@ -1150,37 +1139,37 @@
                                                         <form id="update-form{{ explant.id }}" method="post" action="{% url 'patellaersatz_update' explant.patellaersatz.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patellaersatz</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Patellaersatz' %}</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div id="patientModal" class="modal-body">
                                                                 <!-- Forms -->
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='hersteller' class="col-sm-3 col-form-label">Hersteller:</label>
+                                                                    <label for='hersteller' class="col-sm-3 col-form-label">{% trans 'Hersteller' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='hersteller' name='hersteller' value='{{ explant.patellaersatz.hersteller }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='modell' class="col-sm-3 col-form-label">Modell:</label>
+                                                                    <label for='modell' class="col-sm-3 col-form-label">{% trans 'Modell' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='modell' name='modell' value='{{ explant.patellaersatz.modell }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='material' class="col-sm-3 col-form-label">Material:</label>
+                                                                    <label for='material' class="col-sm-3 col-form-label">{% trans 'Material' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.patellaersatz.material }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row mb-3'>
-                                                                    <label for='groeße' class="col-sm-3 col-form-label">Größe:</label>
+                                                                    <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">Recycelt:</label>
+                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
                                                                     <div class="col-sm-9 d-flex align-items-center">
                                                                         <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.patellaersatz.recycelt %}checked{% endif %}>
                                                                     </div>
@@ -1192,7 +1181,7 @@
                                                         </form>
                                                     {% else %}
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patellaersatz</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Patellaersatz' %}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">

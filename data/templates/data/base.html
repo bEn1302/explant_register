@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %} 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -77,7 +78,7 @@
           <form class="d-flex" role="search" method="GET" action="{% url 'search' %}">
               {% csrf_token %}
               <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search anything" name="searched" value="{{ searched }}"/>
+                  <input type="text" class="form-control" placeholder="{% trans 'Suchen' %}" name="searched" value="{{ searched }}"/>
                   <button
                       class="btn btn-outline-primary"
                       type="submit"
@@ -120,20 +121,20 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'analytic-explants' %}">
                     <i class="bi bi-pie-chart-fill"></i>
-                    Analytics
+                    {% trans 'Analysen' %}
                   </a>
                 </li>
               {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'table-explants' %}">
                   <i class="bi bi-table"></i>
-                  Data
+                  {% trans 'Datensätze' %}
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'users' %}">
                   <i class="bi bi-people-fill"></i>
-                  Users
+                  {% trans 'Benutzer' %}
                 </a>
               </li>
             </ul>
@@ -141,7 +142,7 @@
             <h6
               class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase"
             >
-              <span>Other</span>
+              <span>{% trans 'Sonstiges' %}</span>
               <a
                 class="link-secondary"
                 href="#"
@@ -152,25 +153,25 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'help' %}">
                   <i class="bi bi-question-circle-fill"></i>
-                  Help
+                  {% trans 'Hilfe' %}
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <i class="bi bi-gear-wide-connected"></i>
-                  Settings
+                  {% trans 'Einstellungen' %}
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'account' %}">
                   <i class="bi bi-person-circle"></i>
-                  Account
+                  {% trans 'Account' %}
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'sign_out' %}">
                   <i class="bi bi-box-arrow-right"></i>
-                  Sign out
+                    {% trans 'Abmelden' %}
                 </a>
               </li>
             </ul>

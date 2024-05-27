@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 13:22+0200\n"
-"PO-Revision-Date: 2024-05-27 11:22+0000\n"
+"POT-Creation-Date: 2024-05-27 14:38+0200\n"
+"PO-Revision-Date: 2024-05-27 12:41+0000\n"
 "Last-Translator: Ben Emanuel Wießner <ben.wiessner@web.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -28,34 +28,64 @@ msgid "Englisch"
 msgstr "english"
 
 #: data/forms.py:16 data/models.py:165
+#: data/templates/data/table_template.html:86
+#: data/templates/data/table_template.html:117
 msgid "Schrank"
 msgstr "Cupboard"
 
 #: data/forms.py:17 data/models.py:166
+#: data/templates/data/table_template.html:96
+#: data/templates/data/table_template.html:123
 msgid "Kiste"
 msgstr "Box"
 
 #: data/forms.py:25 data/models.py:148
+#: data/templates/data/table_template.html:159
+#: data/templates/data/table_template.html:190
 msgid "Geburtsdatum"
 msgstr "Date of birth"
 
 #: data/forms.py:30 data/models.py:149
+#: data/templates/data/table_template.html:169
+#: data/templates/data/table_template.html:196
 msgid "Gewicht"
 msgstr "Weight"
 
 #: data/forms.py:38 data/models.py:124 data/models.py:187
 #: data/templates/data/explant_form.html:93
+#: data/templates/data/table_template.html:224
+#: data/templates/data/table_template.html:232
+#: data/templates/data/table_template.html:263
+#: data/templates/data/table_template.html:269
+#: data/templates/data/table_template.html:287
+#: data/templates/data/update_explant.html:100
 msgid "Reoperation"
 msgstr "Re-operation"
 
 #: data/forms.py:39 data/models.py:125
+#: data/templates/data/table_template.html:246
+#: data/templates/data/table_template.html:275
 msgid "Reoperationsdatum"
 msgstr "Date of re-operation"
 
 #: data/forms.py:55 data/forms.py:74 data/forms.py:93 data/forms.py:112
 #: data/forms.py:131 data/forms.py:150 data/forms.py:169 data/models.py:37
 #: data/models.py:50 data/models.py:63 data/models.py:76 data/models.py:89
-#: data/models.py:102 data/models.py:115
+#: data/models.py:102 data/models.py:115 data/templates/data/dashboard.html:43
+#: data/templates/data/table_template.html:351
+#: data/templates/data/table_template.html:402
+#: data/templates/data/table_template.html:479
+#: data/templates/data/table_template.html:530
+#: data/templates/data/table_template.html:607
+#: data/templates/data/table_template.html:658
+#: data/templates/data/table_template.html:736
+#: data/templates/data/table_template.html:787
+#: data/templates/data/table_template.html:864
+#: data/templates/data/table_template.html:915
+#: data/templates/data/table_template.html:993
+#: data/templates/data/table_template.html:1044
+#: data/templates/data/table_template.html:1121
+#: data/templates/data/table_template.html:1172
 msgid "recycelt"
 msgstr "recycled"
 
@@ -63,6 +93,20 @@ msgstr "recycled"
 #: data/forms.py:134 data/forms.py:153 data/forms.py:172 data/models.py:33
 #: data/models.py:46 data/models.py:59 data/models.py:72 data/models.py:85
 #: data/models.py:98 data/models.py:111
+#: data/templates/data/table_template.html:311
+#: data/templates/data/table_template.html:378
+#: data/templates/data/table_template.html:439
+#: data/templates/data/table_template.html:506
+#: data/templates/data/table_template.html:567
+#: data/templates/data/table_template.html:634
+#: data/templates/data/table_template.html:696
+#: data/templates/data/table_template.html:763
+#: data/templates/data/table_template.html:824
+#: data/templates/data/table_template.html:891
+#: data/templates/data/table_template.html:953
+#: data/templates/data/table_template.html:1020
+#: data/templates/data/table_template.html:1081
+#: data/templates/data/table_template.html:1148
 msgid "Hersteller"
 msgstr "Manufacturer"
 
@@ -70,6 +114,20 @@ msgstr "Manufacturer"
 #: data/forms.py:135 data/forms.py:154 data/forms.py:173 data/models.py:34
 #: data/models.py:47 data/models.py:60 data/models.py:73 data/models.py:86
 #: data/models.py:99 data/models.py:112
+#: data/templates/data/table_template.html:321
+#: data/templates/data/table_template.html:384
+#: data/templates/data/table_template.html:449
+#: data/templates/data/table_template.html:512
+#: data/templates/data/table_template.html:577
+#: data/templates/data/table_template.html:640
+#: data/templates/data/table_template.html:706
+#: data/templates/data/table_template.html:769
+#: data/templates/data/table_template.html:834
+#: data/templates/data/table_template.html:897
+#: data/templates/data/table_template.html:963
+#: data/templates/data/table_template.html:1026
+#: data/templates/data/table_template.html:1091
+#: data/templates/data/table_template.html:1154
 msgid "Modell"
 msgstr "Model"
 
@@ -77,6 +135,20 @@ msgstr "Model"
 #: data/forms.py:136 data/forms.py:155 data/forms.py:174 data/models.py:35
 #: data/models.py:48 data/models.py:61 data/models.py:74 data/models.py:87
 #: data/models.py:100 data/models.py:113
+#: data/templates/data/table_template.html:331
+#: data/templates/data/table_template.html:390
+#: data/templates/data/table_template.html:459
+#: data/templates/data/table_template.html:518
+#: data/templates/data/table_template.html:587
+#: data/templates/data/table_template.html:646
+#: data/templates/data/table_template.html:716
+#: data/templates/data/table_template.html:775
+#: data/templates/data/table_template.html:844
+#: data/templates/data/table_template.html:903
+#: data/templates/data/table_template.html:973
+#: data/templates/data/table_template.html:1032
+#: data/templates/data/table_template.html:1101
+#: data/templates/data/table_template.html:1160
 msgid "Material"
 msgstr "Material"
 
@@ -84,26 +156,45 @@ msgstr "Material"
 #: data/forms.py:137 data/forms.py:156 data/forms.py:175 data/models.py:36
 #: data/models.py:49 data/models.py:62 data/models.py:75 data/models.py:88
 #: data/models.py:101 data/models.py:114
+#: data/templates/data/table_template.html:341
+#: data/templates/data/table_template.html:396
+#: data/templates/data/table_template.html:469
+#: data/templates/data/table_template.html:524
+#: data/templates/data/table_template.html:597
+#: data/templates/data/table_template.html:652
+#: data/templates/data/table_template.html:726
+#: data/templates/data/table_template.html:781
+#: data/templates/data/table_template.html:854
+#: data/templates/data/table_template.html:909
+#: data/templates/data/table_template.html:983
+#: data/templates/data/table_template.html:1038
+#: data/templates/data/table_template.html:1111
+#: data/templates/data/table_template.html:1166
 msgid "Größe"
 msgstr "Size"
 
-#: data/forms.py:216 data/models.py:176
+#: data/forms.py:216 data/models.py:176 data/templates/data/dashboard.html:86
+#: data/templates/data/table_template.html:9
 msgid "Ursache"
 msgstr "Cause"
 
-#: data/forms.py:218 data/models.py:178
+#: data/forms.py:218 data/models.py:178 data/templates/data/dashboard.html:88
+#: data/templates/data/table_template.html:11
 msgid "Herkunftsort"
 msgstr "Place of origin"
 
-#: data/forms.py:221 data/models.py:181
+#: data/forms.py:221 data/models.py:181 data/templates/data/dashboard.html:91
+#: data/templates/data/table_template.html:14
 msgid "Bruchgeschehen"
 msgstr "Fracture event"
 
-#: data/forms.py:222 data/models.py:182
+#: data/forms.py:222 data/models.py:182 data/templates/data/dashboard.html:92
+#: data/templates/data/table_template.html:15
 msgid "Nutzungsdauer"
 msgstr "Period of use"
 
-#: data/models.py:9
+#: data/models.py:9 data/templates/data/base.html:137
+#: data/templates/data/users.html:4 data/templates/data/users.html:6
 msgid "Benutzer"
 msgstr "User"
 
@@ -135,35 +226,35 @@ msgstr "Profile picture"
 msgid "Benutzerprofile"
 msgstr "User profiles"
 
-#: data/models.py:40
+#: data/models.py:40 data/templates/data/dashboard.html:22
 msgid "Femurkomponenten"
 msgstr "Femoral components"
 
-#: data/models.py:53
+#: data/models.py:53 data/templates/data/dashboard.html:21
 msgid "Tibiaplateaus"
 msgstr "Tibial plateaus"
 
-#: data/models.py:66
+#: data/models.py:66 data/templates/data/dashboard.html:20
 msgid "Patellaersätze"
 msgstr "patellar replacements"
 
-#: data/models.py:79
+#: data/models.py:79 data/templates/data/dashboard.html:17
 msgid "Köpfe"
 msgstr "Heads"
 
-#: data/models.py:92
+#: data/models.py:92 data/templates/data/dashboard.html:16
 msgid "Inlays"
 msgstr "Inlays"
 
-#: data/models.py:105
+#: data/models.py:105 data/templates/data/dashboard.html:18
 msgid "Schafte"
 msgstr "Stems"
 
-#: data/models.py:118
+#: data/models.py:118 data/templates/data/dashboard.html:19
 msgid "Pfannen"
 msgstr "Acetabular cups"
 
-#: data/models.py:128
+#: data/models.py:128 data/templates/data/dashboard.html:23
 msgid "Reoperationen"
 msgstr "Re-operations"
 
@@ -175,59 +266,106 @@ msgstr "Patients"
 msgid "Lagerorte"
 msgstr "Storage locations"
 
-#: data/models.py:177 data/templates/data/explant_form.html:32
+#: data/models.py:177 data/templates/data/dashboard.html:87
+#: data/templates/data/explant_form.html:32
+#: data/templates/data/table_template.html:10
+#: data/templates/data/update_explant.html:33
 msgid "Verfügbarkeit"
 msgstr "Availability"
 
-#: data/models.py:179 data/templates/data/explant_form.html:53
+#: data/models.py:179 data/templates/data/dashboard.html:89
+#: data/templates/data/explant_form.html:53
+#: data/templates/data/table_template.html:12
+#: data/templates/data/update_explant.html:59
 msgid "Entnahmedatum"
 msgstr "Removal date"
 
-#: data/models.py:180 data/templates/data/explant_form.html:61
+#: data/models.py:180 data/templates/data/dashboard.html:90
+#: data/templates/data/explant_form.html:61
+#: data/templates/data/table_template.html:13
+#: data/templates/data/update_explant.html:67
 msgid "Eingangsdatum"
 msgstr "Date of receipt"
 
-#: data/models.py:183 data/templates/data/explant_form.html:40
+#: data/models.py:183 data/templates/data/dashboard.html:93
+#: data/templates/data/explant_form.html:40
+#: data/templates/data/table_template.html:16
+#: data/templates/data/update_explant.html:41
 msgid "Reinigung"
 msgstr "Cleaning"
 
-#: data/models.py:184
+#: data/models.py:184 data/templates/data/table_template.html:67
 msgid "Bild"
 msgstr "Image"
 
 #: data/models.py:185 data/templates/data/explant_form.html:71
+#: data/templates/data/table_template.html:77
+#: data/templates/data/table_template.html:112
+#: data/templates/data/table_template.html:135
+#: data/templates/data/update_explant.html:78
 msgid "Lagerort"
 msgstr "Storage location"
 
 #: data/models.py:186 data/templates/data/explant_form.html:82
+#: data/templates/data/table_template.html:151
+#: data/templates/data/table_template.html:185
+#: data/templates/data/update_explant.html:89
 msgid "Patient"
 msgstr "Patient"
 
 #: data/models.py:188 data/templates/data/explant_form.html:104
+#: data/templates/data/table_template.html:303
+#: data/templates/data/table_template.html:372
+#: data/templates/data/table_template.html:414
+#: data/templates/data/update_explant.html:111
 msgid "Inlay"
 msgstr "Inlay"
 
 #: data/models.py:190 data/templates/data/explant_form.html:116
+#: data/templates/data/table_template.html:431
+#: data/templates/data/table_template.html:500
+#: data/templates/data/table_template.html:542
+#: data/templates/data/update_explant.html:125
 msgid "Kopf"
 msgstr "Head"
 
 #: data/models.py:191 data/templates/data/explant_form.html:140
+#: data/templates/data/table_template.html:688
+#: data/templates/data/table_template.html:757
+#: data/templates/data/table_template.html:799
+#: data/templates/data/update_explant.html:145
 msgid "Schaft"
 msgstr "Stem"
 
 #: data/models.py:192 data/templates/data/explant_form.html:164
+#: data/templates/data/table_template.html:945
+#: data/templates/data/table_template.html:1014
+#: data/templates/data/table_template.html:1056
+#: data/templates/data/update_explant.html:165
 msgid "Pfanne"
 msgstr "Acetabular cup"
 
 #: data/models.py:194 data/templates/data/explant_form.html:128
+#: data/templates/data/table_template.html:559
+#: data/templates/data/table_template.html:628
+#: data/templates/data/table_template.html:670
+#: data/templates/data/update_explant.html:135
 msgid "Femurkomponente"
 msgstr "Femoral component"
 
 #: data/models.py:195 data/templates/data/explant_form.html:152
+#: data/templates/data/table_template.html:816
+#: data/templates/data/table_template.html:885
+#: data/templates/data/table_template.html:927
+#: data/templates/data/update_explant.html:155
 msgid "Tibiaplateau"
 msgstr "Tibial plateau"
 
 #: data/models.py:196 data/templates/data/explant_form.html:176
+#: data/templates/data/table_template.html:1073
+#: data/templates/data/table_template.html:1142
+#: data/templates/data/table_template.html:1184
+#: data/templates/data/update_explant.html:175
 msgid "Patellaersatz"
 msgstr "patellar replacement"
 
@@ -235,12 +373,51 @@ msgstr "patellar replacement"
 msgid "Besitzer"
 msgstr "Owner"
 
-#: data/models.py:203
+#: data/models.py:203 data/templates/data/dashboard.html:15
 msgid "Explantate"
 msgstr "explants"
 
+#: data/templates/data/base.html:81
+msgid "Suchen"
+msgstr "Search anything"
+
+#: data/templates/data/base.html:124
+msgid "Analysen"
+msgstr "Analytics"
+
+#: data/templates/data/base.html:131
+msgid "Datensätze"
+msgstr "Data"
+
+#: data/templates/data/base.html:145
+msgid "Sonstiges"
+msgstr "Other"
+
+#: data/templates/data/base.html:156
+msgid "Hilfe"
+msgstr "Help"
+
+#: data/templates/data/base.html:162
+msgid "Einstellungen"
+msgstr "Settings"
+
+#: data/templates/data/base.html:168
+msgid "Account"
+msgstr "Account"
+
+#: data/templates/data/base.html:174
+msgid "Abmelden"
+msgstr "Sign out"
+
+#: data/templates/data/dashboard.html:35
+msgid "Anzahl"
+msgstr "quantity"
+
+#: data/templates/data/dashboard.html:78
+msgid "Kürzlich hinzugefügt"
+msgstr "Recently added"
+
 #: data/templates/data/explant_form.html:7
-#| msgid "Reinigung"
 msgid "Eintragung"
 msgstr "Registration"
 
@@ -258,8 +435,52 @@ msgstr "Explant data registration"
 #: data/templates/data/explant_form.html:155
 #: data/templates/data/explant_form.html:167
 #: data/templates/data/explant_form.html:179
+#: data/templates/data/explant_table.html:77
+#: data/templates/data/explant_table.html:91
+#: data/templates/data/update_explant.html:81
+#: data/templates/data/update_explant.html:92
+#: data/templates/data/update_explant.html:103
+#: data/templates/data/update_explant.html:114
+#: data/templates/data/update_explant.html:128
+#: data/templates/data/update_explant.html:138
+#: data/templates/data/update_explant.html:148
+#: data/templates/data/update_explant.html:158
+#: data/templates/data/update_explant.html:168
+#: data/templates/data/update_explant.html:178
 msgid "Hinzufügen"
 msgstr "Add"
+
+#: data/templates/data/explant_table.html:67
+msgid "Hüftexplantate"
+msgstr "hip explants"
+
+#: data/templates/data/explant_table.html:70
+msgid "Knieexplantate"
+msgstr "knee explants"
+
+#: data/templates/data/explant_table.html:78
+#: data/templates/data/explant_table.html:92
+msgid "Exportieren als PDF"
+msgstr "Export as PDF"
+
+#: data/templates/data/explant_table.html:79
+#: data/templates/data/explant_table.html:93
+msgid "Exportieren als CSV"
+msgstr "Export as CSV"
+
+#: data/templates/data/explant_table.html:80
+#: data/templates/data/explant_table.html:94
+msgid "Löschen"
+msgstr "Delete"
+
+#: data/templates/data/table_template.html:17
+msgid "Aktion"
+msgstr "Action"
+
+#: data/templates/data/update_explant.html:10
+#: data/templates/data/update_explant.html:13
+msgid "Update Explantat"
+msgstr "Update explant"
 
 #: data/templates/startpage/index.html:52
 #: data/templates/startpage/index.html:87
@@ -373,6 +594,35 @@ msgstr ""
 msgid "Haftungsausschluss"
 msgstr "Disclaimer"
 
+#: users/forms.py:8
+#| msgid "Email address"
+msgid "Email-Adresse"
+msgstr "Email address"
+
+#: users/forms.py:9
+#| msgid "Username"
+msgid "Vorname"
+msgstr "First name"
+
+#: users/forms.py:10
+msgid "Nachname"
+msgstr "Last name"
+
+#: users/forms.py:24
+#| msgid "Benutzer"
+msgid "Benutzername"
+msgstr "Username"
+
+#: users/forms.py:27
+#| msgid "Password"
+msgid "Passwort"
+msgstr "Password"
+
+#: users/forms.py:30
+#| msgid "Passwort vergessen?"
+msgid "Passwort bestätigen"
+msgstr "Confirm Password"
+
 #: users/templates/authenticate/sign_in.html:15
 msgid "Anmeldung"
 msgstr "Sign in into ExReg"
@@ -460,3 +710,12 @@ msgstr "Your password can’t be a commonly used password."
 #: users/templates/authenticate/sign_up.html:122
 msgid "Ihr Passwort darf nicht ausschließlich aus Zahlen bestehen."
 msgstr "Your password can’t be entirely numeric."
+
+#~ msgid "First name"
+#~ msgstr "Vorname"
+
+#~ msgid "Last name"
+#~ msgstr "Nachname"
+
+#~ msgid "Confirm Password"
+#~ msgstr "Passwort bestätigen"

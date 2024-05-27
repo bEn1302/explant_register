@@ -1,4 +1,4 @@
-{% extends 'data/base.html' %} {% load static %} {% load custom_filters %} {% block dashboard %}
+{% extends 'data/base.html' %} {% load static %} {% load i18n %} {% load custom_filters %} {% block dashboard %}
 
 {% if user.is_authenticated %}
 <title>Dashboard</title>
@@ -12,15 +12,15 @@
 <script>
   // Rohdaten
   const rawData = [
-      { label: "Explantate", quantity: "{{ explantate_count }}" },
-      { label: "Inlays", quantity: "{{ inlays_count }}" },
-      { label: "Köpfe", quantity: "{{ köpfe_count }}" },
-      { label: "Schafte", quantity: "{{ schafte_count }}" },
-      { label: "Pfannen", quantity: "{{ pfannen_count }}" },
-      { label: "Patellaersätze", quantity: "{{ patellaersätze_count }}" },
-      { label: "Tibiaplateau", quantity: "{{ tibiaplateau_count }}" },
-      { label: "Femurkomponenten", quantity: "{{ femurkomponenten_count }}" },
-      { label: "Reoperationen", quantity: "{{ reoperationen_count }}" }
+      { label: "{% trans 'Explantate' %}", quantity: "{{ explantate_count }}" },
+      { label: "{% trans 'Inlays' %}", quantity: "{{ inlays_count }}" },
+      { label: "{% trans 'Köpfe' %}", quantity: "{{ köpfe_count }}" },
+      { label: "{% trans 'Schafte' %}", quantity: "{{ schafte_count }}" },
+      { label: "{% trans 'Pfannen' %}", quantity: "{{ pfannen_count }}" },
+      { label: "{% trans 'Patellaersätze' %}", quantity: "{{ patellaersätze_count }}" },
+      { label: "{% trans 'Tibiaplateaus' %}", quantity: "{{ tibiaplateau_count }}" },
+      { label: "{% trans 'Femurkomponenten' %}", quantity: "{{ femurkomponenten_count }}" },
+      { label: "{% trans 'Reoperationen' %}", quantity: "{{ reoperationen_count }}" }
   ];
 
   // Filtere die Daten, um Einträge mit quantity = 0 zu entfernen
@@ -32,7 +32,7 @@
           type: 'bar',
           data: {
               datasets: [{
-                  label: 'quantity',
+                  label: "{% trans 'Anzahl' %}",
                   data: filteredData.map(item => parseInt(item.quantity)),
                   backgroundColor: 'rgba(54, 162, 235, 0.2)',
                   borderColor: 'rgba(54, 162, 235, 1)',
@@ -40,7 +40,7 @@
                   // this dataset is drawn below
                   order: 2
               }, {
-                  label: 'recycled',
+                  label: "{% trans 'recycelt' %}",
                   data: [
                         "{{ recycled_inlays_count }}",
                         "{{ recycled_köpfe_count }}",
@@ -75,7 +75,7 @@
   }
 </script>
 <!--Table-->
-<h2>Recently added</h2>
+<h2>{% trans 'Kürzlich hinzugefügt' %}</h2>
     <div class="container mt-3 mb-2">
       <div class="container shadow-sm rounded py-1">
         <div class="table-responsive">
@@ -83,14 +83,14 @@
             <thead>
                 <tr>
                   <th class="text-center" scope="col">ID</th>
-                  <th class="text-center" scope="col">Ursache</th>
-                  <th class="text-center" scope="col">Verfügbarkeit</th>
-                  <th class="text-center" scope="col">Herkunftsort</th>
-                  <th class="text-center" scope="col">Entnahmedatum</th>
-                  <th class="text-center" scope="col">Eingangsdatum</th>
-                  <th class="text-center" scope="col">Bruchgeschehen</th>
-                  <th class="text-center" scope="col">Nutzungsdauer</th>
-                  <th class="text-center" scope="col">Reinigung</th>
+                  <th class="text-center" scope="col">{% trans 'Ursache' %}</th>
+                  <th class="text-center" scope="col">{% trans 'Verfügbarkeit' %}</th>
+                  <th class="text-center" scope="col">{% trans 'Herkunftsort' %}</th>
+                  <th class="text-center" scope="col">{% trans 'Entnahmedatum' %}</th>
+                  <th class="text-center" scope="col">{% trans 'Eingangsdatum' %}</th>
+                  <th class="text-center" scope="col">{% trans 'Bruchgeschehen' %}</th>
+                  <th class="text-center" scope="col">{% trans 'Nutzungsdauer' %}</th>
+                  <th class="text-center" scope="col">{% trans 'Reinigung' %}</th>
                 </tr>
             </thead>
             <tbody>
