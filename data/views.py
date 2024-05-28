@@ -420,12 +420,26 @@ def explant_pdf(request):
                 ["Modell", explant.inlay.modell] if explant.inlay else ["", ""],
                 ["Material", explant.inlay.material] if explant.inlay else ["", ""],
                 ["Größe", explant.inlay.groeße] if explant.inlay else ["", ""],
-                ["recycelt", "Ja" if explant.inlay.recycelt else "Nein"],
             ]
 
             inlay_title, inlay_table = create_info_table(inlay_info, "Inlay")
             data.append(inlay_title)
             data.append(inlay_table)
+
+            # InlayDetails-Informationen
+            inlaydetails = InlayDetails.objects.filter(explantat=explant, inlay=explant.inlay)
+            if inlaydetails.exists():
+                for inlay_detail in inlaydetails:
+                    inlay_detail_info = [
+                        ["InlayDetails ID", str(inlay_detail.id)],
+                        ["Explantat ID", str(inlay_detail.explantat.id)],
+                        ["Inlay ID", str(inlay_detail.inlay.id)],
+                        ["recycelt", "Ja" if inlay_detail.recycelt else "Nein"],
+                    ]
+
+                    inlay_detail_title, inlay_detail_table = create_info_table(inlay_detail_info, "Inlay Details")
+                    data.append(inlay_detail_title)
+                    data.append(inlay_detail_table)
 
         # Kopf-Informationen
         if explant.kopf:
@@ -435,12 +449,26 @@ def explant_pdf(request):
                 ["Modell", explant.kopf.modell] if explant.kopf else ["", ""],
                 ["Material", explant.kopf.material] if explant.kopf else ["", ""],
                 ["Größe", explant.kopf.groeße] if explant.kopf else ["", ""],
-                ["recycelt", "Ja" if explant.kopf.recycelt else "Nein"],
             ]
 
             kopf_title, kopf_table = create_info_table(kopf_info, "Kopf")
             data.append(kopf_title)
             data.append(kopf_table)
+
+            # KopfDetails-Informationen
+            kopfdetails = KopfDetails.objects.filter(explantat=explant, kopf=explant.kopf)
+            if kopfdetails.exists():
+                for kopf_detail in kopfdetails:
+                    kopf_detail_info = [
+                        ["KopfDetails ID", str(kopf_detail.id)],
+                        ["Explantat ID", str(kopf_detail.explantat.id)],
+                        ["Kopf ID", str(kopf_detail.kopf.id)],
+                        ["recycelt", "Ja" if kopf_detail.recycelt else "Nein"],
+                    ]
+
+                    kopf_detail_title, kopf_detail_table = create_info_table(kopf_detail_info, "KopfDetails")
+                    data.append(kopf_detail_title)
+                    data.append(kopf_detail_table)
 
         # Schaft-Informationen
         if explant.schaft:
@@ -450,12 +478,26 @@ def explant_pdf(request):
                 ["Modell", explant.schaft.modell] if explant.schaft else ["", ""],
                 ["Material", explant.schaft.material] if explant.schaft else ["", ""],
                 ["Größe", explant.schaft.groeße] if explant.schaft else ["", ""],
-                ["recycelt", "Ja" if explant.schaft.recycelt else "Nein"],
             ]
 
             schaft_title, schaft_table = create_info_table(schaft_info, "Schaft")
             data.append(schaft_title)
             data.append(schaft_table)
+
+            # SchaftDetails-Informationen
+            schaftdetails = SchaftDetails.objects.filter(explantat=explant, schaft=explant.schaft)
+            if schaftdetails.exists():
+                for schaft_detail in schaftdetails:
+                    schaft_detail_info = [
+                        ["SchaftDetails ID", str(schaft_detail.id)],
+                        ["Explantat ID", str(schaft_detail.explantat.id)],
+                        ["Schaft ID", str(schaft_detail.schaft.id)],
+                        ["recycelt", "Ja" if schaft_detail.recycelt else "Nein"],
+                    ]
+
+                    schaft_detail_title, schaft_detail_table = create_info_table(schaft_detail_info, "Schaft Details")
+                    data.append(schaft_detail_title)
+                    data.append(schaft_detail_table)
 
         # Pfanne-Informationen
         if explant.pfanne:
@@ -465,12 +507,26 @@ def explant_pdf(request):
                 ["Modell", explant.pfanne.modell] if explant.pfanne else ["", ""],
                 ["Material", explant.pfanne.material] if explant.pfanne else ["", ""],
                 ["Größe", explant.pfanne.groeße] if explant.pfanne else ["", ""],
-                ["recycelt", "Ja" if explant.pfanne.recycelt else "Nein"],
             ]
 
             pfanne_title, pfanne_table = create_info_table(pfanne_info, "Pfanne")
             data.append(pfanne_title)
             data.append(pfanne_table)
+
+            # PfanneDetails-Informationen
+            pfannedetails = PfanneDetails.objects.filter(explantat=explant, pfanne=explant.pfanne)
+            if pfannedetails.exists():
+                for pfanne_detail in pfannedetails:
+                    pfanne_detail_info = [
+                        ["PfanneDetails ID", str(pfanne_detail.id)],
+                        ["Explantat ID", str(pfanne_detail.explantat.id)],
+                        ["Pfanne ID", str(pfanne_detail.pfanne.id)],
+                        ["recycelt", "Ja" if pfanne_detail.recycelt else "Nein"],
+                    ]
+
+                    pfanne_detail_title, pfanne_detail_table = create_info_table(pfanne_detail_info, "Pfanne Details")
+                    data.append(pfanne_detail_title)
+                    data.append(pfanne_detail_table)
 
         # Reoperation-Informationen
         if explant.reoperation:
@@ -492,12 +548,26 @@ def explant_pdf(request):
                 ["Modell", explant.femurkomponente.modell] if explant.femurkomponente else ["", ""],
                 ["Material", explant.femurkomponente.material] if explant.femurkomponente else ["", ""],
                 ["Größe", explant.femurkomponente.groeße] if explant.femurkomponente else ["", ""],
-                ["recycelt", "Ja" if explant.femurkomponente.recycelt else "Nein"],
             ]
 
             femurkomponente_title, femurkomponente_table = create_info_table(femurkomponente_info, "Femurkomponente")
             data.append(femurkomponente_title)
             data.append(femurkomponente_table)
+
+            # FemurkomponenteDetails-Informationen
+            femurkomponentedetails = FemurkomponenteDetails.objects.filter(explantat=explant, femurkomponente=explant.femurkomponente)
+            if femurkomponentedetails.exists():
+                for femurkomponente_detail in femurkomponentedetails:
+                    femurkomponente_detail_info = [
+                        ["FemurkomponenteDetails ID", str(femurkomponente_detail.id)],
+                        ["Explantat ID", str(femurkomponente_detail.explantat.id)],
+                        ["Femurkomponente ID", str(femurkomponente_detail.femurkomponente.id)],
+                        ["recycelt", "Ja" if femurkomponente_detail.recycelt else "Nein"],
+                    ]
+
+                    femurkomponente_detail_title, femurkomponente_detail_table = create_info_table(femurkomponente_detail_info, "Femurkomponente Details")
+                    data.append(femurkomponente_detail_title)
+                    data.append(femurkomponente_detail_table)
 
         # Tibiaplateau-Informationen
         if explant.tibiaplateau:
@@ -507,12 +577,26 @@ def explant_pdf(request):
                 ["Modell", explant.tibiaplateau.modell] if explant.tibiaplateau else ["", ""],
                 ["Material", explant.tibiaplateau.material] if explant.tibiaplateau else ["", ""],
                 ["Größe", explant.tibiaplateau.groeße] if explant.tibiaplateau else ["", ""],
-                ["recycelt", "Ja" if explant.tibiaplateau.recycelt else "Nein"],
             ]
 
             tibiaplateau_title, tibiaplateau_table = create_info_table(tibiaplateau_info, "Tibiaplateau")
             data.append(tibiaplateau_title)
             data.append(tibiaplateau_table)
+
+            # TibiaplateauDetails-Informationen
+            tibiaplateaudetails = TibiaplateauDetails.objects.filter(explantat=explant, tibiaplateau=explant.tibiaplateau)
+            if tibiaplateaudetails.exists():
+                for tibiaplateau_detail in tibiaplateaudetails:
+                    tibiaplateau_detail_info = [
+                        ["TibiaplateauDetails ID", str(tibiaplateau_detail.id)],
+                        ["Explantat ID", str(tibiaplateau_detail.explantat.id)],
+                        ["Tibiaplateau ID", str(tibiaplateau_detail.tibiaplateau.id)],
+                        ["recycelt", "Ja" if tibiaplateau_detail.recycelt else "Nein"],
+                    ]
+
+                    tibiaplateau_detail_title, tibiaplateau_detail_table = create_info_table(tibiaplateau_detail_info, "Tibiaplateau Details")
+                    data.append(tibiaplateau_detail_title)
+                    data.append(tibiaplateau_detail_table)
 
         # Patellaersatz-Informationen
         if explant.patellaersatz:
@@ -522,12 +606,26 @@ def explant_pdf(request):
                 ["Modell", explant.patellaersatz.modell] if explant.patellaersatz else ["", ""],
                 ["Material", explant.patellaersatz.material] if explant.patellaersatz else ["", ""],
                 ["Größe", explant.patellaersatz.groeße] if explant.patellaersatz else ["", ""],
-                ["recycelt", "Ja" if explant.patellaersatz.recycelt else "Nein"],
             ]
 
             patellaersatz_title, patellaersatz_table = create_info_table(patellaersatz_info, "Patellaersatz")
             data.append(patellaersatz_title)
             data.append(patellaersatz_table)
+
+            # PatellaersatzDetails-Informationen
+            patellaersatzdetails = PatellaersatzDetails.objects.filter(explantat=explant, patellaersatz=explant.patellaersatz)
+            if patellaersatzdetails.exists():
+                for patellaersatz_detail in patellaersatzdetails:
+                    patellaersatz_detail_info = [
+                        ["PatellaersatzDetails ID", str(patellaersatz_detail.id)],
+                        ["Explantat ID", str(patellaersatz_detail.explantat.id)],
+                        ["Patellaersatz ID", str(patellaersatz_detail.patellaersatz.id)],
+                        ["recycelt", "Ja" if patellaersatz_detail.recycelt else "Nein"],
+                    ]
+
+                    patellaersatz_detail_title, patellaersatz_detail_table = create_info_table(patellaersatz_detail_info, "Patellaersatz Details")
+                    data.append(patellaersatz_detail_title)
+                    data.append(patellaersatz_detail_table)
 
     # Dokument erstellen
     doc = SimpleDocTemplate(buffer, pagesize=letter, topMargin=0.5 * cm, bottomMargin=2.0 * cm, leftMargin=2.5 * cm, rightMargin=2.0 * cm)
@@ -557,13 +655,13 @@ def bar_chart_data():
     femurkomponenten_count = Femurkomponente.objects.count()
 
     # count recycelt objects
-    recycled_inlays_count = Inlay.objects.filter(recycelt=True).count()
-    recycled_köpfe_count = Kopf.objects.filter(recycelt=True).count()
-    recycled_schafte_count = Schaft.objects.filter(recycelt=True).count()
-    recycled_pfannen_count = Pfanne.objects.filter(recycelt=True).count()
-    recycled_tibiaplateaus_count = Tibiaplateau.objects.filter(recycelt=True).count()
-    recycled_patellaersaetze_count = Patellaersatz.objects.filter(recycelt=True).count()
-    recycled_femurkomponenten_count = Femurkomponente.objects.filter(recycelt=True).count()
+    recycled_inlays_count = InlayDetails.objects.filter(recycelt=True).count()
+    recycled_köpfe_count = KopfDetails.objects.filter(recycelt=True).count()
+    recycled_schafte_count = SchaftDetails.objects.filter(recycelt=True).count()
+    recycled_pfannen_count = PfanneDetails.objects.filter(recycelt=True).count()
+    recycled_tibiaplateaus_count = TibiaplateauDetails.objects.filter(recycelt=True).count()
+    recycled_patellaersaetze_count = PatellaersatzDetails.objects.filter(recycelt=True).count()
+    recycled_femurkomponenten_count = FemurkomponenteDetails.objects.filter(recycelt=True).count()
 
     return {
         'explantate_count': explantate_count,

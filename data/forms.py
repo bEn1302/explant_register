@@ -46,134 +46,120 @@ class ReoperationForm(ModelForm):
 class InlayForm(forms.ModelForm):
     class Meta:
         model = Inlay
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': _('recycelt'),
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class KopfForm(ModelForm):
     class Meta:
         model = Kopf
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': _('recycelt'),
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }   
 
 class FemurkomponenteForm(ModelForm):
     class Meta:
         model = Femurkomponente
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': _('recycelt'),
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class SchaftForm(ModelForm):
     class Meta:
         model = Schaft
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': _('recycelt'),
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }   
 
 class TibiaplateauForm(ModelForm):
     class Meta:
         model = Tibiaplateau
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': _('recycelt'),
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class PfanneForm(ModelForm):
     class Meta:
         model = Pfanne
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': _('recycelt'),
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }
 
 class PatellaersatzForm(ModelForm):
     class Meta:
         model = Patellaersatz
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
-            'recycelt': _('recycelt'),
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input',}),
         }    
 
 class ExplantatForm(ModelForm):
@@ -265,85 +251,78 @@ class ReoperationUpdateForm(ModelForm):
 class InlayUpdateForm(ModelForm):
     class Meta:
         model = Inlay
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 
 class KopfUpdateForm(ModelForm):
     class Meta:
         model = Kopf
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }   
 
 class FemurkomponenteUpdateForm(ModelForm):
     class Meta:
         model = Femurkomponente
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }   
 
 class SchaftUpdateForm(ModelForm):
     class Meta:
         model = Schaft
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }   
 
 class TibiaplateauUpdateForm(ModelForm):
     class Meta:
         model = Tibiaplateau
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 
 class PfanneUpdateForm(ModelForm):
     class Meta:
         model = Pfanne
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 
 class PatellaersatzUpdateForm(ModelForm):
     class Meta:
         model = Patellaersatz
-        fields = ('hersteller', 'modell', 'material', 'groeße','recycelt') 
+        fields = ('hersteller', 'modell', 'material', 'groeße') 
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-            'recycelt': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }             
 
 # ----------------------- User Profile Forms ----------------------- #

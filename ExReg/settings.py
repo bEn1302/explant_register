@@ -30,11 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'corsheaders',
     'whitenoise.runserver_nostatic',
     'data',
     'users',
-
     'captcha',
     'import_export',
     'rosetta',
@@ -49,9 +49,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_auto_logout.middleware.auto_logout',
     'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django_auto_logout.middleware.auto_logout',
 ]
 
 CORS_ALLOWED_ORIGINS = [

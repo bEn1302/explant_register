@@ -345,20 +345,37 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    {% trans 'recycelt' %}:
+                                        {% if explant.inlaydetails_set.exists %}
+                                            {% for inlay_detail in explant.inlaydetails_set.all %}
+                                                {% if inlay_detail.inlay_id == explant.inlay_id %}
+                                                    <li class="list-group-item">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                {% trans 'recycelt' %}:
+                                                            </div>
+                                                            <div class="col-6 text-end">
+                                                                {% if inlay_detail.recycelt %}
+                                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                                {% else %}
+                                                                    <i class="bi bi-x-circle-fill text-danger"></i>
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        {% trans 'recycelt' %}:
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                                    </div>
                                                 </div>
-                                                <div class="col-6 text-end">
-                                                        {% if explant.inlay.recycelt %}
-                                                            <i class="bi bi-check-circle-fill text-success"></i>
-                                                        {% else %}
-                                                            <i class="bi bi-x-circle-fill text-danger"></i>
-                                                        {% endif %}
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        {% endif %}
                                     </ul>                                    
                                     <!-- Modal -->
                                     <div class="modal fade" id="inlayModal{{ explant.id }}" tabindex="-1" aria-labelledby="inlayModalLabel{{ explant.id }}" aria-hidden="true">
@@ -398,12 +415,12 @@
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
                                                                 </div>
                                                             </div>
-                                                            <div class='form-group row'>
-                                                                <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
+                                                            <!-- <div class='form-group row'>
+                                                                <label for='recycelt' class="col-sm-3 col-form-label">{#{% trans 'recycelt' %}#}:</label>
                                                                 <div class="col-sm-9 d-flex align-items-center">
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.inlay.recycelt %}checked{% endif %}>
+                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {#{% if explant.inlay.recycelt %}checked{% endif %}#}>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-outline-primary">Update</button>
@@ -473,20 +490,37 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {% trans 'recycelt' %}:
+                                            {% if explant.kopfdetails_set.exists %}
+                                                {% for kopf_detail in explant.kopfdetails_set.all %}
+                                                    {% if kopf_detail.kopf_id == explant.kopf_id %}
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    {% trans 'recycelt' %}:
+                                                                </div>
+                                                                <div class="col-6 text-end">
+                                                                    {% if kopf_detail.recycelt %}
+                                                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                                                    {% else %}
+                                                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            {% trans 'recycelt' %}:
+                                                        </div>
+                                                        <div class="col-6 text-end">
+                                                            <i class="bi bi-x-circle-fill text-danger"></i>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-6 text-end">
-                                                            {% if explant.kopf.recycelt %}
-                                                                <i class="bi bi-check-circle-fill text-success"></i>
-                                                            {% else %}
-                                                                <i class="bi bi-x-circle-fill text-danger"></i>
-                                                            {% endif %}
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            {% endif %}
                                         </ul>                                                                            
                                         <!-- Modal -->
                                         <div class="modal fade" id="kopfModal{{ explant.id }}" tabindex="-1" aria-labelledby="kopftModalLabel{{ explant.id }}" aria-hidden="true">
@@ -524,12 +558,6 @@
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
-                                                                    <div class="col-sm-9 d-flex align-items-center">
-                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.kopf.recycelt %}checked{% endif %}>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -601,20 +629,37 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {% trans 'recycelt' %}:
-                                                    </div>
-                                                    <div class="col-6 text-end">
-                                                        {% if explant.femurkomponente.recycelt %}
-                                                            <i class="bi bi-check-circle-fill text-success"></i>
-                                                        {% else %}
+                                            {% if explant.femurkomponentedetails_set.exists %}
+                                                {% for femurkomponente_detail in explant.femurkomponentedetails_set.all %}
+                                                    {% if femurkomponente_detail.femurkomponente_id == explant.femurkomponente_id %}
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    {% trans 'recycelt' %}:
+                                                                </div>
+                                                                <div class="col-6 text-end">
+                                                                    {% if femurkomponente_detail.recycelt %}
+                                                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                                                    {% else %}
+                                                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            {% trans 'recycelt' %}:
+                                                        </div>
+                                                        <div class="col-6 text-end">
                                                             <i class="bi bi-x-circle-fill text-danger"></i>
-                                                        {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            {% endif %}
                                         </ul>                                  
                                         <!-- Modal -->
                                         <div class="modal fade" id="femurkomponenteModal{{ explant.id }}" tabindex="-1" aria-labelledby="femurkomponenteModalLabel{{ explant.id }}" aria-hidden="true">
@@ -652,12 +697,6 @@
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
-                                                                    <div class="col-sm-9 d-flex align-items-center">
-                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.femurkomponente.recycelt %}checked{% endif %}>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -730,20 +769,37 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {% trans 'recycelt' %}:
-                                                    </div>
-                                                    <div class="col-6 text-end">
-                                                        {% if explant.schaft.recycelt %}
-                                                            <i class="bi bi-check-circle-fill text-success"></i>
-                                                        {% else %}
+                                            {% if explant.schaftdetails_set.exists %}
+                                                {% for schaft_detail in explant.schaftdetails_set.all %}
+                                                    {% if schaft_detail.schaft_id == explant.schaft_id %}
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    {% trans 'recycelt' %}:
+                                                                </div>
+                                                                <div class="col-6 text-end">
+                                                                    {% if schaft_detail.recycelt %}
+                                                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                                                    {% else %}
+                                                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            {% trans 'recycelt' %}:
+                                                        </div>
+                                                        <div class="col-6 text-end">
                                                             <i class="bi bi-x-circle-fill text-danger"></i>
-                                                        {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            {% endif %}
                                         </ul>                                        
                                         <!-- Modal -->
                                         <div class="modal fade" id="schaftModal{{ explant.id }}" tabindex="-1" aria-labelledby="schaftModalLabel{{ explant.id }}" aria-hidden="true">
@@ -781,12 +837,6 @@
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
-                                                                    <div class="col-sm-9 d-flex align-items-center">
-                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.schaft.recycelt %}checked{% endif %}>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -858,20 +908,37 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {% trans 'recycelt' %}:
-                                                    </div>
-                                                    <div class="col-6 text-end">
-                                                        {% if explant.tibiaplateau.recycelt %}
-                                                            <i class="bi bi-check-circle-fill text-success"></i>
-                                                        {% else %}
+                                            {% if explant.tibiaplateaudetails_set.exists %}
+                                                {% for tibiaplateau_detail in explant.tibiaplateaudetails_set.all %}
+                                                    {% if tibiaplateau_detail.tibiaplateau_id == explant.tibiaplateau_id %}
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    {% trans 'recycelt' %}:
+                                                                </div>
+                                                                <div class="col-6 text-end">
+                                                                    {% if tibiaplateau_detail.recycelt %}
+                                                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                                                    {% else %}
+                                                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            {% trans 'recycelt' %}:
+                                                        </div>
+                                                        <div class="col-6 text-end">
                                                             <i class="bi bi-x-circle-fill text-danger"></i>
-                                                        {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            {% endif %}
                                         </ul>                                        
                                         <!-- Modal -->
                                         <div class="modal fade" id="tibiaplateauModal{{ explant.id }}" tabindex="-1" aria-labelledby="tibiaplateauModalLabel{{ explant.id }}" aria-hidden="true">
@@ -909,12 +976,6 @@
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
-                                                                    <div class="col-sm-9 d-flex align-items-center">
-                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.tibiaplateau.recycelt %}checked{% endif %}>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -987,20 +1048,37 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {% trans 'recycelt' %}:
-                                                    </div>
-                                                    <div class="col-6 text-end">
-                                                        {% if explant.pfanne.recycelt %}
-                                                            <i class="bi bi-check-circle-fill text-success"></i>
-                                                        {% else %}
+                                            {% if explant.pfannedetails_set.exists %}
+                                                {% for pfanne_detail in explant.pfannedetails_set.all %}
+                                                    {% if pfanne_detail.pfanne_id == explant.pfanne_id %}
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    {% trans 'recycelt' %}:
+                                                                </div>
+                                                                <div class="col-6 text-end">
+                                                                    {% if pfanne_detail.recycelt %}
+                                                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                                                    {% else %}
+                                                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            {% trans 'recycelt' %}:
+                                                        </div>
+                                                        <div class="col-6 text-end">
                                                             <i class="bi bi-x-circle-fill text-danger"></i>
-                                                        {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            {% endif %}
                                         </ul>                                                                                    
                                         <!-- Modal -->
                                         <div class="modal fade" id="pfanneModal{{ explant.id }}" tabindex="-1" aria-labelledby="pfanneModalLabel{{ explant.id }}" aria-hidden="true">
@@ -1038,12 +1116,6 @@
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
-                                                                    <div class="col-sm-9 d-flex align-items-center">
-                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.pfanne.recycelt %}checked{% endif %}>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1115,20 +1187,37 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {% trans 'recycelt' %}:
-                                                    </div>
-                                                    <div class="col-6 text-end">
-                                                        {% if explant.patellaersatz.recycelt %}
-                                                            <i class="bi bi-check-circle-fill text-success"></i>
-                                                        {% else %}
+                                            {% if explant.patellaersatzdetails_set.exists %}
+                                                {% for patellaersatz_detail in explant.patellaersatzdetails_set.all %}
+                                                    {% if patellaersatz_detail.patellaersatz_id == explant.patellaersatz_id %}
+                                                        <li class="list-group-item">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    {% trans 'recycelt' %}:
+                                                                </div>
+                                                                <div class="col-6 text-end">
+                                                                    {% if patellaersatz_detail.recycelt %}
+                                                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                                                    {% else %}
+                                                                        <i class="bi bi-x-circle-fill text-danger"></i>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            {% trans 'recycelt' %}:
+                                                        </div>
+                                                        <div class="col-6 text-end">
                                                             <i class="bi bi-x-circle-fill text-danger"></i>
-                                                        {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            {% endif %}
                                         </ul>                                        
                                         <!-- Modal -->
                                         <div class="modal fade" id="patellaersatzModal{{ explant.id }}" tabindex="-1" aria-labelledby="patellaersatzModalLabel{{ explant.id }}" aria-hidden="true">
@@ -1166,12 +1255,6 @@
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
-                                                                    </div>
-                                                                </div>
-                                                                <div class='form-group row'>
-                                                                    <label for='recycelt' class="col-sm-3 col-form-label">{% trans 'recycelt' %}:</label>
-                                                                    <div class="col-sm-9 d-flex align-items-center">
-                                                                        <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {% if explant.patellaersatz.recycelt %}checked{% endif %}>
                                                                     </div>
                                                                 </div>
                                                             </div>

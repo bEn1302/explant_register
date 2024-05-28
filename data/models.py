@@ -29,12 +29,11 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
-class ImplantatDetails(models.Model):
+class KomponentenDetails(models.Model):
     hersteller = models.CharField(max_length=100, verbose_name=_("Hersteller"))
     modell = models.CharField(max_length=100, verbose_name=_("Modell"))
     material = models.CharField(max_length=100, verbose_name=_("Material"))
     groeße = models.FloatField(verbose_name=_("Größe"))  # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), default=False)
 
     class Meta:
         abstract = True
@@ -42,31 +41,31 @@ class ImplantatDetails(models.Model):
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
-class Femurkomponente(ImplantatDetails):
+class Femurkomponente(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Femurkomponenten")
 
-class Tibiaplateau(ImplantatDetails):
+class Tibiaplateau(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Tibiaplateaus")
 
-class Patellaersatz(ImplantatDetails):
+class Patellaersatz(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Patellaersätze")
 
-class Kopf(ImplantatDetails):
+class Kopf(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Köpfe")
 
-class Inlay(ImplantatDetails):
+class Inlay(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Inlays")
 
-class Schaft(ImplantatDetails):
+class Schaft(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Schafte")
 
-class Pfanne(ImplantatDetails):
+class Pfanne(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Pfannen")
 
@@ -151,3 +150,64 @@ class Explantat(models.Model):
 
     class Meta:
         verbose_name_plural = _("Explantate")
+
+    def __str__(self):
+        return f"{self.id}"    
+
+class InlayDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    inlay = models.ForeignKey(Inlay, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = _("Inlays Details")
+
+# Hüfte
+class KopfDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    kopf = models.ForeignKey(Kopf, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = _("Köpfe Details")
+
+class SchaftDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    schaft = models.ForeignKey(Schaft, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = _("Schafte Details")
+
+class PfanneDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    pfanne = models.ForeignKey(Pfanne, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = _("Pfannen Details")
+
+# Knie
+class FemurkomponenteDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    femurkomponente = models.ForeignKey(Femurkomponente, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = _("Femurkomponenten Details")
+
+class TibiaplateauDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    tibiaplateau = models.ForeignKey(Tibiaplateau, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = _("Tibiaplateaus Details")
+
+class PatellaersatzDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    patellaersatz = models.ForeignKey(Patellaersatz, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), default=False)
+
+    class Meta:
+        verbose_name_plural = _("Patellaersätze Details")
