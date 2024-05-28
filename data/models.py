@@ -29,96 +29,46 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
-class Femurkomponente(models.Model):
-    hersteller = models.CharField(verbose_name=_("Hersteller"))
-    modell = models.CharField(verbose_name=_("Modell"))
-    material = models.CharField(verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
+class ImplantatDetails(models.Model):
+    hersteller = models.CharField(max_length=100, verbose_name=_("Hersteller"))
+    modell = models.CharField(max_length=100, verbose_name=_("Modell"))
+    material = models.CharField(max_length=100, verbose_name=_("Material"))
+    groeße = models.FloatField(verbose_name=_("Größe"))  # in cm / mm
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), default=False)
 
     class Meta:
-        verbose_name_plural = _("Femurkomponenten")
-    
+        abstract = True
+
     def __str__(self):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
-class Tibiaplateau(models.Model):
-    hersteller = models.CharField(verbose_name=_("Hersteller"))
-    modell = models.CharField(verbose_name=_("Modell"))
-    material = models.CharField(verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
+class Femurkomponente(ImplantatDetails):
+    class Meta:
+        verbose_name_plural = _("Femurkomponenten")
 
+class Tibiaplateau(ImplantatDetails):
     class Meta:
         verbose_name_plural = _("Tibiaplateaus")
 
-    def __str__(self):
-        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
-
-class Patellaersatz(models.Model):
-    hersteller = models.CharField(verbose_name=_("Hersteller"))
-    modell = models.CharField(verbose_name=_("Modell"))
-    material = models.CharField(verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
-
+class Patellaersatz(ImplantatDetails):
     class Meta:
         verbose_name_plural = _("Patellaersätze")
 
-    def __str__(self):
-        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
-
-class Kopf(models.Model):
-    hersteller = models.CharField(verbose_name=_("Hersteller"))
-    modell = models.CharField(verbose_name=_("Modell"))
-    material = models.CharField(verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
-
+class Kopf(ImplantatDetails):
     class Meta:
         verbose_name_plural = _("Köpfe")
 
-    def __str__(self):
-        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
-
-class Inlay(models.Model):
-    hersteller = models.CharField(verbose_name=_("Hersteller"))
-    modell = models.CharField(verbose_name=_("Modell"))
-    material = models.CharField(verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
-
+class Inlay(ImplantatDetails):
     class Meta:
         verbose_name_plural = _("Inlays")
 
-    def __str__(self):
-        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
-
-class Schaft(models.Model):
-    hersteller = models.CharField(verbose_name=_("Hersteller"))
-    modell = models.CharField(verbose_name=_("Modell"))
-    material = models.CharField(verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
-
+class Schaft(ImplantatDetails):
     class Meta:
         verbose_name_plural = _("Schafte")
 
-    def __str__(self):
-        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
-
-class Pfanne(models.Model):
-    hersteller = models.CharField(verbose_name=_("Hersteller"))
-    modell = models.CharField(verbose_name=_("Modell"))
-    material = models.CharField(verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))         # in cm / mm
-    recycelt = models.BooleanField(verbose_name=_("recycelt"), blank=True, null=True)
-
+class Pfanne(ImplantatDetails):
     class Meta:
         verbose_name_plural = _("Pfannen")
-
-    def __str__(self):
-        return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Reoperation(models.Model):
     reoperation = models.BooleanField(verbose_name=_('Reoperation'))
