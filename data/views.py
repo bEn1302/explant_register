@@ -644,43 +644,43 @@ def explant_pdf(request):
 # --------------------------- charts  ---------------------------
 # bar chart:
 def bar_chart_data():
-    explantate_count = Explantat.objects.count()
-    reoperationen_count = Reoperation.objects.count()
     inlays_count = Inlay.objects.count()
     köpfe_count = Kopf.objects.count()
-    patellaersätze_count = Patellaersatz.objects.count()
     schafte_count = Schaft.objects.count()
     pfannen_count = Pfanne.objects.count()
+    patellaersätze_count = Patellaersatz.objects.count()
     tibiaplateau_count = Tibiaplateau.objects.count()
     femurkomponenten_count = Femurkomponente.objects.count()
+    explantate_count = Explantat.objects.count()
+    reoperationen_count = Reoperation.objects.count()
 
     # count recycelt objects
     recycled_inlays_count = InlayDetails.objects.filter(recycelt=True).count()
     recycled_köpfe_count = KopfDetails.objects.filter(recycelt=True).count()
     recycled_schafte_count = SchaftDetails.objects.filter(recycelt=True).count()
     recycled_pfannen_count = PfanneDetails.objects.filter(recycelt=True).count()
-    recycled_tibiaplateaus_count = TibiaplateauDetails.objects.filter(recycelt=True).count()
     recycled_patellaersaetze_count = PatellaersatzDetails.objects.filter(recycelt=True).count()
+    recycled_tibiaplateaus_count = TibiaplateauDetails.objects.filter(recycelt=True).count()
     recycled_femurkomponenten_count = FemurkomponenteDetails.objects.filter(recycelt=True).count()
 
     return {
-        'explantate_count': explantate_count,
-        'reoperationen_count': reoperationen_count,
         'inlays_count': inlays_count,
         'köpfe_count': köpfe_count,
-        'patellaersätze_count': patellaersätze_count,
         'schafte_count': schafte_count,
         'pfannen_count': pfannen_count,
+        'patellaersätze_count': patellaersätze_count,
         'tibiaplateau_count': tibiaplateau_count,
         'femurkomponenten_count': femurkomponenten_count,
+        'explantate_count': explantate_count,
+        'reoperationen_count': reoperationen_count,
 
         # recycelt objects
         'recycled_inlays_count': recycled_inlays_count,
         'recycled_köpfe_count': recycled_köpfe_count,
         'recycled_schafte_count': recycled_schafte_count,
         'recycled_pfannen_count': recycled_pfannen_count,
-        'recycled_tibiaplateaus_count': recycled_tibiaplateaus_count,
         'recycled_patellaersaetze_count': recycled_patellaersaetze_count,
+        'recycled_tibiaplateaus_count': recycled_tibiaplateaus_count,
         'recycled_femurkomponenten_count': recycled_femurkomponenten_count,
     }
 

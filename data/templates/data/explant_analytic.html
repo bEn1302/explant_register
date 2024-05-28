@@ -12,28 +12,33 @@
       <script>
         // Rohdaten
         const rawData = [
-            { label: "Explantate", quantity: "{{ bar_chart_data.explantate_count }}" },
-            { label: "Inlays", quantity: "{{ bar_chart_data.inlays_count }}" },
-            { label: "Köpfe", quantity: "{{ bar_chart_data.köpfe_count }}" },
-            { label: "Schafte", quantity: "{{ bar_chart_data.schafte_count }}" },
-            { label: "Pfannen", quantity: "{{ bar_chart_data.pfannen_count }}" },
-            { label: "Patellaersätze", quantity: "{{ bar_chart_data.patellaersätze_count }}" },
-            { label: "Tibiaplateau", quantity: "{{ bar_chart_data.tibiaplateau_count }}" },
-            { label: "Femurkomponenten", quantity: "{{ bar_chart_data.femurkomponenten_count }}" },
-            { label: "Reoperationen", quantity: "{{ bar_chart_data.reoperationen_count }}" }
+            { label: "{% trans 'Inlays' %}", quantity: "{{ bar_chart_data.inlays_count }}", recycled: "{{ bar_chart_data.recycled_inlays_count }}" },
+            { label: "{% trans 'Köpfe' %}", quantity: "{{ bar_chart_data.köpfe_count }}", recycled: "{{ bar_chart_data.recycled_köpfe_count }}" },
+            { label: "{% trans 'Schafte' %}", quantity: "{{ bar_chart_data.schafte_count }}", recycled: "{{ bar_chart_data.recycled_schafte_count }}" },
+            { label: "{% trans 'Pfannen' %}", quantity: "{{ bar_chart_data.pfannen_count }}", recycled: "{{ bar_chart_data.recycled_pfannen_count }}" },
+            { label: "{% trans 'Patellaersätze' %}", quantity: "{{ bar_chart_data.patellaersätze_count }}", recycled: "{{ bar_chart_data.recycled_patellaersaetze_count }}" },
+            { label: "{% trans 'Tibiaplateaus' %}", quantity: "{{ bar_chart_data.tibiaplateau_count }}", recycled: "{{ bar_chart_data.recycled_tibiaplateaus_count }}" },
+            { label: "{% trans 'Femurkomponenten' %}", quantity: "{{ bar_chart_data.femurkomponenten_count }}", recycled: "{{ bar_chart_data.recycled_femurkomponenten_count }}" },
+            { label: "{% trans 'Reoperationen' %}", quantity: "{{ bar_chart_data.reoperationen_count }}", recycled: "" },
+            { label: "{% trans 'Explantate' %}", quantity: "{{ bar_chart_data.explantate_count }}", recycled: "" },
         ];
     
-        // Filtere die Daten, um Einträge mit quantity = 0 zu entfernen
-        const filteredData = rawData.filter(item => parseInt(item.quantity) > 0);
+        // Filtere die Daten, um Einträge mit quantity > 0 zu entfernen
+        const filteredData = rawData.filter(item => parseInt(item.quantity) > 0 || parseInt(item.recycled) > 0);
+    
+        // Extrahiere Labels und Daten für das Diagramm
+        const labels = filteredData.map(item => item.label);
+        const quantityData = filteredData.map(item => parseInt(item.quantity));
+        const recycledChartData = filteredData.map(item => parseInt(item.recycled));
     
         // Rendere das Chart nur, wenn es Daten gibt
-        if (filteredData.length > 0) {
+        if (labels.length > 0) {
             const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
                 type: 'bar',
                 data: {
                     datasets: [{
                         label: 'quantity',
-                        data: filteredData.map(item => parseInt(item.quantity)),
+                        data: quantityData,
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1,
@@ -41,15 +46,7 @@
                         order: 2
                     }, {
                         label: 'recycled',
-                        data: [ 
-                            "{{ bar_chart_data.recycled_inlays_count }}",
-                            "{{ bar_chart_data.recycled_köpfe_count }}",
-                            "{{ bar_chart_data.recycled_schafte_count }}",
-                            "{{ bar_chart_data.recycled_pfannen_count }}",
-                            "{{ bar_chart_data.recycled_tibiaplateaus_count }}",
-                            "{{ bar_chart_data.recycled_patellaersaetze_count }}",
-                            "{{ bar_chart_data.recycled_femurkomponenten_count }}"
-                            ],
+                        data: recycledChartData,
                         type: 'line',
                         backgroundColor: 'rgba(46, 204, 113, 0.2)',
                         borderColor: 'rgba(46, 204, 113, 1)',
@@ -57,7 +54,7 @@
                         // this dataset is drawn on top
                         order: 1
                     }],
-                    labels: filteredData.map(item => item.label)
+                    labels: labels
                 },
                 options: {
                     scales: {
@@ -74,7 +71,6 @@
             console.log('Keine Daten vorhanden.');
         }
     </script>
-    
     </div>
   </div>
   <div class="row mt-4">

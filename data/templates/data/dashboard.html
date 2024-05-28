@@ -8,48 +8,45 @@
 <!-- Charts -->
 <canvas class="my-4 w-100" id="mixedChart" width="900" height="380">
   <!-- Hauptdiagramm -->
-</canvas> 
+</canvas>
 <script>
   // Rohdaten
   const rawData = [
-      { label: "{% trans 'Explantate' %}", quantity: "{{ explantate_count }}" },
-      { label: "{% trans 'Inlays' %}", quantity: "{{ inlays_count }}" },
-      { label: "{% trans 'Köpfe' %}", quantity: "{{ köpfe_count }}" },
-      { label: "{% trans 'Schafte' %}", quantity: "{{ schafte_count }}" },
-      { label: "{% trans 'Pfannen' %}", quantity: "{{ pfannen_count }}" },
-      { label: "{% trans 'Patellaersätze' %}", quantity: "{{ patellaersätze_count }}" },
-      { label: "{% trans 'Tibiaplateaus' %}", quantity: "{{ tibiaplateau_count }}" },
-      { label: "{% trans 'Femurkomponenten' %}", quantity: "{{ femurkomponenten_count }}" },
-      { label: "{% trans 'Reoperationen' %}", quantity: "{{ reoperationen_count }}" }
+      { label: "{% trans 'Inlays' %}", quantity: "{{ inlays_count }}", recycled: "{{ recycled_inlays_count }}" },
+      { label: "{% trans 'Köpfe' %}", quantity: "{{ köpfe_count }}", recycled: "{{ recycled_köpfe_count }}" },
+      { label: "{% trans 'Schafte' %}", quantity: "{{ schafte_count }}", recycled: "{{ recycled_schafte_count }}" },
+      { label: "{% trans 'Pfannen' %}", quantity: "{{ pfannen_count }}", recycled: "{{ recycled_pfannen_count }}" },
+      { label: "{% trans 'Patellaersätze' %}", quantity: "{{ patellaersätze_count }}", recycled: "{{ recycled_patellaersaetze_count }}" },
+      { label: "{% trans 'Tibiaplateaus' %}", quantity: "{{ tibiaplateau_count }}", recycled: "{{ recycled_tibiaplateaus_count }}" },
+      { label: "{% trans 'Femurkomponenten' %}", quantity: "{{ femurkomponenten_count }}", recycled: "{{ recycled_femurkomponenten_count }}" },
+      { label: "{% trans 'Reoperationen' %}", quantity: "{{ reoperationen_count }}", recycled: "" },
+      { label: "{% trans 'Explantate' %}", quantity: "{{ explantate_count }}", recycled: "" },
   ];
 
-  // Filtere die Daten, um Einträge mit quantity = 0 zu entfernen
-  const filteredData = rawData.filter(item => parseInt(item.quantity) > 0);
+  // Filtere die Daten, um Einträge mit quantity > 0 zu entfernen
+  const filteredData = rawData.filter(item => parseInt(item.quantity) > 0 || parseInt(item.recycled) > 0);
+
+  // Extrahiere Labels und Daten für das Diagramm
+  const labels = filteredData.map(item => item.label);
+  const quantityData = filteredData.map(item => parseInt(item.quantity));
+  const recycledChartData = filteredData.map(item => parseInt(item.recycled));
 
   // Rendere das Chart nur, wenn es Daten gibt
-  if (filteredData.length > 0) {
+  if (labels.length > 0) {
       const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
           type: 'bar',
           data: {
               datasets: [{
-                  label: "{% trans 'Anzahl' %}",
-                  data: filteredData.map(item => parseInt(item.quantity)),
+                  label: 'quantity',
+                  data: quantityData,
                   backgroundColor: 'rgba(54, 162, 235, 0.2)',
                   borderColor: 'rgba(54, 162, 235, 1)',
                   borderWidth: 1,
                   // this dataset is drawn below
                   order: 2
               }, {
-                  label: "{% trans 'recycelt' %}",
-                  data: [
-                        "{{ recycled_inlays_count }}",
-                        "{{ recycled_köpfe_count }}",
-                        "{{ recycled_schafte_count }}",
-                        "{{ recycled_pfannen_count }}",
-                        "{{ recycled_tibiaplateaus_count }}",
-                        "{{ recycled_patellaersaetze_count }}",
-                        "{{ recycled_femurkomponenten_count }}"
-                  ],
+                  label: 'recycled',
+                  data: recycledChartData,
                   type: 'line',
                   backgroundColor: 'rgba(46, 204, 113, 0.2)',
                   borderColor: 'rgba(46, 204, 113, 1)',
@@ -57,7 +54,7 @@
                   // this dataset is drawn on top
                   order: 1
               }],
-              labels: filteredData.map(item => item.label)
+              labels: labels
           },
           options: {
               scales: {
