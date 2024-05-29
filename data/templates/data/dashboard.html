@@ -91,13 +91,25 @@
                     <tr class="table-row">
                         <td>{{ explant.id }}</td>
                         <td>{{ explant.ursache|truncate:25 }}</td>
-                        <td>{{ explant.verfuegbarkeit }}</td>
+                        <td class="align-middle text-center">
+                            {% if explant.verfuegbarkeit %}
+                                <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
+                            {% else %}
+                                <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
+                            {% endif %}
+                        </td>
                         <td>{{ explant.herkunftsort }}</td>
                         <td>{{ explant.entnahme_datum }}</td>
                         <td>{{ explant.eingang_datum }}</td>
                         <td>{{ explant.bruchgeschehen|truncate:25 }}</td>
                         <td>{{ explant.nutzungsdauer }}</td>
-                        <td>{{ explant.reinigung }}</td>
+                        <td class="align-middle text-center">
+                            {% if explant.reinigung %}
+                                <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
+                            {% else %}
+                                <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
+                            {% endif %}
+                        </td>
                     </tr>
                   {% endfor %}
               </tbody>

@@ -61,31 +61,107 @@ class KomponentenForm(forms.ModelForm):
 
 class InlayForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
-        model = Inlay 
+        model = Inlay
+
+class InlayDetailsForm(forms.ModelForm):
+    class Meta:
+        model = InlayDetails
+        fields = ('explantat', 'inlay', 'recycelt')
+        widgets = {
+            'explantat': forms.Select(attrs={'class': 'form-select'}),
+            'inlay': forms.Select(attrs={'class': 'form-select'}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-select form-check-input'}),
+        }
+
 
 class KopfForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
-        model = Kopf  
+        model = Kopf
+
+class KopfDetailsForm(forms.ModelForm):
+    class Meta:
+        model = KopfDetails
+        fields = ('explantat', 'kopf', 'recycelt')
+        widgets = {
+            'explantat': forms.Select(attrs={'class': 'form-select'}),
+            'kopf': forms.Select(attrs={'class': 'form-select'}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-select form-check-input'}),
+        }  
+
 
 class FemurkomponenteForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
         model = Femurkomponente 
 
+class FemurkomponenteDetailsForm(forms.ModelForm):
+    class Meta:
+        model = FemurkomponenteDetails
+        fields = ('explantat', 'femurkomponente', 'recycelt')
+        widgets = {
+            'explantat': forms.Select(attrs={'class': 'form-select'}),
+            'femurkomponente': forms.Select(attrs={'class': 'form-select'}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-select form-check-input'}),
+        }  
+
 class SchaftForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
-        model = Schaft 
+        model = Schaft
+
+class SchaftDetailsForm(forms.ModelForm):
+    class Meta:
+        model = SchaftDetails
+        fields = ('explantat', 'schaft', 'recycelt')
+        widgets = {
+            'explantat': forms.Select(attrs={'class': 'form-select'}),
+            'schaft': forms.Select(attrs={'class': 'form-select'}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-select form-check-input'}),
+        } 
+
     
 class TibiaplateauForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
         model = Tibiaplateau 
 
+class TibiaplateauDetailsForm(forms.ModelForm):
+    class Meta:
+        model = TibiaplateauDetails
+        fields = ('explantat', 'tibiaplateau', 'recycelt')
+        widgets = {
+            'explantat': forms.Select(attrs={'class': 'form-select'}),
+            'tibiaplateau': forms.Select(attrs={'class': 'form-select'}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-select form-check-input'}),
+        } 
+
+
 class PfanneForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
         model = Pfanne 
 
+class PfanneDetailsForm(forms.ModelForm):
+    class Meta:
+        model = PfanneDetails
+        fields = ('explantat', 'pfanne', 'recycelt')
+        widgets = {
+            'explantat': forms.Select(attrs={'class': 'form-select'}),
+            'pfanne': forms.Select(attrs={'class': 'form-select'}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-select form-check-input'}),
+        }
+
+
 class PatellaersatzForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
-        model = Patellaersatz    
+        model = Patellaersatz
+
+class PatellaersatzDetailsForm(forms.ModelForm):
+    class Meta:
+        model = PatellaersatzDetails
+        fields = ('explantat', 'patellaersatz', 'recycelt')
+        widgets = {
+            'explantat': forms.Select(attrs={'class': 'form-select'}),
+            'patellaersatz': forms.Select(attrs={'class': 'form-select'}),
+            'recycelt': forms.CheckboxInput(attrs={'class': 'form-select form-check-input'}),
+        }    
+
 
 class ExplantatForm(ModelForm):
     lagerort_form = LagerortForm()

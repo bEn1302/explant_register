@@ -154,6 +154,7 @@ class Explantat(models.Model):
     def __str__(self):
         return f"{self.id}"    
 
+# -------------------- Komponenten Details -------------------- #
 class InlayDetails(models.Model):
     explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
     inlay = models.ForeignKey(Inlay, on_delete=models.CASCADE)

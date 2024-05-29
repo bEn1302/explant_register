@@ -5,16 +5,16 @@
     <thead>
         <tr>
         <th><input type="checkbox" id="selectAll"></th>
-        <th class="text-center" scope="col">ID</th>
-        <th class="text-center" scope="col">{% trans 'Ursache' %}</th>
-        <th class="text-center" scope="col">{% trans 'Verfügbarkeit' %}</th>
-        <th class="text-center" scope="col">{% trans 'Herkunftsort' %}</th>
-        <th class="text-center" scope="col">{% trans 'Entnahmedatum' %}</th>
-        <th class="text-center" scope="col">{% trans 'Eingangsdatum' %}</th>
-        <th class="text-center" scope="col">{% trans 'Bruchgeschehen' %}</th>
-        <th class="text-center" scope="col">{% trans 'Nutzungsdauer' %}</th>
-        <th class="text-center" scope="col">{% trans 'Reinigung' %}</th>
-        <th class="text-center" scope="col">{% trans 'Aktion' %}</th>
+        <th class="text-center text-nowrap" scope="col">ID</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Ursache' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Verfügbarkeit' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Herkunftsort' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Entnahmedatum' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Eingangsdatum' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Bruchgeschehen' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Nutzungsdauer' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Reinigung' %}</th>
+        <th class="text-center text-nowrap" scope="col">{% trans 'Aktion' %}</th>
         </tr>
     </thead>
     <tbody>
@@ -47,7 +47,7 @@
                             <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
                         {% endif %}
                     </td>
-                    <td class="text-center">
+                    <td class="text-center text-nowrap">
                         <i class="trigger-cell" style="cursor: pointer;"></i>
                         <!-- nur Icon anzeigen wenn man auch den Eintrag bearbeiten darf -->
                         {% if user.id == explant.owner %}

@@ -1,4 +1,4 @@
-{% extends 'data/base.html' %} {% load static %} {% load custom_filters %}
+{% extends 'data/base.html' %} {% load static %} {% load custom_filters %} {% load i18n %}
 
 {% block account %}
     {% if user.is_authenticated %}
@@ -12,7 +12,7 @@
                         <div class="row">
                         <div class="col">
                             <center>
-                                <h4>Your Profile</h4>
+                                <h4>{% trans 'Dein Profil' %}</h4>
                             </center>
                         </div>
                         </div>
@@ -26,7 +26,7 @@
                                 {% endif %}
                                 <br>
                                 <br>
-                                Username: {{user}}
+                                {% trans 'Benutzername' %}: {{user}}
                             </center>
                         </div>
                         </div>
@@ -38,31 +38,31 @@
                         <form class="row g-3" method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="col-md-6">
-                                <label for="id_first_name">First Name</label>
+                                <label for="id_first_name">{% trans 'Vorname' %}</label>
                                 <input type="text" id="id_first_name" name="first_name" value="{{ user.first_name }}" class="form-control">
                             </div>
                             <div class="col-md-6">
-                                <label for="id_last_name">Last Name</label>
+                                <label for="id_last_name">{% trans 'Nachname' %}</label>
                                 <input type="text" id="id_last_name" name="last_name" value="{{ user.last_name }}" class="form-control">
                             </div>
                             <div class="col-md-6">
-                                <label for="id_email">Email</label>
+                                <label for="id_email">{% trans 'Email-Adresse' %}</label>
                                 <input type="email" id="id_email" name="email" value="{{ user.email }}" class="form-control" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="id_phone">Phone</label>
+                                <label for="id_phone">{% trans 'Telefonnummer' %}</label>
                                 <input type="tel" id="id_phone" name="phone" value="{{ user.userprofile.phone }}" class="form-control">
                             </div>
                             <div class="col-12">
-                                <label for="id_address">Address</label>
+                                <label for="id_address">{% trans 'Adresse' %}</label>
                                 <input type="text" id="id_address" name="address" value="{{ user.userprofile.address }}" class="form-control">
                             </div>
                             <div class="col-md-5">
-                                <label for="id_city">City</label>
+                                <label for="id_city">{% trans 'Stadt' %}</label>
                                 <input type="text" id="id_city" name="city" value="{{ user.userprofile.city }}" class="form-control">
                             </div>
                             <div class="col-md-7">
-                            <label for="id_state">State</label>
+                            <label for="id_state">{% trans 'Bundesland' %}</label>
                             <select type="text" id="id_state" name="state" class="form-control form-select">
                                 <option selected>{{ user.userprofile.state }}</option>
                                 <option>Baden-Württemberg</option>
@@ -84,11 +84,11 @@
                             </select>
                             </div>
                             <div class="col-md-3">
-                                <label for="id_zip_code">Zip</label>
+                                <label for="id_zip_code">{% trans 'Postleitzahl' %}</label>
                                 <input type="text" id="id_zip_code" name="zip_code" value="{{ user.userprofile.zip_code }}" class="form-control">
                             </div>
                             <div class="col-md-9">
-                                <label for="id_profile_picture">Profile picture</label>
+                                <label for="id_profile_picture">{% trans 'Profilbild' %}</label>
                                 <input type="file" id="id_profile_picture" name="profile_picture" class="form-control">
                             </div>
                             <div class="col-md-12">
@@ -99,7 +99,7 @@
                                 <input type="text" id="id_username" name="username" value="{{ user.username }}" class="form-control" required>
                             </div>
                             <div class="col-md-5 mt-0 ">
-                                <a class="btn btn-secondary" href="{% url 'password' %}">Change Password</a>
+                                <a class="btn btn-secondary" href="{% url 'password' %}">{% trans 'Passwort ändern' %}</a>
                             </div>
                             <div class="col-md-3 mt-0">
                                 <button type="submit" class="btn btn-primary">Update</button>
@@ -116,7 +116,7 @@
                         <div class="row">
                         <div class="col">
                             <center>
-                                <h4>Registered Data</h4>
+                                <h4>{% trans 'Eingetragene Daten' %}</h4>
                             </center>
                         </div>
                         </div>
@@ -130,19 +130,19 @@
                                 {% csrf_token %}
                                 <ul class="nav nav-tabs" id="myTabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="huefte-tab" data-bs-toggle="tab" href="#huefte">Hüftexplantat</a>
+                                    <a class="nav-link active" id="huefte-tab" data-bs-toggle="tab" href="#huefte">{% trans 'Hüftexplantate' %}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="knie-tab" data-bs-toggle="tab" href="#knie">Knieexplant</a>
+                                    <a class="nav-link" id="knie-tab" data-bs-toggle="tab" href="#knie">{% trans 'Knieexplantate' %}</a>
                                 </li>
                                 </ul>
                                 <div class="tab-content">
                                 <div class="tab-pane fade show active" id="huefte">
                                     <div class="container mt-3 mb-2">
-                                    <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
-                                    <a id="exportPdfHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> Export as PDF</a>
-                                    <a id="exportCsvHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> Export as CSV</a>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
+                                    <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> {% trans 'Hinzufügen' %}</a>
+                                    <a id="exportPdfHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> {% trans 'Exportieren als PDF' %}</a>
+                                    <a id="exportCsvHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> {% trans 'Exportieren als CSV' %}</a>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
                                     </div>
                                     <div class="table-responsive">
                                         {% include 'data/table_template.html' with data=huefte_explant_table is_huefte=True %}
@@ -150,10 +150,10 @@
                                 </div>
                                 <div class="tab-pane fade" id="knie">
                                     <div class="container mt-3 mb-2">
-                                    <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> Add</a>
-                                    <a id="exportPdfKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> Export as PDF</a>
-                                    <a id="exportCsvKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> Export as CSV</a>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> Delete</button>
+                                    <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}" role="button"><i class="bi bi-plus-circle"></i> {% trans 'Hinzufügen' %}</a>
+                                    <a id="exportPdfKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> {% trans 'Exportieren als PDF' %}</a>
+                                    <a id="exportCsvKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> {% trans 'Exportieren als CSV' %}</a>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
                                     </div>
                                     <div class="table-responsive">
                                         {% include 'data/table_template.html' with data=knie_explant_table is_huefte=False %}
@@ -174,7 +174,6 @@
         <script defer src="{% static '/js/delete_function.js' %}"></script>
         <script defer src="{% static '/js/expand_table.js' %}"></script>
         <script defer src="{% static '/js/expand_text.js' %}"></script>
-        <script defer src="{% static '/js/update_form.js' %}"></script>
     
     {% else %}
         {% url 'sign_in' as sign_in %}
