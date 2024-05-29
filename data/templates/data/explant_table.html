@@ -51,7 +51,6 @@
   {% endif %}
 
   <script>
-    // Funktion, um den Wert des ausgewählten Tabs zu aktualisieren
     function updateSelectedTab(tabId) {
       console.log("Ausgewählter Tab:", tabId);
 
@@ -77,7 +76,7 @@
               <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}?selected_tab=huefte" role="button"><i class="bi bi-plus-circle"></i> {% trans 'Hinzufügen' %}</a>
               <a id="exportPdfHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> {% trans 'Exportieren als PDF' %}</a>
               <a id="exportCsvHuefte" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> {% trans 'Exportieren als CSV' %}</a>
-              <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton" data-tab="huefte"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
             </div>
           {% endif %}
           <div class="table-responsive">
@@ -91,7 +90,7 @@
               <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}?selected_tab=knie" role="button"><i class="bi bi-plus-circle"></i> {% trans 'Hinzufügen' %}</a>
               <a id="exportPdfKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> {% trans 'Exportieren als PDF' %}</a>
               <a id="exportCsvKnie" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> {% trans 'Exportieren als CSV' %}</a>
-              <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton" data-tab="knie"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
             </div>
           {% endif %}
           <div class="table-responsive">
@@ -106,7 +105,6 @@
   <script defer src="{% static '/js/delete_function.js' %}"></script>
   <script defer src="{% static '/js/expand_table.js' %}"></script>
   <script defer src="{% static '/js/expand_text.js' %}"></script>
-  <script defer src="{% static '/js/update_form.js' %}"></script>
   
 {% else %}
     {% url 'sign_in' as sign_in %}
