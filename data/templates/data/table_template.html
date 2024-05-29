@@ -77,7 +77,7 @@
                                             {% trans 'Lagerort' %}
                                             <!-- Button trigger modal -->
                                             {% if user.id == explant.owner %}
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#lagerortModal{{ explant.id }}">Update</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#lagerortModal">Update</button>
                                             {% endif %}
                                         </li>
                                         <li class="list-group-item">
@@ -102,11 +102,11 @@
                                         </li>
                                     </ul>                                    
                                     <!-- Modal -->
-                                    <div class="modal fade" id="lagerortModal{{ explant.id }}" tabindex="-1" aria-labelledby="lagerortModalLabel{{ explant.id }}" aria-hidden="true">
+                                    <div class="modal fade" id="lagerortModal" tabindex="-1" aria-labelledby="lagerortModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                           <div class="modal-content">
                                             {% if explant.lagerort.pk %}
-                                                <form id="update-form{{ explant.id }}" method="post" action="{% url 'lagerort_update' explant.lagerort.pk %}">
+                                                <form method="post" action="{% url 'lagerort_update' explant.lagerort.pk %}">
                                                     {% csrf_token %}
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Lagerort' %}</h1>
@@ -150,7 +150,7 @@
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                             {% trans 'Patient' %}
                                             {% if user.id == explant.owner %}
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patientModal{{ explant.id }}">Update</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patientModal">Update</button>
                                             {% endif %}
                                         </li>
                                         <li class="list-group-item">
@@ -175,11 +175,11 @@
                                         </li>
                                     </ul>                                    
                                     <!-- Modal -->
-                                    <div class="modal fade" id="patientModal{{ explant.id }}" tabindex="-1" aria-labelledby="patientModalLabel{{ explant.id }}" aria-hidden="true">
+                                    <div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="patientModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 {% if explant.patient.pk %}
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'patient_update' explant.patient.pk %}">
+                                                    <form method="post" action="{% url 'patient_update' explant.patient.pk %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Patient' %}</h1>
@@ -223,7 +223,7 @@
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                             {% trans 'Reoperation' %}
                                             {% if user.id == explant.owner %}
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#reoperationModal{{ explant.id }}">Update</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#reoperationModal">Update</button>
                                             {% endif %}
                                         </li>
                                         <li class="list-group-item ">
@@ -252,12 +252,12 @@
                                         </li>
                                     </ul>                                    
                                     <!-- Modal -->
-                                    <div class="modal fade" id="reoperationModal{{ explant.id }}" tabindex="-1" aria-labelledby="reoperationModalLabel{{ explant.id }}" aria-hidden="true">
+                                    <div class="modal fade" id="reoperationModal" tabindex="-1" aria-labelledby="reoperationModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 {% if explant.reoperation.pk %}
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'reoperation_update' explant.reoperation.pk %}">
+                                                    <form method="post" action="{% url 'reoperation_update' explant.reoperation.pk %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Reoperation' %}</h1>
@@ -302,7 +302,7 @@
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                             {% trans 'Inlay' %}
                                             {% if user.id == explant.owner %}
-                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#inlayModal{{ explant.id }}">Update</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#inlayModal">Update</button>
                                             {% endif %}    
                                         </li>
                                         <li class="list-group-item">
@@ -378,12 +378,12 @@
                                         {% endif %}
                                     </ul>                                    
                                     <!-- Modal -->
-                                    <div class="modal fade" id="inlayModal{{ explant.id }}" tabindex="-1" aria-labelledby="inlayModalLabel{{ explant.id }}" aria-hidden="true">
+                                    <div class="modal fade" id="inlayModal" tabindex="-1" aria-labelledby="inlayModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 {% if explant.inlay.pk %}
                                                     <!-- Update Form ... -->
-                                                    <form id="update-form{{ explant.id }}" method="post" action="{% url 'inlay_update' explant.inlay.pk %}">
+                                                    <form method="post" action="{% url 'inlay_update' explant.inlay.pk %}">
                                                         {% csrf_token %}
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Inlay' %}</h1>
@@ -412,15 +412,9 @@
                                                             <div class='form-group row mb-3'>
                                                                 <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße }}'>
+                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße|stringformat:"f" }}'>
                                                                 </div>
                                                             </div>
-                                                            <!-- <div class='form-group row'>
-                                                                <label for='recycelt' class="col-sm-3 col-form-label">{#{% trans 'recycelt' %}#}:</label>
-                                                                <div class="col-sm-9 d-flex align-items-center">
-                                                                    <input type='checkbox' class='form-check-input' id='recycelt' name='recycelt' value="true" {#{% if explant.inlay.recycelt %}checked{% endif %}#}>
-                                                                </div>
-                                                            </div> -->
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-outline-primary">Update</button>
@@ -447,7 +441,7 @@
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 {% trans 'Kopf' %}
                                                 {% if user.id == explant.owner %}
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal{{ explant.id }}">Update</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#kopfModal">Update</button>
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
@@ -523,12 +517,12 @@
                                             {% endif %}
                                         </ul>                                                                            
                                         <!-- Modal -->
-                                        <div class="modal fade" id="kopfModal{{ explant.id }}" tabindex="-1" aria-labelledby="kopftModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal fade" id="kopfModal" tabindex="-1" aria-labelledby="kopftModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     {% if explant.kopf.pk %}
                                                         <!-- Update Form ... -->
-                                                        <form id="update-form{{ explant.id }}" method="post" action="{% url 'kopf_update' explant.kopf.pk %}">
+                                                        <form method="post" action="{% url 'kopf_update' explant.kopf.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Kopf' %}</h1>
@@ -557,7 +551,7 @@
                                                                 <div class='form-group row mb-3'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße }}'>
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße|stringformat:"f" }}'>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -586,7 +580,7 @@
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 {% trans 'Femurkomponente' %}
                                                 {% if user.id == explant.owner %}
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal{{ explant.id }}">Update</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#femurkomponenteModal">Update</button>
                                                 {% endif %}    
                                             </li>
                                             <li class="list-group-item">
@@ -662,12 +656,12 @@
                                             {% endif %}
                                         </ul>                                  
                                         <!-- Modal -->
-                                        <div class="modal fade" id="femurkomponenteModal{{ explant.id }}" tabindex="-1" aria-labelledby="femurkomponenteModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal fade" id="femurkomponenteModal" tabindex="-1" aria-labelledby="femurkomponenteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     {% if explant.femurkomponente.pk %}
                                                         <!-- Update Form ... -->
-                                                        <form id="update-form{{ explant.id }}" method="post" action="{% url 'femurkomponente_update' explant.femurkomponente.pk %}">
+                                                        <form method="post" action="{% url 'femurkomponente_update' explant.femurkomponente.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Femurkomponente' %}</h1>
@@ -696,7 +690,7 @@
                                                                 <div class='form-group row mb-3'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße }}'>
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße|stringformat:"f" }}'>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -726,7 +720,7 @@
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 {% trans 'Schaft' %}
                                                 {% if user.id == explant.owner %}
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal{{ explant.id }}">Update</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#schaftModal">Update</button>
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
@@ -802,12 +796,12 @@
                                             {% endif %}
                                         </ul>                                        
                                         <!-- Modal -->
-                                        <div class="modal fade" id="schaftModal{{ explant.id }}" tabindex="-1" aria-labelledby="schaftModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal fade" id="schaftModal" tabindex="-1" aria-labelledby="schaftModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     {% if explant.schaft.pk %}
                                                         <!-- Update Form ... -->
-                                                        <form id="update-form{{ explant.id }}" method="post" action="{% url 'schaft_update' explant.schaft.pk %}">
+                                                        <form method="post" action="{% url 'schaft_update' explant.schaft.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Schaft' %}</h1>
@@ -836,7 +830,7 @@
                                                                 <div class='form-group row mb-3'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße }}'>
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße|stringformat:"f" }}'>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -865,7 +859,7 @@
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 {% trans 'Tibiaplateau' %}
                                                 {% if user.id == explant.owner %}
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal{{ explant.id }}">Update</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#tibiaplateauModal">Update</button>
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
@@ -941,12 +935,12 @@
                                             {% endif %}
                                         </ul>                                        
                                         <!-- Modal -->
-                                        <div class="modal fade" id="tibiaplateauModal{{ explant.id }}" tabindex="-1" aria-labelledby="tibiaplateauModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal fade" id="tibiaplateauModal" tabindex="-1" aria-labelledby="tibiaplateauModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     {% if explant.tibiaplateau.pk %}
                                                         <!-- Update Form ... -->
-                                                        <form id="update-form{{ explant.id }}" method="post" action="{% url 'tibiaplateau_update' explant.tibiaplateau.pk %}">
+                                                        <form method="post" action="{% url 'tibiaplateau_update' explant.tibiaplateau.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Tibiaplateau' %}</h1>
@@ -975,7 +969,7 @@
                                                                 <div class='form-group row mb-3'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße }}'>
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße|stringformat:"f" }}'>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1005,7 +999,7 @@
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 {% trans 'Pfanne' %}
                                                 {% if user.id == explant.owner %}
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal{{ explant.id }}">Update</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#pfanneModal">Update</button>
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
@@ -1081,12 +1075,12 @@
                                             {% endif %}
                                         </ul>                                                                                    
                                         <!-- Modal -->
-                                        <div class="modal fade" id="pfanneModal{{ explant.id }}" tabindex="-1" aria-labelledby="pfanneModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal fade" id="pfanneModal" tabindex="-1" aria-labelledby="pfanneModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     {% if explant.pfanne.pk %}
                                                         <!-- Update Form ... -->
-                                                        <form id="update-form{{ explant.id }}" method="post" action="{% url 'pfanne_update' explant.pfanne.pk %}">
+                                                        <form method="post" action="{% url 'pfanne_update' explant.pfanne.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Pfanne' %}</h1>
@@ -1115,7 +1109,7 @@
                                                                 <div class='form-group row mb-3'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße }}'>
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße|stringformat:"f" }}'>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1144,7 +1138,7 @@
                                             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
                                                 {% trans 'Patellaersatz' %}
                                                 {% if user.id == explant.owner %}
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal{{ explant.id }}">Update</button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#patellaersatzModal">Update</button>
                                                 {% endif %}
                                             </li>
                                             <li class="list-group-item">
@@ -1220,12 +1214,12 @@
                                             {% endif %}
                                         </ul>                                        
                                         <!-- Modal -->
-                                        <div class="modal fade" id="patellaersatzModal{{ explant.id }}" tabindex="-1" aria-labelledby="patellaersatzModalLabel{{ explant.id }}" aria-hidden="true">
+                                        <div class="modal fade" id="patellaersatzModal" tabindex="-1" aria-labelledby="patellaersatzModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     {% if explant.patellaersatz.pk %}
                                                         <!-- Update Form ... -->
-                                                        <form id="update-form{{ explant.id }}" method="post" action="{% url 'patellaersatz_update' explant.patellaersatz.pk %}">
+                                                        <form method="post" action="{% url 'patellaersatz_update' explant.patellaersatz.pk %}">
                                                             {% csrf_token %}
                                                             <div class="modal-header">
                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update {% trans 'Patellaersatz' %}</h1>
@@ -1254,7 +1248,7 @@
                                                                 <div class='form-group row mb-3'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße }}'>
+                                                                        <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße|stringformat:"f" }}'>
                                                                     </div>
                                                                 </div>
                                                             </div>

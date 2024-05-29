@@ -43,10 +43,9 @@ class ReoperationForm(ModelForm):
             'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
         }
 
-class InlayForm(forms.ModelForm):
+class KomponentenForm(forms.ModelForm):
     class Meta:
-        model = Inlay
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
+        fields = ('hersteller', 'modell', 'material', 'groeße')
         labels = {
             'hersteller': '',
             'modell': '',
@@ -54,113 +53,39 @@ class InlayForm(forms.ModelForm):
             'groeße': '',
         }
         widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
+            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}),
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
+            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}),
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
         }
 
-class KopfForm(ModelForm):
-    class Meta:
-        model = Kopf
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        labels = {
-            'hersteller': '',
-            'modell': '',
-            'material': '',
-            'groeße': '',
-        }
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-        }   
+class InlayForm(KomponentenForm):
+    class Meta(KomponentenForm.Meta):
+        model = Inlay 
 
-class FemurkomponenteForm(ModelForm):
-    class Meta:
-        model = Femurkomponente
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        labels = {
-            'hersteller': '',
-            'modell': '',
-            'material': '',
-            'groeße': '',
-        }
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-        }
+class KopfForm(KomponentenForm):
+    class Meta(KomponentenForm.Meta):
+        model = Kopf  
 
-class SchaftForm(ModelForm):
-    class Meta:
-        model = Schaft
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        labels = {
-            'hersteller': '',
-            'modell': '',
-            'material': '',
-            'groeße': '',
-        }
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-        }   
+class FemurkomponenteForm(KomponentenForm):
+    class Meta(KomponentenForm.Meta):
+        model = Femurkomponente 
 
-class TibiaplateauForm(ModelForm):
-    class Meta:
-        model = Tibiaplateau
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        labels = {
-            'hersteller': '',
-            'modell': '',
-            'material': '',
-            'groeße': '',
-        }
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-        }
+class SchaftForm(KomponentenForm):
+    class Meta(KomponentenForm.Meta):
+        model = Schaft 
+    
+class TibiaplateauForm(KomponentenForm):
+    class Meta(KomponentenForm.Meta):
+        model = Tibiaplateau 
 
-class PfanneForm(ModelForm):
-    class Meta:
-        model = Pfanne
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        labels = {
-            'hersteller': '',
-            'modell': '',
-            'material': '',
-            'groeße': '',
-        }
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-        }
+class PfanneForm(KomponentenForm):
+    class Meta(KomponentenForm.Meta):
+        model = Pfanne 
 
-class PatellaersatzForm(ModelForm):
-    class Meta:
-        model = Patellaersatz
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        labels = {
-            'hersteller': '',
-            'modell': '',
-            'material': '',
-            'groeße': '',
-        }
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
-            'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
-        }    
+class PatellaersatzForm(KomponentenForm):
+    class Meta(KomponentenForm.Meta):
+        model = Patellaersatz    
 
 class ExplantatForm(ModelForm):
     lagerort_form = LagerortForm()
@@ -248,82 +173,43 @@ class ReoperationUpdateForm(ModelForm):
             'reoperation_datum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date'}),
         }
 
-class InlayUpdateForm(ModelForm):
+class KomponentenUpdateForm(forms.ModelForm):
     class Meta:
+        fields = ('hersteller', 'modell', 'material', 'groeße')
+        widgets = {
+            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
+            'modell': forms.TextInput(attrs={'class': 'form-control'}),
+            'material': forms.TextInput(attrs={'class': 'form-control'}), 
+            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+        }        
+
+class InlayUpdateForm(KomponentenUpdateForm):
+    class Meta(KomponentenUpdateForm.Meta):
         model = Inlay
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-        }
 
-class KopfUpdateForm(ModelForm):
-    class Meta:
-        model = Kopf
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-        }   
+class KopfUpdateForm(KomponentenUpdateForm):
+    class Meta(KomponentenUpdateForm.Meta):
+        model = Kopf   
 
-class FemurkomponenteUpdateForm(ModelForm):
-    class Meta:
-        model = Femurkomponente
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-        }   
+class FemurkomponenteUpdateForm(KomponentenUpdateForm):
+    class Meta(KomponentenUpdateForm.Meta):
+        model = Femurkomponente   
 
-class SchaftUpdateForm(ModelForm):
-    class Meta:
-        model = Schaft
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-        }   
+class SchaftUpdateForm(KomponentenUpdateForm):
+    class Meta(KomponentenUpdateForm.Meta):
+        model = Schaft   
 
-class TibiaplateauUpdateForm(ModelForm):
-    class Meta:
+class TibiaplateauUpdateForm(KomponentenUpdateForm):
+    class Meta(KomponentenUpdateForm.Meta):
         model = Tibiaplateau
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-        }
 
-class PfanneUpdateForm(ModelForm):
-    class Meta:
+class PfanneUpdateForm(KomponentenUpdateForm):
+    class Meta(KomponentenUpdateForm.Meta):
         model = Pfanne
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-        }
 
-class PatellaersatzUpdateForm(ModelForm):
-    class Meta:
-        model = Patellaersatz
-        fields = ('hersteller', 'modell', 'material', 'groeße') 
-        widgets = {
-            'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
-            'modell': forms.TextInput(attrs={'class': 'form-control'}),
-            'material': forms.TextInput(attrs={'class': 'form-control'}), 
-            'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
-        }             
+class PatellaersatzUpdateForm(KomponentenUpdateForm):
+    class Meta(KomponentenUpdateForm.Meta):
+        model = Patellaersatz             
 
 # ----------------------- User Profile Forms ----------------------- #
 class ProfileUpdateForm(forms.ModelForm):

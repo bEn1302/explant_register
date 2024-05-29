@@ -140,13 +140,9 @@ def update_model(request, model_cls, form_cls, redirect_url, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'Daten erfolgreich aktualisiert.')
-            return redirect(redirect_url)
         else:
             error_messages = "\n".join([f"{field}: {', '.join(errors)}" for field, errors in form.errors.items()])
             messages.error(request, f'Fehler: {error_messages}')
-            return redirect(redirect_url)
-    else:
-        form = form_cls(instance=obj)
 
     return redirect(redirect_url)
 

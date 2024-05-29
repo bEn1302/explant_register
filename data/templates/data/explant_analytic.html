@@ -1,4 +1,4 @@
-{% extends 'data/base.html' %} {% block charts %}
+{% extends 'data/base.html' %} {% load i18n %} {% block charts %}
 
 {% if user.is_authenticated %}
 <title>Analytics</title>
@@ -10,7 +10,6 @@
         <!-- Hauptdiagramm -->
       </canvas> 
       <script>
-        // Rohdaten
         const rawData = [
             { label: "{% trans 'Inlays' %}", quantity: "{{ bar_chart_data.inlays_count }}", recycled: "{{ bar_chart_data.recycled_inlays_count }}" },
             { label: "{% trans 'Köpfe' %}", quantity: "{{ bar_chart_data.köpfe_count }}", recycled: "{{ bar_chart_data.recycled_köpfe_count }}" },
@@ -23,15 +22,12 @@
             { label: "{% trans 'Explantate' %}", quantity: "{{ bar_chart_data.explantate_count }}", recycled: "" },
         ];
     
-        // Filtere die Daten, um Einträge mit quantity > 0 zu entfernen
         const filteredData = rawData.filter(item => parseInt(item.quantity) > 0 || parseInt(item.recycled) > 0);
     
-        // Extrahiere Labels und Daten für das Diagramm
         const labels = filteredData.map(item => item.label);
         const quantityData = filteredData.map(item => parseInt(item.quantity));
         const recycledChartData = filteredData.map(item => parseInt(item.recycled));
     
-        // Rendere das Chart nur, wenn es Daten gibt
         if (labels.length > 0) {
             const mixedChart = new Chart(document.getElementById('mixedChart').getContext('2d'), {
                 type: 'bar',
