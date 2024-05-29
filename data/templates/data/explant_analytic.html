@@ -33,7 +33,7 @@
                 type: 'bar',
                 data: {
                     datasets: [{
-                        label: 'quantity',
+                        label: "{% trans 'Anzahl' %}",
                         data: quantityData,
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
@@ -41,7 +41,7 @@
                         // this dataset is drawn below
                         order: 2
                     }, {
-                        label: 'recycled',
+                        label: "{% trans 'recycelt' %}",
                         data: recycledChartData,
                         type: 'line',
                         backgroundColor: 'rgba(46, 204, 113, 0.2)',
@@ -78,7 +78,7 @@
         const doughnutChart = new Chart(doughnutCanvas, {
             type: 'doughnut',
             data: {
-                labels: ['Hüfte', 'Knie'],
+                labels: ["{% trans 'Hüftexplantate' %}", "{% trans 'Knieexplantate' %}"],
                 datasets: [{
                     label: 'Explantate',
                     data: [

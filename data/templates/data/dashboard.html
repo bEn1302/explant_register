@@ -33,7 +33,7 @@
           type: 'bar',
           data: {
               datasets: [{
-                  label: 'quantity',
+                  label: "{% trans 'Anzahl' %}",
                   data: quantityData,
                   backgroundColor: 'rgba(54, 162, 235, 0.2)',
                   borderColor: 'rgba(54, 162, 235, 1)',
@@ -41,7 +41,7 @@
                   // this dataset is drawn below
                   order: 2
               }, {
-                  label: 'recycled',
+                  label: "{% trans 'recycelt' %}",
                   data: recycledChartData,
                   type: 'line',
                   backgroundColor: 'rgba(46, 204, 113, 0.2)',
@@ -68,7 +68,9 @@
   }
 </script>
 <!--Table-->
-<h2>{% trans 'Kürzlich hinzugefügt' %}</h2>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-2 mb-3 border-bottom">
+    <h2>{% trans 'Kürzlich hinzugefügt' %}</h2>
+</div>
     <div class="container mt-3 mb-2">
       <div class="container shadow-sm rounded py-1">
         <div class="table-responsive">
@@ -89,8 +91,8 @@
             <tbody>
                 {% for explant in explants %}
                     <tr class="table-row">
-                        <td>{{ explant.id }}</td>
-                        <td>{{ explant.ursache|truncate:25 }}</td>
+                        <td class="text-center">{{ explant.id }}</td>
+                        <td class="text-center">{{ explant.ursache|truncate:25 }}</td>
                         <td class="align-middle text-center">
                             {% if explant.verfuegbarkeit %}
                                 <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
@@ -98,11 +100,11 @@
                                 <i class="bi bi-x-circle-fill text-danger" title="Nicht Verfügbar"></i>
                             {% endif %}
                         </td>
-                        <td>{{ explant.herkunftsort }}</td>
-                        <td>{{ explant.entnahme_datum }}</td>
-                        <td>{{ explant.eingang_datum }}</td>
-                        <td>{{ explant.bruchgeschehen|truncate:25 }}</td>
-                        <td>{{ explant.nutzungsdauer }}</td>
+                        <td class="text-center">{{ explant.herkunftsort }}</td>
+                        <td class="text-center">{{ explant.entnahme_datum }}</td>
+                        <td class="text-center">{{ explant.eingang_datum }}</td>
+                        <td class="text-center">{{ explant.bruchgeschehen|truncate:25 }}</td>
+                        <td class="text-center">{{ explant.nutzungsdauer }}</td>
                         <td class="align-middle text-center">
                             {% if explant.reinigung %}
                                 <i class="bi bi-check-circle-fill text-success" title="Verfügbar"></i>
