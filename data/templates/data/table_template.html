@@ -173,6 +173,26 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    {% trans 'Größe' %}:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.patient.groeße }} m
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    {% trans 'Geschlecht' %}:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.patient.geschlecht }}
+                                                </div>
+                                            </div>
+                                        </li>
                                     </ul>                                    
                                     <!-- Modal -->
                                     <div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="patientModalLabel" aria-hidden="true">
@@ -192,10 +212,22 @@
                                                                     <input type='date' class='form-control' id='geburtsdatum' name='geburtsdatum' value='{{ explant.patient.geburtsdatum|date:'Y-m-d' }}'>
                                                                 </div>
                                                             </div>
-                                                            <div class='form-group row'>'
+                                                            <div class='form-group row mb-3'>
                                                                 <label for='gewicht' class="col-sm-3 col-form-label">{% trans 'Gewicht' %}:</label>
                                                                 <div class="col-sm-8">
                                                                     <input type='number' step="any" class='form-control' id='gewicht' name='gewicht' value='{{ explant.patient.gewicht|stringformat:"f" }}'>
+                                                                </div>                                                               
+                                                            </div>
+                                                            <div class='form-group row mb-3'>
+                                                                <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.patient.groeße|stringformat:"f" }}'>
+                                                                </div>                                                               
+                                                            </div>
+                                                            <div class='form-group row'>
+                                                                <label for='geschlecht' class="col-sm-3 col-form-label">{% trans 'Geschlecht' %}:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type='text' class='form-control' id='geschlecht' name='geschlecht' value='{{ explant.patient.geschlecht }}'>
                                                                 </div>                                                               
                                                             </div>
                                                         </div>
@@ -409,7 +441,7 @@
                                                                     <input type='text' class='form-control' id='material' name='material' value='{{ explant.inlay.material }}'>
                                                                 </div>
                                                             </div>
-                                                            <div class='form-group row mb-3'>
+                                                            <div class='form-group row'>
                                                                 <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                 <div class="col-sm-9">
                                                                     <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.inlay.groeße|stringformat:"f" }}'>
@@ -548,7 +580,7 @@
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.kopf.material }}'>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group row mb-3'>
+                                                                <div class='form-group row'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.kopf.groeße|stringformat:"f" }}'>
@@ -687,7 +719,7 @@
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.femurkomponente.material }}'>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group row mb-3'>
+                                                                <div class='form-group row'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.femurkomponente.groeße|stringformat:"f" }}'>
@@ -827,7 +859,7 @@
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.schaft.material }}'>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group row mb-3'>
+                                                                <div class='form-group row'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.schaft.groeße|stringformat:"f" }}'>
@@ -966,7 +998,7 @@
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.tibiaplateau.material }}'>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group row mb-3'>
+                                                                <div class='form-group row'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.tibiaplateau.groeße|stringformat:"f" }}'>
@@ -1106,7 +1138,7 @@
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.pfanne.material }}'>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group row mb-3'>
+                                                                <div class='form-group row'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.pfanne.groeße|stringformat:"f" }}'>
@@ -1245,7 +1277,7 @@
                                                                         <input type='text' class='form-control' id='material' name='material' value='{{ explant.patellaersatz.material }}'>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group row mb-3'>
+                                                                <div class='form-group row'>
                                                                     <label for='groeße' class="col-sm-3 col-form-label">{% trans 'Größe' %}:</label>
                                                                     <div class="col-sm-9">
                                                                         <input type='number' step="any" class='form-control' id='groeße' name='groeße' value='{{ explant.patellaersatz.groeße|stringformat:"f" }}'>

@@ -234,10 +234,12 @@ class LagerortUpdateForm(ModelForm):
 class PatientUpdateForm(ModelForm):
     class Meta:
         model = Patient
-        fields = ('geburtsdatum', 'gewicht')
+        fields = ('geburtsdatum', 'gewicht', 'groeße', 'geschlecht')
         widgets = { 
             'geburtsdatum': forms.DateInput(attrs={'class': 'form-control', 'type': 'date',}),
             'gewicht': forms.NumberInput(attrs={'class': 'form-control',}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control',}),
+            'geschlecht': forms.TextInput(attrs={'class': 'form-control',}),
         }
 
 class ReoperationUpdateForm(ModelForm):

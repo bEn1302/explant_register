@@ -96,13 +96,13 @@ class Reoperation(models.Model):
 class Patient(models.Model):
     geburtsdatum = models.DateField(verbose_name=_('Geburtsdatum'))
     gewicht = models.FloatField(verbose_name=_('Gewicht'))          # in kg
-    # groesse = models.FloatField(verbose_name=_('Größe'))            # in m
-    # geschlecht = models.CharField(verbose_name=_('Geschlecht'))     # männlich, weiblich, divers
-    # aktivitaet = models.TextField(verbose_name=_('Aktivität'))      # viel/wenig Bewegung --> was etc.
-    # begleiterkrankungen = models.TextField(verbose_name=_('Begleiterkrankungen'))
-    # nachuntersuchungen = models.TextField(verbose_name=_('Nachuntersuchungen'))
-    # med_vorgeschichte = models.TextField(verbose_name=_('Medizinische Vorgeschichte'))
-    # roentgenbilder = models.ImageField(verbose_name=_('Röntgenbilder'), blank=True, null=True, upload_to='images/')
+    groeße = models.FloatField(verbose_name=_('Größe'), null=True)            # in m
+    geschlecht = models.CharField(verbose_name=_('Geschlecht'), max_length=20, null=True)     # männlich, weiblich, divers
+    aktivitaet = models.TextField(verbose_name=_('Aktivität'), blank=True, null=True)      # viel/wenig Bewegung --> was etc.
+    begleiterkrankungen = models.TextField(verbose_name=_('Begleiterkrankungen'), blank=True, null=True)
+    nachuntersuchungen = models.TextField(verbose_name=_('Nachuntersuchungen'), blank=True, null=True)
+    med_vorgeschichte = models.TextField(verbose_name=_('Med. Vorgeschichte'), blank=True, null=True)
+    roentgenbilder = models.ImageField(verbose_name=_('Röntgenbilder'), blank=True, null=True, upload_to='images/')
 
     class Meta:
         verbose_name_plural = _("Patienten")

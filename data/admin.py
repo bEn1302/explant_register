@@ -55,10 +55,10 @@ class ReoperationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 @admin.register(Patient)
 class PatientAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('id', 'geburtsdatum', 'gewicht')
+    list_display = ('id', 'geburtsdatum', 'gewicht', 'groeße', 'geschlecht', 'aktivitaet', 'begleiterkrankungen', 'nachuntersuchungen', 'med_vorgeschichte', 'roentgenbilder')
     ordering = ('id',)
-    search_fields = ('id', 'geburtsdatum', 'gewicht')
-    list_filter = ('geburtsdatum', 'gewicht')
+    search_fields = ('id', 'geburtsdatum', 'gewicht', 'groeße', 'geschlecht', 'aktivitaet', 'begleiterkrankungen', 'nachuntersuchungen', 'med_vorgeschichte')
+    list_filter = ('geburtsdatum', 'gewicht', 'geschlecht')
 
 
 # ------------------- Komponenten ----------------------- #
