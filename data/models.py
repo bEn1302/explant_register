@@ -124,7 +124,7 @@ class Lagerort(models.Model):
 class Explantat(models.Model):
     ursache = models.TextField(verbose_name=_('Ursache'))
     verfuegbarkeit = models.BooleanField(verbose_name=_('Verfügbarkeit'))
-    herkunftsort = models.CharField(verbose_name=_('Herkunftsort'))
+    herkunftsort = models.CharField(verbose_name=_('Herkunftsort'), max_length=100)
     entnahme_datum = models.DateField(verbose_name=_('Entnahmedatum'), blank=True, null=True)
     eingang_datum = models.DateField(verbose_name=_('Eingangsdatum'))
     bruchgeschehen = models.TextField(verbose_name=_('Bruchgeschehen'))
