@@ -69,6 +69,11 @@ class Pfanne(KomponentenDetails):
     class Meta:
         verbose_name_plural = _("Pfannen")
 
+class Stent(KomponentenDetails):
+    legierung = models.CharField(max_length=100, verbose_name=_("Legierung"))
+    class Meta:
+        verbose_name_plural = _("Stents")
+
 class Reoperation(models.Model):
     reoperation = models.BooleanField(verbose_name=_('Reoperation'))
     reoperation_datum = models.DateField(verbose_name=_('Reoperationsdatum'))
@@ -143,6 +148,8 @@ class Explantat(models.Model):
     femurkomponente = models.ForeignKey(Femurkomponente,verbose_name=_('Femurkomponente') ,blank=True, null=True, on_delete=models.PROTECT)
     tibiaplateau = models.ForeignKey(Tibiaplateau,verbose_name=_('Tibiaplateau') ,blank=True, null=True, on_delete=models.PROTECT)
     patellaersatz = models.ForeignKey(Patellaersatz,verbose_name=_('Patellaersatz') ,blank=True, null=True, on_delete=models.PROTECT)
+    # Stents
+    stent = models.ForeignKey(Stent, verbose_name=_('Stent') ,blank=True, null=True, on_delete=models.PROTECT)
     # owner
     owner = models.IntegerField(verbose_name=_('Besitzer'), blank=False, default=1)
     created_at = models.DateTimeField(default=timezone.now)
@@ -212,3 +219,12 @@ class PatellaersatzDetails(models.Model):
 
     class Meta:
         verbose_name_plural = _("Patellaersätze Details")
+
+# Stent
+class StentDetails(models.Model):
+    explantat = models.ForeignKey(Explantat, on_delete=models.CASCADE)
+    stent = models.ForeignKey(Stent, on_delete=models.CASCADE)
+    recycelt = models.BooleanField(verbose_name=_("recycelt"), default=False)
+
+    class Meta:
+        verbose_name_plural = _("Stents Details")

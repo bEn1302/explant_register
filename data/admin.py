@@ -31,6 +31,10 @@ class PatellaersatzDetailsInline(admin.TabularInline):
     model = PatellaersatzDetails
     extra = 0
 
+class StentDetailsInline(admin.TabularInline):
+    model = StentDetails
+    extra = 0
+
 admin.site.register(UserProfile, ImportExportModelAdmin)
 
 @admin.register(Explantat)
@@ -171,6 +175,22 @@ class PatellaersatzAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(PatellaersatzDetails)
 class PatellaersatzDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id', 'explantat', 'patellaersatz', 'recycelt')
+    ordering = ('id',)
+    search_fields = ('id', 'explantat', 'recycelt')
+    list_filter = ('explantat', 'recycelt')
+
+# Stent
+@admin.register(Stent)
+class StentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    inlines = [StentDetailsInline]
+    list_display = ('id', 'hersteller', 'modell', 'material', 'legierung', 'groeße')
+    ordering = ('id',)
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'legierung', 'groeße')
+    list_filter = ('hersteller', 'modell', 'material', 'legierung', 'groeße')
+
+@admin.register(StentDetails)
+class StentDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('id', 'explantat', 'stent', 'recycelt')
     ordering = ('id',)
     search_fields = ('id', 'explantat', 'recycelt')
     list_filter = ('explantat', 'recycelt')    
