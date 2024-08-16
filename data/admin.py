@@ -71,10 +71,10 @@ class PatientAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Inlay)
 class InlayAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     inlines = [InlayDetailsInline]
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße', 'gliding_pairing')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße', 'gliding_pairing')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße', 'gliding_pairing')
 
 @admin.register(InlayDetails)
 class InlayDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -87,10 +87,10 @@ class InlayDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Kopf)
 class KopfAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     inlines = [KopfDetailsInline]
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße', 'gliding_pairing')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße', 'gliding_pairing')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße', 'gliding_pairing')
 
 @admin.register(KopfDetails)
 class KopfDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -103,10 +103,10 @@ class KopfDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Pfanne)
 class PfanneAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     inlines = [PfanneDetailsInline]
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating', 'gliding_pairing')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating', 'gliding_pairing')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating', 'gliding_pairing')
 
 @admin.register(PfanneDetails)
 class PfanneDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -119,10 +119,10 @@ class PfanneDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Schaft)
 class SchaftAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     inlines = [SchaftDetailsInline]
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating', 'design')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating', 'design')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating', 'design')
 
 @admin.register(SchaftDetails)
 class SchaftDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -135,10 +135,10 @@ class SchaftDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Tibiaplateau)
 class TibiaplateauAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     inlines = [TibiaplateauDetailsInline]
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating')
 
 @admin.register(TibiaplateauDetails)
 class TibiaplateauDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -151,10 +151,10 @@ class TibiaplateauDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 @admin.register(Femurkomponente)
 class FemurkomponenteAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     inlines = [FemurkomponenteDetailsInline]
-    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße')
+    list_display = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating')
     ordering = ('id',)
-    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße')
-    list_filter = ('hersteller', 'modell', 'material', 'groeße')
+    search_fields = ('id', 'hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating')
+    list_filter = ('hersteller', 'modell', 'material', 'groeße', 'fixation_type', 'surface_coating')
 
 @admin.register(FemurkomponenteDetails)
 class FemurkomponenteDetailsAdmin(ImportExportModelAdmin, admin.ModelAdmin):

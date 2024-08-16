@@ -7,12 +7,14 @@ from .models import *
 class LagerortForm(ModelForm):
     class Meta:
         model = Lagerort
-        fields = ('schrank', 'kiste')
+        fields = ('einrichtung', 'schrank', 'kiste')
         labels = {
+            'einrichtung': '',
             'schrank': '',
             'kiste': '',
         }
         widgets = {
+            'einrichtung': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Einrichtung')}),
             'schrank': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Schrank')}),
             'kiste': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Kiste')}),
         }
@@ -20,14 +22,28 @@ class LagerortForm(ModelForm):
 class PatientForm(ModelForm):
     class Meta:
         model = Patient
-        fields = ('geburtsdatum','gewicht')
+        fields = ('geburtsdatum','gewicht','groeße','geschlecht','aktivitaet','begleiterkrankungen','nachuntersuchungen','med_vorgeschichte','roentgenbilder')
         labels = {
             'geburtsdatum': _('Geburtsdatum'),
             'gewicht': '',
+            'groeße': '',
+            'geschlecht': _('Geschlecht'),
+            'aktivitaet': '',
+            'begleiterkrankungen': '',
+            'nachuntersuchungen': '',
+            'med_vorgeschichte': '',
+            'roentgenbilder': ''
         }
         widgets = { 
             'geburtsdatum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
             'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Gewicht')}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Größe')}),
+            'geschlecht': forms.Select(attrs={'class': 'form-control','placeholder': _('Geschlecht')}),
+            'aktivitaet': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Aktivität')}),
+            'begleiterkrankungen': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Begleiterkrankungen')}),
+            'nachuntersuchungen': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Nachuntersuchungen')}),
+            'med_vorgeschichte': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Med. Vorgeschichte')}),
+            'roentgenbilder': forms.FileInput(attrs={'class': 'form-control','placeholder': _('Röntgenbilder')}),
         }
 
 class ReoperationForm(ModelForm):
@@ -45,23 +61,36 @@ class ReoperationForm(ModelForm):
 
 class KomponentenForm(forms.ModelForm):
     class Meta:
-        fields = ('hersteller', 'modell', 'material', 'groeße')
+        fields = ('hersteller', 'modell', 'material', 'groeße', 'mrt_compatibility', 'revision_friendly')
         labels = {
             'hersteller': '',
             'modell': '',
             'material': '',
             'groeße': '',
+            'mrt_compatibility': _("MRT-Kompatibilität"),
+            'revision_friendly': _("Revisionstauglichkeit")
         }
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Hersteller')}),
             'modell': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Modell')}),
             'material': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Material')}),
             'groeße': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _('Größe')}),
+            'mrt_compatibility': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input'}),
+            'revision_friendly': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input'}),
         }
 
 class InlayForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
         model = Inlay
+        fields = KomponentenForm.Meta.fields + ('gliding_pairing',)
+        labels = {
+            **KomponentenForm.Meta.labels,
+            'gliding_pairing': _("Gleitpaarung"),
+        }
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'gliding_pairing': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class InlayDetailsForm(forms.ModelForm):
     class Meta:
@@ -77,6 +106,15 @@ class InlayDetailsForm(forms.ModelForm):
 class KopfForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
         model = Kopf
+        fields = KomponentenForm.Meta.fields + ('gliding_pairing',)
+        labels = {
+            **KomponentenForm.Meta.labels,
+            'gliding_pairing': _("Gleitpaarung"),
+        }
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'gliding_pairing': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class KopfDetailsForm(forms.ModelForm):
     class Meta:
@@ -91,7 +129,18 @@ class KopfDetailsForm(forms.ModelForm):
 
 class FemurkomponenteForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
-        model = Femurkomponente 
+        model = Femurkomponente
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'surface_coating')
+        labels = {
+            **KomponentenForm.Meta.labels,
+            'fixation_type': _("Fixationsmethode"),
+            'surface_coating': _("Oberflächenbeschichtung"),
+        }
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+        } 
 
 class FemurkomponenteDetailsForm(forms.ModelForm):
     class Meta:
@@ -106,6 +155,19 @@ class FemurkomponenteDetailsForm(forms.ModelForm):
 class SchaftForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
         model = Schaft
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'design', 'surface_coating')
+        labels = {
+            **KomponentenForm.Meta.labels,
+            'fixation_type': _("Fixationsmethode"),
+            'design': 'Design',
+            'surface_coating': _("Oberflächenbeschichtung"),
+        }
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'design': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class SchaftDetailsForm(forms.ModelForm):
     class Meta:
@@ -120,7 +182,18 @@ class SchaftDetailsForm(forms.ModelForm):
     
 class TibiaplateauForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
-        model = Tibiaplateau 
+        model = Tibiaplateau
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'surface_coating')
+        labels = {
+            **KomponentenForm.Meta.labels,
+            'fixation_type': _("Fixationsmethode"),
+            'surface_coating': _("Oberflächenbeschichtung"),
+        }
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class TibiaplateauDetailsForm(forms.ModelForm):
     class Meta:
@@ -135,7 +208,20 @@ class TibiaplateauDetailsForm(forms.ModelForm):
 
 class PfanneForm(KomponentenForm):
     class Meta(KomponentenForm.Meta):
-        model = Pfanne 
+        model = Pfanne
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'surface_coating', 'gliding_pairing')
+        labels = {
+            **KomponentenForm.Meta.labels,
+            'fixation_type': _("Fixationsmethode"),
+            'surface_coating': _("Oberflächenbeschichtung"),
+            'gliding_pairing': _("Gleitpaarung")
+        }
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+            'gliding_pairing': forms.Select(attrs={'class': 'form-control'}),
+        } 
 
 class PfanneDetailsForm(forms.ModelForm):
     class Meta:
@@ -225,8 +311,9 @@ class ExplantatForm(ModelForm):
 class LagerortUpdateForm(ModelForm):
     class Meta:
         model = Lagerort
-        fields = ('schrank', 'kiste')
+        fields = ('einrichtung', 'schrank', 'kiste')
         widgets = {
+            'einrichtung':forms.TextInput(attrs={'class': 'form-control'}),
             'schrank': forms.NumberInput(attrs={'class': 'form-control'}),
             'kiste': forms.NumberInput(attrs={'class': 'form-control'}),
         }
@@ -234,12 +321,17 @@ class LagerortUpdateForm(ModelForm):
 class PatientUpdateForm(ModelForm):
     class Meta:
         model = Patient
-        fields = ('geburtsdatum', 'gewicht', 'groeße', 'geschlecht')
+        fields = ('geburtsdatum', 'gewicht', 'groeße', 'geschlecht', 'aktivitaet','begleiterkrankungen','nachuntersuchungen','med_vorgeschichte','roentgenbilder')
         widgets = { 
             'geburtsdatum': forms.DateInput(attrs={'class': 'form-control', 'type': 'date',}),
             'gewicht': forms.NumberInput(attrs={'class': 'form-control',}),
             'groeße': forms.NumberInput(attrs={'class': 'form-control',}),
             'geschlecht': forms.TextInput(attrs={'class': 'form-control',}),
+            'aktivitaet': forms.TextInput(attrs={'class': 'form-control'}),
+            'begleiterkrankungen': forms.TextInput(attrs={'class': 'form-control'}),
+            'nachuntersuchungen': forms.TextInput(attrs={'class': 'form-control'}),
+            'med_vorgeschichte': forms.TextInput(attrs={'class': 'form-control'}),
+            'roentgenbilder': forms.FileInput(attrs={'class': 'form-control'}),
         }
 
 class ReoperationUpdateForm(ModelForm):
@@ -253,37 +345,75 @@ class ReoperationUpdateForm(ModelForm):
 
 class KomponentenUpdateForm(forms.ModelForm):
     class Meta:
-        fields = ('hersteller', 'modell', 'material', 'groeße')
+        fields = ('hersteller', 'modell', 'material', 'groeße', 'mrt_compatibility', 'revision_friendly')
         widgets = {
             'hersteller': forms.TextInput(attrs={'class': 'form-control'}), 
             'modell': forms.TextInput(attrs={'class': 'form-control'}),
             'material': forms.TextInput(attrs={'class': 'form-control'}), 
             'groeße': forms.NumberInput(attrs={'class': 'form-control'}),
+            'mrt_compatibility': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input'}),
+            'revision_friendly': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input'}),
         }        
 
 class InlayUpdateForm(KomponentenUpdateForm):
     class Meta(KomponentenUpdateForm.Meta):
         model = Inlay
+        fields = KomponentenForm.Meta.fields + ('gliding_pairing',)
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'gliding_pairing': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class KopfUpdateForm(KomponentenUpdateForm):
     class Meta(KomponentenUpdateForm.Meta):
-        model = Kopf   
+        model = Kopf
+        fields = KomponentenForm.Meta.fields + ('gliding_pairing',)
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'gliding_pairing': forms.Select(attrs={'class': 'form-control'}),
+        }   
 
 class FemurkomponenteUpdateForm(KomponentenUpdateForm):
     class Meta(KomponentenUpdateForm.Meta):
-        model = Femurkomponente   
+        model = Femurkomponente
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'surface_coating')
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+        }    
 
 class SchaftUpdateForm(KomponentenUpdateForm):
     class Meta(KomponentenUpdateForm.Meta):
-        model = Schaft   
+        model = Schaft
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'design', 'surface_coating')
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'design': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+        }   
 
 class TibiaplateauUpdateForm(KomponentenUpdateForm):
     class Meta(KomponentenUpdateForm.Meta):
         model = Tibiaplateau
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'surface_coating')
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class PfanneUpdateForm(KomponentenUpdateForm):
     class Meta(KomponentenUpdateForm.Meta):
         model = Pfanne
+        fields = KomponentenForm.Meta.fields + ('fixation_type', 'surface_coating', 'gliding_pairing')
+        widgets = {
+            **KomponentenForm.Meta.widgets,
+            'fixation_type': forms.Select(attrs={'class': 'form-control'}),
+            'surface_coating': forms.Select(attrs={'class': 'form-control'}),
+            'gliding_pairing': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class PatellaersatzUpdateForm(KomponentenUpdateForm):
     class Meta(KomponentenUpdateForm.Meta):

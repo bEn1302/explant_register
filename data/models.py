@@ -33,7 +33,9 @@ class KomponentenDetails(models.Model):
     hersteller = models.CharField(max_length=100, verbose_name=_("Hersteller"))
     modell = models.CharField(max_length=100, verbose_name=_("Modell"))
     material = models.CharField(max_length=100, verbose_name=_("Material"))
-    groeße = models.FloatField(verbose_name=_("Größe"))  # in cm / mm
+    groeße = models.FloatField(verbose_name=_("Größe in mm"))
+    mrt_compatibility = models.BooleanField(default=False, verbose_name=_("MRT-Kompatibilität"))
+    revision_friendly = models.BooleanField(default=False, verbose_name=_("Revisionstauglichkeit"))
 
     class Meta:
         abstract = True
@@ -42,10 +44,14 @@ class KomponentenDetails(models.Model):
         return f"{self.hersteller} - {self.modell} - {self.material} - {self.groeße}"
 
 class Femurkomponente(KomponentenDetails):
+    fixation_type = models.CharField(max_length=50, blank=True, choices=[("zementiert", _("Zementiert")), ("unzementiert", _("Unzementiert")), ("hybrid", ("Hybrid"))], verbose_name=_("Fixationsmethode"))
+    surface_coating = models.CharField(max_length=100, blank=True, choices=[("Titan", _("Titan")), ("Hydroxylapatit", _("Hydroxylapatit")), ("keine", _("Keine"))], verbose_name=_("Oberflächenbeschichtung"))
     class Meta:
         verbose_name_plural = _("Femurkomponenten")
 
 class Tibiaplateau(KomponentenDetails):
+    fixation_type = models.CharField(max_length=50, blank=True, choices=[("zementiert", _("Zementiert")), ("unzementiert", _("Unzementiert")), ("hybrid", ("Hybrid"))], verbose_name=_("Fixationsmethode"))
+    surface_coating = models.CharField(max_length=100, blank=True, choices=[("Titan", _("Titan")), ("Hydroxylapatit", _("Hydroxylapatit")), ("keine", _("Keine"))], verbose_name=_("Oberflächenbeschichtung"))
     class Meta:
         verbose_name_plural = _("Tibiaplateaus")
 
@@ -54,18 +60,26 @@ class Patellaersatz(KomponentenDetails):
         verbose_name_plural = _("Patellaersätze")
 
 class Kopf(KomponentenDetails):
+    gliding_pairing = models.CharField(max_length=100, blank=True, choices=[("metall_auf_metall", _("Metall auf Metall")), ("metall_auf_polyethylen", _("Metall auf Polyethylen")), ("keramik_auf_keramik", _("Keramik auf Keramik"))], verbose_name=_("Gleitpaarung"))
     class Meta:
         verbose_name_plural = _("Köpfe")
 
 class Inlay(KomponentenDetails):
+    gliding_pairing = models.CharField(max_length=100, blank=True, choices=[("metall_auf_metall", _("Metall auf Metall")), ("metall_auf_polyethylen", _("Metall auf Polyethylen")), ("keramik_auf_keramik", _("Keramik auf Keramik"))], verbose_name=_("Gleitpaarung"))
     class Meta:
         verbose_name_plural = _("Inlays")
 
 class Schaft(KomponentenDetails):
+    fixation_type = models.CharField(max_length=50, blank=True, choices=[("zementiert", _("Zementiert")), ("unzementiert", _("Unzementiert")), ("hybrid", ("Hybrid"))], verbose_name=_("Fixationsmethode"))
+    design = models.CharField(max_length=50, blank=True, choices=[("gerader_schaft", _("Gerader Schaft")), ("anatomisch", _("Anatomischer Schaft")), ("kurzschaft", _("Kurzschaft")), ("modular", _("Modularer Schaft"))], verbose_name=("Design"))
+    surface_coating = models.CharField(max_length=100, blank=True, choices=[("Titan", _("Titan")), ("Hydroxylapatit", _("Hydroxylapatit")), ("keine", _("Keine"))], verbose_name=_("Oberflächenbeschichtung"))
     class Meta:
         verbose_name_plural = _("Schafte")
 
 class Pfanne(KomponentenDetails):
+    fixation_type = models.CharField(max_length=50, blank=True, choices=[("zementiert", _("Zementiert")), ("unzementiert", _("Unzementiert")), ("hybrid", ("Hybrid"))], verbose_name=_("Fixationsmethode"))
+    surface_coating = models.CharField(max_length=100, blank=True, choices=[("Titan", _("Titan")), ("Hydroxylapatit", _("Hydroxylapatit")), ("keine", _("Keine"))], verbose_name=_("Oberflächenbeschichtung"))
+    gliding_pairing = models.CharField(max_length=100, blank=True, choices=[("metall_auf_metall", _("Metall auf Metall")), ("metall_auf_polyethylen", _("Metall auf Polyethylen")), ("keramik_auf_keramik", _("Keramik auf Keramik"))], verbose_name=_("Gleitpaarung"))
     class Meta:
         verbose_name_plural = _("Pfannen")
 
@@ -102,7 +116,7 @@ class Patient(models.Model):
     geburtsdatum = models.DateField(verbose_name=_('Geburtsdatum'))
     gewicht = models.FloatField(verbose_name=_('Gewicht'))          # in kg
     groeße = models.FloatField(verbose_name=_('Größe'), null=True)            # in m
-    geschlecht = models.CharField(verbose_name=_('Geschlecht'), max_length=20, null=True)     # männlich, weiblich, divers
+    geschlecht = models.CharField(choices=[('maennlich', _('Männlich')), ('weiblich', _('Weiblich')),('divers', _('Divers'))], verbose_name=_('Geschlecht'), max_length=20, null=True)
     aktivitaet = models.TextField(verbose_name=_('Aktivität'), blank=True, null=True)      # viel/wenig Bewegung --> was etc.
     begleiterkrankungen = models.TextField(verbose_name=_('Begleiterkrankungen'), blank=True, null=True)
     nachuntersuchungen = models.TextField(verbose_name=_('Nachuntersuchungen'), blank=True, null=True)
@@ -116,9 +130,9 @@ class Patient(models.Model):
         return f"{self.geburtsdatum} - {self.gewicht}"
 
 class Lagerort(models.Model):
+    einrichtung = models.CharField(max_length=50, verbose_name=_('Einrichtung'))
     schrank = models.IntegerField(verbose_name=_('Schrank'))
     kiste = models.IntegerField(verbose_name=_('Kiste'))
-    # einrichtung = models.CharField(verbose_name=_('Einrichtung'))
 
     class Meta:
         verbose_name_plural = _("Lagerorte")
