@@ -65,7 +65,7 @@
                                 <!-- Extended content goes here -->
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">{% trans 'Bild' %}</li>
-                                        <li class="list-group-item text-center"><img src="{{ explant.bild.url }}" alt="" width="200" class="mx-auto"></li>
+                                        <li class="list-group-item text-center"><img src="{{ explant.bild.url }}" alt="" width="250" class="mx-auto"></li>
                                     </ul>         
                                 </div>
                                 {% endif %}
@@ -79,6 +79,16 @@
                                             {% if user.id == explant.owner %}
                                                 <button type="button" class="btn btn-outline-secondary btn-sm me-md-2" data-bs-toggle="modal" data-bs-target="#lagerortModal">Update</button>
                                             {% endif %}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    {% trans 'Einrichtung' %}:
+                                                </div>
+                                                <div class="col-6 text-end">
+                                                    {{ explant.lagerort.einrichtung }}
+                                                </div>
+                                            </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="row">
@@ -113,6 +123,12 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div id="lagerortModal" class="modal-body">
+                                                        <div class='form-group row mb-3'>
+                                                            <label for='einrichtung' class="col-sm-3 col-form-label">{% trans 'Einrichtung' %}:</label>
+                                                            <div class="col-sm-9">
+                                                                <input type='text' class='form-control' id='einrichtung' name='einrichtung' value='{{ explant.lagerort.einrichtung }}'>
+                                                            </div>                                                           
+                                                        </div>
                                                         <div class='form-group row mb-3'>
                                                             <label for='schrank' class="col-sm-3 col-form-label">{% trans 'Schrank' %}:</label>
                                                             <div class="col-sm-9">
@@ -155,10 +171,10 @@
                                         </li>
                                         <li class="list-group-item">
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-5">
                                                     {% trans 'Geburtsdatum' %}:
                                                 </div>
-                                                <div class="col-6 text-end">
+                                                <div class="col-7 text-end">
                                                     {{ explant.patient.geburtsdatum }}
                                                 </div>
                                             </div>
@@ -275,7 +291,7 @@
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    {% trans 'Reoperationsdatum' %}:
+                                                    {% trans 'Datum' %}:
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     {{ explant.reoperation.reoperation_datum }}

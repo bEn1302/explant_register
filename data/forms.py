@@ -32,18 +32,18 @@ class PatientForm(ModelForm):
             'begleiterkrankungen': '',
             'nachuntersuchungen': '',
             'med_vorgeschichte': '',
-            'roentgenbilder': ''
+            'roentgenbilder': _('Röntgenbild')
         }
         widgets = { 
             'geburtsdatum': forms.DateInput(format=('%Y-%m-%d'),attrs={'class': 'form-control', 'type': 'date',}),
-            'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Gewicht')}),
-            'groeße': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Größe')}),
+            'gewicht': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Gewicht in kg')}),
+            'groeße': forms.NumberInput(attrs={'class': 'form-control','placeholder': _('Größe in m')}),
             'geschlecht': forms.Select(attrs={'class': 'form-control','placeholder': _('Geschlecht')}),
             'aktivitaet': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Aktivität')}),
             'begleiterkrankungen': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Begleiterkrankungen')}),
             'nachuntersuchungen': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Nachuntersuchungen')}),
             'med_vorgeschichte': forms.TextInput(attrs={'class': 'form-control','placeholder': _('Med. Vorgeschichte')}),
-            'roentgenbilder': forms.FileInput(attrs={'class': 'form-control','placeholder': _('Röntgenbilder')}),
+            'roentgenbilder': forms.FileInput(attrs={'class': 'form-control'}),
         }
 
 class ReoperationForm(ModelForm):

@@ -127,7 +127,7 @@ class Patient(models.Model):
         verbose_name_plural = _("Patienten")
 
     def __str__(self):
-        return f"{self.geburtsdatum} - {self.gewicht}"
+        return f"{self.geburtsdatum} - {self.gewicht} - {self.geschlecht}"
 
 class Lagerort(models.Model):
     einrichtung = models.CharField(max_length=50, verbose_name=_('Einrichtung'))
@@ -138,7 +138,7 @@ class Lagerort(models.Model):
         verbose_name_plural = _("Lagerorte")
 
     def __str__(self):
-        return f" Schrank: {self.schrank} - Kiste: {self.kiste}"
+        return f" Einrichtung: {self.einrichtung} - Schrank: {self.schrank} - Kiste: {self.kiste}"
 
 class Explantat(models.Model):
     ursache = models.TextField(verbose_name=_('Ursache'))
