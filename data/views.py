@@ -102,17 +102,19 @@ def search(request):
 
 def explants_table_view(request):
     huefte_explant_table = Explantat.objects.filter(
-        Q(kopf__isnull=False) | Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False)
+        Q(kopf__isnull=False) | Q(pfanne__isnull=False) | Q(schaft__isnull=False)
     )
     knie_explant_table = Explantat.objects.filter(
         Q(femurkomponente__isnull=False) | Q(tibiaplateau__isnull=False) | Q(patellaersatz__isnull=False)
     )
-
+    stent_explant_table = Explantat.objects.filter(
+        Q(stent__isnull=False)
+    )
+    
     """
     Weitere Implantate (für Später):
         - weitere Endoprothesen: Schulter, oberes Sprunggelenk
         - Herzschrittmacher
-        - Stents
         - Cochleaimplantat
         - Retina-Implantat
         - Zahnimplantat
@@ -121,6 +123,7 @@ def explants_table_view(request):
     context = {
         'huefte_explant_table': huefte_explant_table,
         'knie_explant_table': knie_explant_table,
+        'stent_explant_table':stent_explant_table,
     }
 
     return render(request, 'data/explant_table.html', context)

@@ -71,6 +71,9 @@
         <li class="nav-item">
           <a class="nav-link" id="stent-tab" data-bs-toggle="tab" href="#stent">{% trans 'Stents' %}</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" id="herzschrittmacher-tab" data-bs-toggle="tab" href="#herzschrittmacher">{% trans 'Herzschrittmacher' %}</a>
+        </li>
       </ul>
       <div class="tab-content">
         <!-- Hüfte -->
@@ -106,13 +109,27 @@
           {% if user_is_expert_or_moderator %}
             <div class="container mt-3 mb-2">
               <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}?selected_tab=stent" role="button"><i class="bi bi-plus-circle"></i> {% trans 'Hinzufügen' %}</a>
-              <a id="exportPdfstent" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> {% trans 'Exportieren als PDF' %}</a>
-              <a id="exportCsvstent" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> {% trans 'Exportieren als CSV' %}</a>
+              <a id="exportPdfStent" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> {% trans 'Exportieren als PDF' %}</a>
+              <a id="exportCsvStent" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> {% trans 'Exportieren als CSV' %}</a>
               <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton" data-tab="stent"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
             </div>
           {% endif %}
           <div class="table-responsive">
-            {% include 'data/table_template.html' with data=stent_explant_table is_huefte_or_knie=False %}
+            {% include 'data/table_template.html' with data=stent_explant_table %}
+          </div>
+        </div>
+        <!-- Herzschrittmacher -->
+        <div class="tab-pane fade" id="herzschrittmacher">
+          {% if user_is_expert_or_moderator %}
+            <div class="container mt-3 mb-2">
+              <a class="btn btn-outline-primary btn-sm rounded-pill" href="{% url 'add-explants' %}?selected_tab=herzschrittmacher" role="button"><i class="bi bi-plus-circle"></i> {% trans 'Hinzufügen' %}</a>
+              <a id="exportPdfHerzschrittmacher" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_pdf' %}" role="button"><i class="bi bi-filetype-pdf"></i> {% trans 'Exportieren als PDF' %}</a>
+              <a id="exportCsvHerzschrittmacher" class="btn btn-outline-secondary btn-sm rounded-pill" href="{% url 'explant_csv' %}" role="button"><i class="bi bi-filetype-csv"></i> {% trans 'Exportieren als CSV' %}</a>
+              <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill deleteButton" data-tab="herzschrittmacher"><i class="bi bi-trash3"></i> {% trans 'Löschen' %}</button>
+            </div>
+          {% endif %}
+          <div class="table-responsive">
+            {% include 'data/table_template.html' with data=herzschrittmacher_explant_table %}
           </div>
         </div>
       </div>
